@@ -1,5 +1,4 @@
 import localFont from "next/font/local";
-import Script from "next/script";
 
 import "./globals.css";
 
@@ -93,25 +92,15 @@ export default function RootLayout({ children }) {
     },
     potentialAction: {
       "@type": "ReserveAction",
-      target: "https://calendly.com/1stikkmobile-meeting/health",
-      name: "Book a 1 Stikk Mobile health consultation"
+      target: "https://myriad.health/book?token=WnjFcnpNSCsatghXix",
+      name: "Book a 1 Stikk Mobile patient service"
     }
   };
 
   return (
     <html lang="en">
-      <head>
-        <link
-          rel="stylesheet"
-          href="https://assets.calendly.com/assets/external/widget.css"
-        />
-      </head>
       <body className={canvaSans.variable}>
         {children}
-        <Script
-          src="https://assets.calendly.com/assets/external/widget.js"
-          strategy="afterInteractive"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
