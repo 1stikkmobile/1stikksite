@@ -306,40 +306,20 @@ export const corePractices = [
 
 export const testimonials = [
   {
-    name: "Butterflies & Rainbows Training, LLC.",
-    role: "Partner organization",
-    quote:
-      "Great company — efficient and knowledgeable staff. Tiffany has great customer service and an amazing bedside manner. Highly recommended."
-  },
-  {
-    name: "David Whitehead",
-    role: "Employer client",
+    name: "Darius K.",
+    role: "HR Director",
     quote: "We use 1 Stikk for all our employee screenings. Their mobile unit is a lifesaver!"
   },
   {
-    name: "Willie Wallace",
+    name: "Ashley M.",
     role: "Patient",
-    quote: "Excellent service and very professional staff. Quick, smooth, and dependable from start to finish."
+    quote:
+      "1 Stikk helped me avoid the hassle of traveling for blood work. They were on time, professional, and I got my results fast!"
   },
   {
-    name: "Catrina Jackson",
-    role: "Patient",
-    quote: "Professional and knowledgeable team. They made the whole process easy and stress-free."
-  },
-  {
-    name: "John Jackson",
-    role: "Patient",
-    quote: "Highly recommend this company. Great customer experience and they came right to my door."
-  },
-  {
-    name: "Dennis Hawkins",
-    role: "Patient",
-    quote: "Quick, smooth, and dependable service. Exactly what you want when it comes to your health."
-  },
-  {
-    name: "Shun Kindred",
-    role: "Training graduate",
-    quote: "The training program was beginner-friendly and gave me real confidence to start my career."
+    name: "This can be you",
+    role: "Share your experience",
+    quote: "We are waiting for you to leave us a review!!!!"
   }
 ];
 

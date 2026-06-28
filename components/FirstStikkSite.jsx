@@ -404,8 +404,8 @@ function Testimonials() {
     <section className="section reviews-section" id="reviews">
       <div className="container">
         <div className="section-head section-head-center reviews-head reveal">
-          <span className="eyebrow eyebrow-light"><Star aria-hidden="true" /> What our clients say</span>
-          <h2>Some of our clients’ feedback.</h2>
+          <span className="eyebrow eyebrow-light"><Star aria-hidden="true" /> Feedback from Clients</span>
+          <h2>Why you should 1 Stikk Mobile Inc.</h2>
         </div>
         <div className="reviews-carousel reveal">
           <button className="review-nav" type="button" aria-label="Previous review" onClick={() => go(-1)}>
