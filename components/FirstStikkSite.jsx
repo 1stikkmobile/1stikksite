@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Activity,
   ArrowRight,
@@ -35,7 +35,8 @@ import {
 
 const bookingUrl = "https://calendly.com/1stikkmobile-meeting/health";
 const calendlyUrl =
-  "https://calendly.com/1stikkmobile-meeting/health?hide_event_type_details=1&hide_gdpr_banner=1&background_color=12212c&text_color=ffffff&primary_color=d1b154";
+  "https://calendly.com/1stikkmobile-meeting/health?hide_event_type_details=1&hide_gdpr_banner=1&background_color=212121&text_color=ffffff&primary_color=ffc900";
+const calendlyScriptSrc = "https://assets.calendly.com/assets/external/widget.js";
 const primaryPhone = "318-512-0170";
 const primaryPhoneHref = "tel:3185120170";
 const tollFreePhone = "877)217-8455";
@@ -505,29 +506,82 @@ function VitalsPanel() {
   );
 }
 
-function CalendlyEmbed() {
+function CalendlyEmbed({ compact = false, height = 760 }) {
   const [ready, setReady] = useState(false);
+  const embedRef = useRef(null);
 
   useEffect(() => {
-    const existing = document.querySelector('script[src="https://assets.calendly.com/assets/external/widget.js"]');
-    if (existing) {
-      if (window.Calendly?.initInlineWidget) setReady(true);
-      return;
+    let cancelled = false;
+    let retryTimer;
+
+    const initializeCalendly = () => {
+      if (!embedRef.current || !window.Calendly?.initInlineWidget) return false;
+
+      embedRef.current.innerHTML = "";
+      delete embedRef.current.dataset.processed;
+      window.Calendly.initInlineWidget({
+        url: calendlyUrl,
+        parentElement: embedRef.current
+      });
+
+      if (!cancelled) setReady(true);
+      return true;
+    };
+
+    if (initializeCalendly()) {
+      return () => {
+        cancelled = true;
+      };
     }
+
+    const existing = document.querySelector(`script[src="${calendlyScriptSrc}"]`);
+    const handleLoad = () => initializeCalendly();
+    const handleError = () => {
+      if (!cancelled) setReady(false);
+    };
+
+    retryTimer = window.setInterval(() => {
+      if (initializeCalendly() && retryTimer) {
+        window.clearInterval(retryTimer);
+        retryTimer = undefined;
+      }
+    }, 250);
+
+    if (existing) {
+      if (window.Calendly?.initInlineWidget) {
+        initializeCalendly();
+      }
+      existing.addEventListener("load", handleLoad);
+      existing.addEventListener("error", handleError);
+      return () => {
+        cancelled = true;
+        if (retryTimer) window.clearInterval(retryTimer);
+        existing.removeEventListener("load", handleLoad);
+        existing.removeEventListener("error", handleError);
+      };
+    }
+
     const script = document.createElement("script");
-    script.src = "https://assets.calendly.com/assets/external/widget.js";
+    script.src = calendlyScriptSrc;
     script.async = true;
-    script.onload = () => setReady(true);
-    script.onerror = () => setReady(false);
+    script.onload = handleLoad;
+    script.onerror = handleError;
     document.body.appendChild(script);
+
+    return () => {
+      cancelled = true;
+      if (retryTimer) window.clearInterval(retryTimer);
+      script.onload = null;
+      script.onerror = null;
+    };
   }, []);
 
   return (
-    <div className="calendar-embed">
+    <div className={`calendar-embed${compact ? " is-compact" : ""}`}>
       <div
+        ref={embedRef}
         className="calendly-inline-widget"
-        data-url={calendlyUrl}
-        style={{ minWidth: 320, height: 760 }}
+        style={{ minWidth: 320, height }}
       />
       {!ready ? (
         <div className="calendar-fallback">
@@ -1285,19 +1339,28 @@ export default function FirstStikkSite({ slug = [] }) {
 
         <section className="final-cta" id="contact">
           <div className="container final-cta-inner">
-            <div className="reveal">
+            <div className="final-cta-copy reveal">
               <SectionLabel icon={HeartHandshake}>Bring care closer</SectionLabel>
               <h2>Bring the lab, the support, or the training directly to the place where it is needed most.</h2>
+              <p>
+                Use the calendar here to request mobile care, training information, provider support,
+                or a community wellness conversation without leaving the page.
+              </p>
             </div>
-            <div className="hero-actions reveal">
-              <a className="btn btn-primary" href={bookingUrl}>
-                <CalendarCheck aria-hidden="true" />
-                Book on Calendly
-              </a>
-              <a className="btn btn-light" href={tollFreePhoneHref}>
-                <Phone aria-hidden="true" />
-                Call {tollFreePhone}
-              </a>
+            <div className="final-cta-scheduler reveal">
+              <div className="hero-actions">
+                <a className="btn btn-primary" href={bookingUrl}>
+                  <CalendarCheck aria-hidden="true" />
+                  Book on Calendly
+                </a>
+                <a className="btn btn-light" href={tollFreePhoneHref}>
+                  <Phone aria-hidden="true" />
+                  Call {tollFreePhone}
+                </a>
+              </div>
+              <div className="calendar-frame is-compact">
+                <CalendlyEmbed compact height={700} />
+              </div>
             </div>
           </div>
         </section>

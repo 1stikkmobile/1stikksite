@@ -1425,8 +1425,16 @@ h3 {
   min-height: 780px;
 }
 
+.calendar-embed.is-compact {
+  min-height: 700px;
+}
+
 .calendar-embed .calendly-inline-widget {
   min-height: 780px;
+}
+
+.calendar-embed.is-compact .calendly-inline-widget {
+  min-height: 700px;
 }
 
 .calendar-fallback {
@@ -1496,11 +1504,34 @@ h3 {
 }
 
 .final-cta-inner {
-  min-height: 340px;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
   align-items: center;
-  justify-content: space-between;
   gap: 28px;
+}
+
+.final-cta-copy {
+  display: grid;
+  gap: 18px;
+}
+
+.final-cta-copy p {
+  max-width: 56ch;
+  color: oklch(100% 0 0 / 0.72);
+}
+
+.final-cta-scheduler {
+  display: grid;
+  gap: 18px;
+}
+
+.final-cta .calendar-frame {
+  min-height: 720px;
+  background: oklch(15% 0.018 236);
+}
+
+.final-cta .hero-actions {
+  justify-content: flex-start;
 }
 
 .site-footer {
@@ -1718,6 +1749,7 @@ h3 {
   .resources-grid,
   .booking-grid,
   .faq-shell,
+  .final-cta-inner,
   .workforce-grid {
     grid-template-columns: 1fr;
   }
@@ -1921,6 +1953,12 @@ h3 {
   .calendar-embed,
   .calendar-embed .calendly-inline-widget {
     min-height: 860px;
+  }
+
+  .calendar-embed.is-compact,
+  .calendar-embed.is-compact .calendly-inline-widget,
+  .final-cta .calendar-frame {
+    min-height: 680px;
   }
 
   .final-cta-inner,
