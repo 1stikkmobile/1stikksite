@@ -10,6 +10,7 @@ const canvaSans = localFont({
 });
 
 const siteUrl = "https://1stikkmobile.com";
+const logoImage = "/images/logo/logo.jpg";
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
@@ -39,7 +40,7 @@ export const metadata = {
     siteName: "1 Stikk Mobile Inc.",
     images: [
       {
-        url: "/og-image.jpg",
+        url: logoImage,
         width: 500,
         height: 500,
         alt: "1 Stikk Mobile Inc. logo"
@@ -53,15 +54,12 @@ export const metadata = {
     title: "1 Stikk Mobile Inc. | Mobile Health Access",
     description:
       "Book mobile health services, training, lab support, and community wellness help with 1 Stikk Mobile Inc.",
-    images: ["/og-image.jpg"]
+    images: [logoImage]
   },
   icons: {
-    icon: [
-      { url: "/favicon.png", type: "image/png" },
-      { url: "/images/logo/logo.jpg", type: "image/jpeg" }
-    ],
-    shortcut: "/favicon.png",
-    apple: "/images/logo/logo.jpg"
+    icon: [{ url: logoImage, type: "image/jpeg" }],
+    shortcut: logoImage,
+    apple: logoImage
   },
   robots: {
     index: true,
@@ -81,8 +79,8 @@ export default function RootLayout({ children }) {
     "@type": "MedicalBusiness",
     name: "1 Stikk Mobile Inc.",
     url: siteUrl,
-    logo: `${siteUrl}/images/logo/logo.jpg`,
-    image: `${siteUrl}/og-image.jpg`,
+    logo: `${siteUrl}${logoImage}`,
+    image: `${siteUrl}${logoImage}`,
     telephone: "+13185120170",
     description:
       "Community-driven mobile health access, lab collections, phlebotomy training, drug screening, and wellness education.",
