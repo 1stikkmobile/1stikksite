@@ -427,13 +427,14 @@ h2 { font-size: clamp(1.9rem, 3.6vw, 3rem); }
 }
 .founder-photo {
   position: relative;
-  min-height: 460px;
+  width: min(100%, 420px);
+  aspect-ratio: 3 / 4;
   border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid var(--line);
   box-shadow: var(--shadow-md);
 }
-.founder-photo img { object-fit: cover; object-position: center top; }
+.founder-photo img { object-fit: cover; object-position: center 20%; }
 .founder-name {
   position: absolute;
   left: 14px;
@@ -1045,7 +1046,7 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
   .hero-visual { grid-template-columns: 1fr; grid-template-rows: 1fr; min-height: 0; aspect-ratio: 4/3; gap: 0; }
   .hero-photo-main { grid-row: 1; grid-column: 1; }
   .hero-photo-sub { display: none; }
-  .founder-photo { min-height: 300px; }
+  .founder-photo { width: min(100%, 360px); }
   .bbb-photo { min-height: 240px; }
   .areas-map { min-height: 200px; }
   .practice-grid, .training-grid, .contact-cards, .footer-grid { grid-template-columns: 1fr; }
