@@ -3,7 +3,10 @@
 import {
     ArrowLeft,
     ArrowRight,
+    Award,
+    BadgeCheck,
     CalendarCheck,
+    Check,
     ChevronDown,
     ChevronLeft,
     ChevronRight,
@@ -16,6 +19,7 @@ import {
     Phone,
     Plus,
     Quote,
+    ShieldCheck,
     Sparkles,
     Star,
     Users,
@@ -41,7 +45,6 @@ import {
     myriadUrl,
     nav,
     officeHoursText,
-    sectionTargets,
     serviceMap,
     serviceStates,
     services,
@@ -886,32 +889,418 @@ function TrainingProgramDetail({ program }) {
   );
 }
 
+/* ------------------------------------------------------------------ About */
+
+function AboutPage() {
+  return (
+    <>
+      <section className="page-hero">
+        <div className="container reveal is-visible">
+          <span className="eyebrow eyebrow-light"><span className="dot" aria-hidden="true" /> About 1 Stikk Mobile</span>
+          <h1>Care that comes to people.<br />Opportunity that follows.</h1>
+          <p className="hero-lead">
+            Faith-rooted, community-driven mobile healthcare — delivering lab services and
+            building careers across all 50 states since day one.
+          </p>
+          <div className="hero-actions">
+            <a className="btn btn-primary btn-lg" href={myriadUrl}><CalendarCheck aria-hidden="true" /> Book a Service</a>
+            <a className="btn btn-outline btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> {mainPhone}</a>
+          </div>
+        </div>
+      </section>
+      <Founder />
+      <BbbFeature />
+      <ServiceAreas />
+      <ContactCta />
+    </>
+  );
+}
+
+/* ---------------------------------------------------- Services Index */
+
+function ServicesIndexPage() {
+  return (
+    <>
+      <section className="services-index-hero">
+        <div className="container reveal is-visible">
+          <span className="eyebrow eyebrow-light"><span className="dot" aria-hidden="true" /> Mobile Healthcare</span>
+          <h1>Comprehensive mobile healthcare services.</h1>
+          <p>Every service is professional, mobile, and built around getting your care done without the trip.</p>
+        </div>
+      </section>
+      <section className="section">
+        <div className="container">
+          <div className="practice-grid">
+            {services.map((s) => {
+              const Icon = s.icon;
+              return (
+                <Link className="practice-card reveal" href={`/services/${s.slug}`} key={s.slug}>
+                  <span className="practice-icon"><Icon aria-hidden="true" /></span>
+                  <strong>{s.title}</strong>
+                  <p className="practice-summary">{s.summary}</p>
+                  <span className="practice-cta">Learn more <ArrowRight aria-hidden="true" /></span>
+                </Link>
+              );
+            })}
+          </div>
+          <div className="section-foot reveal">
+            <a className="btn btn-primary" href={myriadUrl}><CalendarCheck aria-hidden="true" /> Book a Service</a>
+            <a className="btn btn-ghost" href={mainPhoneDialHref}><Phone aria-hidden="true" /> {mainPhone}</a>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+/* ------------------------------------------------- Drug Screening */
+
+function DrugScreeningPage() {
+  return (
+    <>
+      <section className="ds-hero">
+        <div className="container ds-hero-inner">
+          <div className="ds-hero-copy reveal is-visible">
+            <span className="eyebrow eyebrow-light">
+              <span className="dot" aria-hidden="true" /> Drug Screening · Delivered by 1 Stikk Mobile
+            </span>
+            <h1>Your Health. Our Priority.<br />Right at Your Door.</h1>
+            <p className="hero-lead">
+              Professional drug screening for individuals, employers, and medical providers —
+              brought directly to your location with full compliance and chain-of-custody standards.
+            </p>
+            <div className="hero-actions">
+              <a className="btn btn-primary btn-lg" href={myriadUrl}><CalendarCheck aria-hidden="true" /> Book Appointment</a>
+              <a className="btn btn-outline btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> {mainPhone}</a>
+            </div>
+          </div>
+          <div className="ds-hero-media reveal is-visible">
+            <div className="ds-hero-img">
+              <Image
+                src="/images/services/drug-test-capsules.jpg"
+                alt="Drug screening specimen capsules at 1 Stikk Mobile Lab"
+                fill
+                sizes="(max-width:760px) 95vw, 46vw"
+                priority
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="ds-section ds-section-light">
+        <div className="container ds-split">
+          <div className="ds-split-copy reveal">
+            <span className="eyebrow"><span className="dot" aria-hidden="true" /> For Physicians &amp; Clinics</span>
+            <h2>Medical Drug Screening</h2>
+            <p>Support for physicians and pain management clinics with fast, secure, and compliant collection services.</p>
+            <ul className="ds-list">
+              <li><Check aria-hidden="true" /> Support for physicians and pain management clinics</li>
+              <li><Check aria-hidden="true" /> Routine and randomized testing</li>
+              <li><Check aria-hidden="true" /> Urine, saliva, or hair follicle collection</li>
+              <li><Check aria-hidden="true" /> Fast and secure lab results</li>
+              <li><Check aria-hidden="true" /> Monitored and unmonitored options available</li>
+            </ul>
+            <a className="btn btn-primary" href={myriadUrl}><CalendarCheck aria-hidden="true" /> Book Appointment</a>
+          </div>
+          <div className="ds-split-media reveal">
+            <div className="ds-img-frame">
+              <Image
+                src="/images/services/drug-test-report.jpg"
+                alt="Drug test report form with specimen collection tools"
+                fill
+                sizes="(max-width:900px) 90vw, 44vw"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="ds-section ds-section-dark">
+        <div className="container ds-split ds-split-flip">
+          <div className="ds-split-copy reveal">
+            <span className="eyebrow eyebrow-light"><span className="dot" aria-hidden="true" /> DOT &amp; Non-DOT</span>
+            <h2>Employment &amp; Compliance Testing</h2>
+            <p>
+              We bring cutting-edge mobile screening directly to your worksite — making compliance
+              simple and workforce disruption minimal.
+            </p>
+            <div className="sap-callout">
+              <Award className="sap-callout-icon" aria-hidden="true" />
+              <div>
+                <strong>SAP Assessment Available</strong>
+                <span>
+                  Substance Abuse Professional evaluations — a federally required step in
+                  return-to-duty programs for DOT-regulated employees.
+                </span>
+              </div>
+            </div>
+            <ul className="ds-list">
+              <li><Check aria-hidden="true" /> DOT &amp; Non-DOT drug screens (urine, hair, oral fluid)</li>
+              <li><Check aria-hidden="true" /> SAP Assessment for return-to-duty compliance</li>
+              <li><Check aria-hidden="true" /> Consortium management for DOT employers</li>
+              <li><Check aria-hidden="true" /> Onsite mobile collections — minimal workforce disruption</li>
+              <li><Check aria-hidden="true" /> Chain-of-custody documentation &amp; compliance reporting</li>
+            </ul>
+            <a className="btn btn-primary" href={myriadUrl}><CalendarCheck aria-hidden="true" /> Book Appointment</a>
+          </div>
+          <div className="ds-split-media reveal">
+            <div className="ds-img-frame">
+              <Image
+                src="/images/services/drug-test-capsules.jpg"
+                alt="Certified drug screening collection capsules"
+                fill
+                sizes="(max-width:900px) 90vw, 44vw"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="ds-section ds-section-light">
+        <div className="container ds-split">
+          <div className="ds-split-copy reveal">
+            <span className="eyebrow"><span className="dot" aria-hidden="true" /> Training</span>
+            <h2>Drug Screen &amp; Mock Collections</h2>
+            <p>
+              Essential training for a successful career in drug screening — join us to gain the
+              hands-on experience you need to excel in the field.
+            </p>
+            <ul className="ds-list">
+              <li><Check aria-hidden="true" /> Live Q &amp; A with certified instructors</li>
+              <li><Check aria-hidden="true" /> Live mock collections practice</li>
+              <li><Check aria-hidden="true" /> Certificate of Completion</li>
+              <li><Check aria-hidden="true" /> Drug Screen Collector Registration &amp; Onboarding</li>
+            </ul>
+            <p className="ds-contact-note">
+              For assistance with the online training portal, call{" "}
+              <a href={trainingPhoneHref}>{trainingPhone}</a>.
+            </p>
+            <a className="btn btn-dark" href={calendlyBookingUrl}><CalendarCheck aria-hidden="true" /> Schedule Training</a>
+          </div>
+          <div className="ds-split-media reveal">
+            <div className="ds-img-frame">
+              <Image
+                src="/images/services/blood-draw.jpg"
+                alt="1 Stikk Mobile practitioner performing a blood draw"
+                fill
+                sizes="(max-width:900px) 90vw, 44vw"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <div className="section-head reveal">
+            <span className="eyebrow"><span className="dot" aria-hidden="true" /> Why Us</span>
+            <h2>Why Choose 1 Stikk Mobile</h2>
+            <p>Certified, compliant, and mobile — we make professional drug screening effortless.</p>
+          </div>
+          <div className="ds-why-grid">
+            {[
+              { Icon: BadgeCheck, title: "Certified Specialists", desc: "Every collector is trained, certified, and compliance-ready from day one." },
+              { Icon: MapPin, title: "We Come to You", desc: "Mobile testing at clinics, offices, and job sites — no travel required." },
+              { Icon: Clock, title: "Fast Turnaround", desc: "Accurate results delivered quickly so your operations stay on track." },
+              { Icon: ShieldCheck, title: "State & Federal Compliant", desc: "Full DOT/non-DOT compliance, chain-of-custody, and complete documentation." }
+            ].map((card) => {
+              const CardIcon = card.Icon;
+              return (
+                <div className="ds-why-card reveal" key={card.title}>
+                  <span className="practice-icon"><CardIcon aria-hidden="true" /></span>
+                  <strong>{card.title}</strong>
+                  <p>{card.desc}</p>
+                </div>
+              );
+            })}
+          </div>
+          <div className="section-foot reveal">
+            <a className="btn btn-primary btn-lg" href={myriadUrl}><CalendarCheck aria-hidden="true" /> Book Appointment</a>
+            <a className="btn btn-outline btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> {mainPhone}</a>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+/* ------------------------------------------------------- Non Profit */
+
+function NonProfitPage() {
+  const service = serviceMap["non-profit"];
+  const Icon = service.icon;
+  return (
+    <>
+      <section className="np-biz-hero">
+        <div className="container np-biz-hero-inner reveal is-visible">
+          <span className="eyebrow eyebrow-light"><span className="dot" aria-hidden="true" /> Community Health</span>
+          <h1>Healthcare for Every Community.</h1>
+          <p className="hero-lead">
+            1 Stikk Mobile brings health fairs, screenings, and outreach directly to underserved
+            neighborhoods — because everyone deserves access to quality care.
+          </p>
+          <div className="hero-actions">
+            <a className="btn btn-primary btn-lg" href="/contact"><HeartHandshake aria-hidden="true" /> Partner With Us</a>
+            <a className="btn btn-outline btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> {mainPhone}</a>
+          </div>
+        </div>
+      </section>
+      <section className="section">
+        <div className="container">
+          <div className="service-detail-shell">
+            <div className="service-detail-copy reveal is-visible">
+              <span className="eyebrow"><span className="dot" aria-hidden="true" /> Our Impact</span>
+              <h2>Closing the healthcare access gap.</h2>
+              <p>
+                Our non-profit programming is rooted in community — bringing mobile services to
+                people and neighborhoods that need them most, with dignity and compassion.
+              </p>
+              <div className="hero-actions">
+                <a className="btn btn-primary" href="/contact"><HeartHandshake aria-hidden="true" /> Partner With Us</a>
+                <a className="btn btn-outline" href={mainPhoneDialHref}><Phone aria-hidden="true" /> {mainPhone}</a>
+              </div>
+            </div>
+            <article className="service-detail-card reveal is-visible">
+              <div className="service-detail-card-head">
+                <span className="practice-icon"><Icon aria-hidden="true" /></span>
+                <h2>What&apos;s included</h2>
+              </div>
+              <ul>
+                {service.points.map((p) => <li key={p}>{p}</li>)}
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+      <ContactCta />
+    </>
+  );
+}
+
+/* ----------------------------------------------- Business Solutions */
+
+function BusinessSolutionsPage() {
+  const service = serviceMap["business-solutions"];
+  const Icon = service.icon;
+  return (
+    <>
+      <section className="np-biz-hero">
+        <div className="container np-biz-hero-inner reveal is-visible">
+          <span className="eyebrow eyebrow-light"><span className="dot" aria-hidden="true" /> For Organizations</span>
+          <h1>Mobile Healthcare Built for Business.</h1>
+          <p className="hero-lead">
+            On-site testing, lab partnerships, and business mentorship — designed for clinics,
+            employers, and healthcare entrepreneurs ready to grow.
+          </p>
+          <div className="hero-actions">
+            <a className="btn btn-primary btn-lg" href={calendlyBookingUrl}><CalendarCheck aria-hidden="true" /> Schedule a Consult</a>
+            <a className="btn btn-outline btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> {mainPhone}</a>
+          </div>
+        </div>
+      </section>
+      <section className="section">
+        <div className="container">
+          <div className="service-detail-shell">
+            <div className="service-detail-copy reveal is-visible">
+              <span className="eyebrow"><span className="dot" aria-hidden="true" /> What We Offer</span>
+              <h2>Comprehensive solutions for organizations.</h2>
+              <p>
+                From onsite corporate testing to lab startup mentorship — we partner with businesses
+                to deliver reliable mobile health services at scale.
+              </p>
+              <div className="hero-actions">
+                <a className="btn btn-primary" href={calendlyBookingUrl}><CalendarCheck aria-hidden="true" /> Schedule a Consult</a>
+                <a className="btn btn-outline" href="/contact">Contact our team</a>
+              </div>
+            </div>
+            <article className="service-detail-card reveal is-visible">
+              <div className="service-detail-card-head">
+                <span className="practice-icon"><Icon aria-hidden="true" /></span>
+                <h2>What&apos;s included</h2>
+              </div>
+              <ul>
+                {service.points.map((p) => <li key={p}>{p}</li>)}
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+      <ContactCta />
+    </>
+  );
+}
+
+/* -------------------------------------------------------------- Contact */
+
+function ContactPage() {
+  return (
+    <>
+      <section className="section contact-section">
+        <div className="container contact-page-shell">
+          <div className="contact-page-head reveal is-visible">
+            <span className="eyebrow"><span className="dot" aria-hidden="true" /> We&apos;re here to help</span>
+            <h1>Anytime, anywhere.</h1>
+            <p className="hero-lead">
+              Call, email, or book online — our caring team is ready to get you the care you need,
+              whenever you need it.
+            </p>
+            <div className="hero-actions" style={{ justifyContent: "center" }}>
+              <a className="btn btn-primary btn-lg" href={myriadUrl}><CalendarCheck aria-hidden="true" /> Book a Service</a>
+              <a className="btn btn-outline btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> {mainPhone}</a>
+            </div>
+          </div>
+          <div className="contact-cards reveal">
+            <a className="contact-card" href={mainPhoneDialHref}>
+              <Phone aria-hidden="true" />
+              <span>
+                <strong>{mainPhone}</strong>
+                <small>Call anytime · after hours {afterHoursPhone}</small>
+              </span>
+            </a>
+            <a className="contact-card" href={`mailto:${contactEmail}`}>
+              <Mail aria-hidden="true" />
+              <span>
+                <strong>Email us</strong>
+                <small>{contactEmail}</small>
+              </span>
+            </a>
+            <div className="contact-card">
+              <Clock aria-hidden="true" />
+              <span>
+                <strong>Always open</strong>
+                <small>{officeHoursText}</small>
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <ServiceAreas />
+    </>
+  );
+}
+
 /* -------------------------------------------------------------------- Root */
 
 export default function FirstStikkSite({ slug = [] }) {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const activeService = slug[0] === "services" && slug[1] ? serviceMap[slug[1]] : null;
-  const activeTrainingProgram = slug[0] === "training" && slug[1] ? trainingProgramMap[slug[1]] : null;
-  const isTrainingIndex = slug[0] === "training" && !slug[1];
-  const isTrainingPage = slug[0] === "training";
+  const isAbout = slug[0] === "about" && !slug[1];
   const isServicesIndex = slug[0] === "services" && !slug[1];
+  const isDrugScreening = slug[0] === "services" && slug[1] === "drug-screening";
+  const activeService = slug[0] === "services" && slug[1] && slug[1] !== "drug-screening" ? serviceMap[slug[1]] : null;
+  const isNonProfit = slug[0] === "non-profit" && !slug[1];
+  const isBusinessSolutions = slug[0] === "business-solutions" && !slug[1];
+  const isTrainingIndex = slug[0] === "training" && !slug[1];
+  const activeTrainingProgram = slug[0] === "training" && slug[1] ? trainingProgramMap[slug[1]] : null;
+  const isTrainingPage = slug[0] === "training";
+  const isContact = slug[0] === "contact" && !slug[1];
 
   useEffect(() => {
     document.documentElement.classList.add("js");
-    if (activeService || isTrainingPage) {
-      window.scrollTo({ top: 0, behavior: "auto" });
-      return;
-    }
-    const target = sectionTargets[pathname] || (isServicesIndex ? "services" : null);
-    if (!target || target === "top") {
-      window.scrollTo({ top: 0, behavior: "auto" });
-      return;
-    }
-    const t = window.setTimeout(() => scrollToSection(target), 90);
-    return () => window.clearTimeout(t);
-  }, [activeService, isTrainingPage, isServicesIndex, pathname]);
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, [pathname]);
 
   useEffect(() => {
     const nodes = Array.from(document.querySelectorAll(".reveal"));
@@ -925,7 +1314,7 @@ export default function FirstStikkSite({ slug = [] }) {
     );
     nodes.forEach((n) => observer.observe(n));
     return () => observer.disconnect();
-  }, [activeService, activeTrainingProgram, isTrainingIndex]);
+  }, [pathname]);
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
@@ -938,20 +1327,29 @@ export default function FirstStikkSite({ slug = [] }) {
     <>
       <Header mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} />
       <main>
-        {activeService ? (
+        {isDrugScreening ? (
+          <DrugScreeningPage />
+        ) : activeService ? (
           <ServiceDetail service={activeService} />
         ) : activeTrainingProgram ? (
           <TrainingProgramDetail program={activeTrainingProgram} />
         ) : isTrainingIndex ? (
           <TrainingPage />
+        ) : isAbout ? (
+          <AboutPage />
+        ) : isServicesIndex ? (
+          <ServicesIndexPage />
+        ) : isNonProfit ? (
+          <NonProfitPage />
+        ) : isBusinessSolutions ? (
+          <BusinessSolutionsPage />
+        ) : isContact ? (
+          <ContactPage />
         ) : (
           <>
             <Hero />
             <MissionBand />
             <CorePractices />
-            <Founder />
-            <BbbFeature />
-            <ServiceAreas />
             <Testimonials />
             <Faq />
             <ContactCta />

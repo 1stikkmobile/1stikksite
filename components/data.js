@@ -361,19 +361,13 @@ export const nav = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
   { label: "Our Services", href: "/services", mega: "services" },
-  { label: "Training & Programs", href: "/training", mega: "training" },
+  { label: "Non Profit", href: "/non-profit" },
+  { label: "Business Solutions", href: "/business-solutions" },
+  { label: "Programs", href: "/training", mega: "training" },
   { label: "Contact Us", href: "/contact" }
 ];
 
-export const sectionTargets = {
-  "/": "top",
-  "/about": "founder",
-  "/services": "services",
-  "/training": "training",
-  "/locations": "locations",
-  "/contact": "contact",
-  "/reviews": "reviews"
-};
+export const sectionTargets = {};
 
 export { BadgeCheck, FlaskConical, Microscope, Stethoscope, TestTube2, Users };
 

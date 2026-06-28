@@ -43,6 +43,23 @@ export async function generateMetadata({ params }) {
     };
   }
 
+  // Drug screening detail (specialized rich page)
+  if (slug[0] === "services" && slug[1] === "drug-screening") {
+    const canonical = `${siteUrl}/services/drug-screening`;
+    return {
+      title: "Drug Screening Services | DOT, SAP Assessment & More | 1 Stikk Mobile",
+      description:
+        "Mobile DOT & non-DOT drug screening, SAP Assessment, medical drug testing, and mock collections training — brought to your location by 1 Stikk Mobile. Call (877) 217-8455.",
+      alternates: { canonical },
+      openGraph: {
+        title: "Drug Screening — 1 Stikk Mobile",
+        description: "DOT & non-DOT drug screens, SAP Assessment, employer compliance testing, and mock collections training delivered mobile nationwide.",
+        url: canonical,
+        type: "website"
+      }
+    };
+  }
+
   // Service detail page
   if (slug[0] === "services" && slug[1]) {
     const service = serviceMap[slug[1]];
@@ -72,13 +89,51 @@ export async function generateMetadata({ params }) {
     };
   }
 
+  // Non Profit
+  if (slug[0] === "non-profit") {
+    return {
+      title: "Non Profit Community Health | 1 Stikk Mobile",
+      description:
+        "1 Stikk Mobile brings health fairs, wellness screenings, and outreach to underserved communities. Partner with us to bring care where it's needed most.",
+      alternates: { canonical: `${siteUrl}/non-profit` },
+      openGraph: {
+        title: "Non Profit Community Health — 1 Stikk Mobile",
+        description: "Mobile health fairs, outreach, and wellness events for underserved communities across all 50 states.",
+        url: `${siteUrl}/non-profit`,
+        type: "website"
+      }
+    };
+  }
+
+  // Business Solutions
+  if (slug[0] === "business-solutions") {
+    return {
+      title: "Business Solutions | Mobile Lab Services for Organizations | 1 Stikk Mobile",
+      description:
+        "On-site testing, lab business mentorship, and partnership programs for clinics, schools, employers, and mobile providers. Schedule a consult with 1 Stikk Mobile.",
+      alternates: { canonical: `${siteUrl}/business-solutions` },
+      openGraph: {
+        title: "Business Solutions — 1 Stikk Mobile",
+        description: "Corporate drug testing, lab startup consulting, and mobile health partnerships for organizations nationwide.",
+        url: `${siteUrl}/business-solutions`,
+        type: "website"
+      }
+    };
+  }
+
   // About
   if (slug[0] === "about") {
     return {
       title: "About Us | Meet Founder Tiffany Clinton | 1 Stikk Mobile",
       description:
         "Meet Tiffany Clinton, CPT, RMA — CEO and founder of 1 Stikk Mobile Inc. Faith-rooted, community-driven mobile healthcare serving all 50 states.",
-      alternates: { canonical: `${siteUrl}/about` }
+      alternates: { canonical: `${siteUrl}/about` },
+      openGraph: {
+        title: "About 1 Stikk Mobile — Meet Founder Tiffany Clinton",
+        description: "Faith-rooted, community-driven mobile healthcare. Tiffany Clinton leads a team that delivers care with dignity while training the next generation of mobile healthcare professionals.",
+        url: `${siteUrl}/about`,
+        type: "website"
+      }
     };
   }
 
@@ -88,7 +143,13 @@ export async function generateMetadata({ params }) {
       title: "Contact Us | 1 Stikk Mobile — (877) 217-8455",
       description:
         "Reach 1 Stikk Mobile anytime. Call (877) 217-8455, book online, or email collection.lab@1stikkmobile.com. Open 24 hours, 7 days a week.",
-      alternates: { canonical: `${siteUrl}/contact` }
+      alternates: { canonical: `${siteUrl}/contact` },
+      openGraph: {
+        title: "Contact 1 Stikk Mobile — (877) 217-8455",
+        description: "Call (877) 217-8455 or book online. Open 24/7 — we come to you anywhere in the US.",
+        url: `${siteUrl}/contact`,
+        type: "website"
+      }
     };
   }
 
