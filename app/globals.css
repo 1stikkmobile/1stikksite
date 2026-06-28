@@ -1464,6 +1464,14 @@ h3 {
   text-underline-offset: 3px;
 }
 
+.phone-ext {
+  display: block;
+  font-size: 0.78em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
 .faq-section {
   background: var(--surface);
 }

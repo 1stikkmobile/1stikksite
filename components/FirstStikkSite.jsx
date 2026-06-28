@@ -37,14 +37,15 @@ const bookingUrl = "https://calendly.com/1stikkmobile-meeting/health";
 const calendlyUrl =
   "https://calendly.com/1stikkmobile-meeting/health?hide_event_type_details=1&hide_gdpr_banner=1&background_color=212121&text_color=ffffff&primary_color=ffc900";
 const calendlyScriptSrc = "https://assets.calendly.com/assets/external/widget.js";
-const primaryPhone = "318-512-0170";
-const primaryPhoneHref = "tel:3185120170";
-const tollFreePhone = "877)217-8455";
-const tollFreePhoneHref = "tel:8772178455";
+const mainPhone = "(877) 217-8455";
+const mainPhoneHref = "tel:8772178455";
+const mainPhoneExt = "1 STIKK";
+const mainPhoneDialHref = "tel:8772178455,,1";
 const afterHoursPhone = "318-512-0170";
 const afterHoursPhoneHref = "tel:3185120170";
 const contactEmail = "collection.lab@1stikkmobile.com";
-const officeLine = "(318) 383-0842";
+const faxLine = "(318) 383-0842";
+const faxLineHref = "tel:3183830842";
 const officeHours = "Monday to Sunday";
 const officeHoursText = "24 HR";
 
@@ -599,7 +600,7 @@ function Header({ mobileOpen, setMobileOpen }) {
       <div className="service-alert" role="status">
         <Activity aria-hidden="true" />
         <span>Mobile service scheduling is open.</span>
-        <a href={primaryPhoneHref}>Call {primaryPhone}</a>
+        <a href={mainPhoneHref}>Call {mainPhone}</a>
         <a href={bookingUrl}>Book a consultation</a>
       </div>
       <div className="nav-shell">
@@ -637,9 +638,9 @@ function Header({ mobileOpen, setMobileOpen }) {
           ))}
         </nav>
         <div className="nav-actions">
-          <a className="btn btn-quiet" href={tollFreePhoneHref}>
+          <a className="btn btn-quiet" href={mainPhoneDialHref}>
             <Phone aria-hidden="true" />
-            {tollFreePhone}
+            {mainPhone}
           </a>
           <a className="btn btn-primary" href={bookingUrl}>
             <CalendarCheck aria-hidden="true" />
@@ -662,8 +663,8 @@ function Header({ mobileOpen, setMobileOpen }) {
             {item.label}
           </Link>
         ))}
-        <a href={tollFreePhoneHref} onClick={() => setMobileOpen(false)}>
-          Call {tollFreePhone}
+        <a href={mainPhoneDialHref} onClick={() => setMobileOpen(false)}>
+          Call {mainPhone}
         </a>
         <a href={bookingUrl} onClick={() => setMobileOpen(false)}>
           Book a consultation
@@ -676,7 +677,7 @@ function Header({ mobileOpen, setMobileOpen }) {
 function FloatingCta() {
   return (
     <div className="floating-actions" aria-label="Quick actions">
-      <a className="floating-action floating-action-call" href={tollFreePhoneHref}>
+      <a className="floating-action floating-action-call" href={mainPhoneDialHref}>
         <Phone aria-hidden="true" />
         <span>Call now</span>
       </a>
@@ -768,9 +769,9 @@ function ServiceDetailPage({ service }) {
                 <CalendarCheck aria-hidden="true" />
                 Book this service
               </a>
-              <a className="btn btn-dark" href={afterHoursPhoneHref}>
+              <a className="btn btn-dark" href={mainPhoneDialHref}>
                 <Phone aria-hidden="true" />
-                After Hours {afterHoursPhone}
+                Call {mainPhone}
               </a>
             </div>
           </div>
@@ -900,9 +901,10 @@ export default function FirstStikkSite({ slug = [] }) {
                   <CalendarCheck aria-hidden="true" />
                   Book a consultation
                 </a>
-              <a className="btn btn-dark" href={afterHoursPhoneHref}>
-                <Phone aria-hidden="true" />
-                  After Hours {afterHoursPhone}
+                <a className="btn btn-dark" href={mainPhoneDialHref}>
+                  <Phone aria-hidden="true" />
+                  Call {mainPhone}
+                  <span className="phone-ext">Ext. {mainPhoneExt}</span>
                 </a>
               </div>
               <div className="hero-detail-grid">
@@ -1306,7 +1308,8 @@ export default function FirstStikkSite({ slug = [] }) {
               <div className="contact-card">
                 <Phone aria-hidden="true" />
                 <div>
-                <strong>{tollFreePhone}</strong>
+                  <strong>{mainPhone}</strong>
+                  <span>Main number ext. {mainPhoneExt}</span>
                   <span>After Hours: {afterHoursPhone}</span>
                 </div>
               </div>
@@ -1353,9 +1356,9 @@ export default function FirstStikkSite({ slug = [] }) {
                   <CalendarCheck aria-hidden="true" />
                   Book on Calendly
                 </a>
-                <a className="btn btn-light" href={tollFreePhoneHref}>
+                <a className="btn btn-light" href={mainPhoneDialHref}>
                   <Phone aria-hidden="true" />
-                  Call {tollFreePhone}
+                  Call {mainPhone}
                 </a>
               </div>
               <div className="calendar-frame is-compact">
@@ -1379,13 +1382,15 @@ export default function FirstStikkSite({ slug = [] }) {
           </Link>
           <div>
             <strong>Call</strong>
-            <a href={tollFreePhoneHref}>{tollFreePhone}</a>
+            <a href={mainPhoneDialHref}>
+              {mainPhone} ext. {mainPhoneExt}
+            </a>
             <a href={afterHoursPhoneHref}>After Hours {afterHoursPhone}</a>
           </div>
           <div>
             <strong>Contact Us</strong>
             <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
-            <a href={`tel:${officeLine.replace(/[^0-9]/g, "")}`}>{officeLine}</a>
+            <a href={faxLineHref}>{faxLine} - fax</a>
           </div>
           <div>
             <strong>Office Hours</strong>
