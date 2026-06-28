@@ -328,8 +328,8 @@ function Founder() {
             next generation of mobile healthcare professionals.
           </p>
           <blockquote className="founder-quote">
-            “To turn struggle into strategy, pain into purpose, and hustle into hope.”
-            <cite>Rooted in Psalm 37 — Delight Yourself in the Lord</cite>
+            “Beloved, I pray that you may prosper in all things and be in health, just as your soul prospers.”
+            <cite>3 John 1:2</cite>
           </blockquote>
           <div className="hero-actions">
             <a className="btn btn-primary" href={myriadUrl}><CalendarCheck aria-hidden="true" /> Book a Service</a>
@@ -665,14 +665,20 @@ function ServiceDetail({ service }) {
 function TrainingPage() {
   return (
     <section className="section training-page">
-      <div className="container">
-        <div className="section-head reveal is-visible">
+      <div className="container training-page-shell">
+        <div className="training-hero-copy reveal is-visible">
           <span className="eyebrow"><span className="dot" aria-hidden="true" /> Training &amp; programs</span>
           <h1>Build a career in mobile healthcare.</h1>
           <p>
-            Beginner-friendly, hands-on programs for future phlebotomists, nurses, and healthcare
-            professionals — plus consulting for organizations. No experience required to get started.
+            Step into real-world labs with compassionate instructors, flexible schedules, and national
+            certification prep. Every program blends virtual learning with hands-on practice so you can
+            serve patients confidently.
           </p>
+          <ul className="training-highlights">
+            <li>Hands-on skill labs and ride-alongs</li>
+            <li>Certification prep and clinical mentorship</li>
+            <li>Business pathways for mobile lab owners</li>
+          </ul>
           <div className="hero-actions">
             <a className="btn btn-dark btn-lg" href={calendlyBookingUrl}><CalendarCheck aria-hidden="true" /> Schedule on Calendly</a>
             <a className="btn btn-outline btn-lg" href={trainingPhoneHref}><Phone aria-hidden="true" /> {trainingPhone} · Ext. {trainingPhoneExt}</a>
@@ -685,15 +691,37 @@ function TrainingPage() {
             </span>
           </a>
         </div>
+        <div className="training-hero-media reveal is-visible" aria-hidden="true">
+          <div className="training-hero-main">
+            <Image src="/images/training/training-hands-on.jpg" alt="Hands-on venipuncture practice during training" fill sizes="(max-width: 760px) 100vw, (max-width: 1080px) 45vw, 520px" priority />
+          </div>
+          <div className="training-hero-stack">
+            <div className="training-hero-thumb">
+              <Image src="/images/training/training-guidance.jpg" alt="Instructor pointing to a vein before a draw" fill sizes="(max-width: 760px) 45vw, (max-width: 1080px) 22vw, 240px" />
+            </div>
+            <div className="training-hero-thumb">
+              <Image src="/images/training/training-polaroids.jpg" alt="Polaroid collage from 1 Stikk Mobile training" fill sizes="(max-width: 760px) 45vw, (max-width: 1080px) 22vw, 240px" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="container">
         <div className="training-grid">
           {trainingPrograms.map((p) => {
             const Icon = p.icon;
             return (
               <Link className="training-card reveal is-visible" href={`/training/${p.slug}`} key={p.slug}>
-                <span className="practice-icon"><Icon aria-hidden="true" /></span>
-                <strong>{p.title}</strong>
-                <p>{p.summary}</p>
-                <span className="practice-cta">View program <ArrowRight aria-hidden="true" /></span>
+                <div className="training-card-media">
+                  <Image src={p.image} alt={p.imageAlt} fill sizes="(max-width: 760px) 100vw, (max-width: 1080px) 45vw, 360px" />
+                </div>
+                <div className="training-card-body">
+                  <div className="training-card-head">
+                    <span className="training-card-icon"><Icon aria-hidden="true" /></span>
+                    <strong>{p.title}</strong>
+                  </div>
+                  <p>{p.summary}</p>
+                  <span className="practice-cta">View program <ArrowRight aria-hidden="true" /></span>
+                </div>
               </Link>
             );
           })}
@@ -737,20 +765,24 @@ function TrainingProgramDetail({ program }) {
               </a>
             </div>
           </div>
-
-          <div className="training-detail-sidebar reveal is-visible">
-            <span className="practice-icon practice-icon-lg"><Icon aria-hidden="true" /></span>
-            <strong>{program.title}</strong>
-            <span className="training-duration-badge"><Clock aria-hidden="true" /> {program.duration}</span>
-            <a className="training-sidebar-call" href={trainingPhoneHref}>
-              <Phone aria-hidden="true" />
-              {trainingPhone}
-              <small>Ext. {trainingPhoneExt} · Training direct line</small>
-            </a>
-            <a className="btn btn-dark" href={calendlyBookingUrl} style={{ width: "100%", justifyContent: "center" }}>
-              <CalendarCheck aria-hidden="true" /> Book on Calendly
-            </a>
-          </div>
+          <aside className="training-detail-media reveal is-visible">
+            <div className="training-detail-photo">
+              <Image src={program.image} alt={program.imageAlt} fill sizes="(max-width: 760px) 100vw, (max-width: 1080px) 45vw, 420px" />
+            </div>
+            <div className="training-detail-info">
+              <span className="practice-icon practice-icon-lg"><Icon aria-hidden="true" /></span>
+              <strong>{program.title}</strong>
+              <span className="training-duration-badge"><Clock aria-hidden="true" /> {program.duration}</span>
+              <a className="training-sidebar-call" href={trainingPhoneHref}>
+                <Phone aria-hidden="true" />
+                {trainingPhone}
+                <small>Ext. {trainingPhoneExt} · Training direct line</small>
+              </a>
+              <a className="btn btn-dark" href={calendlyBookingUrl} style={{ width: "100%", justifyContent: "center" }}>
+                <CalendarCheck aria-hidden="true" /> Book on Calendly
+              </a>
+            </div>
+          </aside>
         </div>
 
         {/* What you'll learn + What's included */}
@@ -784,6 +816,22 @@ function TrainingProgramDetail({ program }) {
             ))}
           </div>
         </div>
+
+        {program.gallery?.length ? (
+          <div className="training-gallery reveal is-visible">
+            <h2>Inside the training</h2>
+            <div className="training-gallery-grid">
+              {program.gallery.map((photo) => (
+                <figure className="training-gallery-card" key={photo.src}>
+                  <div className="training-gallery-photo">
+                    <Image src={photo.src} alt={photo.alt} fill sizes="(max-width: 760px) 100vw, (max-width: 1080px) 45vw, 320px" />
+                  </div>
+                  <figcaption>{photo.alt}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        ) : null}
 
         {/* Calendly embed */}
         <div className="training-calendly-section reveal is-visible">

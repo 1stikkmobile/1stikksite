@@ -150,6 +150,13 @@ export const trainingPrograms = [
     slug: "phlebotomy",
     title: "Phlebotomy Training & Certification",
     icon: Syringe,
+    image: "/images/training/training-hands-on.jpg",
+    imageAlt: "Hands-on venipuncture practice during a 1 Stikk Mobile training session",
+    gallery: [
+      { src: "/images/training/training-hands-on.jpg", alt: "Participant practicing venipuncture with instructor guidance" },
+      { src: "/images/training/training-guidance.jpg", alt: "Instructor pointing out the vein placement before a blood draw" },
+      { src: "/images/training/training-polaroids.jpg", alt: "Training day collage showing multiple mobile lab practicum setups" }
+    ],
     summary: "Hands-on venipuncture, capillary collection, and certification preparation for new careers.",
     description:
       "Hands-on phlebotomy certification training for beginners and career changers. Learn venipuncture, specimen handling, patient care, and prepare for national certification — no experience required.",
@@ -179,6 +186,13 @@ export const trainingPrograms = [
     slug: "drug-screening",
     title: "Drug Screening Training",
     icon: ShieldCheck,
+    image: "/images/training/training-table.jpg",
+    imageAlt: "Specimen collection workstation set up for drug screening training",
+    gallery: [
+      { src: "/images/training/training-table.jpg", alt: "Specimen supplies organized on a table ready for screening practice" },
+      { src: "/images/training/training-instructor.jpg", alt: "Instructor supervising a butterfly needle insertion" },
+      { src: "/images/training/training-polaroids.jpg", alt: "Colorful polaroid snapshots from a drug screening workshop" }
+    ],
     summary: "Learn DOT and non-DOT collection, chain-of-custody, and mock-collection procedures.",
     description:
       "DOT and non-DOT drug screening training for healthcare workers, clinic staff, and HR professionals. Learn proper collection, chain of custody, compliance procedures, and how to run a screening program.",
@@ -208,6 +222,13 @@ export const trainingPrograms = [
     slug: "workforce",
     title: "Workforce & Healthcare Programs",
     icon: GraduationCap,
+    image: "/images/training/training-instructor.jpg",
+    imageAlt: "Instructor guiding a student while preparing a butterfly needle",
+    gallery: [
+      { src: "/images/training/training-instructor.jpg", alt: "Trainer demonstrating mobile lab techniques" },
+      { src: "/images/training/training-guidance.jpg", alt: "Hands-on coaching during a skills lab" },
+      { src: "/images/training/training-02.png", alt: "Medical assistant program flyer for 1 Stikk Mobile" }
+    ],
     summary: "Beginner-friendly programs that build job-ready skills for mobile and allied health roles.",
     description:
       "Beginner-friendly workforce and healthcare training that builds job-ready skills for mobile and allied health careers. No prior experience needed — just the desire to serve and grow.",
@@ -237,6 +258,13 @@ export const trainingPrograms = [
     slug: "consulting",
     title: "Lab Business Consulting & Mentorship",
     icon: Briefcase,
+    image: "/images/training/training-03.png",
+    imageAlt: "Bridge program flyer highlighting 1 Stikk Mobile training support",
+    gallery: [
+      { src: "/images/training/training-03.png", alt: "Bridge program curriculum overview poster" },
+      { src: "/images/training/training-01.png", alt: "Collection training marketing one-sheet" },
+      { src: "/images/training/training-table.jpg", alt: "Consulting session showing specimen transport setup" }
+    ],
     summary: "Startup mentorship and partnership plans for clinics, home care, and mobile providers.",
     description:
       "One-on-one mentorship and business consulting for nurses, clinicians, and entrepreneurs starting or growing a mobile lab or healthcare business. Learn directly from a working mobile lab CEO.",

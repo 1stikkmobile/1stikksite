@@ -748,22 +748,87 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
 /* -------------------------------------------------------- Training landing */
 
 .training-page { padding-top: clamp(48px, 6vw, 80px); }
-.training-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 44px; }
+.training-page-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: clamp(32px, 6vw, 72px);
+  align-items: center;
+  margin-bottom: clamp(48px, 6vw, 72px);
+}
+.training-hero-copy h1 { margin-bottom: 18px; }
+.training-hero-copy p { max-width: 54ch; color: var(--muted); font-size: 1.06rem; line-height: 1.7; }
+.training-highlights {
+  display: grid;
+  gap: 10px;
+  margin: 24px 0 30px;
+  padding: 0;
+  list-style: none;
+  font-weight: 700;
+  color: var(--ink-2);
+}
+.training-hero-media {
+  position: relative;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+}
+.training-hero-main {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-md);
+}
+.training-hero-main img { object-fit: cover; }
+.training-hero-stack {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.training-hero-thumb {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+}
+.training-hero-thumb img { object-fit: cover; }
+.training-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
 .training-card {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 28px;
+  display: grid;
+  grid-template-rows: 200px auto;
   border: 1px solid var(--line);
   border-radius: var(--radius);
+  overflow: hidden;
   background: var(--surface);
   box-shadow: var(--shadow-sm);
   transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
   color: var(--ink);
 }
 .training-card:hover { transform: translateY(-4px); border-color: var(--gold); box-shadow: var(--shadow-md); }
-.training-card strong { font-size: 1.2rem; }
-.training-card p { color: var(--muted); line-height: 1.6; }
+.training-card-media { position: relative; }
+.training-card-media img { object-fit: cover; }
+.training-card-body {
+  display: grid;
+  gap: 12px;
+  padding: 22px 24px 24px;
+}
+.training-card-head { display: flex; align-items: center; gap: 12px; }
+.training-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--gold-soft);
+  color: var(--gold-deep);
+}
+.training-card-icon svg { width: 22px; height: 22px; }
+.training-card-body strong { font-size: 1.16rem; }
+.training-card-body p { color: var(--muted); line-height: 1.6; }
 
 .training-index-phone {
   display: flex;
@@ -791,7 +856,7 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
 
 .training-detail-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.65fr);
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
   gap: clamp(24px, 4vw, 56px);
   align-items: start;
   margin-bottom: clamp(48px, 6vw, 72px);
@@ -814,22 +879,35 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
 .training-call-banner-text span { font-size: 1.22rem; font-weight: 800; color: var(--ink); line-height: 1; }
 .training-call-banner-text small { font-size: 0.8rem; color: var(--muted); font-weight: 600; }
 
-.training-detail-sidebar {
+.training-detail-media {
+  display: grid;
+  gap: 18px;
+  position: sticky;
+  top: 96px;
+}
+.training-detail-photo {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-md);
+}
+.training-detail-photo img { object-fit: cover; }
+.training-detail-info {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 18px;
-  padding: 32px 24px;
+  padding: 28px 24px;
   border: 2px solid var(--gold);
   border-radius: var(--radius);
   background: var(--gold-soft);
   text-align: center;
-  position: sticky;
-  top: 104px;
 }
 .practice-icon-lg { width: 80px !important; height: 80px !important; }
 .practice-icon-lg svg { width: 40px !important; height: 40px !important; }
-.training-detail-sidebar > strong { font-size: 1.26rem; line-height: 1.25; }
+.training-detail-info > strong { font-size: 1.26rem; line-height: 1.25; }
 
 .training-duration-badge {
   display: inline-flex;
@@ -931,6 +1009,30 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
 }
 .training-calendly-wrap iframe { display: block; min-height: 700px; }
 
+.training-gallery { margin-bottom: clamp(44px, 6vw, 68px); }
+.training-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+.training-gallery-card {
+  display: grid;
+  gap: 10px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+.training-gallery-photo {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+.training-gallery-photo img { object-fit: cover; }
+.training-gallery-card figcaption { font-size: 0.9rem; color: var(--muted); line-height: 1.5; }
+
 .training-call-strip {
   display: flex;
   align-items: center;
@@ -1027,13 +1129,16 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
   .menu-button { display: inline-flex; }
   .hero-shell, .founder-shell, .bbb-shell, .areas-shell, .faq-shell,
   .service-detail-shell { grid-template-columns: 1fr; }
+  .training-page-shell { grid-template-columns: 1fr; }
+  .training-hero-media { order: -1; }
   .areas-copy, .faq-intro { position: static; }
   .practice-grid, .training-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .floating-actions { display: flex; }
   .site-footer { padding-bottom: 110px; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
   .training-detail-hero { grid-template-columns: 1fr; }
-  .training-detail-sidebar { position: static; flex-direction: row; justify-content: flex-start; text-align: left; flex-wrap: wrap; }
+  .training-detail-media { position: static; }
+  .training-detail-info { flex-direction: row; justify-content: space-between; text-align: left; align-items: center; flex-wrap: wrap; gap: 16px 20px; }
   .training-detail-grid { grid-template-columns: 1fr; }
   .training-who-grid { grid-template-columns: 1fr; }
 }
@@ -1049,7 +1154,10 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
   .founder-photo { width: min(100%, 360px); }
   .bbb-photo { min-height: 240px; }
   .areas-map { min-height: 200px; }
-  .practice-grid, .training-grid, .contact-cards, .footer-grid { grid-template-columns: 1fr; }
+  .practice-grid, .training-grid, .training-gallery-grid, .contact-cards, .footer-grid { grid-template-columns: 1fr; }
+  .training-card { grid-template-rows: 220px auto; }
+  .training-hero-stack { grid-template-columns: 1fr; }
+  .training-detail-info { flex-direction: column; text-align: center; align-items: center; }
   .training-call-banner { flex-wrap: wrap; }
   .training-call-strip { flex-direction: column; align-items: flex-start; gap: 12px; }
   .training-calendly-wrap iframe { min-height: 580px; }
