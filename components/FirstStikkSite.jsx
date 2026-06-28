@@ -62,6 +62,12 @@ function isActivePath(itemHref, pathname) {
   return pathname === itemHref || pathname.startsWith(itemHref + "/");
 }
 
+function trackSchedule() {
+  if (typeof window !== "undefined" && typeof fbq === "function") {
+    fbq("track", "Schedule");
+  }
+}
+
 function bookHref(type) {
   if (type === "training") return calendlyBookingUrl;
   if (type === "call") return mainPhoneDialHref;
@@ -259,7 +265,7 @@ function Header({ mobileOpen, setMobileOpen }) {
                   </div>
                   <div className="mega-foot">
                     <span>Patient service — booked online in minutes.</span>
-                    <a className="btn btn-primary btn-sm" href={myriadUrl}>
+                    <a className="btn btn-primary btn-sm" href={myriadUrl} onClick={trackSchedule}>
                       <CalendarCheck aria-hidden="true" /> Book a Service
                     </a>
                   </div>
@@ -284,7 +290,7 @@ function Header({ mobileOpen, setMobileOpen }) {
                   </div>
                   <div className="mega-foot">
                     <span>Call to enroll: {trainingPhone}</span>
-                    <a className="btn btn-dark btn-sm" href={calendlyBookingUrl}>
+                    <a className="btn btn-dark btn-sm" href={calendlyBookingUrl} onClick={trackSchedule}>
                       <CalendarCheck aria-hidden="true" /> Schedule training
                     </a>
                   </div>
@@ -299,7 +305,7 @@ function Header({ mobileOpen, setMobileOpen }) {
             <Phone aria-hidden="true" />
             Call
           </a>
-          <a className="btn btn-primary" href={myriadUrl}>
+          <a className="btn btn-primary" href={myriadUrl} onClick={trackSchedule}>
             <CalendarCheck aria-hidden="true" />
             Book a Service
           </a>
@@ -347,7 +353,7 @@ function Header({ mobileOpen, setMobileOpen }) {
             <Link href="/contact" onClick={() => setMobileOpen(false)}>Contact Us</Link>
           </div>
           <div className="mobile-cta">
-            <a className="btn btn-primary" href={myriadUrl} onClick={() => setMobileOpen(false)}>
+            <a className="btn btn-primary" href={myriadUrl} onClick={() => { trackSchedule(); setMobileOpen(false); }}>
               <CalendarCheck aria-hidden="true" /> Book a Service
             </a>
             <a className="btn btn-ghost" href={mainPhoneDialHref} onClick={() => setMobileOpen(false)}>
@@ -377,7 +383,7 @@ function Hero() {
             certified professional comes right to the home. No driving. No waiting rooms. Just dependable care.
           </p>
           <div className="hero-actions">
-            <a className="btn btn-primary btn-lg" href={myriadUrl}>
+            <a className="btn btn-primary btn-lg" href={myriadUrl} onClick={trackSchedule}>
               <CalendarCheck aria-hidden="true" />
               Book a Service
             </a>
@@ -451,7 +457,7 @@ function CorePractices() {
         </div>
         <div className="section-foot reveal">
           <a className="btn btn-dark" href="/services">View all services <ArrowRight aria-hidden="true" /></a>
-          <a className="btn btn-primary" href={myriadUrl}><CalendarCheck aria-hidden="true" /> Book a Service</a>
+          <a className="btn btn-primary" href={myriadUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Book a Service</a>
         </div>
       </div>
     </section>
@@ -481,7 +487,7 @@ function Founder() {
             <cite>3 John 1:2</cite>
           </blockquote>
           <div className="hero-actions">
-            <a className="btn btn-primary" href={myriadUrl}><CalendarCheck aria-hidden="true" /> Book a Service</a>
+            <a className="btn btn-primary" href={myriadUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Book a Service</a>
             <a className="btn btn-outline" href="/contact">Partner with us</a>
           </div>
         </div>
@@ -507,7 +513,7 @@ function BbbFeature() {
             on the Better Business Bureau’s Ignite Podcast — sharing our mission to bring care and
             opportunity to every doorstep.
           </p>
-          <a className="btn btn-primary" href={myriadUrl}><CalendarCheck aria-hidden="true" /> Get started today</a>
+          <a className="btn btn-primary" href={myriadUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Get started today</a>
         </div>
       </div>
     </section>
@@ -623,7 +629,7 @@ function Faq() {
             Answers to the most common questions about our mobile healthcare services, training programs,
             and business solutions.
           </p>
-          <a className="btn btn-primary" href={myriadUrl}><CalendarCheck aria-hidden="true" /> Book a Service</a>
+          <a className="btn btn-primary" href={myriadUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Book a Service</a>
         </div>
         <div className="faq-list reveal">
           {faqs.map((item, i) => (
@@ -648,7 +654,7 @@ function ContactCta() {
           We come to you. Just call or book online in minutes.
         </p>
         <div className="contact-actions">
-          <a className="btn btn-primary btn-lg" href={myriadUrl}><CalendarCheck aria-hidden="true" /> Book a Service</a>
+          <a className="btn btn-primary btn-lg" href={myriadUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Book a Service</a>
           <a className="btn btn-outline btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> {mainPhone}</a>
         </div>
         <div className="contact-cards">
@@ -682,7 +688,7 @@ function Footer() {
             <span><strong>1 Stikk Mobile</strong><small>We Always Care</small></span>
           </Link>
           <p>Accessible, reliable, and compassionate mobile lab services — delivered right to your doorstep.</p>
-          <a className="btn btn-primary btn-sm" href={myriadUrl}><CalendarCheck aria-hidden="true" /> Book a Service</a>
+          <a className="btn btn-primary btn-sm" href={myriadUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Book a Service</a>
         </div>
         <div className="footer-col">
           <strong>Services</strong>
@@ -732,7 +738,7 @@ function FloatingCta({ isTraining }) {
           <Phone aria-hidden="true" />
           <span>Call</span>
         </a>
-        <a className="floating-action floating-book" href={calendlyBookingUrl}>
+        <a className="floating-action floating-book" href={calendlyBookingUrl} onClick={trackSchedule}>
           <CalendarCheck aria-hidden="true" />
           <span>Schedule training</span>
         </a>
@@ -745,7 +751,7 @@ function FloatingCta({ isTraining }) {
         <Phone aria-hidden="true" />
         <span>Call</span>
       </a>
-      <a className="floating-action floating-book" href={myriadUrl}>
+      <a className="floating-action floating-book" href={myriadUrl} onClick={trackSchedule}>
         <CalendarCheck aria-hidden="true" />
         <span>Book a Service</span>
       </a>
@@ -776,7 +782,7 @@ function ServiceDetail({ service }) {
             <h1>{service.title}</h1>
             <p className="hero-lead">{service.summary}</p>
             <div className="hero-actions">
-              <a className="btn btn-primary btn-lg" href={primary.href}><CalendarCheck aria-hidden="true" /> {primary.label}</a>
+              <a className="btn btn-primary btn-lg" href={primary.href} onClick={primary.href === myriadUrl || primary.href === calendlyBookingUrl ? trackSchedule : undefined}><CalendarCheck aria-hidden="true" /> {primary.label}</a>
               <a className="btn btn-outline btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> {mainPhone}</a>
             </div>
           </div>
@@ -832,7 +838,7 @@ function TrainingPage() {
             <li>Business pathways for mobile lab owners</li>
           </ul>
           <div className="hero-actions">
-            <a className="btn btn-dark btn-lg" href={calendlyBookingUrl}><CalendarCheck aria-hidden="true" /> Schedule training</a>
+            <a className="btn btn-dark btn-lg" href={calendlyBookingUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Schedule training</a>
             <a className="btn btn-outline btn-lg" href={trainingPhoneHref}><Phone aria-hidden="true" /> {trainingPhone}</a>
           </div>
           <a className="training-index-phone" href={trainingPhoneHref} aria-label={`Call training team at ${trainingPhone}`}>
@@ -915,7 +921,7 @@ function TrainingProgramDetail({ program }) {
             </div>
 
             <div className="hero-actions">
-              <a className="btn btn-primary btn-lg" href={calendlyBookingUrl}>
+              <a className="btn btn-primary btn-lg" href={calendlyBookingUrl} onClick={trackSchedule}>
                 <CalendarCheck aria-hidden="true" /> Book a training class
               </a>
               <a className="btn btn-outline btn-lg" href={trainingPhoneHref}>
@@ -936,7 +942,7 @@ function TrainingProgramDetail({ program }) {
                 {trainingPhone}
                 <small>Training direct line</small>
               </a>
-              <a className="btn btn-dark" href={calendlyBookingUrl} style={{ width: "100%", justifyContent: "center" }}>
+              <a className="btn btn-dark" href={calendlyBookingUrl} onClick={trackSchedule} style={{ width: "100%", justifyContent: "center" }}>
                 <CalendarCheck aria-hidden="true" /> Book a training class
               </a>
             </div>
@@ -1058,7 +1064,7 @@ function AboutPage() {
             building careers across all 50 states since day one.
           </p>
           <div className="hero-actions">
-            <a className="btn btn-primary btn-lg" href={myriadUrl}><CalendarCheck aria-hidden="true" /> Book a Service</a>
+            <a className="btn btn-primary btn-lg" href={myriadUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Book a Service</a>
             <a className="btn btn-outline btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> {mainPhone}</a>
           </div>
         </div>
@@ -1099,7 +1105,7 @@ function ServicesIndexPage() {
             })}
           </div>
           <div className="section-foot reveal">
-            <a className="btn btn-primary" href={myriadUrl}><CalendarCheck aria-hidden="true" /> Book a Service</a>
+            <a className="btn btn-primary" href={myriadUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Book a Service</a>
             <a className="btn btn-ghost" href={mainPhoneDialHref}><Phone aria-hidden="true" /> {mainPhone}</a>
           </div>
         </div>
@@ -1125,7 +1131,7 @@ function DrugScreeningPage() {
               brought directly to your location with full compliance and chain-of-custody standards.
             </p>
             <div className="hero-actions">
-              <a className="btn btn-primary btn-lg" href={myriadUrl}><CalendarCheck aria-hidden="true" /> Book Appointment</a>
+              <a className="btn btn-primary btn-lg" href={myriadUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Book Appointment</a>
               <a className="btn btn-outline btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> {mainPhone}</a>
             </div>
           </div>
@@ -1156,7 +1162,7 @@ function DrugScreeningPage() {
               <li><Check aria-hidden="true" /> Fast and secure lab results</li>
               <li><Check aria-hidden="true" /> Monitored and unmonitored options available</li>
             </ul>
-            <a className="btn btn-primary" href={myriadUrl}><CalendarCheck aria-hidden="true" /> Book Appointment</a>
+            <a className="btn btn-primary" href={myriadUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Book Appointment</a>
           </div>
           <div className="ds-split-media reveal">
             <div className="ds-img-frame">
@@ -1197,7 +1203,7 @@ function DrugScreeningPage() {
               <li><Check aria-hidden="true" /> Onsite mobile collections — minimal workforce disruption</li>
               <li><Check aria-hidden="true" /> Chain-of-custody documentation &amp; compliance reporting</li>
             </ul>
-            <a className="btn btn-primary" href={myriadUrl}><CalendarCheck aria-hidden="true" /> Book Appointment</a>
+            <a className="btn btn-primary" href={myriadUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Book Appointment</a>
           </div>
           <div className="ds-split-media reveal">
             <div className="ds-img-frame">
@@ -1231,7 +1237,7 @@ function DrugScreeningPage() {
               For assistance with the online training portal, call{" "}
               <a href={trainingPhoneHref}>{trainingPhone}</a>.
             </p>
-            <a className="btn btn-dark" href={calendlyBookingUrl}><CalendarCheck aria-hidden="true" /> Book a training class</a>
+            <a className="btn btn-dark" href={calendlyBookingUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Book a training class</a>
           </div>
           <div className="ds-split-media reveal">
             <div className="ds-img-frame">
@@ -1271,7 +1277,7 @@ function DrugScreeningPage() {
             })}
           </div>
           <div className="section-foot reveal">
-            <a className="btn btn-primary btn-lg" href={myriadUrl}><CalendarCheck aria-hidden="true" /> Book Appointment</a>
+            <a className="btn btn-primary btn-lg" href={myriadUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Book Appointment</a>
             <a className="btn btn-outline btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> {mainPhone}</a>
           </div>
         </div>
@@ -1401,7 +1407,7 @@ function ContactPage() {
               whenever you need it.
             </p>
             <div className="hero-actions" style={{ justifyContent: "center" }}>
-              <a className="btn btn-primary btn-lg" href={myriadUrl}><CalendarCheck aria-hidden="true" /> Book a Service</a>
+              <a className="btn btn-primary btn-lg" href={myriadUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Book a Service</a>
               <a className="btn btn-outline btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> {mainPhone}</a>
             </div>
           </div>
@@ -1479,7 +1485,7 @@ function ArticlesPage() {
             {articles.map((a) => <ArticleCard key={a.slug} article={a} />)}
           </div>
           <div className="section-foot reveal">
-            <a className="btn btn-primary" href={myriadUrl}><CalendarCheck aria-hidden="true" /> Book a Service</a>
+            <a className="btn btn-primary" href={myriadUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Book a Service</a>
             <a className="btn btn-ghost" href={mainPhoneDialHref}><Phone aria-hidden="true" /> {mainPhone}</a>
           </div>
         </div>
@@ -1569,7 +1575,7 @@ function ArticleDetailPage({ article }) {
                   ? `Book a ${relatedService.title} service — we come to you anywhere in the US.`
                   : "Book mobile lab services — we come to you anywhere in the US."}
               </p>
-              <a className="btn btn-primary" href={myriadUrl}>
+              <a className="btn btn-primary" href={myriadUrl} onClick={trackSchedule}>
                 <CalendarCheck aria-hidden="true" />
                 {relatedService ? `Book ${relatedService.title}` : "Book a Service"}
               </a>
