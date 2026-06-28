@@ -110,7 +110,7 @@ export default function RootLayout({ children }) {
         {children}
         <Script
           src="https://assets.calendly.com/assets/external/widget.js"
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
         />
         <script
           type="application/ld+json"
