@@ -36,7 +36,6 @@ import {
 const bookingUrl = "https://calendly.com/1stikkmobile-meeting/health";
 const calendlyUrl =
   "https://calendly.com/1stikkmobile-meeting/health?hide_event_type_details=1&hide_gdpr_banner=1&background_color=212121&text_color=ffffff&primary_color=ffc900";
-const calendlyScriptSrc = "https://assets.calendly.com/assets/external/widget.js";
 const mainPhone = "(877) 217-8455";
 const mainPhoneHref = "tel:8772178455";
 const mainPhoneExt = "1 STIKK";
@@ -513,67 +512,25 @@ function CalendlyEmbed({ compact = false, height = 760 }) {
 
   useEffect(() => {
     let cancelled = false;
-    let retryTimer;
+    let attempts = 0;
 
-    const initializeCalendly = () => {
-      if (!embedRef.current || !window.Calendly?.initInlineWidget) return false;
+    const detectIframe = () => {
+      const hasIframe = !!embedRef.current?.querySelector("iframe");
+      if (hasIframe && !cancelled) {
+        setReady(true);
+        return;
+      }
 
-      embedRef.current.innerHTML = "";
-      delete embedRef.current.dataset.processed;
-      window.Calendly.initInlineWidget({
-        url: calendlyUrl,
-        parentElement: embedRef.current
-      });
-
-      if (!cancelled) setReady(true);
-      return true;
+      attempts += 1;
+      if (attempts < 40) {
+        window.setTimeout(detectIframe, 250);
+      }
     };
 
-    if (initializeCalendly()) {
-      return () => {
-        cancelled = true;
-      };
-    }
-
-    const existing = document.querySelector(`script[src="${calendlyScriptSrc}"]`);
-    const handleLoad = () => initializeCalendly();
-    const handleError = () => {
-      if (!cancelled) setReady(false);
-    };
-
-    retryTimer = window.setInterval(() => {
-      if (initializeCalendly() && retryTimer) {
-        window.clearInterval(retryTimer);
-        retryTimer = undefined;
-      }
-    }, 250);
-
-    if (existing) {
-      if (window.Calendly?.initInlineWidget) {
-        initializeCalendly();
-      }
-      existing.addEventListener("load", handleLoad);
-      existing.addEventListener("error", handleError);
-      return () => {
-        cancelled = true;
-        if (retryTimer) window.clearInterval(retryTimer);
-        existing.removeEventListener("load", handleLoad);
-        existing.removeEventListener("error", handleError);
-      };
-    }
-
-    const script = document.createElement("script");
-    script.src = calendlyScriptSrc;
-    script.async = true;
-    script.onload = handleLoad;
-    script.onerror = handleError;
-    document.body.appendChild(script);
+    detectIframe();
 
     return () => {
       cancelled = true;
-      if (retryTimer) window.clearInterval(retryTimer);
-      script.onload = null;
-      script.onerror = null;
     };
   }, []);
 
@@ -582,6 +539,7 @@ function CalendlyEmbed({ compact = false, height = 760 }) {
       <div
         ref={embedRef}
         className="calendly-inline-widget"
+        data-url={calendlyUrl}
         style={{ minWidth: 320, height }}
       />
       {!ready ? (
@@ -1407,6 +1365,12 @@ export default function FirstStikkSite({ slug = [] }) {
             <strong>Book</strong>
             <a href={bookingUrl}>Health consultation</a>
             <a href="https://1stikkmobilelaboratory.org">Laboratory portal</a>
+          </div>
+          <div>
+            <strong>Legal</strong>
+            <Link href="/privacy-policy">Privacy Policy</Link>
+            <Link href="/terms-and-conditions">Terms and Conditions</Link>
+            <Link href="/cookie-policy">Cookie Policy</Link>
           </div>
           <p>Copyright 2026 1 Stikk Mobile Inc. All rights reserved.</p>
         </div>

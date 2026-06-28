@@ -1,4 +1,5 @@
 import localFont from "next/font/local";
+import Script from "next/script";
 
 import "./globals.css";
 
@@ -99,8 +100,18 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://assets.calendly.com/assets/external/widget.css"
+        />
+      </head>
       <body className={canvaSans.variable}>
         {children}
+        <Script
+          src="https://assets.calendly.com/assets/external/widget.js"
+          strategy="beforeInteractive"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
