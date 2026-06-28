@@ -14,6 +14,7 @@ export async function generateStaticParams() {
     ...serviceSlugs.map((slug) => ({ slug })),
     { slug: ["training"] },
     ...trainingSlugs.map((slug) => ({ slug })),
+    { slug: ["program"] },
     { slug: ["non-profit"] },
     { slug: ["business-solutions"] },
     { slug: ["contact"] },
@@ -151,6 +152,23 @@ export async function generateMetadata({ params }) {
         title: "About 1 Stikk Mobile — Meet Founder Tiffany Clinton",
         description: "Faith-rooted, community-driven mobile healthcare. Tiffany Clinton leads a team that delivers care with dignity while training the next generation of mobile healthcare professionals.",
         url: `${siteUrl}/about`,
+        type: "website"
+      }
+    };
+  }
+
+  // Program page
+  if (slug[0] === "program" && !slug[1]) {
+    return {
+      title: "Moving With a Purpose & Hustle With a Purpose | 1 Stikk Mobile",
+      description:
+        "Join 1 Stikk Mobile's purpose-driven programs: Moving With a Purpose youth empowerment, Hustle With a Purpose second-chance adult program, and Mock Collections drug screen training. Call 877-217-8455.",
+      alternates: { canonical: `${siteUrl}/program` },
+      openGraph: {
+        title: "Programs Built for Purpose — 1 Stikk Mobile",
+        description:
+          "Youth empowerment, adult second-chance programs, and drug screen mock collection training. Build skills, careers, and generational wealth with 1 Stikk Mobile.",
+        url: `${siteUrl}/program`,
         type: "website"
       }
     };

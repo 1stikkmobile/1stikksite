@@ -16,6 +16,7 @@ import {
     MapPin,
     Menu,
     Minus,
+    MonitorPlay,
     Phone,
     Plus,
     Quote,
@@ -47,6 +48,7 @@ import {
     myriadUrl,
     nav,
     officeHoursText,
+    programData,
     serviceMap,
     serviceStates,
     services,
@@ -79,6 +81,54 @@ function scrollToSection(id) {
   const node = document.getElementById(id);
   if (!node) return;
   node.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+/* ----------------------------------------------------- Service card media */
+
+function ServiceSvgMedia({ type, alt }) {
+  if (type === "genetic") {
+    return (
+      <svg className="service-card-svg" viewBox="0 0 320 180" fill="none" aria-label={alt}>
+        <rect width="320" height="180" fill="var(--gold-soft)" />
+        <g stroke="var(--teal-deep)" strokeWidth="6" strokeLinecap="round">
+          <path d="M80 140 c30 -90 60 -90 90 0" />
+          <path d="M110 140 c30 -90 60 -90 90 0" />
+          <path d="M80 40 c30 90 60 90 90 0" />
+          <path d="M110 40 c30 90 60 90 90 0" />
+        </g>
+        <g fill="var(--gold-deep)">
+          <circle cx="95" cy="90" r="6" />
+          <circle cx="125" cy="70" r="6" />
+          <circle cx="155" cy="110" r="6" />
+          <circle cx="185" cy="90" r="6" />
+        </g>
+        <text x="160" y="160" textAnchor="middle" fill="var(--ink-2)" fontSize="14" fontWeight="700" fontFamily="var(--font-sans)">DNA & Paternity Tests</text>
+      </svg>
+    );
+  }
+  if (type === "heart") {
+    return (
+      <svg className="service-card-svg" viewBox="0 0 320 180" fill="none" aria-label={alt}>
+        <rect width="320" height="180" fill="var(--gold-soft)" />
+        <path d="M160 140 C100 90 60 80 60 50 C60 25 85 15 110 25 C135 35 150 55 160 55 C170 55 185 35 210 25 C235 15 260 25 260 50 C260 80 220 90 160 140Z" fill="var(--teal)" opacity="0.9" />
+        <circle cx="235" cy="60" r="12" fill="var(--gold)" />
+        <path d="M235 60 v-6 M235 60 v6 M235 60 h-6 M235 60 h6" stroke="var(--white)" strokeWidth="3" strokeLinecap="round" />
+        <text x="160" y="165" textAnchor="middle" fill="var(--ink-2)" fontSize="14" fontWeight="700" fontFamily="var(--font-sans)">Behavioral Health Support</text>
+      </svg>
+    );
+  }
+  return null;
+}
+
+function ServiceCardMedia({ service }) {
+  if (service.image?.startsWith("svg:")) {
+    return <ServiceSvgMedia type={service.image.replace("svg:", "")} alt={service.imageAlt} />;
+  }
+  return (
+    <div className="service-card-media">
+      <Image src={service.image} alt={service.imageAlt} fill sizes="(max-width: 760px) 100vw, (max-width: 1080px) 50vw, 360px" />
+    </div>
+  );
 }
 
 /* ----------------------------------------------------- Animated SVG decor */
@@ -424,7 +474,7 @@ function MissionBand() {
       <div className="container mission-inner reveal">
         <h2>The care they need, right at the door.</h2>
         <p>
-          We send certified professionals directly to your home or your loved one's — for blood draws,
+          We send certified professionals directly to your home or your loved one's — for blood tests,
           wellness checks, and health screenings. Simple, dignified, and dependable. No trip required.
         </p>
       </div>
@@ -530,8 +580,8 @@ function ServiceAreas() {
           <span className="eyebrow"><span className="dot" aria-hidden="true" /> Mobile lab service locations</span>
           <h2>Nationwide mobile service availability.</h2>
           <p>
-            Headquartered in Monroe, Louisiana and serving communities across all 50 states. Wherever you
-            are, we coordinate to bring collection and care to your door.
+            Headquartered in Monroe, Louisiana and serving all 50 states. Wherever you
+            are, we coordinate to bring blood tests and care to your door.
           </p>
           <div className="areas-map">
             <Image src="/images/site/map-monroe.jpg" alt="Map showing the 1 Stikk Mobile service base in Monroe, Louisiana" fill sizes="(max-width: 900px) 90vw, 36vw" />
@@ -699,6 +749,7 @@ function Footer() {
         <div className="footer-col">
           <strong>Company</strong>
           <Link href="/about">About / Meet founder</Link>
+          <Link href="/program">Programs</Link>
           <Link href="/non-profit">Non Profit</Link>
           <Link href="/business-solutions">Business Solutions</Link>
           <Link href="/training">Training &amp; programs</Link>
@@ -786,15 +837,18 @@ function ServiceDetail({ service }) {
               <a className="btn btn-outline btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> {mainPhone}</a>
             </div>
           </div>
-          <article className="service-detail-card reveal is-visible">
-            <div className="service-detail-card-head">
-              <span className="practice-icon"><Icon aria-hidden="true" /></span>
-              <h2>What’s included</h2>
-            </div>
-            <ul>
-              {service.points.map((p) => <li key={p}>{p}</li>)}
-            </ul>
-          </article>
+          <div className="service-detail-visual reveal is-visible">
+            <ServiceCardMedia service={service} />
+            <article className="service-detail-card">
+              <div className="service-detail-card-head">
+                <span className="practice-icon"><Icon aria-hidden="true" /></span>
+                <h2>What’s included</h2>
+              </div>
+              <ul>
+                {service.points.map((p) => <li key={p}>{p}</li>)}
+              </ul>
+            </article>
+          </div>
         </div>
 
         <div className="related-head reveal is-visible">
@@ -817,6 +871,108 @@ function ServiceDetail({ service }) {
   );
 }
 
+/* ----------------------------------------------------------- Program page */
+
+function ProgramPage() {
+  const { hero, youth, adults, drugScreenTraining, cta } = programData;
+
+  return (
+    <section className="section program-page">
+      <FloatingMotifs />
+      <div className="container">
+        <div className="program-hero reveal is-visible">
+          <span className="eyebrow"><span className="dot" aria-hidden="true" /> Purpose-driven programs</span>
+          <h1>{hero.title}</h1>
+          <p className="hero-lead">{hero.lead}</p>
+          <div className="hero-actions">
+            <a className="btn btn-primary btn-lg" href={drugScreenTraining.cta.href}><CalendarCheck aria-hidden="true" /> Enroll now</a>
+            <a className="btn btn-outline btn-lg" href={cta.phoneHref}><Phone aria-hidden="true" /> {cta.phone}</a>
+          </div>
+        </div>
+      </div>
+
+      <div className="container">
+        <div className="program-split reveal">
+          <div className="program-copy">
+            <span className="eyebrow"><span className="dot" aria-hidden="true" /> Youth program</span>
+            <h2>{youth.title}</h2>
+            <p className="program-subtitle">{youth.subtitle}</p>
+            <p>{youth.description}</p>
+            <p>{youth.body}</p>
+            <ul className="program-list">
+              {youth.focusAreas.map((item) => (
+                <li key={item}><span className="program-check" aria-hidden="true" /> {item}</li>
+              ))}
+            </ul>
+            <a className="btn btn-primary" href={youth.cta.href}><CalendarCheck aria-hidden="true" /> {youth.cta.label}</a>
+          </div>
+          <div className="program-media">
+            <Image src={youth.image} alt={youth.imageAlt} fill sizes="(max-width: 760px) 100vw, (max-width: 1080px) 50vw, 520px" />
+          </div>
+        </div>
+      </div>
+
+      <div className="container">
+        <div className="program-split program-split-flip reveal">
+          <div className="program-copy">
+            <span className="eyebrow"><span className="dot" aria-hidden="true" /> Adult program</span>
+            <h2>{adults.title}</h2>
+            <p className="program-subtitle">{adults.subtitle}</p>
+            <p>{adults.description}</p>
+            <p>{adults.body}</p>
+            <ul className="program-list">
+              {adults.highlights.map((item) => (
+                <li key={item}><span className="program-check" aria-hidden="true" /> {item}</li>
+              ))}
+            </ul>
+            <a className="btn btn-primary" href={adults.cta.href}><CalendarCheck aria-hidden="true" /> {adults.cta.label}</a>
+          </div>
+          <div className="program-media">
+            <Image src={adults.image} alt={adults.imageAlt} fill sizes="(max-width: 760px) 100vw, (max-width: 1080px) 50vw, 520px" />
+          </div>
+        </div>
+      </div>
+
+      <div className="container">
+        <div className="program-event reveal">
+          <div className="program-event-copy">
+            <span className="eyebrow"><span className="dot" aria-hidden="true" /> Live training event</span>
+            <h2>{drugScreenTraining.title}</h2>
+            <p className="program-subtitle">{drugScreenTraining.subtitle}</p>
+            <p>{drugScreenTraining.description}</p>
+            <div className="program-event-meta">
+              <span><CalendarCheck aria-hidden="true" /> {drugScreenTraining.event.date}</span>
+              <span><Clock aria-hidden="true" /> {drugScreenTraining.event.time}</span>
+              <span><MonitorPlay aria-hidden="true" /> {drugScreenTraining.event.type}</span>
+            </div>
+            <ul className="program-list">
+              {drugScreenTraining.includes.map((item) => (
+                <li key={item}><span className="program-check" aria-hidden="true" /> {item}</li>
+              ))}
+            </ul>
+            <p className="program-contact-note">{drugScreenTraining.contact}</p>
+            <a className="btn btn-dark btn-lg" href={drugScreenTraining.cta.href}><CalendarCheck aria-hidden="true" /> {drugScreenTraining.cta.label}</a>
+          </div>
+          <div className="program-event-media">
+            <Image src={drugScreenTraining.image} alt={drugScreenTraining.imageAlt} fill sizes="(max-width: 760px) 100vw, (max-width: 1080px) 50vw, 520px" />
+          </div>
+        </div>
+      </div>
+
+      <div className="container">
+        <div className="program-cta reveal">
+          <h2>{cta.title}</h2>
+          <p>{cta.lead}</p>
+          <div className="hero-actions">
+            <a className="btn btn-primary btn-lg" href={cta.phoneHref}><Phone aria-hidden="true" /> {cta.phone}</a>
+            <a className="btn btn-outline btn-lg" href={drugScreenTraining.cta.href}><CalendarCheck aria-hidden="true" /> Enroll online</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* -------------------------------------------------------- Training landing */
 
 function TrainingPage() {
@@ -826,16 +982,15 @@ function TrainingPage() {
       <div className="container training-page-shell">
         <div className="training-hero-copy reveal is-visible">
           <span className="eyebrow"><span className="dot" aria-hidden="true" /> Training &amp; programs</span>
-          <h1>Build a career in mobile healthcare.</h1>
+          <h1>Start a career in mobile healthcare.</h1>
           <p>
-            Step into real-world labs with compassionate instructors, flexible schedules, and national
-            certification prep. Every program blends virtual learning with hands-on practice so you can
-            serve patients confidently.
+            Learn hands-on skills from caring instructors, study on a flexible schedule, and get ready
+            for your certification. No experience needed.
           </p>
           <ul className="training-highlights">
-            <li>Hands-on skill labs and ride-alongs</li>
-            <li>Certification prep and clinical mentorship</li>
-            <li>Business pathways for mobile lab owners</li>
+            <li>Hands-on practice with real equipment</li>
+            <li>Certification prep and one-on-one mentorship</li>
+            <li>Business coaching for future mobile lab owners</li>
           </ul>
           <div className="hero-actions">
             <a className="btn btn-dark btn-lg" href={calendlyBookingUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Schedule training</a>
@@ -851,14 +1006,14 @@ function TrainingPage() {
         </div>
         <div className="training-hero-media reveal is-visible" aria-hidden="true">
           <div className="training-hero-main">
-            <Image src="/images/training/bridge-1.png" alt="1 Stikk Mobile Bridge Program training session" fill sizes="(max-width: 760px) 100vw, (max-width: 1080px) 45vw, 520px" priority />
+            <Image src="/images/training/training-hands-on.jpg" alt="Student practicing a blood draw during hands-on training" fill sizes="(max-width: 760px) 100vw, (max-width: 1080px) 45vw, 520px" priority />
           </div>
           <div className="training-hero-stack">
             <div className="training-hero-thumb">
-              <Image src="/images/training/bridge-2.png" alt="Bridge Program student practicing hands-on skills" fill sizes="(max-width: 760px) 45vw, (max-width: 1080px) 22vw, 240px" />
+              <Image src="/images/training/training-instructor.jpg" alt="Instructor guiding a student one-on-one" fill sizes="(max-width: 760px) 45vw, (max-width: 1080px) 22vw, 240px" />
             </div>
             <div className="training-hero-thumb">
-              <Image src="/images/training/bridge-3.png" alt="Bridge Program training materials and certification overview" fill sizes="(max-width: 760px) 45vw, (max-width: 1080px) 22vw, 240px" />
+              <Image src="/images/training/training-guidance.jpg" alt="Hands-on coaching during a skills lab" fill sizes="(max-width: 760px) 45vw, (max-width: 1080px) 22vw, 240px" />
             </div>
           </div>
         </div>
@@ -1037,10 +1192,17 @@ function TrainingProgramDetail({ program }) {
             const Rel = p.icon;
             return (
               <Link className="training-card reveal is-visible" href={`/training/${p.slug}`} key={p.slug}>
-                <span className="practice-icon"><Rel aria-hidden="true" /></span>
-                <strong>{p.title}</strong>
-                <p>{p.summary}</p>
-                <span className="practice-cta">View program <ArrowRight aria-hidden="true" /></span>
+                <div className="training-card-media">
+                  <Image src={p.image} alt={p.imageAlt} fill sizes="(max-width: 760px) 100vw, (max-width: 1080px) 45vw, 360px" />
+                </div>
+                <div className="training-card-body">
+                  <div className="training-card-head">
+                    <span className="training-card-icon"><Rel aria-hidden="true" /></span>
+                    <strong>{p.title}</strong>
+                  </div>
+                  <p>{p.summary}</p>
+                  <span className="practice-cta">View program <ArrowRight aria-hidden="true" /></span>
+                </div>
               </Link>
             );
           })}
@@ -1085,21 +1247,24 @@ function ServicesIndexPage() {
       <section className="services-index-hero">
         <div className="container reveal is-visible">
           <span className="eyebrow eyebrow-light"><span className="dot" aria-hidden="true" /> Mobile Healthcare</span>
-          <h1>Comprehensive mobile healthcare services.</h1>
-          <p>Every service is professional, mobile, and built around getting your care done without the trip.</p>
+          <h1>Healthcare that comes to you.</h1>
+          <p>Blood tests, drug tests, wellness checks, and more — all done at your home or workplace.</p>
         </div>
       </section>
       <section className="section">
         <div className="container">
-          <div className="practice-grid">
+          <div className="services-index-grid">
             {services.map((s) => {
               const Icon = s.icon;
               return (
-                <Link className="practice-card reveal" href={`/services/${s.slug}`} key={s.slug}>
-                  <span className="practice-icon"><Icon aria-hidden="true" /></span>
-                  <strong>{s.title}</strong>
-                  <p className="practice-summary">{s.summary}</p>
-                  <span className="practice-cta">Learn more <ArrowRight aria-hidden="true" /></span>
+                <Link className="service-card reveal" href={`/services/${s.slug}`} key={s.slug}>
+                  <ServiceCardMedia service={s} />
+                  <div className="service-card-body">
+                    <span className="practice-icon"><Icon aria-hidden="true" /></span>
+                    <strong>{s.title}</strong>
+                    <p className="practice-summary">{s.summary}</p>
+                    <span className="practice-cta">Learn more <ArrowRight aria-hidden="true" /></span>
+                  </div>
                 </Link>
               );
             })}
@@ -1636,6 +1801,7 @@ export default function FirstStikkSite({ slug = [] }) {
   const activeTrainingProgram = slug[0] === "training" && slug[1] ? trainingProgramMap[slug[1]] : null;
   const isTrainingPage = slug[0] === "training";
   const isContact = slug[0] === "contact" && !slug[1];
+  const isProgram = slug[0] === "program" && !slug[1];
   const isArticlesIndex = slug[0] === "articles" && !slug[1];
   const activeArticle = slug[0] === "articles" && slug[1] ? articleMap[slug[1]] : null;
 
@@ -1687,6 +1853,8 @@ export default function FirstStikkSite({ slug = [] }) {
           <BusinessSolutionsPage />
         ) : isContact ? (
           <ContactPage />
+        ) : isProgram ? (
+          <ProgramPage />
         ) : isArticlesIndex ? (
           <ArticlesPage />
         ) : activeArticle ? (

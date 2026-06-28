@@ -42,68 +42,78 @@ export const facebookUrl = "https://www.facebook.com/share/1Adzhmj8YD/";
 // Services (mega menu) — each has its own detail page
 export const services = [
   {
-    title: "Routine Collections",
+    title: "Blood Tests at Home",
     slug: "routine-collections",
     icon: Droplets,
+    image: "/images/services/blood-draw.jpg",
+    imageAlt: "A caring 1 Stikk Mobile professional drawing blood at a patient's home",
     tag: "For patients",
     book: "patient",
-    summary: "Professional blood draws and specimen collection brought to your home, work, or facility.",
+    summary: "We come to you for blood tests, urine samples, and labs ordered by your doctor.",
     points: [
-      "Routine blood draws and follow-up labs",
-      "Specimen collection (blood, urine, saliva, stool)",
-      "At-home and bedside lab services",
-      "Standing and timed physician-ordered collections"
+      "Blood draws and follow-up labs at home",
+      "Urine, saliva, and stool samples collected at your door",
+      "At-home and bedside lab visits",
+      "Scheduled and timed doctor-ordered tests"
     ]
   },
   {
-    title: "Wellness",
+    title: "Wellness Checkups",
     slug: "wellness",
     icon: HeartPulse,
+    image: "/images/training/training-instructor.jpg",
+    imageAlt: "A certified wellness professional checking vitals during a mobile visit",
     tag: "For patients",
     book: "patient",
-    summary: "Preventive screenings and ongoing wellness support that meet people where they are.",
+    summary: "Preventive health checks and screenings brought to your home or workplace.",
     points: [
-      "Wellness clinic services",
+      "Wellness visits at home",
       "Preventive health screenings",
-      "Chronic care and health monitoring",
-      "Postpartum care and urgent care support"
+      "Chronic care and health tracking",
+      "Postpartum and urgent care support"
     ]
   },
   {
-    title: "Drug Screening",
+    title: "Drug Tests",
     slug: "drug-screening",
     icon: ShieldCheck,
+    image: "/images/services/drug-test-capsules.jpg",
+    imageAlt: "Mobile drug test collection supplies ready for a workplace visit",
     tag: "Patients & employers",
     book: "patient",
-    summary: "DOT and non-DOT testing for individuals and employers, handled with clean chain-of-custody.",
+    summary: "DOT and workplace drug testing done at your location with proper paperwork.",
     points: [
-      "DOT-compliant drug testing",
+      "DOT drug testing for drivers and safety workers",
       "Non-DOT drug and alcohol screening",
-      "Employer and pre-employment programs",
+      "Employer and pre-hire testing",
       "Return-to-duty testing"
     ]
   },
   {
-    title: "Genetic Testing",
+    title: "DNA & Paternity Tests",
     slug: "genetic-testing",
     icon: Dna,
+    image: "svg:genetic",
+    imageAlt: "DNA and paternity testing at home illustration",
     tag: "For patients",
     book: "patient",
-    summary: "Personalized DNA and paternity testing brought directly to you for accurate, private results.",
+    summary: "Private DNA and paternity testing collected at your home for accurate results.",
     points: [
       "DNA and paternity testing",
       "Personalized genetic insights",
-      "Private, professional collection",
+      "Private, professional sample collection",
       "Clear guidance through every step"
     ]
   },
   {
-    title: "Behavioral Health",
+    title: "Behavioral Health Support",
     slug: "behavioral-health",
     icon: Brain,
+    image: "svg:heart",
+    imageAlt: "Compassionate behavioral health support illustration",
     tag: "For patients",
     book: "call",
-    summary: "Compassionate support and screening for behavioral health and substance-recovery needs.",
+    summary: "Caring support and screenings for mental health and recovery needs.",
     points: [
       "Substance abuse program support",
       "Behavioral health screenings",
@@ -112,12 +122,14 @@ export const services = [
     ]
   },
   {
-    title: "Non Profit",
+    title: "Community Health Fairs",
     slug: "non-profit",
     icon: HandHeart,
+    image: "/images/site/van-care.webp",
+    imageAlt: "1 Stikk Mobile van bringing care to a community health fair",
     tag: "Community",
     book: "contact",
-    summary: "Community health fairs and outreach that bring care to underserved neighborhoods.",
+    summary: "Mobile health fairs and outreach events that bring care to underserved neighborhoods.",
     points: [
       "Community health fairs",
       "Outreach and wellness events",
@@ -129,13 +141,15 @@ export const services = [
     title: "Business Solutions",
     slug: "business-solutions",
     icon: Building2,
+    image: "/images/site/mobile-lab.webp",
+    imageAlt: "Mobile lab services for clinics, schools, and employers",
     tag: "For organizations",
     book: "call",
-    summary: "On-site testing, partnerships, and lab-business mentorship for clinics, schools, and facilities.",
+    summary: "On-site testing, partnerships, and business coaching for clinics and employers.",
     points: [
       "On-site testing for clinics, schools, and facilities",
       "Partnership plans for home care and mobile providers",
-      "Lab business consulting and startup mentorship",
+      "Lab business consulting and startup coaching",
       "Mobile health fairs and corporate wellness"
     ]
   }
@@ -149,34 +163,34 @@ export const trainingPrograms = [
     slug: "phlebotomy",
     title: "Phlebotomy Training & Certification",
     icon: Syringe,
-    image: "/images/training/bridge-1.png",
-    imageAlt: "1 Stikk Mobile Bridge Program phlebotomy training session",
+    image: "/images/training/training-hands-on.jpg",
+    imageAlt: "Student practicing a blood draw during hands-on phlebotomy class",
     gallery: [
-      { src: "/images/training/bridge-1.png", alt: "Bridge Program training session with hands-on phlebotomy practice" },
-      { src: "/images/training/bridge-2.png", alt: "Bridge Program student practicing collection skills" },
-      { src: "/images/training/bridge-3.png", alt: "Bridge Program training materials and certification overview" }
+      { src: "/images/training/training-hands-on.jpg", alt: "Hands-on blood draw practice in class" },
+      { src: "/images/training/training-instructor.jpg", alt: "Instructor guiding a student one-on-one" },
+      { src: "/images/training/training-guidance.jpg", alt: "Hands-on coaching during a skills lab" }
     ],
-    summary: "Hands-on venipuncture, capillary collection, and certification preparation for new careers.",
+    summary: "Learn to draw blood, handle samples, and get ready for your certification exam.",
     description:
-      "Hands-on phlebotomy certification training for beginners and career changers. Learn venipuncture, specimen handling, patient care, and prepare for national certification — no experience required.",
+      "Hands-on phlebotomy training for beginners and career changers. Learn to draw blood, handle samples safely, care for patients, and prepare for national certification — no experience needed.",
     who: [
       "Complete beginners with no medical experience",
       "CNAs and medical assistants expanding their skills",
-      "Career changers entering the healthcare field",
+      "Career changers entering healthcare",
       "Students preparing for national certification exams"
     ],
     learn: [
-      "Venipuncture technique — arm, hand, and difficult draws",
-      "Capillary collection and fingerstick procedures",
-      "Proper specimen labeling and safe handling",
+      "Blood draw technique — arm, hand, and difficult veins",
+      "Fingerstick and capillary collection",
+      "Labeling and safe handling of samples",
       "Patient safety, comfort, and infection control",
-      "National phlebotomy certification exam preparation"
+      "National phlebotomy certification exam prep"
     ],
     includes: [
       "Hands-on lab practice with real equipment",
-      "Mock collection sessions with instructor feedback",
+      "Mock blood draw sessions with instructor feedback",
       "One-on-one guidance from a certified professional",
-      "Certification preparation materials",
+      "Certification prep materials",
       "Certificate of completion"
     ],
     duration: "Flexible scheduling · self-paced with live guidance"
@@ -186,15 +200,15 @@ export const trainingPrograms = [
     title: "Drug Screening Training",
     icon: ShieldCheck,
     image: "/images/training/training-table.jpg",
-    imageAlt: "Specimen collection workstation set up for drug screening training",
+    imageAlt: "Drug screening collection supplies organized for hands-on training",
     gallery: [
-      { src: "/images/training/training-table.jpg", alt: "Specimen supplies organized on a table ready for screening practice" },
-      { src: "/images/training/training-instructor.jpg", alt: "Instructor supervising a butterfly needle insertion" },
-      { src: "/images/training/training-polaroids.jpg", alt: "Colorful polaroid snapshots from a drug screening workshop" }
+      { src: "/images/training/training-table.jpg", alt: "Drug test supplies organized for practice" },
+      { src: "/images/training/training-instructor.jpg", alt: "Instructor demonstrating collection steps" },
+      { src: "/images/training/training-polaroids.jpg", alt: "Snapshots from a drug screening workshop" }
     ],
-    summary: "Learn DOT and non-DOT collection, chain-of-custody, and mock-collection procedures.",
+    summary: "Learn DOT and workplace drug testing, proper paperwork, and mock testing.",
     description:
-      "DOT and non-DOT drug screening training for healthcare workers, clinic staff, and HR professionals. Learn proper collection, chain of custody, compliance procedures, and how to run a screening program.",
+      "DOT and non-DOT drug screening training for healthcare workers, clinic staff, and HR professionals. Learn proper collection, chain-of-custody paperwork, compliance, and how to run a screening program.",
     who: [
       "Healthcare workers adding a high-demand skill",
       "Clinic and urgent care staff",
@@ -202,16 +216,16 @@ export const trainingPrograms = [
       "Business owners setting up a screening program"
     ],
     learn: [
-      "DOT-compliant urine specimen collection procedures",
-      "Non-DOT drug and alcohol testing protocols",
-      "Chain-of-custody documentation and required forms",
+      "DOT urine collection procedures",
+      "Non-DOT drug and alcohol testing steps",
+      "Chain-of-custody paperwork and required forms",
       "Breath alcohol testing (BAT) procedures",
-      "Regulatory compliance and donor privacy rules"
+      "Compliance and privacy rules"
     ],
     includes: [
       "Mock collection practice sessions",
       "DOT regulation overview and reference materials",
-      "Documentation and form completion training",
+      "Paperwork and form completion training",
       "Live Q&A with a certified instructor",
       "Certificate of completion"
     ],
@@ -221,16 +235,16 @@ export const trainingPrograms = [
     slug: "workforce",
     title: "Workforce & Healthcare Programs",
     icon: GraduationCap,
-    image: "/images/training/training-instructor.jpg",
-    imageAlt: "Instructor guiding a student while preparing a butterfly needle",
+    image: "/images/training/training-guidance.jpg",
+    imageAlt: "Workforce healthcare training class in session",
     gallery: [
-      { src: "/images/training/training-instructor.jpg", alt: "Trainer demonstrating mobile lab techniques" },
-      { src: "/images/training/training-guidance.jpg", alt: "Hands-on coaching during a skills lab" },
-      { src: "/images/training/training-02.png", alt: "Medical assistant program flyer for 1 Stikk Mobile" }
+      { src: "/images/training/training-guidance.jpg", alt: "Hands-on coaching during workforce training" },
+      { src: "/images/training/training-instructor.jpg", alt: "Instructor demonstrating a technique" },
+      { src: "/images/training/training-hands-on.jpg", alt: "Student practicing blood draw skills" }
     ],
-    summary: "Beginner-friendly programs that build job-ready skills for mobile and allied health roles.",
+    summary: "Beginner-friendly programs that teach job-ready skills for healthcare careers.",
     description:
-      "Beginner-friendly workforce and healthcare training that builds job-ready skills for mobile and allied health careers. No prior experience needed — just the desire to serve and grow.",
+      "Beginner-friendly workforce and healthcare training that teaches job-ready skills for mobile and allied health careers. No prior experience needed — just the desire to serve and grow.",
     who: [
       "Job seekers looking to start a healthcare career",
       "Community members re-entering the workforce",
@@ -238,14 +252,14 @@ export const trainingPrograms = [
       "Anyone interested in mobile healthcare roles"
     ],
     learn: [
-      "Clinical basics and healthcare terminology",
+      "Clinical basics and healthcare terms",
       "Professional communication and patient interaction",
       "Mobile health operations and lab procedures",
-      "Job search strategies and resume guidance",
-      "Health equity and community care principles"
+      "Job search and resume guidance",
+      "Community care principles"
     ],
     includes: [
-      "Skills training with real-world application",
+      "Skills training with real-world practice",
       "Career coaching and goal-setting sessions",
       "Job placement support and referrals",
       "Community connections and peer networking",
@@ -257,14 +271,14 @@ export const trainingPrograms = [
     slug: "consulting",
     title: "Lab Business Consulting & Mentorship",
     icon: Briefcase,
-    image: "/images/training/training-03.png",
-    imageAlt: "Bridge program flyer highlighting 1 Stikk Mobile training support",
+    image: "/images/training/training-table.jpg",
+    imageAlt: "Lab business consulting and mentorship session overview",
     gallery: [
-      { src: "/images/training/training-03.png", alt: "Bridge program curriculum overview poster" },
-      { src: "/images/training/training-01.png", alt: "Collection training marketing one-sheet" },
-      { src: "/images/training/training-table.jpg", alt: "Consulting session showing specimen transport setup" }
+      { src: "/images/training/training-table.jpg", alt: "Lab business consulting session" },
+      { src: "/images/training/training-instructor.jpg", alt: "Mentor working with a student" },
+      { src: "/images/training/training-polaroids.jpg", alt: "Training workshop snapshots" }
     ],
-    summary: "Startup mentorship and partnership plans for clinics, home care, and mobile providers.",
+    summary: "One-on-one coaching for nurses, clinicians, and entrepreneurs starting a healthcare business.",
     description:
       "One-on-one mentorship and business consulting for nurses, clinicians, and entrepreneurs starting or growing a mobile lab or healthcare business. Learn directly from a working mobile lab CEO.",
     who: [
@@ -295,12 +309,12 @@ export const trainingProgramMap = Object.fromEntries(trainingPrograms.map((p) =>
 
 // "Our Core Practices"
 export const corePractices = [
-  { title: "Routine blood draws", icon: Droplets, slug: "routine-collections", book: "patient" },
+  { title: "Blood draws at home", icon: Droplets, slug: "routine-collections", book: "patient" },
   { title: "Postpartum care", icon: Baby, slug: "wellness", book: "patient" },
-  { title: "Urgent care services", icon: Activity, slug: "wellness", book: "patient" },
-  { title: "Employer drug testing", icon: ShieldCheck, slug: "drug-screening", book: "patient" },
-  { title: "DNA & paternity testing", icon: Dna, slug: "genetic-testing", book: "patient" },
-  { title: "Wellness clinic", icon: HeartPulse, slug: "wellness", book: "patient" }
+  { title: "Urgent care help", icon: Activity, slug: "wellness", book: "patient" },
+  { title: "Workplace drug tests", icon: ShieldCheck, slug: "drug-screening", book: "patient" },
+  { title: "DNA & paternity tests", icon: Dna, slug: "genetic-testing", book: "patient" },
+  { title: "Wellness checkups", icon: HeartPulse, slug: "wellness", book: "patient" }
 ];
 
 export const testimonials = [
@@ -325,23 +339,23 @@ export const testimonials = [
 export const faqs = [
   {
     q: "What services does 1 Stikk Mobile provide?",
-    a: "We provide mobile lab services including blood draws, drug and alcohol testing, genetic testing, wellness support, and specimen collection, along with training programs and business solutions."
+    a: "We bring healthcare to you. That includes blood tests, drug and alcohol tests, DNA and paternity tests, wellness checkups, and health screenings — plus training and business support."
   },
   {
     q: "Do you offer at-home or mobile services?",
-    a: "Yes. Our certified professionals come directly to your home, workplace, clinic, or facility to provide convenient and reliable healthcare services."
+    a: "Yes. Our certified professionals come directly to your home, workplace, clinic, or facility."
   },
   {
     q: "Do I need medical experience to join your training programs?",
-    a: "No. Our training programs are beginner-friendly and designed for individuals with no prior healthcare experience."
+    a: "No. Our training programs are beginner-friendly and designed for people with no healthcare background."
   },
   {
     q: "What certifications do you offer?",
-    a: "We offer training in phlebotomy, drug screening, mock collections, and medical assistant preparation programs with certification options."
+    a: "We offer training in phlebotomy (blood draws), drug screening, mock collections, and medical assistant prep — with certification options."
   },
   {
     q: "How do I book a service or appointment?",
-    a: "You can book a patient service directly through our Book a Service button, or call our support team at (877) 217-8455 for assistance."
+    a: "Click Book a Service or call us at (877) 217-8455. We're here 24/7."
   }
 ];
 
@@ -358,10 +372,82 @@ export const serviceStates = [
 
 export const nav = [
   { label: "Home", href: "/" },
+  { label: "Programs", href: "/program" },
   { label: "Services", href: "/services", mega: "services" },
   { label: "Training", href: "/training", mega: "training" },
   { label: "Articles", href: "/articles" }
 ];
+
+// ------------------------------------------------------------------ Programs
+
+export const programData = {
+  hero: {
+    title: "Programs built for purpose.",
+    lead: "From youth empowerment to second chances for adults — our programs help people build skills, find careers, and create generational change."
+  },
+  youth: {
+    title: "Moving With a Purpose",
+    subtitle: "Empowering Youth to Build Careers and Create Generational Wealth",
+    image: "/images/training/training-guidance.jpg",
+    imageAlt: "Youth participants learning hands-on healthcare and career skills",
+    description:
+      "Moving With a Purpose is a dynamic youth program designed to ignite purpose, unlock potential, and change the narrative for the next generation. Our mission is to equip young people with the creative, technical, and professional skills needed to launch successful careers and build lasting generational wealth.",
+    body:
+      "Through mentorship, hands-on training, and real-world experience, participants learn to thrive in industries such as healthcare, digital media, technology, and entrepreneurship. We focus on purpose-driven living, helping youth discover their talents, develop leadership, and turn vision into action.",
+    focusAreas: [
+      "Personal Growth & Faith-Based Values",
+      "Creative & Technical Skill-Building",
+      "Entrepreneurship & Financial Literacy",
+      "Career Readiness & Workforce Development"
+    ],
+    cta: { label: "Enroll in M.W.A.P", href: "#enroll" }
+  },
+  adults: {
+    title: "Hustle With a Purpose",
+    subtitle: "A Second Chance Program for Adults Ready to Transform Their Lives",
+    image: "/images/training/training-instructor.jpg",
+    imageAlt: "Adult participant receiving mentorship and career coaching",
+    description:
+      "Hustle With a Purpose is a life-changing program created to give every adult a second chance at life — a chance to break cycles, rewrite their story, and take control of their future. This initiative empowers individuals with the tools, mindset, and support needed to achieve financial freedom, personal growth, and long-term success.",
+    body:
+      "We focus on helping adults overcome barriers, build confidence, and gain the practical skills needed to create new opportunities — whether through employment, entrepreneurship, or education.",
+    highlights: [
+      "Career Development & Job Placement",
+      "Financial Literacy & Credit Restoration",
+      "Business Coaching & Entrepreneurship",
+      "Life Skills & Goal Setting",
+      "Faith-Based Mentorship & Support"
+    ],
+    cta: { label: "Join Hustle With a Purpose", href: "#enroll" }
+  },
+  drugScreenTraining: {
+    title: "Mock Collections — Drug Screen Training",
+    subtitle: "Essential Training for a Successful Career in Drug Screening",
+    image: "/images/training/training-table.jpg",
+    imageAlt: "Drug screening collection supplies ready for hands-on training",
+    description:
+      "Join us to gain the training you need to excel in the field of drug screening. This live Zoom event covers everything from mock collections to completion certificates.",
+    event: {
+      type: "Live Zoom Event",
+      date: "Saturday, January 24, 2026",
+      time: "2:00 PM — 5:00 PM"
+    },
+    includes: [
+      "Live Mock Collections",
+      "Q&A with certified instructors",
+      "Certificate of Completion",
+      "1 Stikk Mobile Drug Screen Collector Registration Onboarding"
+    ],
+    contact: "For assistance with the online training portal, please call 877-217-8455.",
+    cta: { label: "Enrollment / Payment Link", href: "https://square.link/u/placeholder" }
+  },
+  cta: {
+    title: "Ready to walk in purpose?",
+    lead: "Call us or enroll online today. We’re here to help you take the next step.",
+    phone: "877-217-8455",
+    phoneHref: "tel:8772178455"
+  }
+};
 
 // ------------------------------------------------------------------ Articles
 
