@@ -202,9 +202,6 @@ function Header({ mobileOpen, setMobileOpen }) {
             <a className="btn btn-primary" href={myriadUrl} onClick={() => setMobileOpen(false)}>
               <CalendarCheck aria-hidden="true" /> Book a Service
             </a>
-            <a className="btn btn-dark" href={calendlyBookingUrl} onClick={() => setMobileOpen(false)}>
-              <CalendarCheck aria-hidden="true" /> Training Calendly
-            </a>
             <a className="btn btn-ghost" href={mainPhoneDialHref} onClick={() => setMobileOpen(false)}>
               <Phone aria-hidden="true" /> Call {mainPhone}
             </a>
@@ -223,12 +220,12 @@ function Hero() {
       <div className="container hero-shell">
         <div className="hero-copy reveal is-visible">
           <span className="eyebrow">
-            <span className="dot" aria-hidden="true" /> One mission, multiple impacts
+            <span className="dot" aria-hidden="true" /> We come to you · all 50 states
           </span>
-          <h1>Healthcare &amp; training delivered to your door.</h1>
+          <h1>Healthcare delivered to your door.</h1>
           <p className="hero-lead">
-            1 Stikk Mobile brings professional lab collection, wellness, and screening directly to your
-            home, workplace, or facility — and trains the next generation of healthcare workers along the way.
+            Book lab work, wellness visits, or health screenings for yourself or a loved one — a caring,
+            certified professional comes right to the home. No driving. No waiting rooms. Just dependable care.
           </p>
           <div className="hero-actions">
             <a className="btn btn-primary btn-lg" href={myriadUrl}>
@@ -242,14 +239,14 @@ function Hero() {
           </div>
           <ul className="hero-trust">
             <li><Star aria-hidden="true" /> Certified, compassionate professionals</li>
-            <li><MapPin aria-hidden="true" /> Mobile service in all 50 states</li>
+            <li><MapPin aria-hidden="true" /> We come to you — no driving needed</li>
             <li><Clock aria-hidden="true" /> Open 24 hours, 7 days a week</li>
           </ul>
         </div>
 
         <div className="hero-visual reveal is-visible">
           <div className="hero-photo hero-photo-main">
-            <Image src="/images/site/van-care.webp" alt="A 1 Stikk Mobile clinician greeting a patient at a mobile lab van" fill sizes="(max-width: 900px) 90vw, 40vw" priority />
+            <Image src="/images/site/van-care.webp" alt="A 1 Stikk Mobile clinician greeting a patient at a mobile lab van" fill sizes="(max-width: 760px) 95vw, (max-width: 1080px) 95vw, 48vw" priority />
           </div>
           <div className="hero-photo hero-photo-sub">
             <Image src="/images/site/mobile-lab.webp" alt="The 1 Stikk Mobile laboratory van set up for sample collection" fill sizes="(max-width: 900px) 90vw, 28vw" />
@@ -270,10 +267,10 @@ function MissionBand() {
   return (
     <section className="mission-band">
       <div className="container mission-inner reveal">
-        <h2>One mission. Multiple ways we serve.</h2>
+        <h2>The care they need, right at the door.</h2>
         <p>
-          We go beyond traditional healthcare by combining services, training, and community impact into
-          one powerful system designed to uplift lives and create opportunities.
+          We send certified professionals directly to your home or your loved one's — for blood draws,
+          wellness checks, and health screenings. Simple, dignified, and dependable. No trip required.
         </p>
       </div>
     </section>
@@ -335,7 +332,7 @@ function Founder() {
             <cite>Rooted in Psalm 37 — Delight Yourself in the Lord</cite>
           </blockquote>
           <div className="hero-actions">
-            <a className="btn btn-dark" href={calendlyBookingUrl}><CalendarCheck aria-hidden="true" /> Get started — training &amp; partnerships</a>
+            <a className="btn btn-primary" href={myriadUrl}><CalendarCheck aria-hidden="true" /> Book a Service</a>
             <a className="btn btn-outline" href="/contact">Partner with us</a>
           </div>
         </div>
@@ -498,12 +495,12 @@ function ContactCta() {
         <span className="eyebrow eyebrow-light"><HeartHandshake aria-hidden="true" /> We’re here to help</span>
         <h2>Anytime, anywhere.</h2>
         <p>
-          Whether you need mobile healthcare services, training enrollment, business partnerships, or general
-          support, our team is ready to assist you and guide you in the right direction.
+          Whether you need lab work, a wellness visit, or a health screening — our caring team is ready.
+          We come to you. Just call or book online in minutes.
         </p>
         <div className="contact-actions">
           <a className="btn btn-primary btn-lg" href={myriadUrl}><CalendarCheck aria-hidden="true" /> Book a Service</a>
-          <a className="btn btn-dark btn-lg" href={calendlyBookingUrl}><CalendarCheck aria-hidden="true" /> Training Calendly</a>
+          <a className="btn btn-outline btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> {mainPhone}</a>
         </div>
         <div className="contact-cards">
           <a className="contact-card" href={mainPhoneDialHref}>

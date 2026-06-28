@@ -231,6 +231,77 @@ h2 { font-size: clamp(1.9rem, 3.6vw, 3rem); }
 
 .mobile-panel { display: none; }
 
+.mobile-panel.is-open {
+  display: block;
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+  box-shadow: 0 14px 40px oklch(20% 0.02 255 / 0.18);
+  max-height: calc(100dvh - 120px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mobile-panel-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px 16px 32px;
+}
+
+.mobile-panel-inner > a {
+  display: flex;
+  align-items: center;
+  min-height: 56px;
+  padding: 0 14px;
+  border-radius: 12px;
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: var(--ink);
+  transition: background 160ms ease, color 160ms ease;
+}
+.mobile-panel-inner > a:hover,
+.mobile-panel-inner > a:focus-visible { background: var(--surface-2); color: var(--gold-deep); }
+
+.mobile-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+.mobile-group > span {
+  padding: 4px 14px 8px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.mobile-group > a {
+  display: flex;
+  align-items: center;
+  min-height: 50px;
+  padding: 0 14px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink-2);
+  transition: background 160ms ease, color 160ms ease;
+}
+.mobile-group > a:hover,
+.mobile-group > a:focus-visible { background: var(--surface-2); color: var(--ink); }
+
+.mobile-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+.mobile-cta .btn { justify-content: center; width: 100%; min-height: 58px; font-size: 1.04rem; }
+
 /* --------------------------------------------------------------------- Hero */
 
 .hero {
@@ -971,7 +1042,12 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
   .utility-note { display: none; }
   .utility-inner { justify-content: center; }
   .hero-shell { padding-top: 36px; }
-  .hero-visual { min-height: 360px; }
+  .hero-visual { grid-template-columns: 1fr; grid-template-rows: 1fr; min-height: 0; aspect-ratio: 4/3; gap: 0; }
+  .hero-photo-main { grid-row: 1; grid-column: 1; }
+  .hero-photo-sub { display: none; }
+  .founder-photo { min-height: 300px; }
+  .bbb-photo { min-height: 240px; }
+  .areas-map { min-height: 200px; }
   .practice-grid, .training-grid, .contact-cards, .footer-grid { grid-template-columns: 1fr; }
   .training-call-banner { flex-wrap: wrap; }
   .training-call-strip { flex-direction: column; align-items: flex-start; gap: 12px; }
