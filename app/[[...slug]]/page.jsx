@@ -1,7 +1,26 @@
 import FirstStikkSite from "../../components/FirstStikkSite";
-import { serviceMap, trainingProgramMap } from "../../components/data";
+import { articleMap, articles, faqs, serviceMap, services, trainingProgramMap, trainingPrograms } from "../../components/data";
 
 const siteUrl = "https://1stikkmobile.com";
+
+export async function generateStaticParams() {
+  const serviceSlugs = services.map((s) => ["services", s.slug]);
+  const trainingSlugs = trainingPrograms.map((p) => ["training", p.slug]);
+  const articleSlugs = articles.map((a) => ["articles", a.slug]);
+  return [
+    { slug: [] },
+    { slug: ["about"] },
+    { slug: ["services"] },
+    ...serviceSlugs.map((slug) => ({ slug })),
+    { slug: ["training"] },
+    ...trainingSlugs.map((slug) => ({ slug })),
+    { slug: ["non-profit"] },
+    { slug: ["business-solutions"] },
+    { slug: ["contact"] },
+    { slug: ["articles"] },
+    ...articleSlugs.map((slug) => ({ slug }))
+  ];
+}
 
 export async function generateMetadata({ params }) {
   const resolvedParams = await params;
@@ -153,11 +172,134 @@ export async function generateMetadata({ params }) {
     };
   }
 
+  // Articles index
+  if (slug[0] === "articles" && !slug[1]) {
+    const canonical = `${siteUrl}/articles`;
+    return {
+      title: "Health & Wellness Articles | Mobile Healthcare Resources | 1 Stikk Mobile",
+      description:
+        "Expert guides on mobile blood draws, DOT drug testing, phlebotomy training, chain of custody, and wellness screenings — written by certified healthcare professionals at 1 Stikk Mobile.",
+      alternates: { canonical },
+      openGraph: {
+        title: "Health & Wellness Articles — 1 Stikk Mobile",
+        description:
+          "Patient care guides, employer compliance resources, and training insights from 1 Stikk Mobile — mobile healthcare experts serving all 50 states.",
+        url: canonical,
+        type: "website"
+      }
+    };
+  }
+
+  // Article detail
+  if (slug[0] === "articles" && slug[1]) {
+    const article = articleMap[slug[1]];
+    if (article) {
+      const canonical = `${siteUrl}/articles/${article.slug}`;
+      return {
+        title: `${article.title} | 1 Stikk Mobile`,
+        description: article.description,
+        alternates: { canonical },
+        openGraph: {
+          title: article.headline,
+          description: article.description,
+          url: canonical,
+          type: "article",
+          publishedTime: article.dateISO,
+          authors: [article.author.name],
+          images: [
+            {
+              url: `${siteUrl}${article.image}`,
+              width: 1200,
+              height: 630,
+              alt: article.imageAlt
+            }
+          ]
+        },
+        twitter: {
+          card: "summary_large_image",
+          title: article.headline,
+          description: article.description,
+          images: [`${siteUrl}${article.image}`]
+        }
+      };
+    }
+  }
+
   // Home — no override needed, layout.jsx defaults apply
   return {};
 }
 
 export default async function Page({ params }) {
   const resolvedParams = await params;
-  return <FirstStikkSite slug={resolvedParams?.slug ?? []} />;
+  const slug = resolvedParams?.slug ?? [];
+
+  const article = slug[0] === "articles" && slug[1] ? articleMap[slug[1]] : null;
+
+  const articleSchema = article
+    ? {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: article.headline,
+        description: article.description,
+        image: `${siteUrl}${article.image}`,
+        datePublished: article.dateISO,
+        dateModified: article.dateISO,
+        author: {
+          "@type": "Person",
+          name: article.author.name,
+          jobTitle: article.author.role,
+          worksFor: {
+            "@type": "Organization",
+            name: "1 Stikk Mobile Inc.",
+            url: siteUrl
+          }
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "1 Stikk Mobile Inc.",
+          url: siteUrl,
+          logo: { "@type": "ImageObject", url: `${siteUrl}/images/logo/logo.jpg` }
+        },
+        mainEntityOfPage: { "@type": "WebPage", "@id": `${siteUrl}/articles/${article.slug}` }
+      }
+    : null;
+
+  const breadcrumbSchema = article
+    ? {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+          { "@type": "ListItem", position: 2, name: "Articles", item: `${siteUrl}/articles` },
+          { "@type": "ListItem", position: 3, name: article.category, item: `${siteUrl}/articles/${article.slug}` }
+        ]
+      }
+    : null;
+
+  const faqSchema = (article?.faqs?.length || (!slug || slug.length === 0))
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: ((article && article.faqs) || faqs).map((item) => ({
+          "@type": "Question",
+          name: item.q,
+          acceptedAnswer: { "@type": "Answer", text: item.a }
+        }))
+      }
+    : null;
+
+  return (
+    <>
+      <FirstStikkSite slug={slug} />
+      {articleSchema && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      )}
+      {breadcrumbSchema && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      )}
+      {faqSchema && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      )}
+    </>
+  );
 }

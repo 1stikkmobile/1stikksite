@@ -33,6 +33,8 @@ import { useEffect, useState } from "react";
 import {
     afterHoursPhone,
     afterHoursPhoneHref,
+    articleMap,
+    articles,
     calendlyBookingUrl,
     calendlyUrl,
     contactEmail,
@@ -50,11 +52,15 @@ import {
     services,
     testimonials,
     trainingPhone,
-    trainingPhoneExt,
     trainingPhoneHref,
     trainingProgramMap,
     trainingPrograms
 } from "./data";
+
+function isActivePath(itemHref, pathname) {
+  if (itemHref === "/") return pathname === "/";
+  return pathname === itemHref || pathname.startsWith(itemHref + "/");
+}
 
 function bookHref(type) {
   if (type === "training") return calendlyBookingUrl;
@@ -69,10 +75,131 @@ function scrollToSection(id) {
   node.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
+/* ----------------------------------------------------- Animated SVG decor */
+
+function PulseLine({ className = "" }) {
+  return (
+    <svg className={`anim-svg pulse-line ${className}`} viewBox="0 0 320 60" fill="none" aria-hidden="true">
+      <path
+        className="pulse-path"
+        d="M0 30 H70 l9 -22 l13 44 l11 -34 l9 24 H180 l9 -15 l11 15 H320"
+        stroke="currentColor"
+        strokeWidth="2.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function FloatingMotifs() {
+  return (
+    <div className="floating-motifs" aria-hidden="true">
+      <svg className="motif motif-1" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2C12 2 5 10 5 15a7 7 0 0 0 14 0c0-5-7-13-7-13Z" fill="currentColor" />
+      </svg>
+      <svg className="motif motif-2" viewBox="0 0 24 24" fill="none">
+        <path d="M12 4v16M4 12h16" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+      </svg>
+      <svg className="motif motif-3" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2.4" />
+        <path d="M8 12l3 3 5-6" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+      <svg className="motif motif-4" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2C12 2 5 10 5 15a7 7 0 0 0 14 0c0-5-7-13-7-13Z" fill="currentColor" />
+      </svg>
+    </div>
+  );
+}
+
+const trainingSteps = [
+  { Icon: Phone, title: "Reach out", text: "Call (318) 512-0170 or schedule training online — no experience needed." },
+  { Icon: CalendarCheck, title: "Pick a time", text: "Flexible, self-paced scheduling that fits your life." },
+  { Icon: Users, title: "Train hands-on", text: "Real equipment, real practice, caring mentors." },
+  { Icon: BadgeCheck, title: "Get certified", text: "Finish job-ready with a certificate of completion." }
+];
+
+const certificateImages = [
+  { src: "/images/certificates/certificate-01.jpg", alt: "Phlebotomy training certificate of completion", title: "Phlebotomy" },
+  { src: "/images/certificates/certificate-04.jpg", alt: "Drug screening collector certificate of completion", title: "Drug Screening" },
+  { src: "/images/certificates/certificate-07.jpg", alt: "Medical assistant training certificate of completion", title: "Medical Assistant" }
+];
+
+function CertificateShowcase() {
+  return (
+    <div className="cert-showcase reveal is-visible">
+      <div className="cert-showcase-head">
+        <span className="eyebrow"><span className="dot" aria-hidden="true" /> Earn real credentials</span>
+        <h2>Graduate with certificates that open doors.</h2>
+        <p>Every program includes a professional certificate of completion you can show employers, clinics, and licensing boards.</p>
+      </div>
+      <div className="cert-showcase-grid">
+        {certificateImages.map((cert) => (
+          <div className="cert-card" key={cert.src}>
+            <div className="cert-frame">
+              <Image src={cert.src} alt={cert.alt} fill sizes="(max-width: 760px) 100vw, (max-width: 1080px) 33vw, 320px" />
+            </div>
+            <strong>{cert.title}</strong>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function TrainingSteps() {
+  return (
+    <div className="training-steps reveal is-visible" aria-label="How training works">
+      <div className="training-steps-head">
+        <span className="eyebrow"><span className="dot" aria-hidden="true" /> Simple from day one</span>
+        <h2>How your training works</h2>
+        <PulseLine className="pulse-accent" />
+      </div>
+      <div className="training-steps-track">
+        {trainingSteps.map((s, i) => {
+          const Icon = s.Icon;
+          return (
+            <div className="training-step" key={s.title} style={{ "--step-delay": `${i * 140}ms` }}>
+              <span className="training-step-node">
+                <Icon aria-hidden="true" />
+                <em>{i + 1}</em>
+              </span>
+              <strong>{s.title}</strong>
+              <p>{s.text}</p>
+              {s.title === "Get certified" ? (
+                <div className="step-cert">
+                  <Image src="/images/certificates/certificate-01.jpg" alt="Certificate of completion preview" width={120} height={90} />
+                </div>
+              ) : null}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+/* ---------------------------------------------------------- Article FAQ */
+
+function ArticleFaq({ items }) {
+  const [open, setOpen] = useState(0);
+  return (
+    <div className="article-faq">
+      <h2>Frequently asked questions</h2>
+      <div className="faq-list">
+        {items.map((item, i) => (
+          <FaqItem key={item.q} item={item} isOpen={open === i} onToggle={() => setOpen(open === i ? -1 : i)} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 /* ------------------------------------------------------------------ Header */
 
 function Header({ mobileOpen, setMobileOpen }) {
   const [openMega, setOpenMega] = useState(null);
+  const pathname = usePathname();
 
   return (
     <header className="site-header">
@@ -91,7 +218,7 @@ function Header({ mobileOpen, setMobileOpen }) {
 
       <div className="nav-shell container">
         <Link className="brand" href="/" aria-label="1 Stikk Mobile home" onClick={() => setMobileOpen(false)}>
-          <Image src="/images/logo/logo.jpg" alt="1 Stikk Mobile logo" width={56} height={56} priority />
+          <Image src="/images/logo/logo.jpg" alt="1 Stikk Mobile logo" width={48} height={48} priority />
           <span>
             <strong>1 Stikk Mobile</strong>
             <small>We Always Care</small>
@@ -106,9 +233,12 @@ function Header({ mobileOpen, setMobileOpen }) {
               onMouseEnter={() => setOpenMega(item.mega || null)}
               onMouseLeave={() => setOpenMega(null)}
             >
-              <Link className="nav-link" href={item.href}>
+              <Link
+                className={`nav-link${isActivePath(item.href, pathname) ? " is-active" : ""}`}
+                href={item.href}
+              >
                 {item.label}
-                {item.mega ? <ChevronDown aria-hidden="true" size={15} /> : null}
+                {item.mega ? <ChevronDown aria-hidden="true" size={13} /> : null}
               </Link>
 
               {item.mega === "services" ? (
@@ -153,9 +283,9 @@ function Header({ mobileOpen, setMobileOpen }) {
                     })}
                   </div>
                   <div className="mega-foot">
-                    <span>Call to enroll: {trainingPhone} · Ext. {trainingPhoneExt}</span>
+                    <span>Call to enroll: {trainingPhone}</span>
                     <a className="btn btn-dark btn-sm" href={calendlyBookingUrl}>
-                      <CalendarCheck aria-hidden="true" /> Schedule on Calendly
+                      <CalendarCheck aria-hidden="true" /> Schedule training
                     </a>
                   </div>
                 </div>
@@ -201,6 +331,21 @@ function Header({ mobileOpen, setMobileOpen }) {
               </Link>
             ))}
           </div>
+          <div className="mobile-group">
+            <span>Training &amp; Programs</span>
+            {trainingPrograms.map((p) => (
+              <Link href={`/training/${p.slug}`} key={p.slug} onClick={() => setMobileOpen(false)}>
+                {p.title}
+              </Link>
+            ))}
+          </div>
+          <div className="mobile-group">
+            <span>Company</span>
+            <Link href="/about" onClick={() => setMobileOpen(false)}>About Us</Link>
+            <Link href="/non-profit" onClick={() => setMobileOpen(false)}>Non Profit</Link>
+            <Link href="/business-solutions" onClick={() => setMobileOpen(false)}>Business Solutions</Link>
+            <Link href="/contact" onClick={() => setMobileOpen(false)}>Contact Us</Link>
+          </div>
           <div className="mobile-cta">
             <a className="btn btn-primary" href={myriadUrl} onClick={() => setMobileOpen(false)}>
               <CalendarCheck aria-hidden="true" /> Book a Service
@@ -221,6 +366,7 @@ function Hero() {
   return (
     <section className="hero" id="top">
       <div className="container hero-shell">
+        <FloatingMotifs />
         <div className="hero-copy reveal is-visible">
           <span className="eyebrow">
             <span className="dot" aria-hidden="true" /> We come to you · all 50 states
@@ -545,10 +691,12 @@ function Footer() {
           ))}
         </div>
         <div className="footer-col">
-          <strong>Quick links</strong>
+          <strong>Company</strong>
           <Link href="/about">About / Meet founder</Link>
-          <Link href="/services">Our services</Link>
-          <a href={calendlyBookingUrl}>Training &amp; programs</a>
+          <Link href="/non-profit">Non Profit</Link>
+          <Link href="/business-solutions">Business Solutions</Link>
+          <Link href="/training">Training &amp; programs</Link>
+          <Link href="/articles">Health articles</Link>
           <Link href="/contact">Contact us</Link>
           <a href={labPortalUrl}>Laboratory portal</a>
         </div>
@@ -580,13 +728,13 @@ function FloatingCta({ isTraining }) {
   if (isTraining) {
     return (
       <div className="floating-actions" aria-label="Quick training actions">
-        <a className="floating-action floating-call" href={trainingPhoneHref} aria-label={`Call training team at ${trainingPhone} extension ${trainingPhoneExt}`}>
+        <a className="floating-action floating-call" href={trainingPhoneHref} aria-label={`Call training team at ${trainingPhone}`}>
           <Phone aria-hidden="true" />
-          <span>Call Ext. {trainingPhoneExt}</span>
+          <span>Call</span>
         </a>
         <a className="floating-action floating-book" href={calendlyBookingUrl}>
           <CalendarCheck aria-hidden="true" />
-          <span>Schedule</span>
+          <span>Schedule training</span>
         </a>
       </div>
     );
@@ -611,7 +759,7 @@ function ServiceDetail({ service }) {
   const Icon = service.icon;
   const primary =
     service.book === "training"
-      ? { href: calendlyBookingUrl, label: "Schedule on Calendly" }
+      ? { href: calendlyBookingUrl, label: "Schedule training" }
       : service.book === "call"
       ? { href: mainPhoneDialHref, label: `Call ${mainPhone}` }
       : service.book === "contact"
@@ -668,6 +816,7 @@ function ServiceDetail({ service }) {
 function TrainingPage() {
   return (
     <section className="section training-page">
+      <FloatingMotifs />
       <div className="container training-page-shell">
         <div className="training-hero-copy reveal is-visible">
           <span className="eyebrow"><span className="dot" aria-hidden="true" /> Training &amp; programs</span>
@@ -683,30 +832,33 @@ function TrainingPage() {
             <li>Business pathways for mobile lab owners</li>
           </ul>
           <div className="hero-actions">
-            <a className="btn btn-dark btn-lg" href={calendlyBookingUrl}><CalendarCheck aria-hidden="true" /> Schedule on Calendly</a>
-            <a className="btn btn-outline btn-lg" href={trainingPhoneHref}><Phone aria-hidden="true" /> {trainingPhone} · Ext. {trainingPhoneExt}</a>
+            <a className="btn btn-dark btn-lg" href={calendlyBookingUrl}><CalendarCheck aria-hidden="true" /> Schedule training</a>
+            <a className="btn btn-outline btn-lg" href={trainingPhoneHref}><Phone aria-hidden="true" /> {trainingPhone}</a>
           </div>
-          <a className="training-index-phone" href={trainingPhoneHref} aria-label={`Call training team at ${trainingPhone} extension ${trainingPhoneExt}`}>
+          <a className="training-index-phone" href={trainingPhoneHref} aria-label={`Call training team at ${trainingPhone}`}>
             <Phone aria-hidden="true" />
             <span>
-              {trainingPhone} · <strong>Ext. {trainingPhoneExt}</strong>
-              <small>Training team direct line</small>
+              {trainingPhone} · <strong>Training team direct line</strong>
+              <small>Call or text anytime</small>
             </span>
           </a>
         </div>
         <div className="training-hero-media reveal is-visible" aria-hidden="true">
           <div className="training-hero-main">
-            <Image src="/images/training/training-hands-on.jpg" alt="Hands-on venipuncture practice during training" fill sizes="(max-width: 760px) 100vw, (max-width: 1080px) 45vw, 520px" priority />
+            <Image src="/images/training/bridge-1.png" alt="1 Stikk Mobile Bridge Program training session" fill sizes="(max-width: 760px) 100vw, (max-width: 1080px) 45vw, 520px" priority />
           </div>
           <div className="training-hero-stack">
             <div className="training-hero-thumb">
-              <Image src="/images/training/training-guidance.jpg" alt="Instructor pointing to a vein before a draw" fill sizes="(max-width: 760px) 45vw, (max-width: 1080px) 22vw, 240px" />
+              <Image src="/images/training/bridge-2.png" alt="Bridge Program student practicing hands-on skills" fill sizes="(max-width: 760px) 45vw, (max-width: 1080px) 22vw, 240px" />
             </div>
             <div className="training-hero-thumb">
-              <Image src="/images/training/training-polaroids.jpg" alt="Polaroid collage from 1 Stikk Mobile training" fill sizes="(max-width: 760px) 45vw, (max-width: 1080px) 22vw, 240px" />
+              <Image src="/images/training/bridge-3.png" alt="Bridge Program training materials and certification overview" fill sizes="(max-width: 760px) 45vw, (max-width: 1080px) 22vw, 240px" />
             </div>
           </div>
         </div>
+      </div>
+      <div className="container">
+        <CertificateShowcase />
       </div>
       <div className="container">
         <div className="training-grid">
@@ -729,6 +881,9 @@ function TrainingPage() {
             );
           })}
         </div>
+      </div>
+      <div className="container">
+        <TrainingSteps />
       </div>
     </section>
   );
@@ -754,17 +909,17 @@ function TrainingProgramDetail({ program }) {
               <Phone aria-hidden="true" />
               <div className="training-call-banner-text">
                 <strong>Call our training team</strong>
-                <span>{trainingPhone} · Ext. {trainingPhoneExt}</span>
+                <span>{trainingPhone}</span>
                 <small>We answer questions &amp; help you get started</small>
               </div>
             </div>
 
             <div className="hero-actions">
               <a className="btn btn-primary btn-lg" href={calendlyBookingUrl}>
-                <CalendarCheck aria-hidden="true" /> Schedule on Calendly
+                <CalendarCheck aria-hidden="true" /> Book a training class
               </a>
               <a className="btn btn-outline btn-lg" href={trainingPhoneHref}>
-                <Phone aria-hidden="true" /> {trainingPhone} · Ext. {trainingPhoneExt}
+                <Phone aria-hidden="true" /> {trainingPhone}
               </a>
             </div>
           </div>
@@ -779,10 +934,10 @@ function TrainingProgramDetail({ program }) {
               <a className="training-sidebar-call" href={trainingPhoneHref}>
                 <Phone aria-hidden="true" />
                 {trainingPhone}
-                <small>Ext. {trainingPhoneExt} · Training direct line</small>
+                <small>Training direct line</small>
               </a>
               <a className="btn btn-dark" href={calendlyBookingUrl} style={{ width: "100%", justifyContent: "center" }}>
-                <CalendarCheck aria-hidden="true" /> Book on Calendly
+                <CalendarCheck aria-hidden="true" /> Book a training class
               </a>
             </div>
           </aside>
@@ -842,7 +997,7 @@ function TrainingProgramDetail({ program }) {
             <h2>Schedule your session</h2>
             <p>
               Pick a time that works for you. Or call us directly at{" "}
-              <strong>{trainingPhone} · Ext. {trainingPhoneExt}</strong> — we&apos;re happy to help.
+              <strong>{trainingPhone}</strong> — we&apos;re happy to help.
             </p>
           </div>
           <div className="training-calendly-wrap">
@@ -859,10 +1014,10 @@ function TrainingProgramDetail({ program }) {
             <Phone aria-hidden="true" />
             <div className="training-call-strip-text">
               <strong>Prefer to call? We make it easy.</strong>
-              <span>Reach our training team at {trainingPhone} · Ext. {trainingPhoneExt} — Mon to Sun, 24 hours</span>
+              <span>Reach our training team at {trainingPhone} — Mon to Sun, 24 hours</span>
             </div>
             <a className="btn btn-primary" href={trainingPhoneHref}>
-              <Phone aria-hidden="true" /> Call Ext. {trainingPhoneExt}
+              <Phone aria-hidden="true" /> Call {trainingPhone}
             </a>
           </div>
         </div>
@@ -1076,7 +1231,7 @@ function DrugScreeningPage() {
               For assistance with the online training portal, call{" "}
               <a href={trainingPhoneHref}>{trainingPhone}</a>.
             </p>
-            <a className="btn btn-dark" href={calendlyBookingUrl}><CalendarCheck aria-hidden="true" /> Schedule Training</a>
+            <a className="btn btn-dark" href={calendlyBookingUrl}><CalendarCheck aria-hidden="true" /> Book a training class</a>
           </div>
           <div className="ds-split-media reveal">
             <div className="ds-img-frame">
@@ -1194,8 +1349,8 @@ function BusinessSolutionsPage() {
             employers, and healthcare entrepreneurs ready to grow.
           </p>
           <div className="hero-actions">
-            <a className="btn btn-primary btn-lg" href={calendlyBookingUrl}><CalendarCheck aria-hidden="true" /> Schedule a Consult</a>
-            <a className="btn btn-outline btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> {mainPhone}</a>
+            <a className="btn btn-primary btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> Call {mainPhone}</a>
+            <a className="btn btn-outline btn-lg" href="/contact">Contact our team</a>
           </div>
         </div>
       </section>
@@ -1210,7 +1365,7 @@ function BusinessSolutionsPage() {
                 to deliver reliable mobile health services at scale.
               </p>
               <div className="hero-actions">
-                <a className="btn btn-primary" href={calendlyBookingUrl}><CalendarCheck aria-hidden="true" /> Schedule a Consult</a>
+                <a className="btn btn-primary" href={mainPhoneDialHref}><Phone aria-hidden="true" /> Call {mainPhone}</a>
                 <a className="btn btn-outline" href="/contact">Contact our team</a>
               </div>
             </div>
@@ -1280,6 +1435,185 @@ function ContactPage() {
   );
 }
 
+/* ----------------------------------------------------------------- Articles */
+
+function ArticleCard({ article }) {
+  return (
+    <Link className="article-card reveal" href={`/articles/${article.slug}`}>
+      <div className="article-card-cover">
+        <Image src={article.image} alt={article.imageAlt} fill sizes="(max-width: 760px) 100vw, (max-width: 1080px) 50vw, 33vw" />
+      </div>
+      <div className="article-card-body">
+        <span className="article-cat">{article.category}</span>
+        <h2>{article.title}</h2>
+        <p>{article.description}</p>
+        <div className="article-meta">
+          <span>{article.author.name}</span>
+          <span className="article-meta-dot" />
+          <span>{article.date}</span>
+          <span className="article-meta-dot" />
+          <span>{article.readTime}</span>
+        </div>
+        <span className="article-read-more">Read article <ArrowRight aria-hidden="true" /></span>
+      </div>
+    </Link>
+  );
+}
+
+function ArticlesPage() {
+  return (
+    <>
+      <section className="articles-hero">
+        <div className="container articles-hero-inner reveal is-visible">
+          <span className="eyebrow eyebrow-light"><Sparkles aria-hidden="true" /> Health &amp; Wellness Resources</span>
+          <h1>Expert insights for patients, employers &amp; healthcare professionals.</h1>
+          <p>
+            Guides, compliance resources, and wellness education from the 1 Stikk Mobile team —
+            written by certified professionals with real-world mobile healthcare experience.
+          </p>
+        </div>
+      </section>
+      <section className="articles-section">
+        <div className="container">
+          <div className="articles-grid">
+            {articles.map((a) => <ArticleCard key={a.slug} article={a} />)}
+          </div>
+          <div className="section-foot reveal">
+            <a className="btn btn-primary" href={myriadUrl}><CalendarCheck aria-hidden="true" /> Book a Service</a>
+            <a className="btn btn-ghost" href={mainPhoneDialHref}><Phone aria-hidden="true" /> {mainPhone}</a>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+function ArticleDetailPage({ article }) {
+  const relatedArticles = article.related
+    .map((slug) => articleMap[slug])
+    .filter(Boolean);
+
+  const relatedService = article.relatedService ? serviceMap[article.relatedService] : null;
+
+  return (
+    <>
+      <div className="container">
+        <nav className="article-breadcrumb" aria-label="Breadcrumb">
+          <Link href="/">Home</Link>
+          <ChevronRight aria-hidden="true" />
+          <Link href="/articles">Articles</Link>
+          <ChevronRight aria-hidden="true" />
+          <span>{article.category}</span>
+        </nav>
+
+        <div className="article-detail-layout">
+          <main className="article-detail-main">
+            <header className="article-detail-header">
+              <span className="article-cat">{article.category}</span>
+              <h1>{article.headline}</h1>
+              <div className="article-meta">
+                <span>{article.author.name}</span>
+                <span className="article-meta-dot" />
+                <span>{article.date}</span>
+                <span className="article-meta-dot" />
+                <Clock aria-hidden="true" style={{ width: 13, height: 13 }} />
+                <span>{article.readTime}</span>
+              </div>
+            </header>
+
+            <div className="article-cover">
+              <Image
+                src={article.image}
+                alt={article.imageAlt}
+                fill
+                sizes="(max-width: 760px) 100vw, (max-width: 1080px) 100vw, 780px"
+                priority
+              />
+            </div>
+
+            <p className="article-intro">{article.intro}</p>
+
+            <div className="article-body">
+              {article.sections.map((s) => (
+                <div className="article-section" key={s.heading}>
+                  <h2>{s.heading}</h2>
+                  {s.body.split("\n\n").map((para, i) => (
+                    <p key={i}>{para}</p>
+                  ))}
+                </div>
+              ))}
+            </div>
+
+            {article.faqs?.length ? (
+              <div className="article-faq-wrapper">
+                <ArticleFaq items={article.faqs} />
+              </div>
+            ) : null}
+
+            <div className="article-author-bio">
+              <div className="article-author-bio-avatar">
+                <Image src="/images/site/founder.webp" alt={article.author.name} fill sizes="56px" />
+              </div>
+              <div className="article-author-bio-info">
+                <strong>{article.author.name}</strong>
+                <span>{article.author.role}</span>
+              </div>
+            </div>
+          </main>
+
+          <aside className="article-sidebar">
+            <div className="article-sidebar-cta">
+              <strong>Ready to book a service?</strong>
+              <p>
+                {relatedService
+                  ? `Book a ${relatedService.title} service — we come to you anywhere in the US.`
+                  : "Book mobile lab services — we come to you anywhere in the US."}
+              </p>
+              <a className="btn btn-primary" href={myriadUrl}>
+                <CalendarCheck aria-hidden="true" />
+                {relatedService ? `Book ${relatedService.title}` : "Book a Service"}
+              </a>
+              <div className="article-sidebar-phone">
+                <Phone aria-hidden="true" />
+                <span>Or call {mainPhone}</span>
+              </div>
+            </div>
+
+            {relatedArticles.length > 0 && (
+              <div className="article-sidebar-related">
+                <div className="article-sidebar-related-head">Related Articles</div>
+                {relatedArticles.map((rel) => (
+                  <Link className="article-sidebar-link" href={`/articles/${rel.slug}`} key={rel.slug}>
+                    <div style={{ flex: 1 }}>
+                      <div className="article-sidebar-link-cat">{rel.category}</div>
+                      <strong>{rel.title}</strong>
+                    </div>
+                    <ChevronRight className="article-sidebar-link-arrow" aria-hidden="true" />
+                  </Link>
+                ))}
+              </div>
+            )}
+          </aside>
+        </div>
+      </div>
+
+      {relatedArticles.length > 0 && (
+        <section className="article-related">
+          <div className="container">
+            <div className="article-related-head">
+              <h2>More from our resource library</h2>
+              <p>Practical guides and expert insights from the 1 Stikk Mobile team.</p>
+            </div>
+            <div className="articles-grid">
+              {relatedArticles.map((a) => <ArticleCard key={a.slug} article={a} />)}
+            </div>
+          </div>
+        </section>
+      )}
+    </>
+  );
+}
+
 /* -------------------------------------------------------------------- Root */
 
 export default function FirstStikkSite({ slug = [] }) {
@@ -1296,6 +1630,8 @@ export default function FirstStikkSite({ slug = [] }) {
   const activeTrainingProgram = slug[0] === "training" && slug[1] ? trainingProgramMap[slug[1]] : null;
   const isTrainingPage = slug[0] === "training";
   const isContact = slug[0] === "contact" && !slug[1];
+  const isArticlesIndex = slug[0] === "articles" && !slug[1];
+  const activeArticle = slug[0] === "articles" && slug[1] ? articleMap[slug[1]] : null;
 
   useEffect(() => {
     document.documentElement.classList.add("js");
@@ -1345,6 +1681,10 @@ export default function FirstStikkSite({ slug = [] }) {
           <BusinessSolutionsPage />
         ) : isContact ? (
           <ContactPage />
+        ) : isArticlesIndex ? (
+          <ArticlesPage />
+        ) : activeArticle ? (
+          <ArticleDetailPage article={activeArticle} />
         ) : (
           <>
             <Hero />
