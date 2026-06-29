@@ -209,6 +209,7 @@ const trainingOfferItems = [
   "Live Q&A support",
   "Five required mock collections",
   "Mock kit and testing materials provided by 1 Stikk",
+  "Employee handbook and compliance-focused binder setup guidance",
   "Certificate of completion",
   "1 Stikk Mobile drug screen collector registration onboarding"
 ];
@@ -383,7 +384,8 @@ function TrainingOfferSpotlight() {
         <p>
           This training is really about the mocks. 1 Stikk sells the mock-collection prep people need:
           we schedule the sessions, provide the kit and test materials, watch the mocks virtually, and
-          give students a portal and guide so they can complete all five runs with fewer mistakes.
+          give students a portal, handbook, and guide so they can complete all five runs with fewer mistakes
+          and build stronger compliance habits.
         </p>
         <ul className="training-offer-list">
           {trainingOfferItems.map((item) => (
@@ -393,11 +395,11 @@ function TrainingOfferSpotlight() {
         <div className="training-offer-notes">
           <div className="training-offer-note">
             <strong>The portal supports the process — it is not the whole product.</strong>
-            <span>The real value is the live mock workflow: 1 Stikk provides the materials, observes the work, and helps students get through the required mocks cleanly.</span>
+            <span>The real value is the live mock workflow: 1 Stikk provides the materials, observes the work virtually, and helps students get through the required mocks cleanly.</span>
           </div>
           <div className="training-offer-note">
-            <strong>1 Stikk provides the mock kit, guide, and scheduling support.</strong>
-            <span>Portal access is emailed after enrollment, kits are provided, and students are walked through mock observations step by step until they are ready.</span>
+            <strong>1 Stikk provides the mock kit, employee handbook, binder setup help, and scheduling support.</strong>
+            <span>Portal access is emailed after enrollment, the handbook helps students understand the workflow, and binder setup guidance helps them stay more organized and more prepared for virtual mock observations.</span>
           </div>
         </div>
       </div>
@@ -1221,8 +1223,9 @@ function TrainingPage() {
           <h1>Get your five mock collections done the right way.</h1>
           <p className="hero-lead" style={{ margin: "0 auto 20px", maxWidth: "60ch" }}>
             For drug-screen collector training, the big need is mock completion. 1 Stikk provides the
-            portal, the guide, the kit, the scheduling, and the live virtual observation so students can
-            prepare for all five required mocks and complete them with confidence.
+            portal, the guide, the employee handbook, the kit, the scheduling, and the live virtual
+            observation so students can prepare for all five required mocks, organize their binder, and
+            complete the process with more confidence.
           </p>
           <div className="hero-actions" style={{ justifyContent: "center", marginBottom: "16px", flexWrap: "wrap", gap: "12px" }}>
             <a className="btn btn-primary btn-lg" href={squareTrainingUrl} onClick={trackCheckout}>
@@ -1236,7 +1239,7 @@ function TrainingPage() {
             <Phone aria-hidden="true" />
             <span>
               {trainingPhone} {trainingPhoneExt} · <strong>Training team direct line</strong>
-              <small>Call for mock scheduling, portal help, kit questions, and live observation support</small>
+              <small>Call for mock scheduling, portal help, handbook questions, binder setup, kit questions, and live observation support</small>
             </span>
           </a>
         </div>
@@ -1597,19 +1600,21 @@ function DrugScreeningPage() {
             <h2>Drug Screen &amp; Mock Collections</h2>
             <p>
               This offer is built around the mocks. If you need help getting through the required
-              mock collections, 1 Stikk gives you the portal, guide, kit, scheduling, and live
-              virtual observation support to help you complete them cleanly and move forward.
+              mock collections, 1 Stikk gives you the portal, guide, employee handbook, binder setup
+              help, kit, scheduling, and live virtual observation support to help you complete them
+              cleanly and move forward with better compliance preparation.
             </p>
             <ul className="ds-list">
               <li><Check aria-hidden="true" /> Five mock collections with live virtual observation</li>
               <li><Check aria-hidden="true" /> 1 Stikk-provided mock kit, test materials, and prep guide</li>
+              <li><Check aria-hidden="true" /> Employee handbook and binder setup support</li>
               <li><Check aria-hidden="true" /> Portal access that helps you prepare before the mocks</li>
               <li><Check aria-hidden="true" /> Live Q &amp; A with certified instructors</li>
               <li><Check aria-hidden="true" /> Certificate of Completion</li>
               <li><Check aria-hidden="true" /> Drug Screen Collector Registration &amp; Onboarding</li>
             </ul>
             <p className="ds-contact-note">
-              For mock scheduling, portal assistance, or kit questions, call{" "}
+              For mock scheduling, portal assistance, handbook help, binder setup questions, or kit questions, call{" "}
               <a href={trainingPhoneHref}>{trainingPhone}</a>.
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px" }}>
@@ -2067,8 +2072,9 @@ export default function FirstStikkSite({ slug = [] }) {
 
   return (
     <>
+      <a className="skip-link" href="#main-content">Skip to main content</a>
       <Header mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         {isDrugScreening ? (
           <DrugScreeningPage />
         ) : activeService ? (

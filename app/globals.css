@@ -60,6 +60,28 @@ h1, h2, h3 { text-wrap: balance; letter-spacing: -0.03em; line-height: 1.04; }
 p { text-wrap: pretty; }
 ul { padding: 0; list-style: none; }
 
+:where(a, button, [role="button"], [role="tab"], input, select, textarea, iframe):focus-visible {
+  outline: 3px solid var(--gold-deep);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: 12px;
+  z-index: 200;
+  padding: 12px 16px;
+  border-radius: 999px;
+  background: var(--graphite);
+  color: var(--white);
+  font-weight: 700;
+  transform: translateY(-140%);
+  transition: transform 180ms ease;
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+
 .container { width: min(var(--max), calc(100% - 44px)); margin: 0 auto; }
 
 h1 { font-size: clamp(2.5rem, 5.2vw, 4.2rem); }
