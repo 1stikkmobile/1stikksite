@@ -967,7 +967,9 @@ function Footer() {
           <Link href="/terms-and-conditions">Terms of Service</Link>
           <Link href="/cookie-policy">Cookie Policy</Link>
         </div>
-        <p className="footer-copy">This website was created by Stackmodechris &amp; Stackmode Network LLC.</p>
+        <p className="footer-copy">
+          This website was created by <a href="https://stackmode.net" target="_blank" rel="noreferrer">Stackmodechris</a> &amp; <a href="https://stackmode.net" target="_blank" rel="noreferrer">Stackmode Network LLC</a>.
+        </p>
       </div>
     </footer>
   );
