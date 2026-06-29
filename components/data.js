@@ -19,11 +19,14 @@ import {
     Users
 } from "lucide-react";
 
-// Booking destinations
-export const myriadUrl = "https://myriad.health/book?token=WnjFcnpNSCsatghXix";
+// Patients must CALL — no online booking for patient services
+// Training: Square ($75 payment) + Calendly (schedule session)
+export const squareTrainingUrl = "https://checkout.square.site/merchant/ML21SF304722B/checkout/W4RL45S2FR2QOSYGF4IJUQGU";
+// myriadUrl is deprecated — use squareTrainingUrl for training payment
+export const myriadUrl = squareTrainingUrl;
+export const calendlyBookingUrl = "https://calendly.com/1stikkmobile-meeting/health";
 export const calendlyUrl =
   "https://calendly.com/1stikkmobile-meeting/health?hide_event_type_details=1&hide_gdpr_banner=1&background_color=121212&text_color=ffffff&primary_color=e3b505";
-export const calendlyBookingUrl = "https://calendly.com/1stikkmobile-meeting/health";
 
 export const mainPhone = "(877) 217-8455";
 export const mainPhoneDialHref = "tel:8772178455";
@@ -121,7 +124,10 @@ export const services = [
       "24-hour crisis hotline guidance",
       "Respectful, confidential coordination"
     ]
-  },
+  }
+];
+
+export const otherPrograms = [
   {
     title: "Community Health Fairs",
     slug: "non-profit",
@@ -156,7 +162,7 @@ export const services = [
   }
 ];
 
-export const serviceMap = Object.fromEntries(services.map((s) => [s.slug, s]));
+export const serviceMap = Object.fromEntries([...services, ...otherPrograms].map((s) => [s.slug, s]));
 
 // Training & Programs — each has its own detail page at /training/[slug]
 export const trainingPrograms = [
@@ -164,7 +170,7 @@ export const trainingPrograms = [
     slug: "phlebotomy",
     title: "Phlebotomy Training & Certification",
     icon: Syringe,
-    image: "/images/training/training-hands-on.jpg",
+    image: "/images/services/blood-tubes.webp",
     imageAlt: "Student practicing a blood draw during hands-on phlebotomy class",
     gallery: [
       { src: "/images/training/training-hands-on.jpg", alt: "Hands-on blood draw practice in class" },
@@ -200,7 +206,7 @@ export const trainingPrograms = [
     slug: "drug-screening",
     title: "Drug Screening Training",
     icon: ShieldCheck,
-    image: "/images/training/training-table.jpg",
+    image: "/images/services/blood-equipment.webp",
     imageAlt: "Drug screening collection supplies organized for hands-on training",
     gallery: [
       { src: "/images/training/training-table.jpg", alt: "Drug test supplies organized for practice" },
@@ -236,7 +242,7 @@ export const trainingPrograms = [
     slug: "workforce",
     title: "Workforce & Healthcare Programs",
     icon: GraduationCap,
-    image: "/images/training/training-guidance.jpg",
+    image: "/images/services/lab-researchers.webp",
     imageAlt: "Workforce healthcare training class in session",
     gallery: [
       { src: "/images/training/training-guidance.jpg", alt: "Hands-on coaching during workforce training" },
@@ -272,7 +278,7 @@ export const trainingPrograms = [
     slug: "consulting",
     title: "Lab Business Consulting & Mentorship",
     icon: Briefcase,
-    image: "/images/training/training-table.jpg",
+    image: "/images/services/lab-microscope.webp",
     imageAlt: "Lab business consulting and mentorship session overview",
     gallery: [
       { src: "/images/training/training-table.jpg", alt: "Lab business consulting session" },
@@ -389,7 +395,7 @@ export const programData = {
   youth: {
     title: "Moving With a Purpose",
     subtitle: "Empowering Youth to Build Careers and Create Generational Wealth",
-    image: "/images/training/training-guidance.jpg",
+    image: "/images/services/dna-collection.webp",
     imageAlt: "Youth participants learning hands-on healthcare and career skills",
     description:
       "Moving With a Purpose is a dynamic youth program designed to ignite purpose, unlock potential, and change the narrative for the next generation. Our mission is to equip young people with the creative, technical, and professional skills needed to launch successful careers and build lasting generational wealth.",
@@ -406,7 +412,7 @@ export const programData = {
   adults: {
     title: "Hustle With a Purpose",
     subtitle: "A Second Chance Program for Adults Ready to Transform Their Lives",
-    image: "/images/training/training-instructor.jpg",
+    image: "/images/services/lab-science.webp",
     imageAlt: "Adult participant receiving mentorship and career coaching",
     description:
       "Hustle With a Purpose is a life-changing program created to give every adult a second chance at life — a chance to break cycles, rewrite their story, and take control of their future. This initiative empowers individuals with the tools, mindset, and support needed to achieve financial freedom, personal growth, and long-term success.",
@@ -424,7 +430,7 @@ export const programData = {
   drugScreenTraining: {
     title: "Mock Collections — Drug Screen Training",
     subtitle: "Essential Training for a Successful Career in Drug Screening",
-    image: "/images/training/training-table.jpg",
+    image: "/images/services/lab-tubes.webp",
     imageAlt: "Drug screening collection supplies ready for hands-on training",
     description:
       "Join us to gain the training you need to excel in the field of drug screening. This live Zoom event covers everything from mock collections to completion certificates.",
@@ -440,8 +446,8 @@ export const programData = {
       "1 Stikk Mobile Drug Screen Collector Registration Onboarding"
     ],
     contact: "For assistance with the online training portal, please call 877-217-8455.",
-    cta: { label: "Enroll on Calendly", href: calendlyBookingUrl },
-    paymentLink: { label: "Pay now", href: "https://square.link/u/m51BDCSi" }
+    cta: { label: "Schedule on Calendly", href: calendlyBookingUrl },
+    paymentLink: { label: "Pay $75 — Enroll Now", href: squareTrainingUrl }
   },
   cta: {
     title: "Ready to walk in purpose?",
@@ -466,7 +472,7 @@ export const articles = [
     date: "December 15, 2025",
     readTime: "6 min read",
     author: { name: "Tiffany Clinton, CPT, RMA", role: "CEO & Founder, 1 Stikk Mobile" },
-    image: "/images/site/van-care.webp",
+    image: "/images/services/blood-draw.jpg",
     imageAlt: "A 1 Stikk Mobile certified phlebotomist arriving at a patient's home for a blood draw",
     intro:
       "Every year, millions of patients delay lab work because of one simple barrier: getting there. Whether it's a lack of transportation, a chronic condition that makes travel difficult, or a caregiver's packed schedule, the trip to a lab draw center can feel impossible. Mobile blood draw services eliminate that barrier entirely — a certified phlebotomist comes to you.",
@@ -548,7 +554,7 @@ export const articles = [
     date: "October 8, 2025",
     readTime: "7 min read",
     author: { name: "Tiffany Clinton, CPT, RMA", role: "CEO & Founder, 1 Stikk Mobile" },
-    image: "/images/training/training-hands-on.jpg",
+    image: "/images/training/training-instructor.jpg",
     imageAlt: "A student practicing venipuncture technique during hands-on phlebotomy training",
     intro:
       "Phlebotomy is one of the fastest entry points into the healthcare field — and one of the most in-demand. With the right training and national certification, you can begin a meaningful, stable healthcare career in as little as a few weeks. Here's everything you need to know before you start.",
@@ -589,7 +595,7 @@ export const articles = [
     date: "September 12, 2025",
     readTime: "7 min read",
     author: { name: "Tiffany Clinton, CPT, RMA", role: "CEO & Founder, 1 Stikk Mobile" },
-    image: "/images/services/drug-test-capsules.jpg",
+    image: "/images/services/dna-swab.webp",
     imageAlt: "Drug test specimen collection capsules and chain-of-custody supplies",
     intro:
       "Drug testing means nothing without a documented chain of custody. In regulated environments — DOT testing, pre-employment screening, court-ordered drug monitoring, and pain management programs — the integrity of the specimen from collection through result reporting must be provable and unbroken. Understanding how chain of custody works protects employers, healthcare providers, and donors alike.",
@@ -630,7 +636,7 @@ export const articles = [
     date: "August 5, 2025",
     readTime: "5 min read",
     author: { name: "Tiffany Clinton, CPT, RMA", role: "CEO & Founder, 1 Stikk Mobile" },
-    image: "/images/site/mobile-lab.webp",
+    image: "/images/training/training-table.jpg",
     imageAlt: "The 1 Stikk Mobile laboratory van set up for community wellness screenings",
     intro:
       "Preventive healthcare is most effective when it's accessible. Wellness screenings — blood pressure checks, cholesterol panels, blood glucose monitoring, BMI assessments — catch problems early, before they become serious. The challenge is that millions of Americans never receive preventive care because getting to a clinic feels like one more obstacle in an already demanding life. Mobile wellness screenings remove that obstacle entirely.",
@@ -671,7 +677,7 @@ export const articles = [
     date: "January 12, 2026",
     readTime: "7 min read",
     author: { name: "Tiffany Clinton, CPT, RMA", role: "CEO & Founder, 1 Stikk Mobile" },
-    image: "/images/services/drug-test-report.jpg",
+    image: "/images/services/dna-forensic.webp",
     imageAlt: "Mobile DNA paternity testing collection kit with cheek swabs and chain-of-custody documentation",
     intro:
       "Questions about biological relationships deserve answers that are accurate, private, and legally sound. Mobile DNA and paternity testing brings the entire collection process to your home — a trained professional swabs each participant, documents the chain of custody, and ships samples to an accredited laboratory. Whether you need a personal answer or a court-admissible result, understanding how mobile DNA testing works helps you choose the right option the first time.",
@@ -718,7 +724,7 @@ export const articles = [
     date: "January 5, 2026",
     readTime: "8 min read",
     author: { name: "Tiffany Clinton, CPT, RMA", role: "CEO & Founder, 1 Stikk Mobile" },
-    image: "/images/services/drug-test-capsules.jpg",
+    image: "/images/services/buccal-swab.webp",
     imageAlt: "Mobile drug testing collection supplies set up on-site at an employer workplace",
     intro:
       "Every hour an employee spends driving to an off-site collection facility is an hour of lost productivity — and a window where a sample can be tampered with or a no-show derails a hiring decision. On-site employee drug testing flips the model: a certified collector comes to your workplace, tests your team where they already are, and keeps a clean chain of custody from start to finish. Here's how employers build a compliant, cost-effective program.",
@@ -812,7 +818,7 @@ export const articles = [
     date: "December 20, 2025",
     readTime: "6 min read",
     author: { name: "Tiffany Clinton, CPT, RMA", role: "CEO & Founder, 1 Stikk Mobile" },
-    image: "/images/site/van-care.webp",
+    image: "/images/training/training-guidance.jpg",
     imageAlt: "A certified mobile phlebotomist performing a gentle blood draw for a senior patient at home",
     intro:
       "For homebound seniors and patients with limited mobility, a routine blood draw can mean arranging transportation, navigating a waiting room, and risking exposure or a fall — all for a 10-minute procedure. Mobile phlebotomy removes every one of those obstacles. A certified, compassionate professional comes to the home, performs the draw safely, and handles everything else. For families and caregivers, it's often the single biggest relief in a loved one's care routine.",
