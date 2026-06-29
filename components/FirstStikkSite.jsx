@@ -967,7 +967,7 @@ function Footer() {
           <Link href="/terms-and-conditions">Terms of Service</Link>
           <Link href="/cookie-policy">Cookie Policy</Link>
         </div>
-        <p className="footer-copy">© 2026 1 Stikk Mobile Inc. All rights reserved.</p>
+        <p className="footer-copy">This website was created by Stackmodechris &amp; Stackmode Network LLC.</p>
       </div>
     </footer>
   );
