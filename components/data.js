@@ -30,9 +30,10 @@ export const mainPhoneDialHref = "tel:8772178455";
 export const afterHoursPhone = "(318) 512-0170";
 export const afterHoursPhoneHref = "tel:3185120170";
 
-// Training-only contact — (318) 512-0170
-export const trainingPhone = "(318) 512-0170";
-export const trainingPhoneHref = "tel:3185120170";
+// Training-only contact — (877) 217-8455 ext. 205
+export const trainingPhone = "(877) 217-8455";
+export const trainingPhoneExt = "ext. 205";
+export const trainingPhoneHref = "tel:8772178455";
 export const contactEmail = "collection.lab@1stikkmobile.com";
 export const faxLine = "(318) 383-0842";
 export const officeHoursText = "Open 24 Hours · Monday to Sunday";
@@ -45,7 +46,7 @@ export const services = [
     title: "Blood Tests at Home",
     slug: "routine-collections",
     icon: Droplets,
-    image: "/images/services/blood-draw.jpg",
+    image: "/images/services/blood-draw-home.webp",
     imageAlt: "A caring 1 Stikk Mobile professional drawing blood at a patient's home",
     tag: "For patients",
     book: "patient",
@@ -61,7 +62,7 @@ export const services = [
     title: "Wellness Checkups",
     slug: "wellness",
     icon: HeartPulse,
-    image: "/images/training/training-instructor.jpg",
+    image: "/images/services/nurse-blood-draw.webp",
     imageAlt: "A certified wellness professional checking vitals during a mobile visit",
     tag: "For patients",
     book: "patient",
@@ -77,7 +78,7 @@ export const services = [
     title: "Drug Tests",
     slug: "drug-screening",
     icon: ShieldCheck,
-    image: "/images/services/drug-test-capsules.jpg",
+    image: "/images/services/drug-screening-kit.webp",
     imageAlt: "Mobile drug test collection supplies ready for a workplace visit",
     tag: "Patients & employers",
     book: "patient",
@@ -93,8 +94,8 @@ export const services = [
     title: "DNA & Paternity Tests",
     slug: "genetic-testing",
     icon: Dna,
-    image: "svg:genetic",
-    imageAlt: "DNA and paternity testing at home illustration",
+    image: "/images/services/dna-cheek-swab.webp",
+    imageAlt: "DNA cheek swab collection for paternity testing at home",
     tag: "For patients",
     book: "patient",
     summary: "Private DNA and paternity testing collected at your home for accurate results.",
@@ -109,8 +110,8 @@ export const services = [
     title: "Behavioral Health Support",
     slug: "behavioral-health",
     icon: Brain,
-    image: "svg:heart",
-    imageAlt: "Compassionate behavioral health support illustration",
+    image: "/images/services/lab-general.webp",
+    imageAlt: "Compassionate behavioral health support and coordination",
     tag: "For patients",
     book: "call",
     summary: "Caring support and screenings for mental health and recovery needs.",
@@ -439,7 +440,8 @@ export const programData = {
       "1 Stikk Mobile Drug Screen Collector Registration Onboarding"
     ],
     contact: "For assistance with the online training portal, please call 877-217-8455.",
-    cta: { label: "Enrollment / Payment Link", href: "https://square.link/u/placeholder" }
+    cta: { label: "Enroll on Calendly", href: calendlyBookingUrl },
+    paymentLink: { label: "Pay now", href: "https://square.link/u/m51BDCSi" }
   },
   cta: {
     title: "Ready to walk in purpose?",

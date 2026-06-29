@@ -1100,13 +1100,29 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 18px;
-  padding: 28px 24px;
-  border: 2px solid var(--gold);
+  gap: 16px;
+  padding: 24px 20px;
+  border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: var(--gold-soft);
+  background: var(--surface);
   text-align: center;
 }
+
+.training-contact-strip {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  margin: 22px 0 18px;
+  border-radius: var(--radius);
+  background: var(--gold-soft);
+  border: 1px solid oklch(82% 0.13 86 / 0.28);
+  width: fit-content;
+}
+.training-contact-strip > svg { flex-shrink: 0; width: 22px; height: 22px; color: var(--gold-deep); }
+.training-contact-strip span { display: flex; flex-direction: column; gap: 2px; }
+.training-contact-strip strong { font-size: 0.82rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+.training-contact-strip small { font-size: 1.12rem; font-weight: 800; color: var(--ink); }
 .practice-icon-lg { width: 80px !important; height: 80px !important; }
 .practice-icon-lg svg { width: 40px !important; height: 40px !important; }
 .training-detail-info > strong { font-size: 1.26rem; line-height: 1.25; }
@@ -1495,9 +1511,10 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
   color: oklch(100% 0 0 / 0.82);
   font-size: clamp(1rem, 0.5vw + 0.9rem, 1.15rem);
   max-width: 54ch;
-  margin: 0 auto;
+  margin: 0 auto 28px;
   line-height: 1.7;
 }
+.services-index-hero .hero-actions { justify-content: center; }
 
 .services-index-grid {
   display: grid;
@@ -1706,6 +1723,25 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
   font-size: 0.9rem;
   color: oklch(100% 0 0 / 0.7);
   margin: 8px 0 22px;
+}
+.program-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 4px;
+}
+.program-event-copy .program-actions .btn-dark {
+  color: var(--white);
+  background: transparent;
+  border: 2px solid var(--gold);
+}
+.program-event-copy .program-actions .btn-dark:hover {
+  background: var(--gold);
+  color: var(--graphite);
+}
+@media (max-width: 760px) {
+  .program-actions { flex-direction: column; }
+  .program-actions .btn { width: 100%; justify-content: center; }
 }
 
 .program-cta {
