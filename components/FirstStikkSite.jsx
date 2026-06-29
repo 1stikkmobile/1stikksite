@@ -357,10 +357,6 @@ function Header({ mobileOpen, setMobileOpen }) {
         </nav>
 
         <div className="nav-actions">
-          <a className="btn btn-ghost" href={mainPhoneDialHref}>
-            <Phone aria-hidden="true" />
-            Call
-          </a>
           <a className="btn btn-primary" href={mainPhoneDialHref}>
             <Phone aria-hidden="true" />
             Call to Book
@@ -411,9 +407,6 @@ function Header({ mobileOpen, setMobileOpen }) {
           <div className="mobile-cta">
             <a className="btn btn-primary" href={mainPhoneDialHref} onClick={() => setMobileOpen(false)}>
               <Phone aria-hidden="true" /> Call to Book
-            </a>
-            <a className="btn btn-ghost" href={mainPhoneDialHref} onClick={() => setMobileOpen(false)}>
-              <Phone aria-hidden="true" /> Call {mainPhone}
             </a>
           </div>
         </div>
