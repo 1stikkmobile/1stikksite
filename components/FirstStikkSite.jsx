@@ -17,7 +17,6 @@ import {
     MapPin,
     Menu,
     Minus,
-    MonitorPlay,
     Phone,
     Plus,
     Quote,
@@ -49,7 +48,6 @@ import {
     myriadUrl,
     nav,
     officeHoursText,
-    programData,
     serviceMap,
     serviceStates,
     services,
@@ -184,27 +182,173 @@ const trainingSteps = [
   { Icon: BadgeCheck, title: "Get certified", text: "Finish job-ready with a certificate of completion." }
 ];
 
-const certificateImages = [
-  { src: "/images/certificates/certificate-01.jpg", alt: "Phlebotomy training certificate of completion", title: "Phlebotomy" },
-  { src: "/images/certificates/certificate-04.jpg", alt: "Drug screening collector certificate of completion", title: "Drug Screening" },
-  { src: "/images/certificates/certificate-07.jpg", alt: "Medical assistant training certificate of completion", title: "Medical Assistant" }
+const trainingFeatureCards = [
+  {
+    key: "phlebotomy",
+    title: "Phlebotomy",
+    subtitle: "Hands-on venipuncture practice with clear tube order, safe technique, and patient-first care.",
+    points: ["Animated blood-flow linework", "Tube rack and labeled draw zones", "Sized to stay fully visible on every screen"]
+  },
+  {
+    key: "drug-screening",
+    title: "Drug Screening",
+    subtitle: "DOT and non-DOT workflow visuals that highlight sealed cups, chain-of-custody, and compliance steps.",
+    points: ["Animated specimen scan motion", "Collector checklist details", "No certificate image clutter"]
+  },
+  {
+    key: "medical-assistant",
+    title: "Medical Assistant",
+    subtitle: "Supportive clinical foundations for students building confidence in patient intake and specimen readiness.",
+    points: ["Vitals and chart-prep focus", "Built to complement the training lineup", "Clean spacing with no overlap"]
+  }
 ];
+
+const certificationPrograms = [
+  {
+    title: "Alcohol Testing Certification",
+    image: "/images/training/program-alcohol-testing.png",
+    imageAlt: "Alcohol testing device used for collector certification training",
+    description: "Train on alcohol screening workflows, compliance steps, and collector-ready documentation.",
+    points: ["Hands-on alcohol testing overview", "Certificate path with $75 enrollment", "Calendly booking with live support"],
+    accent: "pulse"
+  },
+  {
+    title: "Clinical & Diagnostic Testing",
+    image: "/images/training/program-clinical-testing.png",
+    imageAlt: "Clinical diagnostic blood sample used for healthcare training",
+    description: "Build confidence with specimen handling, clinical basics, and patient-ready diagnostic workflows.",
+    points: ["Clinical collection essentials", "Certificate-backed completion", "Beginner-friendly live scheduling"],
+    accent: "cross"
+  },
+  {
+    title: "DOT Compliance Training",
+    image: "/images/training/program-dot-compliance.png",
+    imageAlt: "DOT compliance urine sample cup used for screening training",
+    description: "Learn DOT paperwork, collection standards, and the compliance details employers expect.",
+    points: ["DOT forms and chain-of-custody", "Program certificate after training", "Schedule directly with the training team"],
+    accent: "shield"
+  }
+];
+
+function ProgramAccent({ type }) {
+  if (type === "cross") {
+    return (
+      <svg className="program-accent program-accent-cross" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+        <circle cx="60" cy="60" r="44" stroke="currentColor" strokeWidth="3" opacity="0.28" />
+        <path d="M60 34v52M34 60h52" stroke="currentColor" strokeWidth="8" strokeLinecap="round" />
+      </svg>
+    );
+  }
+
+  if (type === "shield") {
+    return (
+      <svg className="program-accent program-accent-shield" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+        <path d="M60 20l28 10v24c0 19-12 35-28 46C44 89 32 73 32 54V30l28-10Z" fill="currentColor" opacity="0.12" />
+        <path d="M60 20l28 10v24c0 19-12 35-28 46C44 89 32 73 32 54V30l28-10Z" stroke="currentColor" strokeWidth="4" />
+        <path d="m48 61 9 9 17-21" stroke="currentColor" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg className="program-accent program-accent-pulse" viewBox="0 0 160 90" fill="none" aria-hidden="true">
+      <path d="M12 49h32l10-20 14 38 14-28 11 10h55" stroke="currentColor" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="124" cy="49" r="8" fill="currentColor" />
+    </svg>
+  );
+}
+
+function TrainingFeatureArt({ type, title }) {
+  if (type === "phlebotomy") {
+    return (
+      <svg className="training-feature-svg training-feature-svg-phleb" viewBox="0 0 360 240" fill="none" aria-label={`${title} animated illustration`}>
+        <defs>
+          <linearGradient id="phlebBg" x1="40" y1="28" x2="312" y2="210" gradientUnits="userSpaceOnUse">
+            <stop stopColor="var(--gold-soft)" />
+            <stop offset="1" stopColor="oklch(98% 0.016 95)" />
+          </linearGradient>
+          <linearGradient id="bloodFlow" x1="92" y1="0" x2="214" y2="0" gradientUnits="userSpaceOnUse">
+            <stop stopColor="oklch(62% 0.19 24)" />
+            <stop offset="1" stopColor="oklch(54% 0.17 18)" />
+          </linearGradient>
+        </defs>
+        <rect x="16" y="16" width="328" height="208" rx="28" fill="url(#phlebBg)" />
+        <path className="training-feature-orbit" d="M42 190c42-28 90-44 150-44s93 8 126 26" stroke="var(--gold)" strokeWidth="3" strokeLinecap="round" />
+        <rect x="74" y="116" width="114" height="32" rx="16" fill="oklch(90% 0.03 82)" />
+        <path d="M104 132c10-21 28-37 52-37 16 0 32 8 42 22 6 8 10 18 12 28" stroke="var(--teal-deep)" strokeWidth="6" strokeLinecap="round" />
+        <path className="training-feature-flow" d="M92 132h94" stroke="url(#bloodFlow)" strokeWidth="5" strokeLinecap="round" />
+        <circle cx="198" cy="131" r="7" fill="var(--gold)" />
+        <path d="M205 126l22-12" stroke="var(--ink)" strokeWidth="4" strokeLinecap="round" />
+        <path d="M225 114l33 11-18 11-15-22Z" fill="var(--ink)" />
+        <rect x="228" y="76" width="46" height="92" rx="14" fill="var(--surface)" stroke="var(--line-strong)" />
+        <rect x="236" y="84" width="30" height="14" rx="7" fill="var(--gold-soft)" />
+        <rect x="236" y="108" width="30" height="18" rx="9" fill="oklch(83% 0.16 19)" opacity="0.32" />
+        <rect x="236" y="132" width="30" height="28" rx="10" fill="oklch(61% 0.18 20)" />
+        <circle cx="121" cy="82" r="20" fill="var(--surface)" stroke="var(--line)" />
+        <path d="M114 82h14M121 75v14" stroke="var(--teal-deep)" strokeWidth="4" strokeLinecap="round" />
+      </svg>
+    );
+  }
+
+  if (type === "drug-screening") {
+    return (
+      <svg className="training-feature-svg training-feature-svg-drug" viewBox="0 0 360 240" fill="none" aria-label={`${title} animated illustration`}>
+        <defs>
+          <linearGradient id="drugBg" x1="60" y1="28" x2="318" y2="212" gradientUnits="userSpaceOnUse">
+            <stop stopColor="oklch(97% 0.025 190)" />
+            <stop offset="1" stopColor="oklch(94% 0.03 220)" />
+          </linearGradient>
+        </defs>
+        <rect x="16" y="16" width="328" height="208" rx="28" fill="url(#drugBg)" />
+        <rect x="76" y="74" width="82" height="108" rx="18" fill="var(--surface)" stroke="var(--line-strong)" />
+        <rect x="88" y="62" width="58" height="24" rx="10" fill="var(--gold)" />
+        <rect x="94" y="108" width="46" height="50" rx="12" fill="oklch(94% 0.018 235)" />
+        <path d="M104 122h26" stroke="var(--teal-deep)" strokeWidth="6" strokeLinecap="round" />
+        <path d="M104 138h18" stroke="oklch(70% 0.17 30)" strokeWidth="6" strokeLinecap="round" />
+        <path d="M104 154h30" stroke="var(--gold-deep)" strokeWidth="6" strokeLinecap="round" />
+        <g className="training-feature-scan">
+          <rect x="188" y="74" width="96" height="108" rx="20" fill="var(--surface)" stroke="var(--line-strong)" />
+          <path d="M208 106h56M208 128h42M208 150h50" stroke="var(--ink-2)" strokeWidth="5" strokeLinecap="round" opacity="0.86" />
+          <path d="m208 90 10 10 18-20" stroke="var(--teal-deep)" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
+          <rect className="training-feature-scan-bar" x="196" y="112" width="80" height="18" rx="9" fill="var(--gold)" opacity="0.3" />
+        </g>
+        <path className="training-feature-dots" d="M76 198c24-14 50-21 82-21 33 0 60 5 84 14 24 8 46 12 72 10" stroke="var(--teal)" strokeWidth="4" strokeLinecap="round" strokeDasharray="1 14" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg className="training-feature-svg training-feature-svg-assistant" viewBox="0 0 360 240" fill="none" aria-label={`${title} illustration`}>
+      <rect x="16" y="16" width="328" height="208" rx="28" fill="oklch(97% 0.02 80)" />
+      <circle cx="116" cy="96" r="28" fill="var(--surface)" stroke="var(--line)" />
+      <path d="M104 96h24M116 84v24" stroke="var(--teal-deep)" strokeWidth="5" strokeLinecap="round" />
+      <rect x="166" y="68" width="112" height="118" rx="24" fill="var(--surface)" stroke="var(--line-strong)" />
+      <path d="M194 102h56M194 126h56M194 150h38" stroke="var(--ink-2)" strokeWidth="6" strokeLinecap="round" />
+      <path d="m248 166 12 12 24-28" stroke="var(--gold-deep)" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
+      <path className="training-feature-orbit" d="M58 188c44-22 94-32 152-32 42 0 78 6 102 16" stroke="var(--gold)" strokeWidth="3" strokeLinecap="round" />
+    </svg>
+  );
+}
 
 function CertificateShowcase() {
   return (
     <div className="cert-showcase reveal is-visible">
       <div className="cert-showcase-head">
-        <span className="eyebrow"><span className="dot" aria-hidden="true" /> Earn real credentials</span>
-        <h2>Graduate with certificates that open doors.</h2>
-        <p>Every program includes a professional certificate of completion you can show employers, clinics, and licensing boards.</p>
+        <span className="eyebrow"><span className="dot" aria-hidden="true" /> Explore the training tracks</span>
+        <h2>Custom visuals for the skills you&apos;ll actually practice.</h2>
+        <p>Phlebotomy and drug screening now use custom SVG illustrations instead of certificate mockups, with cleaner spacing so every detail stays visible.</p>
       </div>
       <div className="cert-showcase-grid">
-        {certificateImages.map((cert) => (
-          <div className="cert-card" key={cert.src}>
-            <div className="cert-frame">
-              <Image src={cert.src} alt={cert.alt} fill sizes="(max-width: 760px) 100vw, (max-width: 1080px) 33vw, 320px" />
+        {trainingFeatureCards.map((card) => (
+          <div className="cert-card training-feature-card" key={card.key}>
+            <div className="cert-frame training-feature-frame">
+              <TrainingFeatureArt type={card.key} title={card.title} />
             </div>
-            <strong>{cert.title}</strong>
+            <strong>{card.title}</strong>
+            <p>{card.subtitle}</p>
+            <ul className="training-feature-points">
+              {card.points.map((point) => <li key={point}>{point}</li>)}
+            </ul>
           </div>
         ))}
       </div>
@@ -231,11 +375,6 @@ function TrainingSteps() {
               </span>
               <strong>{s.title}</strong>
               <p>{s.text}</p>
-              {s.title === "Get certified" ? (
-                <div className="step-cert">
-                  <Image src="/images/certificates/certificate-01.jpg" alt="Certificate of completion preview" width={120} height={90} />
-                </div>
-              ) : null}
             </div>
           );
         })}
@@ -827,7 +966,6 @@ function FloatingCta({ isTraining, isBusiness }) {
   if (isTraining) {
     return (
       <>
-        <ConversionToast isTraining={true} />
         <div className="floating-actions" aria-label="Quick training actions right">
           <a className="floating-action floating-book" href={squareTrainingUrl} onClick={trackCheckout}>
             <CreditCard aria-hidden="true" />
@@ -941,101 +1079,80 @@ function ServiceDetail({ service }) {
 /* ----------------------------------------------------------- Program page */
 
 function ProgramPage() {
-  const { hero, youth, adults, drugScreenTraining, cta } = programData;
-
   return (
     <section className="section program-page">
       <FloatingMotifs />
       <div className="container">
         <div className="program-hero reveal is-visible">
-          <span className="eyebrow"><span className="dot" aria-hidden="true" /> Purpose-driven programs</span>
-          <h1>{hero.title}</h1>
-          <p className="hero-lead">{hero.lead}</p>
-          <div className="hero-actions" style={{ justifyContent: "center" }}>
-            <a className="btn btn-primary btn-lg" href={drugScreenTraining.cta.href}><CalendarCheck aria-hidden="true" /> Enroll now</a>
-            <a className="btn btn-outline btn-lg" href={cta.phoneHref}><Phone aria-hidden="true" /> {cta.phone}</a>
+          <span className="eyebrow"><span className="dot" aria-hidden="true" /> Certification programs</span>
+          <h1>Programs built for certification, booking, and fast next steps.</h1>
+          <p className="hero-lead">
+            Choose your program, book on Calendly, pay the $75 certificate enrollment, or call the training team directly at {trainingPhone} {trainingPhoneExt}.
+          </p>
+          <div className="program-hero-actions">
+            <a className="btn btn-primary btn-lg" href={squareTrainingUrl} onClick={trackCheckout}>
+              <Award aria-hidden="true" /> Get Certified
+            </a>
+            <a className="btn btn-dark btn-lg" href={calendlyBookingUrl} onClick={trackSchedule}>
+              <CalendarCheck aria-hidden="true" /> Book on Calendly
+            </a>
+            <a className="btn btn-outline btn-lg" href={trainingPhoneHref}>
+              <Phone aria-hidden="true" /> Call {trainingPhoneExt}
+            </a>
           </div>
+          <a className="training-index-phone program-training-line" href={trainingPhoneHref} aria-label={`Call training team at ${trainingPhone} ${trainingPhoneExt}`}>
+            <Phone aria-hidden="true" />
+            <span>
+              {trainingPhone} {trainingPhoneExt} · <strong>Direct training line</strong>
+              <small>Calendly help, certificate questions, and enrollment support</small>
+            </span>
+          </a>
         </div>
       </div>
 
       <div className="container">
-        <div className="program-split reveal">
-          <div className="program-copy">
-            <span className="eyebrow"><span className="dot" aria-hidden="true" /> Youth program</span>
-            <h2>{youth.title}</h2>
-            <p className="program-subtitle">{youth.subtitle}</p>
-            <p>{youth.description}</p>
-            <p>{youth.body}</p>
-            <ul className="program-list">
-              {youth.focusAreas.map((item) => (
-                <li key={item}><span className="program-check" aria-hidden="true" /> {item}</li>
-              ))}
-            </ul>
-            <a className="btn btn-primary" href={youth.cta.href}><CalendarCheck aria-hidden="true" /> {youth.cta.label}</a>
-          </div>
-          <div className="program-media">
-            <Image src={youth.image} alt={youth.imageAlt} fill sizes="(max-width: 760px) 100vw, (max-width: 1080px) 50vw, 520px" />
-          </div>
-        </div>
-      </div>
-
-      <div className="container">
-        <div className="program-split program-split-flip reveal">
-          <div className="program-copy">
-            <span className="eyebrow"><span className="dot" aria-hidden="true" /> Adult program</span>
-            <h2>{adults.title}</h2>
-            <p className="program-subtitle">{adults.subtitle}</p>
-            <p>{adults.description}</p>
-            <p>{adults.body}</p>
-            <ul className="program-list">
-              {adults.highlights.map((item) => (
-                <li key={item}><span className="program-check" aria-hidden="true" /> {item}</li>
-              ))}
-            </ul>
-            <a className="btn btn-primary" href={adults.cta.href}><CalendarCheck aria-hidden="true" /> {adults.cta.label}</a>
-          </div>
-          <div className="program-media">
-            <Image src={adults.image} alt={adults.imageAlt} fill sizes="(max-width: 760px) 100vw, (max-width: 1080px) 50vw, 520px" />
-          </div>
-        </div>
-      </div>
-
-      <div className="container">
-        <div className="program-event reveal">
-          <div className="program-event-copy">
-            <span className="eyebrow"><span className="dot" aria-hidden="true" /> Live training event</span>
-            <h2>{drugScreenTraining.title}</h2>
-            <p className="program-subtitle">{drugScreenTraining.subtitle}</p>
-            <p>{drugScreenTraining.description}</p>
-            <div className="program-event-meta">
-              <span><CalendarCheck aria-hidden="true" /> {drugScreenTraining.event.date}</span>
-              <span><Clock aria-hidden="true" /> {drugScreenTraining.event.time}</span>
-              <span><MonitorPlay aria-hidden="true" /> {drugScreenTraining.event.type}</span>
-            </div>
-            <ul className="program-list">
-              {drugScreenTraining.includes.map((item) => (
-                <li key={item}><span className="program-check" aria-hidden="true" /> {item}</li>
-              ))}
-            </ul>
-            <p className="program-contact-note">{drugScreenTraining.contact}</p>
-            <div className="program-actions">
-              <a className="btn btn-primary btn-lg" href={drugScreenTraining.cta.href} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> {drugScreenTraining.cta.label}</a>
-              <a className="btn btn-dark btn-lg" href={drugScreenTraining.paymentLink.href}><CreditCard aria-hidden="true" /> {drugScreenTraining.paymentLink.label}</a>
-            </div>
-          </div>
-          <div className="program-event-media">
-            <Image src={drugScreenTraining.image} alt={drugScreenTraining.imageAlt} fill sizes="(max-width: 760px) 100vw, (max-width: 1080px) 50vw, 520px" />
-          </div>
+        <div className="program-cert-grid">
+          {certificationPrograms.map((program) => (
+            <article className="program-cert-card reveal is-visible" key={program.title}>
+              <div className="program-cert-visual">
+                <div className="program-cert-accent">
+                  <ProgramAccent type={program.accent} />
+                </div>
+                <div className="program-cert-image">
+                  <Image src={program.image} alt={program.imageAlt} fill sizes="(max-width: 760px) 100vw, (max-width: 1080px) 50vw, 360px" />
+                </div>
+              </div>
+              <div className="program-cert-body">
+                <span className="program-cert-tag">Certificate pathway</span>
+                <h2>{program.title}</h2>
+                <p>{program.description}</p>
+                <ul className="program-cert-list">
+                  {program.points.map((point) => (
+                    <li key={point}><Check aria-hidden="true" /> {point}</li>
+                  ))}
+                </ul>
+                <div className="program-cert-actions">
+                  <a className="btn btn-primary" href={squareTrainingUrl} onClick={trackCheckout}>
+                    <Award aria-hidden="true" /> Pay $75 Certificate
+                  </a>
+                  <a className="btn btn-outline" href={calendlyBookingUrl} onClick={trackSchedule}>
+                    <CalendarCheck aria-hidden="true" /> Book on Calendly
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
 
       <div className="container">
         <div className="program-cta reveal">
-          <h2>{cta.title}</h2>
-          <p>{cta.lead}</p>
+          <h2>Need help choosing the right certification?</h2>
+          <p>Call the training team at {trainingPhone} {trainingPhoneExt}, book your slot on Calendly, or use the certificate checkout to lock in your $75 enrollment today.</p>
           <div className="hero-actions">
-            <a className="btn btn-primary btn-lg" href={cta.phoneHref}><Phone aria-hidden="true" /> {cta.phone}</a>
-            <a className="btn btn-outline btn-lg" href={drugScreenTraining.cta.href}><CalendarCheck aria-hidden="true" /> Enroll online</a>
+            <a className="btn btn-primary btn-lg" href={trainingPhoneHref}><Phone aria-hidden="true" /> Call {trainingPhone} {trainingPhoneExt}</a>
+            <a className="btn btn-dark btn-lg" href={calendlyBookingUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Schedule Now</a>
+            <a className="btn btn-outline btn-lg" href={squareTrainingUrl} onClick={trackCheckout}><CreditCard aria-hidden="true" /> Pay $75</a>
           </div>
         </div>
       </div>
@@ -1864,6 +1981,7 @@ export default function FirstStikkSite({ slug = [] }) {
   const isProgram = slug[0] === "program" && !slug[1];
   const isArticlesIndex = slug[0] === "articles" && !slug[1];
   const activeArticle = slug[0] === "articles" && slug[1] ? articleMap[slug[1]] : null;
+  const isTrainingLike = isTrainingPage || isProgram;
 
   useEffect(() => {
     document.documentElement.classList.add("js");
@@ -1932,7 +2050,7 @@ export default function FirstStikkSite({ slug = [] }) {
       </main>
       <ImportantNotice />
       <Footer />
-      <FloatingCta isTraining={isTrainingPage} />
+      <FloatingCta isTraining={isTrainingLike} />
     </>
   );
 }

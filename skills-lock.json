@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "skills": {
+    "SVG Logo Designer": {
+      "source": "rknall/claude-skills",
+      "sourceType": "github",
+      "skillPath": "svg-logo-designer/SKILL.md",
+      "computedHash": "c591208a052cc9f7deb77be1183e4627daf54dbf575ea2653f519f29fe3bd4c8"
+    },
+    "ai-slop-cleaner": {
+      "source": "yeachan-heo/oh-my-claudecode",
+      "sourceType": "github",
+      "skillPath": "skills/ai-slop-cleaner/SKILL.md",
+      "computedHash": "d9efd747599d082b368acb863c900b4e247d06114b4e80b82eac3952459ae49c"
+    },
+    "frontend-design-deslop": {
+      "source": "samber/cc-skills",
+      "sourceType": "github",
+      "skillPath": "skills/frontend-design-deslop/SKILL.md",
+      "computedHash": "05c1fdca526ff4efa21d3ee7a7306a0f449aead9e66a28d100f07f6dbcb6ee30"
+    },
+    "stop-slop": {
+      "source": "hardikpandya/stop-slop",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "c6fceb8905653a3732fb4d25ba2e87b220d7624b6829f16ac1d4a2f0c4be392e"
+    },
+    "svg-animation-engineer": {
+      "source": "liuyunlong2021-wq/svg-skills",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "d0c0dd82a5168fcad667cd17232a06e452c85ce567c4e6928acc24202969ed1b"
+    },
+    "svg-animations": {
+      "source": "supermemoryai/skills",
+      "sourceType": "github",
+      "skillPath": "svg-animations/SKILL.md",
+      "computedHash": "9be4b3e0afe9d3cbb1bcf238f8504f9a23552f742350fbef9483070112ac1977"
+    },
+    "svg-art": {
+      "source": "kv0906/cc-skills",
+      "sourceType": "github",
+      "skillPath": "svg-art-skill/SKILL.md",
+      "computedHash": "356a500cf848e1229758271608f3956773cf89afb5bc367fc559b204f4d53640"
+    },
+    "svg-illustration": {
+      "source": "narumiruna/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/svg-illustration/SKILL.md",
+      "computedHash": "898377e029f2ea90096de58f306014bf70641c29639ec66ed1c3869aa28e8503"
+    }
+  }
+}
