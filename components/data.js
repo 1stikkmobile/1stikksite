@@ -206,16 +206,16 @@ export const trainingPrograms = [
     slug: "drug-screening",
     title: "Drug Screening Training",
     icon: ShieldCheck,
-    image: "/images/services/blood-equipment.webp",
-    imageAlt: "Drug screening collection supplies organized for hands-on training",
+    image: "/images/training/drug-screen-mock-collections.png",
+    imageAlt: "1 Stikk Mobile drug screen mock collections training graphic with certification details",
     gallery: [
       { src: "/images/training/training-table.jpg", alt: "Drug test supplies organized for practice" },
       { src: "/images/training/training-instructor.jpg", alt: "Instructor demonstrating collection steps" },
       { src: "/images/training/training-polaroids.jpg", alt: "Snapshots from a drug screening workshop" }
     ],
-    summary: "Learn DOT and workplace drug testing, proper paperwork, and mock testing.",
+    summary: "Learn DOT and workplace drug testing, live mock collections, and the exact support students receive after enrollment.",
     description:
-      "DOT and non-DOT drug screening training for healthcare workers, clinic staff, and HR professionals. Learn proper collection, chain-of-custody paperwork, compliance, and how to run a screening program.",
+      "DOT and non-DOT drug screening training for healthcare workers, clinic staff, and HR professionals. Learn proper collection, chain-of-custody paperwork, compliance, and how to run a screening program with guided mock collections and career-ready support.",
     who: [
       "Healthcare workers adding a high-demand skill",
       "Clinic and urgent care staff",
@@ -227,14 +227,18 @@ export const trainingPrograms = [
       "Non-DOT drug and alcohol testing steps",
       "Chain-of-custody paperwork and required forms",
       "Breath alcohol testing (BAT) procedures",
-      "Compliance and privacy rules"
+      "Compliance, privacy rules, and collector workflow confidence"
     ],
     includes: [
+      "Training portal access emailed to you",
+      "Live mock collections with guided practice",
+      "Q&A with a certified instructor",
+      "Kits mailed to you if needed",
       "Mock collection practice sessions",
       "DOT regulation overview and reference materials",
       "Paperwork and form completion training",
-      "Live Q&A with a certified instructor",
-      "Certificate of completion"
+      "Certificate of completion",
+      "1 Stikk Mobile drug screen collector registration onboarding"
     ],
     duration: "1–2 day intensive · or flexible self-paced option"
   },
@@ -869,4 +873,3 @@ export const articleMap = Object.fromEntries(articles.map((a) => [a.slug, a]));
 export const sectionTargets = {};
 
 export { BadgeCheck, FlaskConical, Microscope, Stethoscope, TestTube2, Users };
-

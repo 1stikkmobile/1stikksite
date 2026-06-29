@@ -203,6 +203,14 @@ const trainingFeatureCards = [
   }
 ];
 
+const trainingOfferItems = [
+  "Portal access emailed to you",
+  "Live Q&A support",
+  "Live mock collections",
+  "Certificate of completion",
+  "1 Stikk Mobile drug screen collector registration onboarding"
+];
+
 const certificationPrograms = [
   {
     title: "Alcohol Testing Certification",
@@ -351,6 +359,44 @@ function CertificateShowcase() {
             </ul>
           </div>
         ))}
+      </div>
+    </div>
+  );
+}
+
+function TrainingOfferSpotlight() {
+  return (
+    <div className="training-offer reveal is-visible">
+      <div className="training-offer-media">
+        <Image
+          src="/images/training/drug-screen-mock-collections.png"
+          alt="1 Stikk Mobile drug screen mock collections training flyer showing what the program includes"
+          fill
+          sizes="(max-width: 760px) 100vw, (max-width: 1080px) 52vw, 640px"
+        />
+      </div>
+      <div className="training-offer-copy">
+        <span className="eyebrow"><span className="dot" aria-hidden="true" /> What students get</span>
+        <h2>Get certified. Get confident. Get hired.</h2>
+        <p>
+          The drug screening training package is built to help students move from interest to action with
+          real instruction, real certification, and real opportunities.
+        </p>
+        <ul className="training-offer-list">
+          {trainingOfferItems.map((item) => (
+            <li key={item}><Check aria-hidden="true" /> {item}</li>
+          ))}
+        </ul>
+        <div className="training-offer-notes">
+          <div className="training-offer-note">
+            <strong>Essential training for a successful career in drug screening.</strong>
+            <span>Students get guided access to the tools, support, and practice needed to build real confidence.</span>
+          </div>
+          <div className="training-offer-note">
+            <strong>Training portal and kits are covered in the onboarding flow.</strong>
+            <span>Portal access is emailed after enrollment, and collection kits can be mailed if needed.</span>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -1190,6 +1236,9 @@ function TrainingPage() {
             </span>
           </a>
         </div>
+      </div>
+      <div className="container">
+        <TrainingOfferSpotlight />
       </div>
       <div className="container">
         <CertificateShowcase />

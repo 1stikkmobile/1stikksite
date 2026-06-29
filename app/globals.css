@@ -1119,6 +1119,89 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
 .training-index-phone svg { width: 20px; height: 20px; color: var(--gold-deep); }
 .training-index-phone small { display: block; font-size: 0.8rem; font-weight: 600; color: var(--muted); margin-top: 2px; }
 
+.training-offer {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  gap: clamp(22px, 4vw, 42px);
+  align-items: center;
+  margin-bottom: clamp(40px, 6vw, 70px);
+  padding: clamp(18px, 3vw, 28px);
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) + 4px);
+  background: linear-gradient(180deg, oklch(99% 0.01 90), oklch(97% 0.014 88));
+  box-shadow: var(--shadow-sm);
+}
+.training-offer-media {
+  position: relative;
+  width: 100%;
+  min-height: 420px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+.training-offer-media img {
+  object-fit: contain;
+  object-position: center;
+  padding: 10px;
+  background: var(--surface);
+}
+.training-offer-copy {
+  display: grid;
+  gap: 18px;
+  align-content: start;
+}
+.training-offer-copy h2 { margin: 0; }
+.training-offer-copy p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.72;
+  font-size: 1rem;
+}
+.training-offer-list {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.training-offer-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: var(--ink-2);
+  font-weight: 700;
+  line-height: 1.45;
+}
+.training-offer-list li svg {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  color: var(--teal-deep);
+}
+.training-offer-notes {
+  display: grid;
+  gap: 14px;
+}
+.training-offer-note {
+  display: grid;
+  gap: 6px;
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+.training-offer-note strong {
+  color: var(--ink);
+  font-size: 0.98rem;
+}
+.training-offer-note span {
+  color: var(--muted);
+  line-height: 1.55;
+  font-size: 0.94rem;
+}
+
 /* ----------------------------------------- Training program detail page */
 
 .training-detail { padding-top: clamp(40px, 5vw, 64px); }
@@ -1585,6 +1668,7 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
   .site-footer { padding-bottom: 100px; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
   .training-detail-hero { grid-template-columns: 1fr; }
+  .training-offer { grid-template-columns: 1fr; }
   .training-detail-media { position: static; }
   .training-detail-info { flex-direction: row; justify-content: space-between; text-align: left; align-items: center; flex-wrap: wrap; gap: 16px 20px; }
   .training-detail-grid { grid-template-columns: 1fr; }
@@ -1607,6 +1691,8 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
   .areas-map { min-height: 200px; }
   .practice-grid, .training-grid, .training-gallery-grid, .contact-cards, .footer-grid { grid-template-columns: 1fr; }
   .training-card { grid-template-rows: 220px auto; }
+  .training-offer { padding: 16px; }
+  .training-offer-media { min-height: 0; aspect-ratio: 3 / 4; }
   .training-hero-stack { grid-template-columns: 1fr; }
   .program-split { grid-template-columns: 1fr; }
   .program-event { grid-template-columns: 1fr; padding: clamp(24px, 4vw, 40px); }
