@@ -1843,6 +1843,26 @@ function ArticleDetailPage({ article }) {
 
 /* -------------------------------------------------------------------- Root */
 
+function ImportantNotice() {
+  return (
+    <section className="section important-notice">
+      <div className="container">
+        <div className="notice-shell reveal is-visible">
+          <div className="notice-img">
+            <Image src="/images/important-notice.png" alt="Important Notice Stamp" width={400} height={250} />
+          </div>
+          <div className="notice-copy">
+            <h2>Important Notice</h2>
+            <p>
+              We offer a full range of mobile laboratory, wellness, and diagnostic services tailored to individuals, healthcare providers, and organizations. Our certified professionals deliver every service with precision, care, and strict confidentiality. <strong>Please note that all services are non-refundable.</strong>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function FirstStikkSite({ slug = [] }) {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -1926,6 +1946,7 @@ export default function FirstStikkSite({ slug = [] }) {
           </>
         )}
       </main>
+      <ImportantNotice />
       <Footer />
       <FloatingCta isTraining={isTrainingPage} />
     </>

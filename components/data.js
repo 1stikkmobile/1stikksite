@@ -326,20 +326,29 @@ export const corePractices = [
 
 export const testimonials = [
   {
-    name: "Darius K.",
-    role: "HR Director",
-    quote: "We use 1 Stikk for all our employee screenings. Their mobile unit is a lifesaver!"
+    name: "Willie Wallace",
+    role: "14 reviews • 2 months ago",
+    quote: "Very Professional!"
   },
   {
-    name: "Ashley M.",
-    role: "Patient",
-    quote:
-      "1 Stikk helped me avoid the hassle of traveling for blood work. They were on time, professional, and I got my results fast!"
+    name: "David Whitehead",
+    role: "2 reviews • 9 months ago",
+    quote: "Fast and reliable"
   },
   {
-    name: "This can be you",
-    role: "Share your experience",
-    quote: "We are waiting for you to leave us a review!!!!"
+    name: "John Jackson",
+    role: "2 months ago",
+    quote: "Excellent service and very professional staff."
+  },
+  {
+    name: "Catrina Jackson",
+    role: "8 reviews • 2 months ago",
+    quote: "Highly recommend this company."
+  },
+  {
+    name: "Dennis Hawkins",
+    role: "1 review • 2 months ago",
+    quote: "Quick, smooth, and dependable service."
   }
 ];
 
