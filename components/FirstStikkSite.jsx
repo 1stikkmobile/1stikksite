@@ -967,7 +967,7 @@ function ProgramPage() {
           <span className="eyebrow"><span className="dot" aria-hidden="true" /> Purpose-driven programs</span>
           <h1>{hero.title}</h1>
           <p className="hero-lead">{hero.lead}</p>
-          <div className="hero-actions">
+          <div className="hero-actions" style={{ justifyContent: "center" }}>
             <a className="btn btn-primary btn-lg" href={drugScreenTraining.cta.href}><CalendarCheck aria-hidden="true" /> Enroll now</a>
             <a className="btn btn-outline btn-lg" href={cta.phoneHref}><Phone aria-hidden="true" /> {cta.phone}</a>
           </div>
