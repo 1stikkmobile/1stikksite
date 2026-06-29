@@ -73,6 +73,12 @@ function trackSchedule() {
   }
 }
 
+function trackCheckout() {
+  if (typeof window !== "undefined" && typeof fbq === "function") {
+    fbq("track", "InitiateCheckout");
+  }
+}
+
 function bookHref(type) {
   if (type === "training") return squareTrainingUrl;
   if (type === "business") return calendlyBookingUrl;
@@ -346,7 +352,7 @@ function Header({ mobileOpen, setMobileOpen }) {
                     <a className="btn btn-dark btn-sm" href={calendlyBookingUrl} onClick={trackSchedule}>
                       <CalendarCheck aria-hidden="true" /> Schedule
                     </a>
-                    <a className="btn btn-primary btn-sm" href={squareTrainingUrl} onClick={trackSchedule}>
+                    <a className="btn btn-primary btn-sm" href={squareTrainingUrl} onClick={trackCheckout}>
                       <CreditCard aria-hidden="true" /> Pay $75
                     </a>
                   </div>
@@ -780,13 +786,15 @@ function Footer() {
 
 /* --------------------------------------------------------- Floating action */
 
-function ConversionToast() {
+function ConversionToast({ isTraining }) {
   const [show, setShow] = useState(false);
   const [toastData, setToastData] = useState(null);
 
   useEffect(() => {
     const locations = ["Texas", "Louisiana", "Florida", "Georgia", "Mississippi", "Arkansas"];
-    const services = ["Phlebotomy Class", "Medical Assistant Training", "Drug Screen Training"];
+    const services = isTraining 
+      ? ["Phlebotomy Training for $75", "Drug Screen Training for $75", "a Consulting Session for $75"]
+      : ["a Wellness Checkup", "a Blood Test", "a Drug Screen", "a DNA Test"];
     
     // First toast after 8s
     const firstTimeout = setTimeout(() => {
@@ -811,18 +819,22 @@ function ConversionToast() {
       clearTimeout(firstTimeout);
       clearInterval(interval);
     };
-  }, []);
+  }, [isTraining]);
 
   if (!show || !toastData) return null;
 
   return (
-    <div className="conversion-toast reveal is-visible">
+    <div className="conversion-toast reveal is-visible" onClick={() => setShow(false)} style={{ cursor: "pointer" }}>
       <div className="toast-icon"><CalendarCheck aria-hidden="true" /></div>
       <div className="toast-content">
         <strong>Someone in {toastData.loc}</strong>
-        <span>just enrolled in a {toastData.svc}</span>
+        <span>just {isTraining ? 'enrolled in' : 'called to book'} {toastData.svc}</span>
       </div>
-      <a href={squareTrainingUrl} className="toast-btn" onClick={trackSchedule}>Enroll now</a>
+      {isTraining ? (
+        <a href={squareTrainingUrl} className="toast-btn" onClick={trackCheckout}>Enroll</a>
+      ) : (
+        <a href={mainPhoneDialHref} className="toast-btn">Call</a>
+      )}
     </div>
   );
 }
@@ -831,12 +843,14 @@ function FloatingCta({ isTraining, isBusiness }) {
   if (isTraining) {
     return (
       <>
-        <ConversionToast />
-        <div className="floating-actions" aria-label="Quick training actions">
-          <a className="floating-action floating-book" href={squareTrainingUrl} onClick={trackSchedule}>
+        <ConversionToast isTraining={true} />
+        <div className="floating-actions" aria-label="Quick training actions right">
+          <a className="floating-action floating-book" href={squareTrainingUrl} onClick={trackCheckout}>
             <CreditCard aria-hidden="true" />
             <span>Pay $75 — Enroll</span>
           </a>
+        </div>
+        <div className="floating-actions-left" aria-label="Quick training actions left">
           <a className="floating-action floating-call" href={calendlyBookingUrl} onClick={trackSchedule}>
             <CalendarCheck aria-hidden="true" />
             <span>Schedule Session</span>
@@ -859,12 +873,15 @@ function FloatingCta({ isTraining, isBusiness }) {
   
   // Patients just call in — no online booking for patient services
   return (
-    <div className="floating-actions" aria-label="Quick call action">
-      <a className="floating-action floating-call" href={mainPhoneDialHref}>
-        <Phone aria-hidden="true" />
-        <span>Call to Book</span>
-      </a>
-    </div>
+    <>
+      <ConversionToast isTraining={false} />
+      <div className="floating-actions" aria-label="Quick call action">
+        <a className="floating-action floating-call" href={mainPhoneDialHref}>
+          <Phone aria-hidden="true" />
+          <span>Call to Book</span>
+        </a>
+      </div>
+    </>
   );
 }
 
@@ -1057,7 +1074,7 @@ function TrainingPage() {
             for your certification. No experience needed.
           </p>
           <div className="hero-actions" style={{ justifyContent: "center", marginBottom: "16px", flexWrap: "wrap", gap: "12px" }}>
-            <a className="btn btn-primary btn-lg" href={squareTrainingUrl} onClick={trackSchedule}>
+            <a className="btn btn-primary btn-lg" href={squareTrainingUrl} onClick={trackCheckout}>
               <CreditCard aria-hidden="true" /> Pay $75 — Enroll Now
             </a>
             <a className="btn btn-dark btn-lg" href={calendlyBookingUrl} onClick={trackSchedule}>
@@ -1130,7 +1147,7 @@ function TrainingProgramDetail({ program }) {
             </div>
 
             <div className="hero-actions" style={{ flexWrap: "wrap", gap: "12px" }}>
-              <a className="btn btn-primary btn-lg" href={squareTrainingUrl} onClick={trackSchedule}>
+              <a className="btn btn-primary btn-lg" href={squareTrainingUrl} onClick={trackCheckout}>
                 <CreditCard aria-hidden="true" /> Pay $75 — Enroll Now
               </a>
               <a className="btn btn-dark btn-lg" href={calendlyBookingUrl} onClick={trackSchedule}>
@@ -1439,7 +1456,7 @@ function DrugScreeningPage() {
               <a href={trainingPhoneHref}>{trainingPhone}</a>.
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px" }}>
-              <a className="btn btn-primary" href={squareTrainingUrl} onClick={trackSchedule}><CreditCard aria-hidden="true" /> Pay $75 — Enroll Now</a>
+              <a className="btn btn-primary" href={squareTrainingUrl} onClick={trackCheckout}><CreditCard aria-hidden="true" /> Pay $75 — Enroll Now</a>
               <a className="btn btn-dark" href={calendlyBookingUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Schedule Session</a>
             </div>
           </div>
