@@ -1306,6 +1306,39 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
 }
 .floating-action:hover, .floating-action:focus-visible { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
 .floating-action svg { width: 19px; height: 19px; }
+
+@media (max-width: 768px) {
+  .floating-actions {
+    flex-direction: row !important;
+    bottom: 24px !important;
+    right: 24px !important;
+    left: auto !important;
+  }
+  .floating-actions-left {
+    flex-direction: row !important;
+    bottom: 24px !important;
+    left: auto !important;
+    right: 90px !important;
+  }
+  .floating-action {
+    min-height: 56px !important;
+    width: 56px !important;
+    height: 56px !important;
+    padding: 0 !important;
+    border-radius: 50% !important;
+    flex: 0 0 auto !important;
+    overflow: hidden !important;
+  }
+  .floating-action span {
+    display: none !important;
+  }
+  .floating-action svg {
+    width: 24px !important;
+    height: 24px !important;
+    margin: 0 !important;
+  }
+}
+
 .floating-call { color: var(--white); background: var(--graphite); }
 .floating-book { color: oklch(22% 0.04 80); background: var(--gold); }
 
@@ -1425,7 +1458,7 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
   opacity: 0.24;
   animation: float 7s ease-in-out infinite;
 }
-.js .floating-motifs .motif-1 { top: 8%; left: 4%; animation-duration: 8s; }
+.js .floating-motifs .motif-1 { top: 0%; left: -2%; animation-duration: 8s; }
 .js .floating-motifs .motif-2 { top: 18%; right: 6%; color: var(--teal); animation-duration: 9s; animation-delay: 1s; }
 .js .floating-motifs .motif-3 { bottom: 20%; left: 8%; color: var(--gold-deep); animation-duration: 10s; animation-delay: 2s; }
 .js .floating-motifs .motif-4 { bottom: 10%; right: 10%; animation-duration: 8.5s; animation-delay: 0.5s; }
@@ -1466,13 +1499,7 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
   .training-hero-media { order: -1; }
   .areas-copy, .faq-intro { position: static; }
   .practice-grid, .training-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .floating-actions {
-    left: 14px;
-    right: 14px;
-    bottom: 14px;
-    flex-direction: row;
-  }
-  .floating-action { flex: 1; padding: 0 12px; }
+  /* removed conflicting floating-actions */
   .site-footer { padding-bottom: 110px; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
   .training-detail-hero { grid-template-columns: 1fr; }
@@ -1512,7 +1539,7 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
 }
 
 @media (max-width: 420px) {
-  .floating-action span { font-size: 0.9rem; }
+  /* .floating-action span { font-size: 0.9rem; } removed to prevent un-hiding */
   .areas-list { grid-template-columns: 1fr; }
 }
 

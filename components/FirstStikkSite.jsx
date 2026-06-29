@@ -788,47 +788,31 @@ function Footer() {
 
 function ConversionToast({ isTraining }) {
   const [show, setShow] = useState(false);
-  const [toastData, setToastData] = useState(null);
 
   useEffect(() => {
-    const locations = ["Texas", "Louisiana", "Florida", "Georgia", "Mississippi", "Arkansas"];
-    const services = isTraining 
-      ? ["Phlebotomy Training for $75", "Drug Screen Training for $75", "a Consulting Session for $75"]
-      : ["a Wellness Checkup", "a Blood Test", "a Drug Screen", "a DNA Test"];
-    
-    // First toast after 8s
-    const firstTimeout = setTimeout(() => {
-      setToastData({ 
-        loc: locations[Math.floor(Math.random() * locations.length)], 
-        svc: services[Math.floor(Math.random() * services.length)] 
-      });
-      setShow(true);
-      setTimeout(() => setShow(false), 5000);
-    }, 8000);
+    // Show after 8s
+    const firstTimeout = setTimeout(() => setShow(true), 8000);
 
+    // Then every 40s
     const interval = setInterval(() => {
-      setToastData({ 
-        loc: locations[Math.floor(Math.random() * locations.length)], 
-        svc: services[Math.floor(Math.random() * services.length)] 
-      });
       setShow(true);
       setTimeout(() => setShow(false), 5000);
-    }, 25000); // every 25 seconds
+    }, 40000);
     
     return () => {
       clearTimeout(firstTimeout);
       clearInterval(interval);
     };
-  }, [isTraining]);
+  }, []);
 
-  if (!show || !toastData) return null;
+  if (!show) return null;
 
   return (
     <div className="conversion-toast reveal is-visible" onClick={() => setShow(false)} style={{ cursor: "pointer" }}>
       <div className="toast-icon"><CalendarCheck aria-hidden="true" /></div>
       <div className="toast-content">
-        <strong>Someone in {toastData.loc}</strong>
-        <span>just {isTraining ? 'enrolled in' : 'called to book'} {toastData.svc}</span>
+        <strong>{isTraining ? 'Training Sessions Available' : 'Mobile Services Available'}</strong>
+        <span>{isTraining ? 'Enroll in our next training session today!' : 'Call to book your mobile service today!'}</span>
       </div>
       {isTraining ? (
         <a href={squareTrainingUrl} className="toast-btn" onClick={trackCheckout}>Enroll</a>
