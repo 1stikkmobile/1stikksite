@@ -177,9 +177,9 @@ function FloatingMotifs() {
 
 const trainingSteps = [
   { Icon: Phone, title: "Reach out", text: `Call ${trainingPhone} ${trainingPhoneExt} or schedule training online — no experience needed.` },
-  { Icon: CalendarCheck, title: "Pick a time", text: "Flexible, self-paced scheduling that fits your life." },
-  { Icon: Users, title: "Train hands-on", text: "Real equipment, real practice, caring mentors." },
-  { Icon: BadgeCheck, title: "Get certified", text: "Finish job-ready with a certificate of completion." }
+  { Icon: CalendarCheck, title: "Get scheduled", text: "Tiffany handles the scheduling, the mock timing, and the virtual observation setup with you." },
+  { Icon: Users, title: "Receive your prep", text: "1 Stikk provides the mock kit, the test materials, and a portal that helps you prepare before observation day." },
+  { Icon: BadgeCheck, title: "Complete 5 mocks", text: "Finish the five required mock collections with live virtual observation so you can practice error-free and move forward confidently." }
 ];
 
 const trainingFeatureCards = [
@@ -205,8 +205,10 @@ const trainingFeatureCards = [
 
 const trainingOfferItems = [
   "Portal access emailed to you",
+  "Scheduling and live virtual observation from 1 Stikk",
   "Live Q&A support",
-  "Live mock collections",
+  "Five required mock collections",
+  "Mock kit and testing materials provided by 1 Stikk",
   "Certificate of completion",
   "1 Stikk Mobile drug screen collector registration onboarding"
 ];
@@ -377,10 +379,11 @@ function TrainingOfferSpotlight() {
       </div>
       <div className="training-offer-copy">
         <span className="eyebrow"><span className="dot" aria-hidden="true" /> What students get</span>
-        <h2>Get certified. Get confident. Get hired.</h2>
+        <h2>Five observed mocks. One clear path to being ready.</h2>
         <p>
-          The drug screening training package is built to help students move from interest to action with
-          real instruction, real certification, and real opportunities.
+          This training is really about the mocks. 1 Stikk sells the mock-collection prep people need:
+          we schedule the sessions, provide the kit and test materials, watch the mocks virtually, and
+          give students a portal and guide so they can complete all five runs with fewer mistakes.
         </p>
         <ul className="training-offer-list">
           {trainingOfferItems.map((item) => (
@@ -389,12 +392,12 @@ function TrainingOfferSpotlight() {
         </ul>
         <div className="training-offer-notes">
           <div className="training-offer-note">
-            <strong>Essential training for a successful career in drug screening.</strong>
-            <span>Students get guided access to the tools, support, and practice needed to build real confidence.</span>
+            <strong>The portal supports the process — it is not the whole product.</strong>
+            <span>The real value is the live mock workflow: 1 Stikk provides the materials, observes the work, and helps students get through the required mocks cleanly.</span>
           </div>
           <div className="training-offer-note">
-            <strong>Training portal and kits are covered in the onboarding flow.</strong>
-            <span>Portal access is emailed after enrollment, and collection kits can be mailed if needed.</span>
+            <strong>1 Stikk provides the mock kit, guide, and scheduling support.</strong>
+            <span>Portal access is emailed after enrollment, kits are provided, and students are walked through mock observations step by step until they are ready.</span>
           </div>
         </div>
       </div>
@@ -1130,14 +1133,14 @@ function ProgramPage() {
       <FloatingMotifs />
       <div className="container">
         <div className="program-hero reveal is-visible">
-          <span className="eyebrow"><span className="dot" aria-hidden="true" /> Certification programs</span>
-          <h1>Programs built for certification, booking, and fast next steps.</h1>
+          <span className="eyebrow"><span className="dot" aria-hidden="true" /> Training programs</span>
+          <h1>Programs built for hands-on prep, booking, and fast next steps.</h1>
           <p className="hero-lead">
-            Choose your program, book on Calendly, pay the $75 certificate enrollment, or call the training team directly at {trainingPhone} {trainingPhoneExt}.
+            Choose your program, book on Calendly, pay the $75 enrollment, or call the training team directly at {trainingPhone} {trainingPhoneExt}. For drug-screen collector training, we help students get through the mock process with portal access, kit support, scheduling, and live observation.
           </p>
           <div className="program-hero-actions">
             <a className="btn btn-primary btn-lg" href={squareTrainingUrl} onClick={trackCheckout}>
-              <Award aria-hidden="true" /> Get Certified
+              <Award aria-hidden="true" /> Start Training
             </a>
             <a className="btn btn-dark btn-lg" href={calendlyBookingUrl} onClick={trackSchedule}>
               <CalendarCheck aria-hidden="true" /> Book on Calendly
@@ -1150,7 +1153,7 @@ function ProgramPage() {
             <Phone aria-hidden="true" />
             <span>
               {trainingPhone} {trainingPhoneExt} · <strong>Direct training line</strong>
-              <small>Calendly help, certificate questions, and enrollment support</small>
+              <small>Calendly help, mock questions, and enrollment support</small>
             </span>
           </a>
         </div>
@@ -1169,7 +1172,7 @@ function ProgramPage() {
                 </div>
               </div>
               <div className="program-cert-body">
-                <span className="program-cert-tag">Certificate pathway</span>
+                <span className="program-cert-tag">Training support</span>
                 <h2>{program.title}</h2>
                 <p>{program.description}</p>
                 <ul className="program-cert-list">
@@ -1179,7 +1182,7 @@ function ProgramPage() {
                 </ul>
                 <div className="program-cert-actions">
                   <a className="btn btn-primary" href={squareTrainingUrl} onClick={trackCheckout}>
-                    <Award aria-hidden="true" /> Pay $75 Certificate
+                    <Award aria-hidden="true" /> Pay $75 Enrollment
                   </a>
                   <a className="btn btn-outline" href={calendlyBookingUrl} onClick={trackSchedule}>
                     <CalendarCheck aria-hidden="true" /> Book on Calendly
@@ -1193,8 +1196,8 @@ function ProgramPage() {
 
       <div className="container">
         <div className="program-cta reveal">
-          <h2>Need help choosing the right certification?</h2>
-          <p>Call the training team at {trainingPhone} {trainingPhoneExt}, book your slot on Calendly, or use the certificate checkout to lock in your $75 enrollment today.</p>
+          <h2>Need help choosing the right training path?</h2>
+          <p>Call the training team at {trainingPhone} {trainingPhoneExt}, book your slot on Calendly, or use the $75 enrollment link today. If you need mock-collection help, we&apos;ll walk you through the portal, kit, and observation steps.</p>
           <div className="hero-actions">
             <a className="btn btn-primary btn-lg" href={trainingPhoneHref}><Phone aria-hidden="true" /> Call {trainingPhone} {trainingPhoneExt}</a>
             <a className="btn btn-dark btn-lg" href={calendlyBookingUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Schedule Now</a>
@@ -1215,10 +1218,11 @@ function TrainingPage() {
       <div className="container">
         <div className="program-hero reveal is-visible">
           <span className="eyebrow"><span className="dot" aria-hidden="true" /> Training &amp; programs</span>
-          <h1>Start a career in mobile healthcare.</h1>
+          <h1>Get your five mock collections done the right way.</h1>
           <p className="hero-lead" style={{ margin: "0 auto 20px", maxWidth: "60ch" }}>
-            Learn hands-on skills from caring instructors, study on a flexible schedule, and get ready
-            for your certification. No experience needed.
+            For drug-screen collector training, the big need is mock completion. 1 Stikk provides the
+            portal, the guide, the kit, the scheduling, and the live virtual observation so students can
+            prepare for all five required mocks and complete them with confidence.
           </p>
           <div className="hero-actions" style={{ justifyContent: "center", marginBottom: "16px", flexWrap: "wrap", gap: "12px" }}>
             <a className="btn btn-primary btn-lg" href={squareTrainingUrl} onClick={trackCheckout}>
@@ -1232,7 +1236,7 @@ function TrainingPage() {
             <Phone aria-hidden="true" />
             <span>
               {trainingPhone} {trainingPhoneExt} · <strong>Training team direct line</strong>
-              <small>Call or text anytime</small>
+              <small>Call for mock scheduling, portal help, kit questions, and live observation support</small>
             </span>
           </a>
         </div>
@@ -1592,17 +1596,20 @@ function DrugScreeningPage() {
             <span className="eyebrow"><span className="dot" aria-hidden="true" /> Training</span>
             <h2>Drug Screen &amp; Mock Collections</h2>
             <p>
-              Essential training for a successful career in drug screening — join us to gain the
-              hands-on experience you need to excel in the field.
+              This offer is built around the mocks. If you need help getting through the required
+              mock collections, 1 Stikk gives you the portal, guide, kit, scheduling, and live
+              virtual observation support to help you complete them cleanly and move forward.
             </p>
             <ul className="ds-list">
+              <li><Check aria-hidden="true" /> Five mock collections with live virtual observation</li>
+              <li><Check aria-hidden="true" /> 1 Stikk-provided mock kit, test materials, and prep guide</li>
+              <li><Check aria-hidden="true" /> Portal access that helps you prepare before the mocks</li>
               <li><Check aria-hidden="true" /> Live Q &amp; A with certified instructors</li>
-              <li><Check aria-hidden="true" /> Live mock collections practice</li>
               <li><Check aria-hidden="true" /> Certificate of Completion</li>
               <li><Check aria-hidden="true" /> Drug Screen Collector Registration &amp; Onboarding</li>
             </ul>
             <p className="ds-contact-note">
-              For assistance with the online training portal, call{" "}
+              For mock scheduling, portal assistance, or kit questions, call{" "}
               <a href={trainingPhoneHref}>{trainingPhone}</a>.
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px" }}>
@@ -1613,8 +1620,8 @@ function DrugScreeningPage() {
           <div className="ds-split-media reveal">
             <div className="ds-img-frame">
               <Image
-                src="/images/services/blood-draw.jpg"
-                alt="1 Stikk Mobile practitioner performing a blood draw"
+                src="/images/training/drug-screen-mock-collections.png"
+                alt="1 Stikk Mobile drug screen mock collections training flyer"
                 fill
                 sizes="(max-width:900px) 90vw, 44vw"
               />

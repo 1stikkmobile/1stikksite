@@ -213,9 +213,9 @@ export const trainingPrograms = [
       { src: "/images/training/training-instructor.jpg", alt: "Instructor demonstrating collection steps" },
       { src: "/images/training/training-polaroids.jpg", alt: "Snapshots from a drug screening workshop" }
     ],
-    summary: "Learn DOT and workplace drug testing, live mock collections, and the exact support students receive after enrollment.",
+    summary: "Complete the five required mock collections with 1 Stikk's kit, portal, live observation, and scheduling support.",
     description:
-      "DOT and non-DOT drug screening training for healthcare workers, clinic staff, and HR professionals. Learn proper collection, chain-of-custody paperwork, compliance, and how to run a screening program with guided mock collections and career-ready support.",
+      "DOT and non-DOT drug screening training for healthcare workers, clinic staff, and HR professionals who need real mock-collection support. 1 Stikk provides the portal, guide, kit, scheduling, and live virtual observation so students can prepare for and complete five required mocks with fewer errors.",
     who: [
       "Healthcare workers adding a high-demand skill",
       "Clinic and urgent care staff",
@@ -227,13 +227,15 @@ export const trainingPrograms = [
       "Non-DOT drug and alcohol testing steps",
       "Chain-of-custody paperwork and required forms",
       "Breath alcohol testing (BAT) procedures",
-      "Compliance, privacy rules, and collector workflow confidence"
+      "Compliance, privacy rules, and how to perform cleaner, error-free mock workflows"
     ],
     includes: [
       "Training portal access emailed to you",
-      "Live mock collections with guided practice",
+      "Five live mock collections with guided virtual observation",
+      "1 Stikk-provided mock kit and test materials",
+      "Error-reduction guide for mock preparation",
+      "Scheduling support directly through 1 Stikk",
       "Q&A with a certified instructor",
-      "Kits mailed to you if needed",
       "Mock collection practice sessions",
       "DOT regulation overview and reference materials",
       "Paperwork and form completion training",
@@ -442,23 +444,25 @@ export const programData = {
   },
   drugScreenTraining: {
     title: "Mock Collections — Drug Screen Training",
-    subtitle: "Essential Training for a Successful Career in Drug Screening",
-    image: "/images/services/lab-tubes.webp",
-    imageAlt: "Drug screening collection supplies ready for hands-on training",
+    subtitle: "Five Required Mocks, Live Observation, and Portal Support",
+    image: "/images/training/drug-screen-mock-collections.png",
+    imageAlt: "1 Stikk Mobile drug screen mock collections flyer",
     description:
-      "Join us to gain the training you need to excel in the field of drug screening. This live Zoom event covers everything from mock collections to completion certificates.",
+      "This training is centered on the mocks. 1 Stikk provides the portal, prep guide, kit, scheduling, and live virtual observation students need to complete five required mock collections with confidence.",
     event: {
       type: "Live Zoom Event",
       date: "Saturday, January 24, 2026",
       time: "2:00 PM — 5:00 PM"
     },
     includes: [
-      "Live Mock Collections",
+      "Five live observed mock collections",
+      "1 Stikk-provided mock kit and test materials",
+      "Portal access and prep guide",
       "Q&A with certified instructors",
       "Certificate of Completion",
       "1 Stikk Mobile Drug Screen Collector Registration Onboarding"
     ],
-    contact: "For assistance with the online training portal, please call 877-217-8455.",
+    contact: "For mock scheduling, portal help, or kit questions, please call 877-217-8455.",
     cta: { label: "Schedule on Calendly", href: calendlyBookingUrl },
     paymentLink: { label: "Pay $75 — Enroll Now", href: squareTrainingUrl }
   },
