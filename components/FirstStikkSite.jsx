@@ -177,9 +177,9 @@ function FloatingMotifs() {
 
 const trainingSteps = [
   { Icon: Phone, title: "Reach out", text: `Call ${trainingPhone} ${trainingPhoneExt} or schedule training online — no experience needed.` },
-  { Icon: CalendarCheck, title: "Get scheduled", text: "Tiffany handles the scheduling, the mock timing, and the virtual observation setup with you." },
-  { Icon: Users, title: "Receive your prep", text: "1 Stikk provides the mock kit, the test materials, and a portal that helps you prepare before observation day." },
-  { Icon: BadgeCheck, title: "Complete 5 mocks", text: "Finish the five required mock collections with live virtual observation so you can practice error-free and move forward confidently." }
+  { Icon: CalendarCheck, title: "Buy the $75 mock", text: "After purchase, 1 Stikk gets you into the training portal and starts your mock-prep process." },
+  { Icon: Users, title: "Get your portal and kit", text: "You go through the training portal, and 1 Stikk ships the actual mock kit and materials you need." },
+  { Icon: BadgeCheck, title: "Be observed virtually", text: "After training, 1 Stikk watches your mock collections virtually so you can pass the required mocks with stronger accuracy and confidence." }
 ];
 
 const trainingFeatureCards = [
@@ -382,10 +382,9 @@ function TrainingOfferSpotlight() {
         <span className="eyebrow"><span className="dot" aria-hidden="true" /> What students get</span>
         <h2>Five observed mocks. One clear path to being ready.</h2>
         <p>
-          This training is really about the mocks. 1 Stikk sells the mock-collection prep people need:
-          we schedule the sessions, provide the kit and test materials, watch the mocks virtually, and
-          give students a portal, handbook, and guide so they can complete all five runs with fewer mistakes
-          and build stronger compliance habits.
+          This $75 offer is a virtual mock package. After students buy, they go through the training
+          portal, 1 Stikk ships the actual mock kit, and then 1 Stikk watches the mock collections
+          virtually so students can work through the required runs with better accuracy and confidence.
         </p>
         <ul className="training-offer-list">
           {trainingOfferItems.map((item) => (
@@ -394,12 +393,12 @@ function TrainingOfferSpotlight() {
         </ul>
         <div className="training-offer-notes">
           <div className="training-offer-note">
-            <strong>The portal supports the process — it is not the whole product.</strong>
-            <span>The real value is the live mock workflow: 1 Stikk provides the materials, observes the work virtually, and helps students get through the required mocks cleanly.</span>
+            <strong>The portal is the training step before the virtual mock observation.</strong>
+            <span>Students first go through the portal, then 1 Stikk watches the mocks virtually and helps them move through the required process more cleanly.</span>
           </div>
           <div className="training-offer-note">
-            <strong>1 Stikk provides the mock kit, employee handbook, binder setup help, and scheduling support.</strong>
-            <span>Portal access is emailed after enrollment, the handbook helps students understand the workflow, and binder setup guidance helps them stay more organized and more prepared for virtual mock observations.</span>
+            <strong>1 Stikk provides the actual mock kit, handbook, binder setup help, and scheduling support.</strong>
+            <span>After purchase, portal access is sent out, the kit is shipped, and students are prepared for virtual mock observations with the materials they actually need.</span>
           </div>
         </div>
       </div>
@@ -1222,10 +1221,9 @@ function TrainingPage() {
           <span className="eyebrow"><span className="dot" aria-hidden="true" /> Training &amp; programs</span>
           <h1>Get your five mock collections done the right way.</h1>
           <p className="hero-lead" style={{ margin: "0 auto 20px", maxWidth: "60ch" }}>
-            For drug-screen collector training, the big need is mock completion. 1 Stikk provides the
-            portal, the guide, the employee handbook, the kit, the scheduling, and the live virtual
-            observation so students can prepare for all five required mocks, organize their binder, and
-            complete the process with more confidence.
+            This is a virtual mock package for people who need help getting through the required mocks.
+            After the $75 purchase, students go through the training portal, receive the actual mock kit,
+            and are then watched virtually by 1 Stikk during the mock process.
           </p>
           <div className="hero-actions" style={{ justifyContent: "center", marginBottom: "16px", flexWrap: "wrap", gap: "12px" }}>
             <a className="btn btn-primary btn-lg" href={squareTrainingUrl} onClick={trackCheckout}>
@@ -1239,7 +1237,7 @@ function TrainingPage() {
             <Phone aria-hidden="true" />
             <span>
               {trainingPhone} {trainingPhoneExt} · <strong>Training team direct line</strong>
-              <small>Call for mock scheduling, portal help, handbook questions, binder setup, kit questions, and live observation support</small>
+              <small>Call for portal access, shipped kit questions, mock scheduling, and virtual observation support</small>
             </span>
           </a>
         </div>
@@ -1599,22 +1597,22 @@ function DrugScreeningPage() {
             <span className="eyebrow"><span className="dot" aria-hidden="true" /> Training</span>
             <h2>Drug Screen &amp; Mock Collections</h2>
             <p>
-              This offer is built around the mocks. If you need help getting through the required
-              mock collections, 1 Stikk gives you the portal, guide, employee handbook, binder setup
-              help, kit, scheduling, and live virtual observation support to help you complete them
-              cleanly and move forward with better compliance preparation.
+              This is a virtual mock service. After the $75 purchase and training-portal step, 1 Stikk
+              ships the mock kit and then watches the mock collections virtually so students can get
+              through the required process with stronger preparation.
             </p>
             <ul className="ds-list">
+              <li><Check aria-hidden="true" /> Training portal access after purchase</li>
+              <li><Check aria-hidden="true" /> Actual mock kit shipped to you by 1 Stikk</li>
               <li><Check aria-hidden="true" /> Five mock collections with live virtual observation</li>
-              <li><Check aria-hidden="true" /> 1 Stikk-provided mock kit, test materials, and prep guide</li>
               <li><Check aria-hidden="true" /> Employee handbook and binder setup support</li>
-              <li><Check aria-hidden="true" /> Portal access that helps you prepare before the mocks</li>
+              <li><Check aria-hidden="true" /> Prep guide and mock workflow support</li>
               <li><Check aria-hidden="true" /> Live Q &amp; A with certified instructors</li>
               <li><Check aria-hidden="true" /> Certificate of Completion</li>
               <li><Check aria-hidden="true" /> Drug Screen Collector Registration &amp; Onboarding</li>
             </ul>
             <p className="ds-contact-note">
-              For mock scheduling, portal assistance, handbook help, binder setup questions, or kit questions, call{" "}
+              For portal access, shipped kit questions, mock scheduling, or virtual observation support, call{" "}
               <a href={trainingPhoneHref}>{trainingPhone}</a>.
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px" }}>

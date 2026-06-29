@@ -213,9 +213,9 @@ export const trainingPrograms = [
       { src: "/images/training/training-instructor.jpg", alt: "Instructor demonstrating collection steps" },
       { src: "/images/training/training-polaroids.jpg", alt: "Snapshots from a drug screening workshop" }
     ],
-    summary: "Complete the five required mock collections with 1 Stikk's kit, portal, live observation, and scheduling support.",
+    summary: "Buy the $75 mock package, go through the portal, get the kit shipped, and be watched virtually by 1 Stikk during your mocks.",
     description:
-      "DOT and non-DOT drug screening training for healthcare workers, clinic staff, and HR professionals who need real mock-collection support. 1 Stikk provides the portal, guide, employee handbook, binder setup support, kit, scheduling, and live virtual observation so students can prepare for and complete five required mocks with fewer errors.",
+      "DOT and non-DOT drug screening training for healthcare workers, clinic staff, and HR professionals who need real mock-collection support. After the $75 purchase, students go through the training portal, receive the actual mock kit shipped by 1 Stikk, and are then watched virtually by 1 Stikk during the mock-collection process.",
     who: [
       "Healthcare workers adding a high-demand skill",
       "Clinic and urgent care staff",
@@ -230,9 +230,9 @@ export const trainingPrograms = [
       "Compliance, privacy rules, and how to perform cleaner, error-free mock workflows"
     ],
     includes: [
-      "Training portal access emailed to you",
+      "Training portal access after purchase",
+      "Actual mock kit and test materials shipped by 1 Stikk",
       "Five live mock collections with guided virtual observation",
-      "1 Stikk-provided mock kit and test materials",
       "Employee handbook and binder setup guidance",
       "Error-reduction guide for mock preparation",
       "Scheduling support directly through 1 Stikk",
@@ -445,19 +445,20 @@ export const programData = {
   },
   drugScreenTraining: {
     title: "Mock Collections — Drug Screen Training",
-    subtitle: "Five Required Mocks, Virtual Observation, and Real Prep Support",
+    subtitle: "Virtual Mock Observation, Training Portal, and Shipped Kit Support",
     image: "/images/training/drug-screen-mock-collections.png",
     imageAlt: "1 Stikk Mobile drug screen mock collections flyer with training support details",
     description:
-      "This training is centered on the mocks. 1 Stikk provides the portal, prep guide, employee handbook, binder setup support, kit, scheduling, and live virtual observation students need to complete five required mock collections with confidence.",
+      "This training is centered on the mocks. After the $75 purchase, students go through the portal, receive the actual mock kit shipped by 1 Stikk, and are then watched virtually by 1 Stikk during the mock process.",
     event: {
       type: "Live Zoom Event",
       date: "Saturday, January 24, 2026",
       time: "2:00 PM — 5:00 PM"
     },
     includes: [
+      "Training portal access after purchase",
+      "Actual mock kit and test materials shipped by 1 Stikk",
       "Five live observed mock collections",
-      "1 Stikk-provided mock kit and test materials",
       "Employee handbook and binder setup support",
       "Portal access and prep guide",
       "Q&A with certified instructors",
