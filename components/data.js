@@ -204,7 +204,7 @@ export const trainingPrograms = [
   },
   {
     slug: "drug-screening",
-    title: "Drug Screening Training",
+    title: "Drug Screen Training and Mock Collections",
     icon: ShieldCheck,
     image: "/images/training/drug-screen-mock-collections.png",
     imageAlt: "1 Stikk Mobile drug screen mock collections training graphic with portal, kit, and observation details",
@@ -213,9 +213,9 @@ export const trainingPrograms = [
       { src: "/images/training/training-instructor.jpg", alt: "Instructor demonstrating collection steps" },
       { src: "/images/training/training-polaroids.jpg", alt: "Snapshots from a drug screening workshop" }
     ],
-    summary: "Buy the $75 mock package, go through the portal, get the kit shipped, and be watched virtually by 1 Stikk during your mocks.",
+    summary: "Buy the $75 mock package, access the portal, get the kit shipped, and complete your mocks with live virtual monitoring from 1 Stikk.",
     description:
-      "DOT and non-DOT drug screening training for healthcare workers, clinic staff, and HR professionals who need real mock-collection support. After the $75 purchase, students go through the training portal, receive the actual mock kit shipped by 1 Stikk, and are then watched virtually by 1 Stikk during the mock-collection process.",
+      "DOT and non-DOT drug screen training and mock-collection support for healthcare workers, clinic staff, and HR professionals. After the $75 purchase, students access the training portal, receive the actual mock kit shipped by 1 Stikk, and complete the mock while being virtually monitored by 1 Stikk throughout the process.",
     who: [
       "Healthcare workers adding a high-demand skill",
       "Clinic and urgent care staff",
@@ -232,7 +232,7 @@ export const trainingPrograms = [
     includes: [
       "Training portal access after purchase",
       "Actual mock kit and test materials shipped by 1 Stikk",
-      "Five live mock collections with guided virtual observation",
+      "Five live mock collections with guided virtual monitoring",
       "Employee handbook and binder setup guidance",
       "Error-reduction guide for mock preparation",
       "Scheduling support directly through 1 Stikk",

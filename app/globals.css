@@ -1141,6 +1141,35 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
 .training-index-phone svg { width: 20px; height: 20px; color: var(--gold-deep); }
 .training-index-phone small { display: block; font-size: 0.8rem; font-weight: 600; color: var(--muted); margin-top: 2px; }
 
+.training-hero-points {
+  display: grid;
+  gap: 10px;
+  width: min(100%, 660px);
+  margin: 0 auto 22px;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+.training-hero-points li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: oklch(99% 0.008 92 / 0.96);
+  color: var(--ink);
+  font-weight: 700;
+  line-height: 1.45;
+}
+.training-hero-points li svg {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  color: var(--teal-deep);
+}
+
 .training-offer {
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
@@ -1180,6 +1209,23 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
   line-height: 1.72;
   font-size: 1rem;
 }
+.training-offer-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.training-offer-badges span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--ink-2);
+  font-size: 0.86rem;
+  font-weight: 800;
+}
 .training-offer-list {
   display: grid;
   gap: 12px;
@@ -1201,6 +1247,15 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
   height: 18px;
   margin-top: 2px;
   color: var(--teal-deep);
+}
+.training-offer-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.training-offer-actions .btn {
+  flex: 1 1 220px;
+  justify-content: center;
 }
 .training-offer-notes {
   display: grid;
@@ -1715,6 +1770,13 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
   .training-card { grid-template-rows: 220px auto; }
   .training-offer { padding: 16px; }
   .training-offer-media { min-height: 0; aspect-ratio: 3 / 4; }
+  .training-hero-points { width: 100%; }
+  .training-hero-points li { padding: 12px; }
+  .training-offer-badges { gap: 8px; }
+  .training-offer-badges span { min-height: 34px; padding: 7px 12px; }
+  .training-offer-actions { flex-direction: column; }
+  .training-offer-actions .btn,
+  .program-hero .hero-actions .btn { width: 100%; }
   .training-hero-stack { grid-template-columns: 1fr; }
   .program-split { grid-template-columns: 1fr; }
   .program-event { grid-template-columns: 1fr; padding: clamp(24px, 4vw, 40px); }
