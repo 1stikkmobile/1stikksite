@@ -481,10 +481,6 @@ function Header({ mobileOpen, setMobileOpen }) {
     <header className="site-header">
       <div className="utility-bar">
         <div className="container utility-inner">
-          <a className="utility-phone" href={mainPhoneDialHref}>
-            <Phone aria-hidden="true" />
-            <span>Call anytime · {mainPhone}</span>
-          </a>
           <span className="utility-note">
             <Sparkles aria-hidden="true" />
             Mobile scheduling open · nationwide service
@@ -667,10 +663,6 @@ function Hero() {
           </div>
           <div className="hero-photo hero-photo-sub">
             <Image src="/images/site/mobile-lab.webp" alt="The 1 Stikk Mobile laboratory van set up for sample collection" fill sizes="(max-width: 900px) 90vw, 28vw" />
-          </div>
-          <div className="hero-badge">
-            <strong>(877) 217-8455</strong>
-            <span>Call to schedule anytime</span>
           </div>
         </div>
       </div>
@@ -917,12 +909,11 @@ function ContactCta() {
         </p>
         <div className="contact-actions">
           <a className="btn btn-primary btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> Call to Book</a>
-          <a className="btn btn-outline btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> {mainPhone}</a>
         </div>
         <div className="contact-cards">
           <a className="contact-card" href={mainPhoneDialHref}>
             <Phone aria-hidden="true" />
-            <span><strong>{mainPhone}</strong><small>Call anytime · after hours {afterHoursPhone}</small></span>
+            <span><strong>{mainPhone}</strong><small>Main service line · after hours {afterHoursPhone}</small></span>
           </a>
           <a className="contact-card" href={`mailto:${contactEmail}`}>
             <Mail aria-hidden="true" />
@@ -1033,31 +1024,7 @@ function ConversionToast({ isTraining }) {
 }
 
 function FloatingCta({ isTraining, isBusiness }) {
-  if (isTraining) return null;
-  
-  if (isBusiness) {
-    return (
-      <div className="floating-actions" aria-label="Quick business actions">
-        <a className="floating-action floating-book" href={calendlyBookingUrl} onClick={trackSchedule}>
-          <CalendarCheck aria-hidden="true" />
-          <span>Book Consultation</span>
-        </a>
-      </div>
-    );
-  }
-  
-  // Patients just call in — no online booking for patient services
-  return (
-    <>
-      <ConversionToast isTraining={false} />
-      <div className="floating-actions" aria-label="Quick call action">
-        <a className="floating-action floating-call" href={mainPhoneDialHref}>
-          <Phone aria-hidden="true" />
-          <span>Call to Book</span>
-        </a>
-      </div>
-    </>
-  );
+  return null;
 }
 
 /* ---------------------------------------------------------- Service detail */
@@ -1069,7 +1036,7 @@ function ServiceDetail({ service }) {
     service.book === "training"
       ? { href: myriadUrl, label: "Book Training" }
       : service.book === "call"
-      ? { href: mainPhoneDialHref, label: `Call ${mainPhone}` }
+      ? { href: mainPhoneDialHref, label: "Call to Book" }
       : service.book === "contact"
       ? { href: "/contact", label: "Contact our team" }
       : { href: mainPhoneDialHref, label: "Call to Book" };
@@ -1251,11 +1218,6 @@ function ProgramPage() {
             <div className="program-collage-sub">
               <Image src="/images/services/lab-researchers.webp" alt="Laboratory team working together on specimens" fill sizes="(max-width: 760px) 72vw, 340px" />
             </div>
-            <a className="program-call-card" href={mainPhoneDialHref}>
-              <Phone aria-hidden="true" />
-              <span>Call anytime</span>
-              <strong>{mainPhone}</strong>
-            </a>
           </div>
         </div>
       </section>
@@ -1325,7 +1287,7 @@ function ProgramPage() {
             <h2>Start with purpose. Move with support.</h2>
             <p>Moving With a Purpose supports youth building careers and generational wealth. Hustle With a Purpose supports adults ready for a second chance and a stronger path forward.</p>
             <div className="hero-actions" style={{ justifyContent: "center" }}>
-              <a className="btn btn-primary btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> Call Anytime</a>
+              <a className="btn btn-primary btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> Call to Book</a>
               <Link className="btn btn-dark btn-lg" href="/contact"><ArrowRight aria-hidden="true" /> Partner With Us</Link>
             </div>
           </div>
@@ -1565,7 +1527,6 @@ function AboutPage() {
           </p>
           <div className="hero-actions">
             <a className="btn btn-primary btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> Call to Book</a>
-            <a className="btn btn-outline btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> {mainPhone}</a>
           </div>
         </div>
       </section>
@@ -1589,7 +1550,6 @@ function ServicesIndexPage() {
           <p>Blood tests, drug tests, wellness checks, and more — all done at your home or workplace.</p>
           <div className="hero-actions">
             <a className="btn btn-primary btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> Call to Book</a>
-            <a className="btn btn-outline btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> {mainPhone}</a>
           </div>
         </div>
       </section>
@@ -1635,7 +1595,6 @@ function DrugScreeningPage() {
             </p>
             <div className="hero-actions">
               <a className="btn btn-primary btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> Call to Book</a>
-              <a className="btn btn-outline btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> {mainPhone}</a>
             </div>
           </div>
           <div className="ds-hero-media reveal is-visible">
@@ -1789,7 +1748,6 @@ function DrugScreeningPage() {
           </div>
           <div className="section-foot reveal">
             <a className="btn btn-primary btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> Call to Book</a>
-            <a className="btn btn-outline btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> {mainPhone}</a>
           </div>
         </div>
       </section>
@@ -1814,7 +1772,6 @@ function NonProfitPage() {
           </p>
           <div className="hero-actions">
             <a className="btn btn-primary btn-lg" href="/contact"><HeartHandshake aria-hidden="true" /> Partner With Us</a>
-            <a className="btn btn-outline btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> {mainPhone}</a>
           </div>
         </div>
       </section>
@@ -1830,7 +1787,6 @@ function NonProfitPage() {
               </p>
               <div className="hero-actions">
                 <a className="btn btn-primary" href="/contact"><HeartHandshake aria-hidden="true" /> Partner With Us</a>
-                <a className="btn btn-outline" href={mainPhoneDialHref}><Phone aria-hidden="true" /> {mainPhone}</a>
               </div>
             </div>
             <article className="service-detail-card reveal is-visible">
@@ -1866,7 +1822,7 @@ function BusinessSolutionsPage() {
             employers, and healthcare entrepreneurs ready to grow.
           </p>
           <div className="hero-actions">
-            <a className="btn btn-primary btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> Call {mainPhone}</a>
+            <a className="btn btn-primary btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> Call to Book</a>
             <a className="btn btn-outline btn-lg" href="/contact">Contact our team</a>
           </div>
         </div>
@@ -1882,7 +1838,7 @@ function BusinessSolutionsPage() {
                 to deliver reliable mobile health services at scale.
               </p>
               <div className="hero-actions">
-                <a className="btn btn-primary" href={mainPhoneDialHref}><Phone aria-hidden="true" /> Call {mainPhone}</a>
+                <a className="btn btn-primary" href={mainPhoneDialHref}><Phone aria-hidden="true" /> Call to Book</a>
                 <a className="btn btn-outline" href="/contact">Contact our team</a>
               </div>
             </div>
@@ -1919,7 +1875,6 @@ function ContactPage() {
             </p>
             <div className="hero-actions" style={{ justifyContent: "center" }}>
               <a className="btn btn-primary btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> Call to Book</a>
-              <a className="btn btn-outline btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> {mainPhone}</a>
             </div>
           </div>
           <div className="contact-cards reveal">
@@ -1927,7 +1882,7 @@ function ContactPage() {
               <Phone aria-hidden="true" />
               <span>
                 <strong>{mainPhone}</strong>
-                <small>Call anytime · after hours {afterHoursPhone}</small>
+                <small>Main service line · after hours {afterHoursPhone}</small>
               </span>
             </a>
             <a className="contact-card" href={`mailto:${contactEmail}`}>
@@ -1997,7 +1952,6 @@ function ArticlesPage() {
           </div>
           <div className="section-foot reveal">
             <a className="btn btn-primary" href={mainPhoneDialHref}><Phone aria-hidden="true" /> Call to Book</a>
-            <a className="btn btn-ghost" href={mainPhoneDialHref}><Phone aria-hidden="true" /> {mainPhone}</a>
           </div>
         </div>
       </section>
@@ -2090,10 +2044,6 @@ function ArticleDetailPage({ article }) {
                 <Phone aria-hidden="true" />
                 {relatedService ? `Call to book ${relatedService.title}` : "Call to Book"}
               </a>
-              <div className="article-sidebar-phone">
-                <Phone aria-hidden="true" />
-                <span>Or call {mainPhone}</span>
-              </div>
             </div>
 
             {relatedArticles.length > 0 && (
