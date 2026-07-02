@@ -346,8 +346,8 @@ function CertificateShowcase() {
     <div className="cert-showcase reveal is-visible">
       <div className="cert-showcase-head">
         <span className="eyebrow"><span className="dot" aria-hidden="true" /> Explore the training tracks</span>
-        <h2>Custom visuals for the skills you&apos;ll actually practice.</h2>
-        <p>Phlebotomy and drug screening now use custom SVG illustrations instead of certificate mockups, with cleaner spacing so every detail stays visible.</p>
+        <h2>Pick your certificate path, then book your mock session.</h2>
+        <p>Start with the $75 mock kit, then choose a Calendly time for live support, observation, and next steps.</p>
       </div>
       <div className="cert-showcase-grid">
         {trainingFeatureCards.map((card) => (
@@ -360,6 +360,14 @@ function CertificateShowcase() {
             <ul className="training-feature-points">
               {card.points.map((point) => <li key={point}>{point}</li>)}
             </ul>
+            <div className="cert-card-actions">
+              <a className="btn btn-primary" href={squareTrainingUrl} onClick={trackCheckout}>
+                <CreditCard aria-hidden="true" /> Pay $75
+              </a>
+              <a className="btn btn-dark" href={calendlyBookingUrl} onClick={trackSchedule}>
+                <CalendarCheck aria-hidden="true" /> Calendly
+              </a>
+            </div>
           </div>
         ))}
       </div>
@@ -376,6 +384,7 @@ function TrainingOfferSpotlight() {
           alt="1 Stikk Mobile drug screen mock collections training flyer showing what the program includes"
           fill
           sizes="(max-width: 760px) 100vw, (max-width: 1080px) 52vw, 640px"
+          priority
         />
       </div>
       <div className="training-offer-copy">
@@ -1122,68 +1131,206 @@ function ServiceDetail({ service }) {
 
 /* ----------------------------------------------------------- Program page */
 
-function ProgramPage() {
+function ProgramFocusIcon({ type }) {
+  if (type === "career") {
+    return (
+      <svg viewBox="0 0 88 88" fill="none" aria-hidden="true">
+        <circle className="program-focus-ring" cx="44" cy="44" r="38" />
+        <path d="M25 57c8-15 18-23 31-24M31 38l-8 8 10 5M56 33l-1-12 12 5M37 59l14-18 14 17" />
+        <circle cx="44" cy="34" r="7" />
+      </svg>
+    );
+  }
+
+  if (type === "finance") {
+    return (
+      <svg viewBox="0 0 88 88" fill="none" aria-hidden="true">
+        <circle className="program-focus-ring" cx="44" cy="44" r="38" />
+        <path d="M24 40l20-11 20 11-20 11-20-11ZM30 47v12c8 6 20 6 28 0V47" />
+        <circle cx="44" cy="58" r="9" />
+        <path d="M44 53v10M40 56h7" />
+      </svg>
+    );
+  }
+
+  if (type === "creative") {
+    return (
+      <svg viewBox="0 0 88 88" fill="none" aria-hidden="true">
+        <circle className="program-focus-ring" cx="44" cy="44" r="38" />
+        <path d="M27 61V36c0-8 7-15 17-15s17 7 17 15v25M34 42h20M39 51h10" />
+        <path d="M44 32v8M38 36l6 4 6-4" />
+        <circle cx="44" cy="44" r="24" />
+      </svg>
+    );
+  }
+
   return (
-    <section className="section program-page">
-      <FloatingMotifs />
-      <div className="container">
-        <div className="program-hero reveal is-visible">
-          <span className="eyebrow"><span className="dot" aria-hidden="true" /> Training programs</span>
-          <h1>{programData.hero.title}</h1>
-          <p className="hero-lead">
-            {programData.hero.lead}
-          </p>
-          <div className="program-hero-actions">
-            <a className="btn btn-primary btn-lg" href={trainingPhoneHref}>
-              <Phone aria-hidden="true" /> Call Training Team
+    <svg viewBox="0 0 88 88" fill="none" aria-hidden="true">
+      <circle className="program-focus-ring" cx="44" cy="44" r="38" />
+      <circle cx="44" cy="44" r="15" />
+      <path d="M44 18v12M44 58v12M18 44h12M58 44h12M27 27l9 9M52 52l9 9M61 27l-9 9M36 52l-9 9" />
+      <path d="M39 44l4 4 8-10" />
+    </svg>
+  );
+}
+
+function ProgramPage() {
+  const visionServices = [
+    "Free or low-cost blood collections and lab testing",
+    "Phlebotomy and healthcare training programs",
+    "Drug screening and health awareness events",
+    "Youth and adult job-readiness initiatives in Allied Health",
+    "Emergency and on-demand mobile health response"
+  ];
+
+  const focusAreas = [
+    { type: "career", title: "Career Readiness & Workforce Development" },
+    { type: "finance", title: "Entrepreneurship & Financial Literacy" },
+    { type: "creative", title: "Creative & Technical Skill-Building" },
+    { type: "faith", title: "Personal Growth & Faith-Based Values" }
+  ];
+
+  const adultOffers = [
+    "Career development and job readiness support",
+    "Financial literacy and credit-building guidance",
+    "Entrepreneurship and business coaching",
+    "Life skills training and goal setting",
+    "Mentorship and ongoing support"
+  ];
+
+  const adultAudience = [
+    "Adults seeking a fresh start",
+    "Individuals re-entering the workforce",
+    "Those looking to build new skills or careers",
+    "Anyone ready to grow personally and professionally"
+  ];
+
+  const stats = [
+    { label: "Business Partnerships", value: "300+", text: "Clinics, schools, and organizations served nationwide" },
+    { label: "Mobile Services Delivered", value: "5K+", text: "At-home and on-site lab & wellness visits completed" },
+    { label: "Lab & Diagnostic Tests", value: "25K+", text: "Accurate, timely testing across multiple healthcare sectors" },
+    { label: "Individuals Certified", value: "1500+", text: "Phlebotomy, drug screening, and healthcare certifications" }
+  ];
+
+  return (
+    <section className="program-page program-source-page">
+      <section className="program-source-hero">
+        <Image
+          src="/images/program/source-lab-hero.png"
+          alt="1 Stikk Mobile lab training team preparing samples in a laboratory"
+          fill
+          sizes="100vw"
+          priority
+        />
+        <div className="program-source-shade" />
+        <div className="container">
+          <div className="program-source-hero-copy reveal is-visible">
+            <span>Empower, Educate &amp; Transform</span>
+            <h1>Program</h1>
+          </div>
+        </div>
+      </section>
+
+      <section className="program-vision-section">
+        <div className="program-arc program-arc-left" aria-hidden="true" />
+        <div className="container program-vision-grid">
+          <div className="program-vision-copy reveal is-visible">
+            <h2>Our Vision</h2>
+            <p>We partner with schools, employers, clinics, and community leaders to ensure no one is left behind when it comes to health access or career opportunity.</p>
+            <p>Our vision is to empower, educate, and elevate communities-one mobile service at a time.</p>
+            <p>Through our mobile units and outreach programs, we serve rural areas, minority populations, and economically disadvantaged individuals with vital services such as:</p>
+            <ul className="program-chevron-list">
+              {visionServices.map((item) => <li key={item}>{item}</li>)}
+            </ul>
+          </div>
+          <div className="program-vision-collage reveal is-visible">
+            <div className="program-gold-rail" aria-hidden="true" />
+            <div className="program-collage-main">
+              <Image src="/images/program/vision-lab.png" alt="Healthcare worker reviewing diagnostic information in a lab" fill sizes="(max-width: 760px) 84vw, 420px" />
+            </div>
+            <div className="program-collage-sub">
+              <Image src="/images/services/lab-researchers.webp" alt="Laboratory team working together on specimens" fill sizes="(max-width: 760px) 72vw, 340px" />
+            </div>
+            <a className="program-call-card" href={mainPhoneDialHref}>
+              <Phone aria-hidden="true" />
+              <span>Call anytime</span>
+              <strong>{mainPhone}</strong>
             </a>
           </div>
-          <a className="training-index-phone program-training-line" href={trainingPhoneHref} aria-label={`Call training team at ${trainingPhone}`}>
-            <Phone aria-hidden="true" />
-            <span>
-              {trainingPhone} · <strong>Direct training line</strong>
-              <small>Call for enrollment help, mock questions, and next steps</small>
-            </span>
-          </a>
         </div>
-      </div>
+      </section>
 
-      <div className="container">
-        <div className="program-cert-grid">
-          {certificationPrograms.map((program) => (
-            <article className="program-cert-card reveal is-visible" key={program.title}>
-              <div className="program-cert-visual">
-                <div className="program-cert-accent">
-                  <ProgramAccent type={program.accent} />
-                </div>
-                <div className="program-cert-image">
-                  <Image src={program.image} alt={program.imageAlt} fill sizes="(max-width: 760px) 100vw, (max-width: 1080px) 50vw, 360px" />
-                </div>
-              </div>
-              <div className="program-cert-body">
-                <span className="program-cert-tag">Training support</span>
-                <h2>{program.title}</h2>
-                <p>{program.description}</p>
-                <ul className="program-cert-list">
-                  {program.points.map((point) => (
-                    <li key={point}><Check aria-hidden="true" /> {point}</li>
-                  ))}
-                </ul>
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
-
-      <div className="container">
-        <div className="program-cta reveal">
-          <h2>{programData.cta.title}</h2>
-          <p>{programData.cta.lead}</p>
-          <div className="hero-actions" style={{ justifyContent: "center" }}>
-            <a className="btn btn-primary btn-lg" href={trainingPhoneHref}><Phone aria-hidden="true" /> Call Training Team</a>
+      <section className="program-focus-section">
+        <div className="program-hex-grid" aria-hidden="true" />
+        <div className="container">
+          <div className="program-focus-head reveal is-visible">
+            <h2>Core Focus Areas</h2>
+            <p>Moving With a Purpose isn&apos;t just a program - it&apos;s a movement. We&apos;re helping youth take control of their futures and walk boldly into purpose.</p>
+          </div>
+          <div className="program-focus-grid">
+            {focusAreas.map((item) => (
+              <article className="program-focus-card reveal is-visible" key={item.title}>
+                <span className="program-focus-icon">
+                  <ProgramFocusIcon type={item.type} />
+                </span>
+                <h3>{item.title}</h3>
+              </article>
+            ))}
           </div>
         </div>
-      </div>
+      </section>
+
+      <section className="program-purpose-section">
+        <div className="program-arc program-arc-bottom" aria-hidden="true" />
+        <div className="container">
+          <article className="program-purpose-block program-purpose-centered reveal is-visible">
+            <span className="eyebrow"><span className="dot" aria-hidden="true" /> Youth program</span>
+            <h2>{programData.youth.title}</h2>
+            <strong>{programData.youth.subtitle}</strong>
+            <p>{programData.youth.description}</p>
+            <p>{programData.youth.body}</p>
+          </article>
+
+          <article className="program-purpose-block program-purpose-split reveal is-visible">
+            <div>
+              <span className="eyebrow"><span className="dot" aria-hidden="true" /> Adult program</span>
+              <h2>{programData.adults.title}</h2>
+              <strong>A Second Chance Program for Adults Ready to Transform Their Lives</strong>
+              <p>Hustle With a Purpose is a transformational program designed for adults who are ready to take control of their future and create lasting change in their lives. Whether facing setbacks, career challenges, or life transitions, this program provides the structure, support, and skills needed to move forward with confidence.</p>
+              <p>We focus on helping individuals break negative cycles, rebuild self-worth, and develop practical pathways toward financial stability, career growth, and personal success.</p>
+            </div>
+            <div className="program-offer-panel">
+              <h3>What the Program Offers?</h3>
+              <ul className="program-chevron-list">
+                {adultOffers.map((item) => <li key={item}>{item}</li>)}
+              </ul>
+              <h3>Who its for?</h3>
+              <ul className="program-chevron-list">
+                {adultAudience.map((item) => <li key={item}>{item}</li>)}
+              </ul>
+            </div>
+          </article>
+
+          <div className="program-stats-grid reveal is-visible">
+            {stats.map((stat) => (
+              <article className="program-stat-card" key={stat.label}>
+                <span>{stat.label}</span>
+                <strong>{stat.value}</strong>
+                <p>{stat.text}</p>
+              </article>
+            ))}
+          </div>
+
+          <div className="program-cta reveal is-visible">
+            <h2>Start with purpose. Move with support.</h2>
+            <p>Moving With a Purpose supports youth building careers and generational wealth. Hustle With a Purpose supports adults ready for a second chance and a stronger path forward.</p>
+            <div className="hero-actions" style={{ justifyContent: "center" }}>
+              <a className="btn btn-primary btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> Call Anytime</a>
+              <Link className="btn btn-dark btn-lg" href="/contact"><ArrowRight aria-hidden="true" /> Partner With Us</Link>
+            </div>
+          </div>
+        </div>
+      </section>
     </section>
   );
 }
@@ -1209,8 +1356,11 @@ function TrainingPage() {
             <li><Check aria-hidden="true" /> Virtual monitoring throughout the mock</li>
           </ul>
           <div className="hero-actions" style={{ justifyContent: "center", marginBottom: "16px", flexWrap: "wrap", gap: "12px" }}>
-            <a className="btn btn-primary btn-lg" href={trainingPhoneHref}>
-              <Phone aria-hidden="true" /> Call Training Team
+            <a className="btn btn-primary btn-lg" href={squareTrainingUrl} onClick={trackCheckout}>
+              <CreditCard aria-hidden="true" /> Buy the $75 Mock Kit
+            </a>
+            <a className="btn btn-dark btn-lg" href={calendlyBookingUrl} onClick={trackSchedule}>
+              <CalendarCheck aria-hidden="true" /> Book on Calendly
             </a>
           </div>
           <a className="training-index-phone" style={{ margin: "0 auto" }} href={trainingPhoneHref} aria-label={`Call training team at ${trainingPhone}`}>
@@ -1282,8 +1432,11 @@ function TrainingProgramDetail({ program }) {
             </div>
 
             <div className="hero-actions" style={{ flexWrap: "wrap", gap: "12px" }}>
-              <a className="btn btn-primary btn-lg" href={trainingPhoneHref}>
-                <Phone aria-hidden="true" /> Call Training Team
+              <a className="btn btn-primary btn-lg" href={squareTrainingUrl} onClick={trackCheckout}>
+                <CreditCard aria-hidden="true" /> Pay $75 Mock Kit
+              </a>
+              <a className="btn btn-dark btn-lg" href={calendlyBookingUrl} onClick={trackSchedule}>
+                <CalendarCheck aria-hidden="true" /> Book on Calendly
               </a>
             </div>
           </div>
