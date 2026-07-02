@@ -36,7 +36,7 @@ export const afterHoursPhoneHref = "tel:3185120170";
 // Training-only contact — (877) 217-8455 ext. 205
 export const trainingPhone = "(877) 217-8455";
 export const trainingPhoneExt = "ext. 205";
-export const trainingPhoneHref = "tel:8772178455";
+export const trainingPhoneHref = "tel:+18772178455,,205";
 export const contactEmail = "collection.lab@1stikkmobile.com";
 export const faxLine = "(318) 383-0842";
 export const officeHoursText = "Open 24 Hours · Monday to Sunday";

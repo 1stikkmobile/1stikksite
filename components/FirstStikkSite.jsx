@@ -48,13 +48,13 @@ import {
     myriadUrl,
     nav,
     officeHoursText,
+    programData,
     serviceMap,
     serviceStates,
     services,
     squareTrainingUrl,
     testimonials,
     trainingPhone,
-    trainingPhoneExt,
     trainingPhoneHref,
     trainingProgramMap,
     trainingPrograms
@@ -176,7 +176,7 @@ function FloatingMotifs() {
 }
 
 const trainingSteps = [
-  { Icon: Phone, title: "Choose your next step", text: `Pay online, book your session, or call ${trainingPhone} ${trainingPhoneExt} if you want help before enrolling.` },
+  { Icon: Phone, title: "Call the training team", text: `Call ${trainingPhone} for help with payment, scheduling, portal access, and mock questions.` },
   { Icon: CalendarCheck, title: "Purchase the $75 mock package", text: "Once your payment goes through, 1 Stikk starts your onboarding and sends the next steps right away." },
   { Icon: Users, title: "Access the portal and receive your kit", text: "You complete the training portal, and 1 Stikk sends the actual mock kit and materials you need." },
   { Icon: BadgeCheck, title: "Complete your mocks with live virtual monitoring", text: "1 Stikk stays with you throughout the mock process so you can complete the required collections with more confidence and fewer mistakes." }
@@ -644,10 +644,6 @@ function Hero() {
               <Phone aria-hidden="true" />
               Call to Book
             </a>
-            <a className="btn btn-outline btn-lg" href={mainPhoneDialHref}>
-              <Phone aria-hidden="true" />
-              {mainPhone}
-            </a>
           </div>
           <ul className="hero-trust">
             <li><Star aria-hidden="true" /> Certified, compassionate professionals</li>
@@ -1028,24 +1024,7 @@ function ConversionToast({ isTraining }) {
 }
 
 function FloatingCta({ isTraining, isBusiness }) {
-  if (isTraining) {
-    return (
-      <>
-        <div className="floating-actions" aria-label="Quick training actions right">
-          <a className="floating-action floating-book" href={squareTrainingUrl} onClick={trackCheckout}>
-            <CreditCard aria-hidden="true" />
-            <span>Pay $75 — Enroll</span>
-          </a>
-        </div>
-        <div className="floating-actions-left" aria-label="Quick training actions left">
-          <a className="floating-action floating-call" href={calendlyBookingUrl} onClick={trackSchedule}>
-            <CalendarCheck aria-hidden="true" />
-            <span>Schedule Session</span>
-          </a>
-        </div>
-      </>
-    );
-  }
+  if (isTraining) return null;
   
   if (isBusiness) {
     return (
@@ -1150,26 +1129,20 @@ function ProgramPage() {
       <div className="container">
         <div className="program-hero reveal is-visible">
           <span className="eyebrow"><span className="dot" aria-hidden="true" /> Training programs</span>
-          <h1>Programs built for hands-on prep, booking, and fast next steps.</h1>
+          <h1>{programData.hero.title}</h1>
           <p className="hero-lead">
-            Choose your program, book on Calendly, pay the $75 enrollment, or call the training team directly at {trainingPhone} {trainingPhoneExt}. For drug-screen collector training, we help students get through the mock process with portal access, kit support, scheduling, and live observation.
+            {programData.hero.lead}
           </p>
           <div className="program-hero-actions">
-            <a className="btn btn-primary btn-lg" href={squareTrainingUrl} onClick={trackCheckout}>
-              <Award aria-hidden="true" /> Start Training
-            </a>
-            <a className="btn btn-dark btn-lg" href={calendlyBookingUrl} onClick={trackSchedule}>
-              <CalendarCheck aria-hidden="true" /> Book on Calendly
-            </a>
-            <a className="btn btn-outline btn-lg" href={trainingPhoneHref}>
-              <Phone aria-hidden="true" /> Call {trainingPhoneExt}
+            <a className="btn btn-primary btn-lg" href={trainingPhoneHref}>
+              <Phone aria-hidden="true" /> Call Training Team
             </a>
           </div>
-          <a className="training-index-phone program-training-line" href={trainingPhoneHref} aria-label={`Call training team at ${trainingPhone} ${trainingPhoneExt}`}>
+          <a className="training-index-phone program-training-line" href={trainingPhoneHref} aria-label={`Call training team at ${trainingPhone}`}>
             <Phone aria-hidden="true" />
             <span>
-              {trainingPhone} {trainingPhoneExt} · <strong>Direct training line</strong>
-              <small>Calendly help, mock questions, and enrollment support</small>
+              {trainingPhone} · <strong>Direct training line</strong>
+              <small>Call for enrollment help, mock questions, and next steps</small>
             </span>
           </a>
         </div>
@@ -1196,14 +1169,6 @@ function ProgramPage() {
                     <li key={point}><Check aria-hidden="true" /> {point}</li>
                   ))}
                 </ul>
-                <div className="program-cert-actions">
-                  <a className="btn btn-primary" href={squareTrainingUrl} onClick={trackCheckout}>
-                    <Award aria-hidden="true" /> Pay $75 Enrollment
-                  </a>
-                  <a className="btn btn-outline" href={calendlyBookingUrl} onClick={trackSchedule}>
-                    <CalendarCheck aria-hidden="true" /> Book on Calendly
-                  </a>
-                </div>
               </div>
             </article>
           ))}
@@ -1212,12 +1177,10 @@ function ProgramPage() {
 
       <div className="container">
         <div className="program-cta reveal">
-          <h2>Need help choosing the right training path?</h2>
-          <p>Call the training team at {trainingPhone} {trainingPhoneExt}, book your slot on Calendly, or use the $75 enrollment link today. If you need mock-collection help, we&apos;ll walk you through the portal, kit, and observation steps.</p>
-          <div className="hero-actions">
-            <a className="btn btn-primary btn-lg" href={trainingPhoneHref}><Phone aria-hidden="true" /> Call {trainingPhone} {trainingPhoneExt}</a>
-            <a className="btn btn-dark btn-lg" href={calendlyBookingUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Schedule Now</a>
-            <a className="btn btn-outline btn-lg" href={squareTrainingUrl} onClick={trackCheckout}><CreditCard aria-hidden="true" /> Pay $75</a>
+          <h2>{programData.cta.title}</h2>
+          <p>{programData.cta.lead}</p>
+          <div className="hero-actions" style={{ justifyContent: "center" }}>
+            <a className="btn btn-primary btn-lg" href={trainingPhoneHref}><Phone aria-hidden="true" /> Call Training Team</a>
           </div>
         </div>
       </div>
@@ -1246,17 +1209,14 @@ function TrainingPage() {
             <li><Check aria-hidden="true" /> Virtual monitoring throughout the mock</li>
           </ul>
           <div className="hero-actions" style={{ justifyContent: "center", marginBottom: "16px", flexWrap: "wrap", gap: "12px" }}>
-            <a className="btn btn-primary btn-lg" href={squareTrainingUrl} onClick={trackCheckout}>
-              <CreditCard aria-hidden="true" /> Buy the $75 Mock Kit
-            </a>
-            <a className="btn btn-dark btn-lg" href={calendlyBookingUrl} onClick={trackSchedule}>
-              <CalendarCheck aria-hidden="true" /> Book Your Session
+            <a className="btn btn-primary btn-lg" href={trainingPhoneHref}>
+              <Phone aria-hidden="true" /> Call Training Team
             </a>
           </div>
           <a className="training-index-phone" style={{ margin: "0 auto" }} href={trainingPhoneHref} aria-label={`Call training team at ${trainingPhone}`}>
             <Phone aria-hidden="true" />
             <span>
-              {trainingPhone} {trainingPhoneExt} · <strong>Training team direct line</strong>
+              {trainingPhone} · <strong>Training team direct line</strong>
               <small>Call for portal access, kit questions, mock scheduling, and live virtual monitoring support</small>
             </span>
           </a>
@@ -1317,16 +1277,13 @@ function TrainingProgramDetail({ program }) {
               <Phone aria-hidden="true" />
               <span>
                 <strong>Call our training team</strong>
-                <small>{trainingPhone} {trainingPhoneExt}</small>
+                <small>{trainingPhone}</small>
               </span>
             </div>
 
             <div className="hero-actions" style={{ flexWrap: "wrap", gap: "12px" }}>
-              <a className="btn btn-primary btn-lg" href={squareTrainingUrl} onClick={trackCheckout}>
-                <CreditCard aria-hidden="true" /> Pay $75 — Enroll Now
-              </a>
-              <a className="btn btn-dark btn-lg" href={calendlyBookingUrl} onClick={trackSchedule}>
-                <CalendarCheck aria-hidden="true" /> Schedule Session
+              <a className="btn btn-primary btn-lg" href={trainingPhoneHref}>
+                <Phone aria-hidden="true" /> Call Training Team
               </a>
             </div>
           </div>
@@ -1396,7 +1353,7 @@ function TrainingProgramDetail({ program }) {
             <h2>Schedule your session</h2>
             <p>
               Pick a time that works for you. Or call us at{" "}
-              <strong>{trainingPhone} {trainingPhoneExt}</strong> — we&apos;re happy to help.
+              <strong>{trainingPhone}</strong> — we&apos;re happy to help.
             </p>
           </div>
           <div className="training-calendly-wrap">
