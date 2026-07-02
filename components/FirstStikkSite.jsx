@@ -1288,7 +1288,6 @@ function ProgramPage() {
             <p>Moving With a Purpose supports youth building careers and generational wealth. Hustle With a Purpose supports adults ready for a second chance and a stronger path forward.</p>
             <div className="hero-actions" style={{ justifyContent: "center" }}>
               <a className="btn btn-primary btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> Call to Book</a>
-              <Link className="btn btn-dark btn-lg" href="/contact"><ArrowRight aria-hidden="true" /> Partner With Us</Link>
             </div>
           </div>
         </div>
