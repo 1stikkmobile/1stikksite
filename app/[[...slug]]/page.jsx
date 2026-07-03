@@ -5,6 +5,42 @@ import { articleMap, articles, faqs, serviceMap, services, trainingProgramMap, t
 const siteUrl = "https://1stikkmobile.com";
 const defaultOgImage = `${siteUrl}/og-image.jpg`;
 
+function buildPageMetadata({
+  title,
+  description,
+  canonical,
+  openGraphTitle,
+  openGraphDescription,
+  image = defaultOgImage,
+  imageAlt = "1 Stikk Mobile healthcare and training services"
+}) {
+  return {
+    title,
+    description,
+    alternates: { canonical },
+    openGraph: {
+      title: openGraphTitle ?? `${title} | 1 Stikk Mobile`,
+      description: openGraphDescription ?? description,
+      url: canonical,
+      type: "website",
+      images: [
+        {
+          url: image,
+          width: 1200,
+          height: 630,
+          alt: imageAlt
+        }
+      ]
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: openGraphTitle ?? `${title} | 1 Stikk Mobile`,
+      description: openGraphDescription ?? description,
+      images: [image]
+    }
+  };
+}
+
 function isValidRoute(slug = []) {
   if (slug.length === 0) return true;
 
@@ -73,34 +109,15 @@ export async function generateMetadata({ params }) {
   }
 
   if (slug.length === 0) {
-    return {
+    return buildPageMetadata({
       title: "Mobile Blood Draws, Drug Testing & Phlebotomy Training",
       description:
         "Book mobile blood draws, drug screening, wellness visits, and hands-on phlebotomy training with 1 Stikk Mobile. Serving patients, employers, and communities nationwide.",
-      alternates: { canonical: siteUrl },
-      openGraph: {
-        title: "1 Stikk Mobile Inc. | Mobile Healthcare, Testing and Training",
-        description:
-          "Mobile blood draws, wellness checkups, drug screening, DNA testing, and healthcare training brought directly to homes, employers, and communities.",
-        url: siteUrl,
-        type: "website",
-        images: [
-          {
-            url: defaultOgImage,
-            width: 1200,
-            height: 630,
-            alt: "1 Stikk Mobile healthcare and training services"
-          }
-        ]
-      },
-      twitter: {
-        card: "summary_large_image",
-        title: "1 Stikk Mobile Inc. | Mobile Healthcare, Testing and Training",
-        description:
-          "Book mobile blood draws, drug screening, wellness visits, and phlebotomy training with 1 Stikk Mobile.",
-        images: [defaultOgImage]
-      }
-    };
+      canonical: siteUrl,
+      openGraphTitle: "1 Stikk Mobile | Mobile Healthcare, Testing and Training",
+      openGraphDescription:
+        "Mobile blood draws, wellness checkups, drug screening, DNA testing, and healthcare training brought directly to homes, employers, and communities."
+    });
   }
 
   // Training program detail page
@@ -108,82 +125,42 @@ export async function generateMetadata({ params }) {
     const program = trainingProgramMap[slug[1]];
     if (program) {
       const canonical = `${siteUrl}/training/${program.slug}`;
-      return {
-        title: `${program.title} | 1 Stikk Mobile Training`,
+      return buildPageMetadata({
+        title: `${program.title} Training`,
         description: program.description,
-        alternates: { canonical },
-        openGraph: {
-          title: `${program.title} — 1 Stikk Mobile`,
-          description: program.description,
-          url: canonical,
-          type: "website",
-          images: [
-            {
-              url: `${siteUrl}${program.image}`,
-              width: 1200,
-              height: 630,
-              alt: program.imageAlt
-            }
-          ]
-        },
-        twitter: {
-          card: "summary_large_image",
-          title: `${program.title} — 1 Stikk Mobile`,
-          description: program.description,
-          images: [`${siteUrl}${program.image}`]
-        }
-      };
+        canonical,
+        openGraphTitle: `${program.title} | 1 Stikk Mobile`,
+        image: `${siteUrl}${program.image}`,
+        imageAlt: program.imageAlt
+      });
     }
   }
 
   // Training index
   if (slug[0] === "training" && !slug[1]) {
-    return {
-      title: "Training & Healthcare Programs | 1 Stikk Mobile",
+    return buildPageMetadata({
+      title: "Phlebotomy and Drug Testing Training Programs",
       description:
         "Beginner-friendly phlebotomy, drug screening, workforce, and lab business consulting programs from 1 Stikk Mobile. Call (318) 512-0170 Ext. 205 to enroll.",
-      alternates: { canonical: `${siteUrl}/training` },
-      openGraph: {
-        title: "Training & Healthcare Programs — 1 Stikk Mobile",
-        description:
-          "Hands-on healthcare training programs for beginners and professionals. Phlebotomy certification, DOT drug screening, workforce development, and lab business mentorship.",
-        url: `${siteUrl}/training`,
-        type: "website",
-        images: [defaultOgImage]
-      },
-      twitter: {
-        card: "summary_large_image",
-        title: "Training & Healthcare Programs — 1 Stikk Mobile",
-        description:
-          "Hands-on phlebotomy, drug screening, workforce, and healthcare business training programs.",
-        images: [defaultOgImage]
-      }
-    };
+      canonical: `${siteUrl}/training`,
+      openGraphTitle: "Phlebotomy and Drug Testing Training Programs | 1 Stikk Mobile",
+      openGraphDescription:
+        "Hands-on healthcare training programs for beginners and professionals. Phlebotomy certification, DOT drug screening, workforce development, and lab business mentorship."
+    });
   }
 
   // Drug screening detail (specialized rich page)
   if (slug[0] === "services" && slug[1] === "drug-screening") {
     const canonical = `${siteUrl}/services/drug-screening`;
-    return {
-      title: "Drug Screening Services | DOT, SAP Assessment & More | 1 Stikk Mobile",
+    return buildPageMetadata({
+      title: "Drug Screening Services | DOT, SAP Assessment & More",
       description:
         "Mobile DOT & non-DOT drug screening, SAP Assessment, medical drug testing, and mock collections training — brought to your location by 1 Stikk Mobile. Call (877) 217-8455.",
-      alternates: { canonical },
-      openGraph: {
-        title: "Drug Screening — 1 Stikk Mobile",
-        description: "DOT & non-DOT drug screens, SAP Assessment, employer compliance testing, and mock collections training delivered mobile nationwide.",
-        url: canonical,
-        type: "website",
-        images: [defaultOgImage]
-      },
-      twitter: {
-        card: "summary_large_image",
-        title: "Drug Screening — 1 Stikk Mobile",
-        description:
-          "Mobile DOT and non-DOT drug screening, SAP assessment, and compliance testing from 1 Stikk Mobile.",
-        images: [defaultOgImage]
-      }
-    };
+      canonical,
+      openGraphTitle: "Drug Screening Services | 1 Stikk Mobile",
+      openGraphDescription:
+        "DOT and non-DOT drug screens, SAP assessment, employer compliance testing, and mock collections training delivered mobile nationwide."
+    });
   }
 
   // Service detail page
@@ -191,156 +168,107 @@ export async function generateMetadata({ params }) {
     const service = serviceMap[slug[1]];
     if (service) {
       const canonical = `${siteUrl}/services/${service.slug}`;
-      return {
-        title: `${service.title} | Mobile Healthcare | 1 Stikk Mobile`,
+      return buildPageMetadata({
+        title: `${service.title} | Mobile Healthcare`,
         description: `${service.summary} Book a mobile ${service.title.toLowerCase()} service with 1 Stikk Mobile — we come to you anywhere in the US.`,
-        alternates: { canonical },
-        openGraph: {
-          title: `${service.title} — 1 Stikk Mobile`,
-          description: service.summary,
-          url: canonical,
-          type: "website",
-          images: [
-            {
-              url: `${siteUrl}${service.image}`,
-              width: 1200,
-              height: 630,
-              alt: service.imageAlt
-            }
-          ]
-        },
-        twitter: {
-          card: "summary_large_image",
-          title: `${service.title} — 1 Stikk Mobile`,
-          description: service.summary,
-          images: [`${siteUrl}${service.image}`]
-        }
-      };
+        canonical,
+        openGraphTitle: `${service.title} | 1 Stikk Mobile`,
+        image: `${siteUrl}${service.image}`,
+        imageAlt: service.imageAlt
+      });
     }
   }
 
   // Services index
   if (slug[0] === "services" && !slug[1]) {
-    return {
-      title: "Mobile Healthcare Services | 1 Stikk Mobile",
+    return buildPageMetadata({
+      title: "Mobile Healthcare Services",
       description:
         "Blood draws, wellness, drug screening, genetic testing, behavioral health, and more — all delivered mobile to your home or facility. Book online or call (877) 217-8455.",
-      alternates: { canonical: `${siteUrl}/services` },
-      openGraph: {
-        title: "Mobile Healthcare Services — 1 Stikk Mobile",
-        description:
-          "Blood draws, wellness visits, drug screening, DNA testing, and behavioral health support delivered where care is needed.",
-        url: `${siteUrl}/services`,
-        type: "website",
-        images: [defaultOgImage]
-      },
-      twitter: {
-        card: "summary_large_image",
-        title: "Mobile Healthcare Services — 1 Stikk Mobile",
-        description:
-          "Blood draws, wellness visits, drug screening, DNA testing, and behavioral health support delivered mobile.",
-        images: [defaultOgImage]
-      }
-    };
+      canonical: `${siteUrl}/services`,
+      openGraphTitle: "Mobile Healthcare Services | 1 Stikk Mobile",
+      openGraphDescription:
+        "Blood draws, wellness visits, drug screening, DNA testing, and behavioral health support delivered where care is needed."
+    });
   }
 
   // Non Profit
   if (slug[0] === "non-profit") {
-    return {
-      title: "Non Profit Community Health | 1 Stikk Mobile",
+    return buildPageMetadata({
+      title: "Community Health Fairs and Mobile Wellness Screenings",
       description:
         "1 Stikk Mobile brings health fairs, wellness screenings, and outreach to underserved communities. Partner with us to bring care where it's needed most.",
-      alternates: { canonical: `${siteUrl}/non-profit` },
-      openGraph: {
-        title: "Non Profit Community Health — 1 Stikk Mobile",
-        description: "Mobile health fairs, outreach, and wellness events for underserved communities across all 50 states.",
-        url: `${siteUrl}/non-profit`,
-        type: "website"
-      }
-    };
+      canonical: `${siteUrl}/non-profit`,
+      openGraphTitle: "Community Health Fairs and Mobile Wellness Screenings | 1 Stikk Mobile",
+      openGraphDescription:
+        "Mobile health fairs, outreach, and wellness events for underserved communities across all 50 states."
+    });
   }
 
   // Business Solutions
   if (slug[0] === "business-solutions") {
-    return {
-      title: "Business Solutions | Mobile Lab Services for Organizations | 1 Stikk Mobile",
+    return buildPageMetadata({
+      title: "On-Site Drug Testing and Mobile Lab Services for Organizations",
       description:
         "On-site testing, lab business mentorship, and partnership programs for clinics, schools, employers, and mobile providers. Schedule a consult with 1 Stikk Mobile.",
-      alternates: { canonical: `${siteUrl}/business-solutions` },
-      openGraph: {
-        title: "Business Solutions — 1 Stikk Mobile",
-        description: "Corporate drug testing, lab startup consulting, and mobile health partnerships for organizations nationwide.",
-        url: `${siteUrl}/business-solutions`,
-        type: "website"
-      }
-    };
+      canonical: `${siteUrl}/business-solutions`,
+      openGraphTitle: "On-Site Drug Testing and Mobile Lab Services | 1 Stikk Mobile",
+      openGraphDescription:
+        "Corporate drug testing, lab startup consulting, and mobile health partnerships for organizations nationwide."
+    });
   }
 
   // About
   if (slug[0] === "about") {
-    return {
-      title: "About Us | Meet Founder Tiffany Clinton | 1 Stikk Mobile",
+    return buildPageMetadata({
+      title: "About Us | Meet Founder Tiffany Clinton",
       description:
         "Meet Tiffany Clinton, CPT, RMA — CEO and founder of 1 Stikk Mobile Inc. Faith-rooted, community-driven mobile healthcare serving all 50 states.",
-      alternates: { canonical: `${siteUrl}/about` },
-      openGraph: {
-        title: "About 1 Stikk Mobile — Meet Founder Tiffany Clinton",
-        description: "Faith-rooted, community-driven mobile healthcare. Tiffany Clinton leads a team that delivers care with dignity while training the next generation of mobile healthcare professionals.",
-        url: `${siteUrl}/about`,
-        type: "website"
-      }
-    };
+      canonical: `${siteUrl}/about`,
+      openGraphTitle: "About 1 Stikk Mobile | Meet Founder Tiffany Clinton",
+      openGraphDescription:
+        "Faith-rooted, community-driven mobile healthcare. Tiffany Clinton leads a team that delivers care with dignity while training the next generation of mobile healthcare professionals."
+    });
   }
 
   // Program page
   if (slug[0] === "program" && !slug[1]) {
-    return {
-      title: "Moving With a Purpose & Hustle With a Purpose | 1 Stikk Mobile",
+    return buildPageMetadata({
+      title: "Youth and Adult Workforce Development Programs",
       description:
         "Join 1 Stikk Mobile's purpose-driven programs: Moving With a Purpose youth empowerment, Hustle With a Purpose second-chance adult program, and Mock Collections drug screen training. Call 877-217-8455.",
-      alternates: { canonical: `${siteUrl}/program` },
-      openGraph: {
-        title: "Programs Built for Purpose — 1 Stikk Mobile",
-        description:
-          "Youth empowerment, adult second-chance programs, and drug screen mock collection training. Build skills, careers, and generational wealth with 1 Stikk Mobile.",
-        url: `${siteUrl}/program`,
-        type: "website"
-      }
-    };
+      canonical: `${siteUrl}/program`,
+      openGraphTitle: "Youth and Adult Workforce Development Programs | 1 Stikk Mobile",
+      openGraphDescription:
+        "Youth empowerment, adult second-chance programs, and drug screen mock collection training. Build skills, careers, and generational wealth with 1 Stikk Mobile."
+    });
   }
 
   // Contact
   if (slug[0] === "contact") {
-    return {
-      title: "Contact Us | 1 Stikk Mobile — (877) 217-8455",
+    return buildPageMetadata({
+      title: "Contact 1 Stikk Mobile",
       description:
         "Reach 1 Stikk Mobile anytime. Call (877) 217-8455, book online, or email collection.lab@1stikkmobile.com. Open 24 hours, 7 days a week.",
-      alternates: { canonical: `${siteUrl}/contact` },
-      openGraph: {
-        title: "Contact 1 Stikk Mobile — (877) 217-8455",
-        description: "Call (877) 217-8455 or book online. Open 24/7 — we come to you anywhere in the US.",
-        url: `${siteUrl}/contact`,
-        type: "website"
-      }
-    };
+      canonical: `${siteUrl}/contact`,
+      openGraphTitle: "Contact 1 Stikk Mobile | (877) 217-8455",
+      openGraphDescription:
+        "Call (877) 217-8455 or book online. Open 24/7 and serving clients nationwide."
+    });
   }
 
   // Articles index
   if (slug[0] === "articles" && !slug[1]) {
     const canonical = `${siteUrl}/articles`;
-    return {
-      title: "Health & Wellness Articles | Mobile Healthcare Resources | 1 Stikk Mobile",
+    return buildPageMetadata({
+      title: "Health and Wellness Articles | Mobile Healthcare Resources",
       description:
         "Expert guides on mobile blood draws, DOT drug testing, phlebotomy training, chain of custody, and wellness screenings — written by certified healthcare professionals at 1 Stikk Mobile.",
-      alternates: { canonical },
-      openGraph: {
-        title: "Health & Wellness Articles — 1 Stikk Mobile",
-        description:
-          "Patient care guides, employer compliance resources, and training insights from 1 Stikk Mobile — mobile healthcare experts serving all 50 states.",
-        url: canonical,
-        type: "website"
-      }
-    };
+      canonical,
+      openGraphTitle: "Health and Wellness Articles | 1 Stikk Mobile",
+      openGraphDescription:
+        "Patient care guides, employer compliance resources, and training insights from 1 Stikk Mobile."
+    });
   }
 
   // Article detail
@@ -349,11 +277,11 @@ export async function generateMetadata({ params }) {
     if (article) {
       const canonical = `${siteUrl}/articles/${article.slug}`;
       return {
-        title: `${article.title} | 1 Stikk Mobile`,
+        title: article.title,
         description: article.description,
         alternates: { canonical },
         openGraph: {
-          title: article.headline,
+          title: `${article.headline} | 1 Stikk Mobile`,
           description: article.description,
           url: canonical,
           type: "article",
@@ -370,7 +298,7 @@ export async function generateMetadata({ params }) {
         },
         twitter: {
           card: "summary_large_image",
-          title: article.headline,
+          title: `${article.headline} | 1 Stikk Mobile`,
           description: article.description,
           images: [`${siteUrl}${article.image}`]
         }
@@ -391,6 +319,29 @@ export default async function Page({ params }) {
   }
 
   const article = slug[0] === "articles" && slug[1] ? articleMap[slug[1]] : null;
+  const service = slug[0] === "services" && slug[1] ? serviceMap[slug[1]] : null;
+  const trainingProgram = slug[0] === "training" && slug[1] ? trainingProgramMap[slug[1]] : null;
+  const currentPath = slug.length === 0 ? "/" : `/${slug.join("/")}`;
+  const currentUrl = slug.length === 0 ? siteUrl : `${siteUrl}${currentPath}`;
+  const breadcrumbItems = [
+    { name: "Home", item: siteUrl },
+    ...(slug[0] === "services" ? [{ name: "Services", item: `${siteUrl}/services` }] : []),
+    ...(slug[0] === "training" ? [{ name: "Training", item: `${siteUrl}/training` }] : []),
+    ...(slug[0] === "articles" ? [{ name: "Articles", item: `${siteUrl}/articles` }] : []),
+    ...(slug[0] === "program" ? [{ name: "Programs", item: `${siteUrl}/program` }] : []),
+    ...(slug.length > 0
+      ? [
+          {
+            name:
+              article?.title ||
+              service?.title ||
+              trainingProgram?.title ||
+              slug[0].replace(/-/g, " ").replace(/\b\w/g, (letter) => letter.toUpperCase()),
+            item: currentUrl
+          }
+        ]
+      : [])
+  ];
 
   const articleSchema = article
     ? {
@@ -421,15 +372,66 @@ export default async function Page({ params }) {
       }
     : null;
 
-  const breadcrumbSchema = article
+  const breadcrumbSchema = breadcrumbItems.length > 1
     ? {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
-          { "@type": "ListItem", position: 2, name: "Articles", item: `${siteUrl}/articles` },
-          { "@type": "ListItem", position: 3, name: article.category, item: `${siteUrl}/articles/${article.slug}` }
-        ]
+        itemListElement: breadcrumbItems.map((crumb, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: crumb.name,
+          item: crumb.item
+        }))
+      }
+    : null;
+
+  const webpageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${currentUrl}#webpage`,
+    url: currentUrl,
+    name:
+      article?.headline ||
+      service?.title ||
+      trainingProgram?.title ||
+      (slug.length === 0
+        ? "Mobile Blood Draws, Drug Testing and Phlebotomy Training"
+        : breadcrumbItems[breadcrumbItems.length - 1]?.name),
+    isPartOf: {
+      "@id": `${siteUrl}#website`
+    },
+    about: {
+      "@id": `${siteUrl}#medical-business`
+    }
+  };
+
+  const serviceSchema = service
+    ? {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name: service.title,
+        serviceType: service.title,
+        description: service.summary,
+        provider: {
+          "@id": `${siteUrl}#medical-business`
+        },
+        areaServed: "United States",
+        url: currentUrl
+      }
+    : null;
+
+  const trainingSchema = trainingProgram
+    ? {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        name: trainingProgram.title,
+        description: trainingProgram.description,
+        provider: {
+          "@type": "Organization",
+          name: "1 Stikk Mobile Inc.",
+          url: siteUrl
+        },
+        url: currentUrl
       }
     : null;
 
@@ -448,6 +450,13 @@ export default async function Page({ params }) {
   return (
     <>
       <FirstStikkSite slug={slug} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webpageSchema) }} />
+      {serviceSchema && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      )}
+      {trainingSchema && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(trainingSchema) }} />
+      )}
       {articleSchema && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       )}

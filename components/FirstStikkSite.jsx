@@ -176,8 +176,8 @@ function FloatingMotifs() {
 }
 
 const trainingSteps = [
-  { Icon: CreditCard, title: "Buy the package or schedule a time", text: "You can either purchase the $75 mock package right away or schedule a time first if you want to talk through the process." },
-  { Icon: CalendarCheck, title: "Get your training portal by email", text: "After you buy or book, 1 Stikk emails your training portal access so you can review the steps and get ready." },
+  { Icon: CreditCard, title: "Buy the $75 mock kit first", text: "Start by purchasing the mock package so your training process can be opened right away." },
+  { Icon: CalendarCheck, title: "Book your call to unlock the portal", text: "After you buy, schedule your call with 1 Stikk so we can guide you, answer questions, and get your portal access ready." },
   { Icon: Users, title: "Receive your mock kit in the mail", text: "Your mock kit is shipped to you with the materials needed to complete your mock collections." },
   { Icon: BadgeCheck, title: "Complete the mock with live monitoring", text: "A 1 Stikk professional monitors your mock exam live, supports you through the process, and helps make sure you can pass with confidence." }
 ];
@@ -388,8 +388,8 @@ function TrainingOfferSpotlight() {
         <span className="eyebrow"><span className="dot" aria-hidden="true" /> What students get</span>
         <h2>Drug Screen Training and Mock Collections for $75.</h2>
         <p>
-          Everything needed is bundled into one $75 package: training portal access, the mock kit mailed
-          to you, live virtual monitoring from a 1 Stikk professional, and certificate completion support.
+          Everything needed is bundled into one $75 package. Start by buying the kit, then book your call
+          so 1 Stikk can help you access the portal, prepare for the process, and move you into live mock support.
         </p>
         <div className="training-offer-badges" aria-label="Key offer highlights">
           <span>Mock kit shipped</span>
@@ -403,12 +403,12 @@ function TrainingOfferSpotlight() {
         </ul>
         <div className="training-offer-notes">
           <div className="training-offer-note">
-            <strong>You do not have to call first.</strong>
-            <span>You can buy the package using the link or schedule a time first. Either option gets you started with 1 Stikk.</span>
+            <strong>Start with the purchase.</strong>
+            <span>Buying the $75 mock kit first is the fastest way to begin and makes the rest of the process smoother.</span>
           </div>
           <div className="training-offer-note">
-            <strong>The order is simple: portal email, mailed kit, then live mock monitoring.</strong>
-            <span>Once you are in, 1 Stikk sends your portal access, mails the mock kit, and then monitors your mock exam live so you can complete it correctly and confidently.</span>
+            <strong>The flow is simple: buy the kit, book the call, access the portal, then complete the mocks.</strong>
+            <span>Once you buy, 1 Stikk helps you schedule your portal call, sends the kit, and supports your mock exam live so you can complete everything confidently.</span>
           </div>
         </div>
       </div>
@@ -627,7 +627,7 @@ function Hero() {
           <span className="eyebrow">
             <span className="dot" aria-hidden="true" /> We come to you · all 50 states
           </span>
-          <h1>Healthcare delivered to your door.</h1>
+          <h1>Mobile blood draws, drug testing, and wellness care at your door.</h1>
           <p className="hero-lead">
             Book lab work, wellness visits, or health screenings for yourself or a loved one — a caring,
             certified professional comes right to the home. No driving. No waiting rooms. Just dependable care.
@@ -1290,23 +1290,23 @@ function TrainingPage() {
       <div className="container">
         <div className="program-hero reveal is-visible">
           <span className="eyebrow"><span className="dot" aria-hidden="true" /> Drug Screen Training and Mock Collections</span>
-          <h1>Buy the $75 package or schedule a time, then complete your mock exam with live 1 Stikk support.</h1>
+          <h1>Buy the $75 mock kit first, then book your call to unlock portal access and complete your mocks with live 1 Stikk support.</h1>
           <p className="hero-lead" style={{ margin: "0 auto 20px", maxWidth: "60ch" }}>
-            You can either buy the $75 all-in-one package now or schedule a time first. After that, 1 Stikk
-            emails your training portal access, mails your mock kit, and monitors your mock exam live so you
-            can complete the process with confidence.
+            The flow is simple: buy the mock kit, book your call, get portal access, receive your shipped
+            materials, and complete your mock exam with live guidance from 1 Stikk.
           </p>
           <div className="hero-actions" style={{ justifyContent: "center", marginBottom: "16px", flexWrap: "wrap", gap: "12px" }}>
             <a className="btn btn-primary btn-lg" href={squareTrainingUrl} onClick={trackCheckout}>
               <CreditCard aria-hidden="true" /> Buy the $75 Mock Kit
             </a>
             <a className="btn btn-dark btn-lg" href={calendlyBookingUrl} onClick={trackSchedule}>
-              <CalendarCheck aria-hidden="true" /> Schedule a Time
+              <CalendarCheck aria-hidden="true" /> Book Your Portal Call
             </a>
           </div>
           <ul className="training-hero-points" aria-label="Why students choose this mock package">
-            <li><Check aria-hidden="true" /> Buy now or schedule a time first</li>
-            <li><Check aria-hidden="true" /> Training portal emailed and mock kit shipped to you</li>
+            <li><Check aria-hidden="true" /> Buy the kit first to start your training file</li>
+            <li><Check aria-hidden="true" /> Book your call to get portal access and next-step guidance</li>
+            <li><Check aria-hidden="true" /> Mock kit shipped directly to you</li>
             <li><Check aria-hidden="true" /> Live professional monitoring during the mock exam</li>
           </ul>
           <a className="training-index-phone" style={{ margin: "0 auto" }} href={trainingPhoneHref} aria-label={`Call training team at ${trainingPhone}`}>
@@ -1533,7 +1533,7 @@ function ServicesIndexPage() {
       <section className="services-index-hero">
         <div className="container reveal is-visible">
           <span className="eyebrow eyebrow-light"><span className="dot" aria-hidden="true" /> Mobile Healthcare</span>
-          <h1>Healthcare that comes to you.</h1>
+          <h1>Mobile blood draws, wellness visits, and drug testing.</h1>
           <p>Blood tests, drug tests, wellness checks, and more — all done at your home or workplace.</p>
           <div className="hero-actions">
             <a className="btn btn-primary btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> Call to Book</a>
@@ -1673,13 +1673,13 @@ function DrugScreeningPage() {
             <span className="eyebrow"><span className="dot" aria-hidden="true" /> Training</span>
             <h2>Drug Screen &amp; Mock Collections</h2>
             <p>
-              This $75 all-in-one mock package gives students the full process in one place. You can buy
-              now or schedule a time first, then 1 Stikk emails portal access, ships the mock kit, and
-              monitors the mock collections live so you can complete the process with stronger preparation.
+              This $75 mock package gives students a cleaner step-by-step process. Buy the kit first,
+              book your call with 1 Stikk, get access to the portal, receive your materials, and complete
+              the mock collections with live support.
             </p>
             <ul className="ds-list">
-              <li><Check aria-hidden="true" /> Buy now or schedule a time first</li>
-              <li><Check aria-hidden="true" /> Training portal access emailed to you</li>
+              <li><Check aria-hidden="true" /> Buy the $75 mock kit first</li>
+              <li><Check aria-hidden="true" /> Book your call for portal access and next-step support</li>
               <li><Check aria-hidden="true" /> Actual mock kit shipped to you by 1 Stikk</li>
               <li><Check aria-hidden="true" /> Five mock collections with live virtual observation</li>
               <li><Check aria-hidden="true" /> Employee handbook and binder setup support</li>
@@ -1694,7 +1694,7 @@ function DrugScreeningPage() {
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px" }}>
               <a className="btn btn-primary" href={squareTrainingUrl} onClick={trackCheckout}><CreditCard aria-hidden="true" /> Pay $75 — Enroll Now</a>
-              <a className="btn btn-dark" href={calendlyBookingUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Schedule a Time</a>
+              <a className="btn btn-dark" href={calendlyBookingUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Book Your Portal Call</a>
             </div>
           </div>
           <div className="ds-split-media reveal">
@@ -1753,7 +1753,7 @@ function NonProfitPage() {
       <section className="np-biz-hero">
         <div className="container np-biz-hero-inner reveal is-visible">
           <span className="eyebrow eyebrow-light"><span className="dot" aria-hidden="true" /> Community Health</span>
-          <h1>Healthcare for Every Community.</h1>
+          <h1>Community health fairs and mobile wellness screenings.</h1>
           <p className="hero-lead">
             1 Stikk Mobile brings health fairs, screenings, and outreach directly to underserved
             neighborhoods — because everyone deserves access to quality care.
@@ -1772,6 +1772,11 @@ function NonProfitPage() {
               <p>
                 Our non-profit programming is rooted in community — bringing mobile services to
                 people and neighborhoods that need them most, with dignity and compassion.
+              </p>
+              <p>
+                We partner with churches, schools, housing communities, local leaders, and care
+                organizations to bring screenings, health education, and wellness events directly
+                to the people who may otherwise delay care.
               </p>
               <div className="hero-actions">
                 <a className="btn btn-primary" href="/contact"><HeartHandshake aria-hidden="true" /> Partner With Us</a>
@@ -1804,7 +1809,7 @@ function BusinessSolutionsPage() {
       <section className="np-biz-hero">
         <div className="container np-biz-hero-inner reveal is-visible">
           <span className="eyebrow eyebrow-light"><span className="dot" aria-hidden="true" /> For Organizations</span>
-          <h1>Mobile Healthcare Built for Business.</h1>
+          <h1>On-site drug testing and mobile lab services for organizations.</h1>
           <p className="hero-lead">
             On-site testing, lab partnerships, and business mentorship — designed for clinics,
             employers, and healthcare entrepreneurs ready to grow.
@@ -1824,6 +1829,11 @@ function BusinessSolutionsPage() {
               <p>
                 From onsite corporate testing to lab startup mentorship — we partner with businesses
                 to deliver reliable mobile health services at scale.
+              </p>
+              <p>
+                Employers, clinics, schools, home care teams, and community organizations rely on
+                1 Stikk Mobile for faster collections, cleaner compliance workflows, and mobile
+                support that keeps staff focused on patient care and operations.
               </p>
               <div className="hero-actions">
                 <a className="btn btn-primary" href={mainPhoneDialHref}><Phone aria-hidden="true" /> Call to Book</a>
@@ -1856,7 +1866,7 @@ function ContactPage() {
         <div className="container contact-page-shell">
           <div className="contact-page-head reveal is-visible">
             <span className="eyebrow"><span className="dot" aria-hidden="true" /> We&apos;re here to help</span>
-            <h1>Anytime, anywhere.</h1>
+            <h1>Contact 1 Stikk Mobile for mobile healthcare and testing.</h1>
             <p className="hero-lead">
               Call, email, or book online — our caring team is ready to get you the care you need,
               whenever you need it.
