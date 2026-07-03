@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { articleMap, articles, faqs, serviceMap, services, trainingProgramMap, trainingPrograms } from "../../components/data";
 
 const siteUrl = "https://1stikkmobile.com";
+const defaultOgImage = `${siteUrl}/og-image.jpg`;
 
 function isValidRoute(slug = []) {
   if (slug.length === 0) return true;
@@ -71,6 +72,37 @@ export async function generateMetadata({ params }) {
     };
   }
 
+  if (slug.length === 0) {
+    return {
+      title: "Mobile Blood Draws, Drug Testing & Phlebotomy Training",
+      description:
+        "Book mobile blood draws, drug screening, wellness visits, and hands-on phlebotomy training with 1 Stikk Mobile. Serving patients, employers, and communities nationwide.",
+      alternates: { canonical: siteUrl },
+      openGraph: {
+        title: "1 Stikk Mobile Inc. | Mobile Healthcare, Testing and Training",
+        description:
+          "Mobile blood draws, wellness checkups, drug screening, DNA testing, and healthcare training brought directly to homes, employers, and communities.",
+        url: siteUrl,
+        type: "website",
+        images: [
+          {
+            url: defaultOgImage,
+            width: 1200,
+            height: 630,
+            alt: "1 Stikk Mobile healthcare and training services"
+          }
+        ]
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: "1 Stikk Mobile Inc. | Mobile Healthcare, Testing and Training",
+        description:
+          "Book mobile blood draws, drug screening, wellness visits, and phlebotomy training with 1 Stikk Mobile.",
+        images: [defaultOgImage]
+      }
+    };
+  }
+
   // Training program detail page
   if (slug[0] === "training" && slug[1]) {
     const program = trainingProgramMap[slug[1]];
@@ -84,7 +116,21 @@ export async function generateMetadata({ params }) {
           title: `${program.title} — 1 Stikk Mobile`,
           description: program.description,
           url: canonical,
-          type: "website"
+          type: "website",
+          images: [
+            {
+              url: `${siteUrl}${program.image}`,
+              width: 1200,
+              height: 630,
+              alt: program.imageAlt
+            }
+          ]
+        },
+        twitter: {
+          card: "summary_large_image",
+          title: `${program.title} — 1 Stikk Mobile`,
+          description: program.description,
+          images: [`${siteUrl}${program.image}`]
         }
       };
     }
@@ -102,7 +148,15 @@ export async function generateMetadata({ params }) {
         description:
           "Hands-on healthcare training programs for beginners and professionals. Phlebotomy certification, DOT drug screening, workforce development, and lab business mentorship.",
         url: `${siteUrl}/training`,
-        type: "website"
+        type: "website",
+        images: [defaultOgImage]
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: "Training & Healthcare Programs — 1 Stikk Mobile",
+        description:
+          "Hands-on phlebotomy, drug screening, workforce, and healthcare business training programs.",
+        images: [defaultOgImage]
       }
     };
   }
@@ -119,7 +173,15 @@ export async function generateMetadata({ params }) {
         title: "Drug Screening — 1 Stikk Mobile",
         description: "DOT & non-DOT drug screens, SAP Assessment, employer compliance testing, and mock collections training delivered mobile nationwide.",
         url: canonical,
-        type: "website"
+        type: "website",
+        images: [defaultOgImage]
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: "Drug Screening — 1 Stikk Mobile",
+        description:
+          "Mobile DOT and non-DOT drug screening, SAP assessment, and compliance testing from 1 Stikk Mobile.",
+        images: [defaultOgImage]
       }
     };
   }
@@ -137,7 +199,21 @@ export async function generateMetadata({ params }) {
           title: `${service.title} — 1 Stikk Mobile`,
           description: service.summary,
           url: canonical,
-          type: "website"
+          type: "website",
+          images: [
+            {
+              url: `${siteUrl}${service.image}`,
+              width: 1200,
+              height: 630,
+              alt: service.imageAlt
+            }
+          ]
+        },
+        twitter: {
+          card: "summary_large_image",
+          title: `${service.title} — 1 Stikk Mobile`,
+          description: service.summary,
+          images: [`${siteUrl}${service.image}`]
         }
       };
     }
@@ -149,7 +225,22 @@ export async function generateMetadata({ params }) {
       title: "Mobile Healthcare Services | 1 Stikk Mobile",
       description:
         "Blood draws, wellness, drug screening, genetic testing, behavioral health, and more — all delivered mobile to your home or facility. Book online or call (877) 217-8455.",
-      alternates: { canonical: `${siteUrl}/services` }
+      alternates: { canonical: `${siteUrl}/services` },
+      openGraph: {
+        title: "Mobile Healthcare Services — 1 Stikk Mobile",
+        description:
+          "Blood draws, wellness visits, drug screening, DNA testing, and behavioral health support delivered where care is needed.",
+        url: `${siteUrl}/services`,
+        type: "website",
+        images: [defaultOgImage]
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: "Mobile Healthcare Services — 1 Stikk Mobile",
+        description:
+          "Blood draws, wellness visits, drug screening, DNA testing, and behavioral health support delivered mobile.",
+        images: [defaultOgImage]
+      }
     };
   }
 

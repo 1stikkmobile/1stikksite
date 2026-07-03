@@ -8,13 +8,11 @@ export default async function sitemap() {
     "/about",
     "/services",
     "/training",
+    "/program",
     "/non-profit",
     "/business-solutions",
     "/contact",
-    "/articles",
-    "/cookie-policy",
-    "/privacy-policy",
-    "/terms-and-conditions"
+    "/articles"
   ];
 
   const routes = [

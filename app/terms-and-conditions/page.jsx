@@ -1,7 +1,14 @@
 import LegalPage from "../../components/LegalPage";
 
 export const metadata = {
-  title: "Terms and Conditions"
+  title: "Terms and Conditions",
+  alternates: {
+    canonical: "https://1stikkmobile.com/terms-and-conditions"
+  },
+  robots: {
+    index: false,
+    follow: false
+  }
 };
 
 const sections = [

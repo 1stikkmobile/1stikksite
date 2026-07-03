@@ -27,11 +27,12 @@ export const metadata = {
     "mobile lab services",
     "phlebotomy training",
     "blood collection",
+    "drug screening services",
     "Monroe Louisiana nonprofit healthcare"
   ],
-  alternates: {
-    canonical: siteUrl
-  },
+  category: "healthcare",
+  creator: "1 Stikk Mobile Inc.",
+  publisher: "1 Stikk Mobile Inc.",
   openGraph: {
     title: "1 Stikk Mobile Inc. | We Always Care",
     description:
@@ -63,7 +64,14 @@ export const metadata = {
   },
   robots: {
     index: true,
-    follow: true
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1
+    }
   }
 };
 
@@ -74,28 +82,58 @@ export const viewport = {
 };
 
 export default function RootLayout({ children }) {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "MedicalBusiness",
-    name: "1 Stikk Mobile Inc.",
-    url: siteUrl,
-    logo: `${siteUrl}${logoImage}`,
-    image: `${siteUrl}${logoImage}`,
-    telephone: "+13185120170",
-    description:
-      "Community-driven mobile health access, lab collections, phlebotomy training, drug screening, and wellness education.",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Monroe",
-      addressRegion: "LA",
-      addressCountry: "US"
+  const schema = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": `${siteUrl}#organization`,
+      name: "1 Stikk Mobile Inc.",
+      url: siteUrl,
+      logo: `${siteUrl}${logoImage}`,
+      image: `${siteUrl}${logoImage}`,
+      telephone: "+13185120170",
+      email: "collection.lab@1stikkmobile.com",
+      sameAs: ["https://www.facebook.com/share/1Adzhmj8YD/"]
     },
-    potentialAction: {
-      "@type": "ReserveAction",
-      target: "https://myriad.health/book?token=WnjFcnpNSCsatghXix",
-      name: "Book a 1 Stikk Mobile patient service"
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": `${siteUrl}#website`,
+      url: siteUrl,
+      name: "1 Stikk Mobile Inc.",
+      publisher: {
+        "@id": `${siteUrl}#organization`
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalBusiness",
+      "@id": `${siteUrl}#medical-business`,
+      name: "1 Stikk Mobile Inc.",
+      url: siteUrl,
+      logo: `${siteUrl}${logoImage}`,
+      image: `${siteUrl}${logoImage}`,
+      telephone: "+13185120170",
+      email: "collection.lab@1stikkmobile.com",
+      description:
+        "Community-driven mobile health access, lab collections, phlebotomy training, drug screening, and wellness education.",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Monroe",
+        addressRegion: "LA",
+        addressCountry: "US"
+      },
+      areaServed: {
+        "@type": "Country",
+        name: "United States"
+      },
+      potentialAction: {
+        "@type": "ReserveAction",
+        target: "https://myriad.health/book?token=WnjFcnpNSCsatghXix",
+        name: "Book a 1 Stikk Mobile patient service"
+      }
     }
-  };
+  ];
 
   return (
     <html lang="en">
