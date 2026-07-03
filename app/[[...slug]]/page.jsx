@@ -1,7 +1,41 @@
 import FirstStikkSite from "../../components/FirstStikkSite";
+import { notFound } from "next/navigation";
 import { articleMap, articles, faqs, serviceMap, services, trainingProgramMap, trainingPrograms } from "../../components/data";
 
 const siteUrl = "https://1stikkmobile.com";
+
+function isValidRoute(slug = []) {
+  if (slug.length === 0) return true;
+
+  if (slug.length === 1) {
+    return [
+      "about",
+      "services",
+      "training",
+      "program",
+      "non-profit",
+      "business-solutions",
+      "contact",
+      "articles"
+    ].includes(slug[0]);
+  }
+
+  if (slug.length === 2) {
+    if (slug[0] === "services") {
+      return slug[1] === "drug-screening" || Boolean(serviceMap[slug[1]]);
+    }
+
+    if (slug[0] === "training") {
+      return Boolean(trainingProgramMap[slug[1]]);
+    }
+
+    if (slug[0] === "articles") {
+      return Boolean(articleMap[slug[1]]);
+    }
+  }
+
+  return false;
+}
 
 export async function generateStaticParams() {
   const serviceSlugs = services.map((s) => ["services", s.slug]);
@@ -26,6 +60,16 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const resolvedParams = await params;
   const slug = resolvedParams?.slug ?? [];
+
+  if (!isValidRoute(slug)) {
+    return {
+      title: "Page Not Found | 1 Stikk Mobile",
+      robots: {
+        index: false,
+        follow: false
+      }
+    };
+  }
 
   // Training program detail page
   if (slug[0] === "training" && slug[1]) {
@@ -250,6 +294,10 @@ export async function generateMetadata({ params }) {
 export default async function Page({ params }) {
   const resolvedParams = await params;
   const slug = resolvedParams?.slug ?? [];
+
+  if (!isValidRoute(slug)) {
+    notFound();
+  }
 
   const article = slug[0] === "articles" && slug[1] ? articleMap[slug[1]] : null;
 

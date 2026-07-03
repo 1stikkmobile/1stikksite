@@ -75,11 +75,19 @@ ul { padding: 0; list-style: none; }
   background: var(--graphite);
   color: var(--white);
   font-weight: 700;
-  transform: translateY(-140%);
-  transition: transform 180ms ease;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
 }
-.skip-link:focus {
-  transform: translateY(0);
+.skip-link:focus-visible {
+  clip: auto;
+  clip-path: none;
+  width: auto;
+  height: auto;
+  overflow: visible;
 }
 
 .container { width: min(var(--max), calc(100% - 44px)); margin: 0 auto; }
