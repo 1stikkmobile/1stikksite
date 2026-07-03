@@ -471,7 +471,7 @@ function Header({ mobileOpen, setMobileOpen }) {
         <div className="container utility-inner">
           <span className="utility-note">
             <Sparkles aria-hidden="true" />
-            Mobile scheduling open · nationwide service
+            Mobile scheduling open · Nationwide service
           </span>
         </div>
       </div>
