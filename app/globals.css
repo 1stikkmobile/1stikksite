@@ -2950,3 +2950,141 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
     margin: 0 auto;
   }
 }
+
+/* --------------------------------------------- Global content centering */
+
+.section-head {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.section-foot,
+.hero-actions,
+.training-offer-actions {
+  justify-content: center;
+}
+
+.hero-copy,
+.mission-inner,
+.founder-copy,
+.bbb-copy,
+.areas-copy,
+.faq-intro,
+.contact-shell,
+.service-detail-copy,
+.training-steps-head,
+.cert-showcase-head,
+.training-page-shell,
+.training-hero-copy,
+.training-offer-copy,
+.training-detail-copy,
+.training-who-head,
+.training-calendly-head,
+.page-hero .container,
+.np-biz-hero-inner,
+.ds-hero-copy,
+.ds-split-copy,
+.contact-page-head,
+.articles-hero-inner,
+.article-detail-header,
+.article-body,
+.article-related-head,
+.notice-copy,
+.program-source-hero-copy,
+.program-vision-copy,
+.program-purpose-block,
+.program-offer-panel,
+.program-cta,
+.legal-hero-inner,
+.legal-card,
+.legal-section {
+  text-align: center;
+}
+
+.hero-lead,
+.hero-copy p,
+.founder-copy p,
+.bbb-copy p,
+.areas-copy p,
+.faq-intro p,
+.service-detail-copy p,
+.training-hero-copy p,
+.training-offer-copy p,
+.training-who-head p,
+.article-section p,
+.article-intro,
+.notice-copy p,
+.legal-section p,
+.ds-split-copy > p,
+.program-vision-copy p,
+.program-purpose-block p,
+.program-cta p {
+  margin-inline: auto;
+}
+
+.hero-trust,
+.training-highlights,
+.training-offer-badges,
+.article-meta {
+  justify-content: center;
+}
+
+.practice-card,
+.service-card-body,
+.training-card-body,
+.article-card-body,
+.training-gallery-card,
+.program-stat-card,
+.contact-card,
+.footer-brand,
+.footer-col,
+.footer-bottom,
+.article-author-bio,
+.article-sidebar-cta,
+.article-sidebar-related-head,
+.article-sidebar-link,
+.faq-a,
+.faq-q,
+.training-call-banner,
+.training-call-strip,
+.training-detail-card,
+.service-detail-card,
+.training-who-card,
+.important-notice,
+.legal-home-link {
+  text-align: center;
+}
+
+.practice-card,
+.service-card-body,
+.training-card-body,
+.article-card-body,
+.training-gallery-card,
+.footer-col,
+.article-author-bio-info,
+.article-sidebar-cta,
+.article-sidebar-link,
+.training-detail-card,
+.service-detail-card {
+  align-items: center;
+}
+
+.service-detail-card li,
+.training-detail-card li,
+.training-feature-points,
+.training-hero-points,
+.training-offer-list,
+.program-chevron-list,
+.ds-list {
+  text-align: center;
+}
+
+.service-detail-card li,
+.training-detail-card li,
+.training-feature-points li,
+.training-hero-points li,
+.training-offer-list li,
+.program-chevron-list li,
+.ds-list li {
+  justify-content: center;
+}
