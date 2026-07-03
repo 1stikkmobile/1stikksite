@@ -1296,11 +1296,6 @@ function TrainingPage() {
             emails your training portal access, mails your mock kit, and monitors your mock exam live so you
             can complete the process with confidence.
           </p>
-          <ul className="training-hero-points" aria-label="Why students choose this mock package">
-            <li><Check aria-hidden="true" /> Buy now or schedule a time first</li>
-            <li><Check aria-hidden="true" /> Training portal emailed and mock kit shipped to you</li>
-            <li><Check aria-hidden="true" /> Live professional monitoring during the mock exam</li>
-          </ul>
           <div className="hero-actions" style={{ justifyContent: "center", marginBottom: "16px", flexWrap: "wrap", gap: "12px" }}>
             <a className="btn btn-primary btn-lg" href={squareTrainingUrl} onClick={trackCheckout}>
               <CreditCard aria-hidden="true" /> Buy the $75 Mock Kit
@@ -1309,6 +1304,11 @@ function TrainingPage() {
               <CalendarCheck aria-hidden="true" /> Schedule a Time
             </a>
           </div>
+          <ul className="training-hero-points" aria-label="Why students choose this mock package">
+            <li><Check aria-hidden="true" /> Buy now or schedule a time first</li>
+            <li><Check aria-hidden="true" /> Training portal emailed and mock kit shipped to you</li>
+            <li><Check aria-hidden="true" /> Live professional monitoring during the mock exam</li>
+          </ul>
           <a className="training-index-phone" style={{ margin: "0 auto" }} href={trainingPhoneHref} aria-label={`Call training team at ${trainingPhone}`}>
             <Phone aria-hidden="true" />
             <span>
