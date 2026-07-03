@@ -1129,7 +1129,7 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
   gap: 12px;
   padding: 22px 24px 24px;
 }
-.training-card-head { display: flex; align-items: center; gap: 12px; }
+.training-card-head { display: flex; align-items: center; justify-content: center; gap: 12px; flex-direction: column; text-align: center; }
 .training-card-icon {
   display: inline-flex;
   align-items: center;
@@ -2213,6 +2213,7 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
   color: var(--white);
   font-size: clamp(1rem, 0.7vw + 0.86rem, 1.24rem);
   line-height: 1.18;
+  text-align: center;
 }
 .program-purpose-section {
   padding: clamp(68px, 8vw, 110px) 0 clamp(54px, 7vw, 92px);
@@ -2386,9 +2387,6 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
   }
   .program-purpose-split {
     margin-top: 66px;
-  }
-  .program-chevron-list li {
-    text-align: left;
   }
   .program-cta .hero-actions {
     flex-direction: column;
@@ -2811,6 +2809,7 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
   font-size: clamp(1.25rem, 1.8vw + 0.4rem, 1.7rem);
   margin-bottom: 14px;
   color: var(--ink);
+  text-align: center;
 }
 .article-section p {
   color: var(--ink-2);
@@ -2878,6 +2877,7 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--muted);
+  text-align: center;
 }
 .article-sidebar-link {
   display: flex;
@@ -3076,6 +3076,26 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
 .training-detail-card,
 .service-detail-card {
   align-items: center;
+}
+
+.service-detail-card-head,
+.contact-card,
+.footer-col,
+.footer-brand,
+.article-author-bio {
+  justify-content: center;
+  text-align: center;
+}
+
+.service-detail-card-head,
+.contact-card {
+  flex-direction: column;
+}
+
+.footer-col a,
+.footer-col span {
+  width: 100%;
+  text-align: center;
 }
 
 .service-detail-card li,
