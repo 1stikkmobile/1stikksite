@@ -361,12 +361,26 @@ function CertificateShowcase() {
               {card.points.map((point) => <li key={point}>{point}</li>)}
             </ul>
             <div className="cert-card-actions">
-              <Link className="btn btn-dark" href="/training">
-                <ArrowRight aria-hidden="true" /> View training options
+              <Link
+                className="btn btn-primary"
+                href={squareTrainingUrl}
+                onClick={() => {
+                  if (typeof window !== "undefined" && typeof fbq === "function") {
+                    fbq("track", "InitiateCheckout");
+                  }
+                }}
+              >
+                <CreditCard aria-hidden="true" /> Buy the $75 Kit
               </Link>
             </div>
           </div>
         ))}
+      </div>
+      <div className="training-offer-notes" style={{ marginTop: "24px" }}>
+        <div className="training-offer-note">
+          <strong>Want the fastest path in?</strong>
+          <span>Buy the $75 mock kit first, then book your portal call so we can get you into the training flow.</span>
+        </div>
       </div>
     </div>
   );
@@ -928,7 +942,7 @@ function Footer() {
             <Image src="/images/logo/logo.jpg" alt="1 Stikk Mobile logo" width={50} height={50} />
             <span><strong>1 Stikk Mobile</strong><small>We Always Care</small></span>
           </Link>
-          <p>Accessible, reliable, and compassionate mobile lab services — delivered right to your doorstep.</p>
+          <p>Accessible, reliable, and compassionate mobile lab services — headquartered in Monroe, Louisiana and serving patients, employers, and communities nationwide.</p>
           <a className="btn btn-primary btn-sm" href={mainPhoneDialHref}><Phone aria-hidden="true" /> Call to Book</a>
         </div>
         <div className="footer-col">
@@ -1011,8 +1025,25 @@ function ConversionToast({ isTraining }) {
   );
 }
 
-function FloatingCta({ isTraining, isBusiness }) {
-  return null;
+function FloatingCta({ isTraining }) {
+  if (!isTraining) return null;
+
+  return (
+    <>
+      <div className="floating-actions-left" aria-label="Call 1 Stikk Mobile">
+        <a className="floating-action floating-call" href={mainPhoneDialHref}>
+          <Phone aria-hidden="true" />
+          <span>Call to Book</span>
+        </a>
+      </div>
+      <div className="floating-actions" aria-label="Book your portal call">
+        <a className="floating-action floating-book" href={calendlyBookingUrl} onClick={trackSchedule}>
+          <CalendarCheck aria-hidden="true" />
+          <span>Book a Call</span>
+        </a>
+      </div>
+    </>
+  );
 }
 
 /* ---------------------------------------------------------- Service detail */
@@ -2177,12 +2208,14 @@ export default function FirstStikkSite({ slug = [] }) {
           <ArticleDetailPage article={activeArticle} />
         ) : (
           <>
-            <Hero />
-            <MissionBand />
-            <CorePractices />
-            <Testimonials />
-            <Faq />
-            <ContactCta />
+      <Hero />
+      <MissionBand />
+      <ServiceAreas />
+      <CorePractices />
+      <BbbFeature />
+      <Testimonials />
+      <Faq />
+      <ContactCta />
           </>
         )}
       </main>
