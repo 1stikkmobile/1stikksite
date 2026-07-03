@@ -176,10 +176,10 @@ function FloatingMotifs() {
 }
 
 const trainingSteps = [
-  { Icon: Phone, title: "Call the training team", text: `Call ${trainingPhone} for help with payment, scheduling, portal access, and mock questions.` },
-  { Icon: CalendarCheck, title: "Purchase the $75 mock package", text: "Once your payment goes through, 1 Stikk starts your onboarding and sends the next steps right away." },
-  { Icon: Users, title: "Access the portal and receive your kit", text: "You complete the training portal, and 1 Stikk sends the actual mock kit and materials you need." },
-  { Icon: BadgeCheck, title: "Complete your mocks with live virtual monitoring", text: "1 Stikk stays with you throughout the mock process so you can complete the required collections with more confidence and fewer mistakes." }
+  { Icon: CreditCard, title: "Buy the package or schedule a time", text: "You can either purchase the $75 mock package right away or schedule a time first if you want to talk through the process." },
+  { Icon: CalendarCheck, title: "Get your training portal by email", text: "After you buy or book, 1 Stikk emails your training portal access so you can review the steps and get ready." },
+  { Icon: Users, title: "Receive your mock kit in the mail", text: "Your mock kit is shipped to you with the materials needed to complete your mock collections." },
+  { Icon: BadgeCheck, title: "Complete the mock with live monitoring", text: "A 1 Stikk professional monitors your mock exam live, supports you through the process, and helps make sure you can pass with confidence." }
 ];
 
 const trainingFeatureCards = [
@@ -388,14 +388,13 @@ function TrainingOfferSpotlight() {
         <span className="eyebrow"><span className="dot" aria-hidden="true" /> What students get</span>
         <h2>Drug Screen Training and Mock Collections for $75.</h2>
         <p>
-          This is a virtual mock package built to help students complete required mock exams. After the
-          $75 purchase, students access the training portal, receive the actual mock kit, and complete
-          the mock while being virtually monitored by 1 Stikk throughout the process.
+          Everything needed is bundled into one $75 package: training portal access, the mock kit mailed
+          to you, live virtual monitoring from a 1 Stikk professional, and certificate completion support.
         </p>
         <div className="training-offer-badges" aria-label="Key offer highlights">
-          <span>Fast start</span>
-          <span>Kit included</span>
-          <span>Virtual monitoring</span>
+          <span>Mock kit shipped</span>
+          <span>Portal access</span>
+          <span>Live monitoring</span>
         </div>
         <ul className="training-offer-list">
           {trainingOfferItems.map((item) => (
@@ -404,12 +403,12 @@ function TrainingOfferSpotlight() {
         </ul>
         <div className="training-offer-notes">
           <div className="training-offer-note">
-            <strong>The portal comes first, then the live mock process.</strong>
-            <span>Students complete the training portal before moving into the live virtual mock session with 1 Stikk.</span>
+            <strong>You do not have to call first.</strong>
+            <span>You can buy the package using the link or schedule a time first. Either option gets you started with 1 Stikk.</span>
           </div>
           <div className="training-offer-note">
-            <strong>1 Stikk provides the kit, support, and monitoring from start to finish.</strong>
-            <span>After purchase, portal access is sent out, the kit is shipped, and students get help with scheduling, handbook questions, binder setup, and virtual monitoring.</span>
+            <strong>The order is simple: portal email, mailed kit, then live mock monitoring.</strong>
+            <span>Once you are in, 1 Stikk sends your portal access, mails the mock kit, and then monitors your mock exam live so you can complete it correctly and confidently.</span>
           </div>
         </div>
       </div>
@@ -1291,30 +1290,30 @@ function TrainingPage() {
       <div className="container">
         <div className="program-hero reveal is-visible">
           <span className="eyebrow"><span className="dot" aria-hidden="true" /> Drug Screen Training and Mock Collections</span>
-          <h1>Buy your mock kit, book your session, and complete your required mocks with live 1 Stikk support.</h1>
+          <h1>Buy the $75 package or schedule a time, then complete your mock exam with live 1 Stikk support.</h1>
           <p className="hero-lead" style={{ margin: "0 auto 20px", maxWidth: "60ch" }}>
-            This $75 virtual mock package is designed to help students complete required mock exams. After
-            purchase, you access the training portal, receive the actual mock kit, and complete the mock
-            while being virtually monitored by 1 Stikk throughout the process.
+            You can either buy the $75 all-in-one package now or schedule a time first. After that, 1 Stikk
+            emails your training portal access, mails your mock kit, and monitors your mock exam live so you
+            can complete the process with confidence.
           </p>
           <ul className="training-hero-points" aria-label="Why students choose this mock package">
-            <li><Check aria-hidden="true" /> Training portal access after purchase</li>
-            <li><Check aria-hidden="true" /> Actual mock kit shipped to you</li>
-            <li><Check aria-hidden="true" /> Virtual monitoring throughout the mock</li>
+            <li><Check aria-hidden="true" /> Buy now or schedule a time first</li>
+            <li><Check aria-hidden="true" /> Training portal emailed and mock kit shipped to you</li>
+            <li><Check aria-hidden="true" /> Live professional monitoring during the mock exam</li>
           </ul>
           <div className="hero-actions" style={{ justifyContent: "center", marginBottom: "16px", flexWrap: "wrap", gap: "12px" }}>
             <a className="btn btn-primary btn-lg" href={squareTrainingUrl} onClick={trackCheckout}>
               <CreditCard aria-hidden="true" /> Buy the $75 Mock Kit
             </a>
             <a className="btn btn-dark btn-lg" href={calendlyBookingUrl} onClick={trackSchedule}>
-              <CalendarCheck aria-hidden="true" /> Book on Calendly
+              <CalendarCheck aria-hidden="true" /> Schedule a Time
             </a>
           </div>
           <a className="training-index-phone" style={{ margin: "0 auto" }} href={trainingPhoneHref} aria-label={`Call training team at ${trainingPhone}`}>
             <Phone aria-hidden="true" />
             <span>
               {trainingPhone} · <strong>Training team direct line</strong>
-              <small>Call for portal access, kit questions, mock scheduling, and live virtual monitoring support</small>
+              <small>Call if you want help with the package, scheduling, portal questions, or mock support</small>
             </span>
           </a>
         </div>
@@ -1374,7 +1373,7 @@ function TrainingProgramDetail({ program }) {
             <div className="training-contact-strip">
               <Phone aria-hidden="true" />
               <span>
-                <strong>Call our training team</strong>
+                <strong>Need help before you start?</strong>
                 <small>{trainingPhone}</small>
               </span>
             </div>
@@ -1386,7 +1385,7 @@ function TrainingProgramDetail({ program }) {
                 </a>
               ) : null}
               <a className="btn btn-dark btn-lg" href={calendlyBookingUrl} onClick={trackSchedule}>
-                <CalendarCheck aria-hidden="true" /> Schedule Training
+                <CalendarCheck aria-hidden="true" /> Schedule a Time
               </a>
             </div>
           </div>
@@ -1453,9 +1452,9 @@ function TrainingProgramDetail({ program }) {
         {/* Calendly embed */}
         <div className="training-calendly-section reveal is-visible">
           <div className="training-calendly-head">
-            <h2>Schedule your session</h2>
+            <h2>Schedule a time</h2>
             <p>
-              Pick a time that works for you. Or call us at{" "}
+              Pick a time that works for you if you want help before getting started. Or call us at{" "}
               <strong>{trainingPhone}</strong> — we&apos;re happy to help.
             </p>
           </div>
@@ -1674,12 +1673,13 @@ function DrugScreeningPage() {
             <span className="eyebrow"><span className="dot" aria-hidden="true" /> Training</span>
             <h2>Drug Screen &amp; Mock Collections</h2>
             <p>
-              This is a virtual mock service. After the $75 purchase and training-portal step, 1 Stikk
-              ships the mock kit and then watches the mock collections virtually so students can get
-              through the required process with stronger preparation.
+              This $75 all-in-one mock package gives students the full process in one place. You can buy
+              now or schedule a time first, then 1 Stikk emails portal access, ships the mock kit, and
+              monitors the mock collections live so you can complete the process with stronger preparation.
             </p>
             <ul className="ds-list">
-              <li><Check aria-hidden="true" /> Training portal access after purchase</li>
+              <li><Check aria-hidden="true" /> Buy now or schedule a time first</li>
+              <li><Check aria-hidden="true" /> Training portal access emailed to you</li>
               <li><Check aria-hidden="true" /> Actual mock kit shipped to you by 1 Stikk</li>
               <li><Check aria-hidden="true" /> Five mock collections with live virtual observation</li>
               <li><Check aria-hidden="true" /> Employee handbook and binder setup support</li>
@@ -1689,12 +1689,12 @@ function DrugScreeningPage() {
               <li><Check aria-hidden="true" /> Drug Screen Collector Registration &amp; Onboarding</li>
             </ul>
             <p className="ds-contact-note">
-              For portal access, shipped kit questions, mock scheduling, or virtual observation support, call{" "}
+              Need help with the package, portal, shipped kit, or live mock support? Call{" "}
               <a href={trainingPhoneHref}>{trainingPhone}</a>.
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px" }}>
               <a className="btn btn-primary" href={squareTrainingUrl} onClick={trackCheckout}><CreditCard aria-hidden="true" /> Pay $75 — Enroll Now</a>
-              <a className="btn btn-dark" href={calendlyBookingUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Schedule Session</a>
+              <a className="btn btn-dark" href={calendlyBookingUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Schedule a Time</a>
             </div>
           </div>
           <div className="ds-split-media reveal">

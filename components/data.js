@@ -215,7 +215,7 @@ export const trainingPrograms = [
     ],
     summary: "Buy the $75 mock package, access the portal, get the kit shipped, and complete your mocks with live virtual monitoring from 1 Stikk.",
     description:
-      "DOT and non-DOT drug screen training and mock-collection support for healthcare workers, clinic staff, and HR professionals. After the $75 purchase, students access the training portal, receive the actual mock kit shipped by 1 Stikk, and complete the mock while being virtually monitored by 1 Stikk throughout the process.",
+      "DOT and non-DOT drug screen training and mock-collection support for healthcare workers, clinic staff, and HR professionals. Students can either buy the $75 package right away or schedule a time first. Then 1 Stikk emails training portal access, ships the mock kit, and monitors the mock exam live throughout the process.",
     who: [
       "Healthcare workers adding a high-demand skill",
       "Clinic and urgent care staff",
@@ -230,14 +230,12 @@ export const trainingPrograms = [
       "Compliance, privacy rules, and how to perform cleaner, error-free mock workflows"
     ],
     includes: [
-      "Training portal access after purchase",
+      "Training portal access emailed to you",
       "Actual mock kit and test materials shipped by 1 Stikk",
       "Five live mock collections with guided virtual monitoring",
+      "Step-by-step portal training available anytime",
+      "Real-time support from a certified 1 Stikk professional",
       "Employee handbook and binder setup guidance",
-      "Error-reduction guide for mock preparation",
-      "Scheduling support directly through 1 Stikk",
-      "Q&A with a certified instructor",
-      "Mock collection practice sessions",
       "DOT regulation overview and reference materials",
       "Paperwork and form completion training",
       "Certificate of completion",
@@ -449,14 +447,15 @@ export const programData = {
     image: "/images/training/drug-screen-mock-collections.png",
     imageAlt: "1 Stikk Mobile drug screen mock collections flyer with training support details",
     description:
-      "This training is centered on the mocks. After the $75 purchase, students go through the portal, receive the actual mock kit shipped by 1 Stikk, and are then watched virtually by 1 Stikk during the mock process.",
+      "This training is centered on the mocks. Students can either buy the $75 package right away or schedule a time first. Then 1 Stikk emails portal access, ships the actual mock kit, and monitors the mock process live.",
     event: {
       type: "Live Zoom Event",
       date: "Saturday, January 24, 2026",
       time: "2:00 PM — 5:00 PM"
     },
     includes: [
-      "Training portal access after purchase",
+      "Buy now or schedule a time first",
+      "Training portal access emailed to you",
       "Actual mock kit and test materials shipped by 1 Stikk",
       "Five live observed mock collections",
       "Employee handbook and binder setup support",
@@ -465,8 +464,8 @@ export const programData = {
       "Certificate of Completion",
       "1 Stikk Mobile Drug Screen Collector Registration Onboarding"
     ],
-    contact: "For mock scheduling, portal help, handbook questions, binder setup support, or kit questions, please call 877-217-8455.",
-    cta: { label: "Schedule on Calendly", href: calendlyBookingUrl },
+    contact: "Need help with scheduling, portal access, binder setup, or kit questions? Call 877-217-8455.",
+    cta: { label: "Schedule a Time", href: calendlyBookingUrl },
     paymentLink: { label: "Pay $75 — Enroll Now", href: squareTrainingUrl }
   },
   cta: {
