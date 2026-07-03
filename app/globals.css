@@ -811,16 +811,25 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
 .back-link svg { width: 18px; height: 18px; }
 .service-detail-shell {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+  grid-template-columns: 1fr;
   gap: clamp(24px, 4vw, 52px);
-  align-items: start;
+  align-items: center;
+  max-width: 980px;
+  margin-inline: auto;
   margin-bottom: clamp(56px, 7vw, 88px);
+}
+.service-detail-copy {
+  max-width: 760px;
+  margin-inline: auto;
 }
 .service-detail-copy h1 { margin-bottom: 18px; }
 .service-detail-visual {
   display: grid;
   gap: 24px;
   align-items: start;
+  width: 100%;
+  max-width: 760px;
+  margin-inline: auto;
 }
 .service-detail-visual .service-card-media {
   aspect-ratio: 4 / 3;
@@ -1800,7 +1809,7 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
   .program-event-media { order: -1; }
   .training-detail-info { flex-direction: column; text-align: center; align-items: center; }
   .training-call-banner { flex-wrap: wrap; }
-  .training-call-strip { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .training-call-strip { flex-direction: column; align-items: center; gap: 12px; text-align: center; }
   .training-calendly-wrap iframe { min-height: 580px; }
   .reviews-carousel { grid-template-columns: 44px 1fr 44px; gap: 10px; }
   .review-nav { width: 44px; height: 44px; }
@@ -1808,7 +1817,7 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
   .review-card blockquote { font-size: 1.06rem; }
   .areas-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .founder-quote { font-size: 1.05rem; }
-  .footer-bottom { flex-direction: column; align-items: flex-start; }
+  .footer-bottom { flex-direction: column; align-items: center; text-align: center; }
 }
 
 @media (max-width: 420px) {

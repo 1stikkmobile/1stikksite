@@ -346,8 +346,8 @@ function CertificateShowcase() {
     <div className="cert-showcase reveal is-visible">
       <div className="cert-showcase-head">
         <span className="eyebrow"><span className="dot" aria-hidden="true" /> Explore the training tracks</span>
-        <h2>Pick your certificate path, then book your mock session.</h2>
-        <p>Start with the $75 mock kit, then choose a Calendly time for live support, observation, and next steps.</p>
+        <h2>Explore the training options and choose the path that fits you best.</h2>
+        <p>The $75 mock package applies only to Drug Screen Training and Mock Collections.</p>
       </div>
       <div className="cert-showcase-grid">
         {trainingFeatureCards.map((card) => (
@@ -361,12 +361,9 @@ function CertificateShowcase() {
               {card.points.map((point) => <li key={point}>{point}</li>)}
             </ul>
             <div className="cert-card-actions">
-              <a className="btn btn-primary" href={squareTrainingUrl} onClick={trackCheckout}>
-                <CreditCard aria-hidden="true" /> Pay $75
-              </a>
-              <a className="btn btn-dark" href={calendlyBookingUrl} onClick={trackSchedule}>
-                <CalendarCheck aria-hidden="true" /> Calendly
-              </a>
+              <Link className="btn btn-dark" href="/training">
+                <ArrowRight aria-hidden="true" /> View training options
+              </Link>
             </div>
           </div>
         ))}
@@ -405,14 +402,6 @@ function TrainingOfferSpotlight() {
             <li key={item}><Check aria-hidden="true" /> {item}</li>
           ))}
         </ul>
-        <div className="training-offer-actions">
-          <a className="btn btn-primary btn-lg" href={squareTrainingUrl} onClick={trackCheckout}>
-            <CreditCard aria-hidden="true" /> Buy the $75 Mock Kit
-          </a>
-          <a className="btn btn-dark btn-lg" href={calendlyBookingUrl} onClick={trackSchedule}>
-            <CalendarCheck aria-hidden="true" /> Book and Get Help
-          </a>
-        </div>
         <div className="training-offer-notes">
           <div className="training-offer-note">
             <strong>The portal comes first, then the live mock process.</strong>
@@ -659,10 +648,10 @@ function Hero() {
 
         <div className="hero-visual reveal is-visible">
           <div className="hero-photo hero-photo-main">
-            <Image src="/images/site/van-care.webp" alt="A 1 Stikk Mobile clinician greeting a patient at a mobile lab van" fill sizes="(max-width: 760px) 95vw, (max-width: 1080px) 95vw, 48vw" priority />
+            <Image src="/images/site/mobile-lab.webp" alt="The 1 Stikk Mobile laboratory van set up for sample collection" fill sizes="(max-width: 760px) 95vw, (max-width: 1080px) 95vw, 48vw" priority />
           </div>
           <div className="hero-photo hero-photo-sub">
-            <Image src="/images/site/mobile-lab.webp" alt="The 1 Stikk Mobile laboratory van set up for sample collection" fill sizes="(max-width: 900px) 90vw, 28vw" />
+            <Image src="/images/site/van-care.webp" alt="A 1 Stikk Mobile clinician greeting a patient at a mobile lab van" fill sizes="(max-width: 900px) 90vw, 28vw" />
           </div>
         </div>
       </div>
@@ -1284,11 +1273,8 @@ function ProgramPage() {
           </div>
 
           <div className="program-cta reveal is-visible">
-            <h2>Start with purpose. Move with support.</h2>
-            <p>Moving With a Purpose supports youth building careers and generational wealth. Hustle With a Purpose supports adults ready for a second chance and a stronger path forward.</p>
-            <div className="hero-actions" style={{ justifyContent: "center" }}>
-              <a className="btn btn-primary btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> Call to Book</a>
-            </div>
+            <h2>Purpose-driven support for youth and adults.</h2>
+            <p>Moving With a Purpose supports youth building confidence, direction, and career readiness. Hustle With a Purpose supports adults pursuing stability, growth, and a stronger next chapter.</p>
           </div>
         </div>
       </section>
@@ -1372,6 +1358,7 @@ function TrainingPage() {
 
 function TrainingProgramDetail({ program }) {
   const Icon = program.icon;
+  const isMockTraining = program.slug === "drug-screening";
   return (
     <section className="section training-detail">
       <div className="container">
@@ -1393,11 +1380,13 @@ function TrainingProgramDetail({ program }) {
             </div>
 
             <div className="hero-actions" style={{ flexWrap: "wrap", gap: "12px" }}>
-              <a className="btn btn-primary btn-lg" href={squareTrainingUrl} onClick={trackCheckout}>
-                <CreditCard aria-hidden="true" /> Pay $75 Mock Kit
-              </a>
+              {isMockTraining ? (
+                <a className="btn btn-primary btn-lg" href={squareTrainingUrl} onClick={trackCheckout}>
+                  <CreditCard aria-hidden="true" /> Pay $75 Mock Kit
+                </a>
+              ) : null}
               <a className="btn btn-dark btn-lg" href={calendlyBookingUrl} onClick={trackSchedule}>
-                <CalendarCheck aria-hidden="true" /> Book on Calendly
+                <CalendarCheck aria-hidden="true" /> Schedule Training
               </a>
             </div>
           </div>
