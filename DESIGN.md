@@ -25,3 +25,7 @@ Full-width section bands separate mission, services, proof, training, leadership
 ## Motion
 
 Motion is vital-sign and routing based: ECG strokes, mobile route paths, notification pulses, subtle media rail movement, and reveal transforms. All animation is disabled or simplified for `prefers-reduced-motion`.
+
+## Mobile Conversion
+
+On phone, the mock kit is the single priority action. Secondary training options are intentionally compressed or deferred so the user does not face multiple equal-weight decisions at once. Training lists should read left-aligned on mobile, duplicate program sections should be reduced, and the floating call/book actions should support the primary kit CTA rather than compete with it.

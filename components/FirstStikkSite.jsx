@@ -354,7 +354,7 @@ function CertificateShowcase() {
           const isDrugScreening = card.key === "drug-screening";
 
           return (
-            <div className="cert-card training-feature-card" key={card.key}>
+            <div className="cert-card training-feature-card" data-priority={isDrugScreening ? "primary" : "secondary"} key={card.key}>
               <div className="cert-frame training-feature-frame">
                 <TrainingFeatureArt type={card.key} title={card.title} />
               </div>
@@ -1340,7 +1340,7 @@ function TrainingPage() {
             <a className="btn btn-primary btn-lg" href={squareTrainingUrl} onClick={trackCheckout}>
               <CreditCard aria-hidden="true" /> Buy the $75 Mock Kit
             </a>
-            <a className="btn btn-dark btn-lg" href={calendlyBookingUrl} onClick={trackSchedule}>
+            <a className="btn btn-dark btn-lg training-hero-secondary" href={calendlyBookingUrl} onClick={trackSchedule}>
               <CalendarCheck aria-hidden="true" /> Book Your Portal Call
             </a>
           </div>
@@ -1365,13 +1365,18 @@ function TrainingPage() {
       <div className="container">
         <CertificateShowcase />
       </div>
-      <div className="container">
+      <div className="container training-secondary-programs">
+        <div className="cert-showcase-head training-secondary-programs-head">
+          <span className="eyebrow"><span className="dot" aria-hidden="true" /> More training options</span>
+          <h2>Browse the other booking-first programs after the mock kit offer.</h2>
+          <p>These options stay available, but they are intentionally secondary to the Drug Screening Mock Kit flow.</p>
+        </div>
         <div className="training-grid">
           {[...trainingPrograms].sort((a, b) => (a.slug === "drug-screening" ? -1 : b.slug === "drug-screening" ? 1 : 0)).map((p) => {
             const Icon = p.icon;
             const isMockTraining = p.slug === "drug-screening";
             return (
-              <Link className="training-card reveal is-visible" href={`/training/${p.slug}`} key={p.slug}>
+              <Link className={`training-card reveal is-visible${isMockTraining ? " training-card-primary" : " training-card-secondary"}`} href={`/training/${p.slug}`} key={p.slug}>
                 <div className="training-card-media">
                   <Image src={p.image} alt={p.imageAlt} fill sizes="(max-width: 760px) 100vw, (max-width: 1080px) 45vw, 360px" />
                 </div>

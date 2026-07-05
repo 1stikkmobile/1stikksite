@@ -1340,6 +1340,10 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
   font-size: 0.94rem;
 }
 
+.training-secondary-programs-head {
+  margin-bottom: 22px;
+}
+
 /* ----------------------------------------- Training program detail page */
 
 .training-detail { padding-top: clamp(40px, 5vw, 64px); }
@@ -1829,12 +1833,66 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
   .areas-map { min-height: 200px; }
   .practice-grid, .training-grid, .training-gallery-grid, .contact-cards, .footer-grid { grid-template-columns: 1fr; }
   .training-card { grid-template-rows: 220px auto; }
+  .training-page .floating-motifs { display: none; }
+  .training-page .program-hero,
+  .training-page .cert-showcase-head,
+  .training-page .training-offer-copy,
+  .training-page .training-offer-note,
+  .training-page .training-card-body,
+  .training-detail-copy,
+  .training-detail-card,
+  .training-detail-info {
+    text-align: left;
+  }
+  .training-page .hero-lead,
+  .training-page .training-offer-copy p,
+  .training-detail-copy .hero-lead {
+    margin-inline: 0;
+  }
+  .training-page .hero-actions {
+    gap: 10px;
+  }
+  .training-hero-secondary {
+    display: none;
+  }
+  .training-index-phone {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 1rem;
+  }
+  .training-index-phone small {
+    margin-top: 4px;
+  }
   .training-offer { padding: 16px; }
   .training-offer-media { min-height: 0; aspect-ratio: 3 / 4; }
   .training-hero-points { width: 100%; }
-  .training-hero-points li { padding: 12px; }
+  .training-hero-points li {
+    justify-content: flex-start;
+    text-align: left;
+    padding: 12px;
+  }
+  .training-hero-points li:nth-child(4) {
+    display: none;
+  }
   .training-offer-badges { gap: 8px; }
   .training-offer-badges span { min-height: 34px; padding: 7px 12px; }
+  .training-offer-list li {
+    justify-content: flex-start;
+    text-align: left;
+  }
+  .training-offer-list li:nth-child(n + 6) {
+    display: none;
+  }
+  .training-feature-card[data-priority="secondary"] .training-feature-frame,
+  .training-feature-card[data-priority="secondary"] .training-feature-points {
+    display: none;
+  }
+  .training-feature-card[data-priority="secondary"] {
+    gap: 10px;
+  }
+  .training-secondary-programs {
+    display: none;
+  }
   .training-offer-actions { flex-direction: column; }
   .training-offer-actions .btn,
   .program-hero .hero-actions .btn { width: 100%; }
@@ -1843,7 +1901,7 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
   .program-split { grid-template-columns: 1fr; }
   .program-event { grid-template-columns: 1fr; padding: clamp(24px, 4vw, 40px); }
   .program-event-media { order: -1; }
-  .training-detail-info { flex-direction: column; text-align: center; align-items: center; }
+  .training-detail-info { flex-direction: column; text-align: left; align-items: flex-start; }
   .training-call-banner { flex-wrap: wrap; }
   .training-call-strip { flex-direction: column; align-items: center; gap: 12px; text-align: center; }
   .training-calendly-wrap iframe { min-height: 580px; }
@@ -3152,4 +3210,17 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
 .program-chevron-list li,
 .ds-list li {
   justify-content: center;
+}
+
+@media (max-width: 760px) {
+  .training-feature-points,
+  .training-detail-card li,
+  .training-feature-points li {
+    text-align: left;
+  }
+
+  .training-detail-card li,
+  .training-feature-points li {
+    justify-content: flex-start;
+  }
 }
