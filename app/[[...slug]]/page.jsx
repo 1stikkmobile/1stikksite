@@ -51,6 +51,7 @@ function isValidRoute(slug = []) {
       "about",
       "services",
       "training",
+      "mock-kit",
       "program",
       "non-profit",
       "business-solutions",
@@ -86,6 +87,7 @@ export async function generateStaticParams() {
     { slug: ["services"] },
     ...serviceSlugs.map((slug) => ({ slug })),
     { slug: ["training"] },
+    { slug: ["mock-kit"] },
     ...trainingSlugs.map((slug) => ({ slug })),
     { slug: ["program"] },
     { slug: ["non-profit"] },
@@ -166,20 +168,44 @@ export async function generateMetadata({ params }) {
   // Training index
   if (slug[0] === "training" && !slug[1]) {
     return buildPageMetadata({
-      title: "Mock Drug Screening Kits | DOT Collector Training",
+      title: "$75 Mock Drug Screening Kit | Collector Training",
       description:
-        "Buy mock drug screening kits from 1 Stikk Mobile, book your portal call, and complete live observed DOT and non-DOT collector training with shipped materials and support.",
+        "Turn a $75 mock drug screening kit into a career-ready collector skill. Buy the kit, book your portal call, and complete live observed mock collections with 1 Stikk Mobile.",
       canonical: `${siteUrl}/training`,
       keywords: [
+        "$75 mock drug screening kit",
         "mock drug screening kits",
         "drug screening mock kits",
         "DOT mock collections",
         "drug collector training",
-        "drug screening training kit"
+        "drug screening training kit",
+        "drug screen collector career"
       ],
-      openGraphTitle: "Mock Drug Screening Kits | 1 Stikk Mobile",
+      openGraphTitle: "$75 Mock Drug Screening Kit | 1 Stikk Mobile",
       openGraphDescription:
-        "Start with the $75 mock drug screening kit, then book your portal call for live observed mock collections, portal guidance, and collector training support."
+        "Start with the $75 mock drug screening kit, then book your portal call for live observed mock collections and collector career support."
+    });
+  }
+
+  // Dedicated mock kit landing page
+  if (slug[0] === "mock-kit" && !slug[1]) {
+    return buildPageMetadata({
+      title: "$75 Mock Drug Screening Kit | Start Collector Training",
+      description:
+        "Buy the $75 mock drug screening kit from 1 Stikk Mobile and start building a drug screen collector skill with shipped materials, portal guidance, and live observed mocks.",
+      canonical: `${siteUrl}/mock-kit`,
+      keywords: [
+        "$75 mock drug screening kit",
+        "mock drug screening kit",
+        "drug testing mock kit",
+        "drug screen collector training",
+        "DOT mock collections",
+        "urine specimen collector training",
+        "drug screening career"
+      ],
+      openGraphTitle: "$75 Mock Drug Screening Kit | 1 Stikk Mobile",
+      openGraphDescription:
+        "A simple first step into drug screen collector training: buy the $75 kit, book the portal call, and complete live observed mocks."
     });
   }
 

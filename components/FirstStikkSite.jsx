@@ -253,18 +253,18 @@ const patientBookingSteps = [
 const trainingAdSteps = [
   {
     Icon: CreditCard,
-    title: "Buy the $75 mock kit",
-    text: "Use the checkout button first. This starts the drug screening training process."
+    title: "Buy the $75 kit",
+    text: "Click checkout first. This opens your mock-kit training path."
   },
   {
     Icon: CalendarCheck,
-    title: "Book your portal call",
-    text: "After checkout, book a call so 1 Stikk can guide your portal access and next steps."
+    title: "Book the portal call",
+    text: "After checkout, schedule your call so we can guide your access and next steps."
   },
   {
     Icon: BadgeCheck,
-    title: "Practice with live support",
-    text: "Receive your mock kit, complete the required mock collections, and get live guidance."
+    title: "Complete the mocks",
+    text: "Use the shipped kit to practice collector steps with live support."
   }
 ];
 
@@ -365,7 +365,7 @@ function ConversionSteps({ variant = "patient", title, lead, steps, actions }) {
     <section className={`conversion-steps conversion-steps-${variant}`} aria-labelledby={`${variant}-steps-title`}>
       <div className="container conversion-steps-shell reveal is-visible">
         <div className="conversion-steps-head">
-          <span className="eyebrow"><span className="dot" aria-hidden="true" /> Easy next steps</span>
+          <span className="eyebrow"><span className="dot" aria-hidden="true" /> Directions</span>
           <h2 id={`${variant}-steps-title`}>{title}</h2>
           {lead ? <p>{lead}</p> : null}
           {actions ? <div className="conversion-steps-actions">{actions}</div> : null}
@@ -409,8 +409,8 @@ function TrainingAdSteps() {
   return (
     <ConversionSteps
       variant="training"
-      title="For drug screen training, do these 3 steps in order."
-      lead="Ads should land here and feel obvious: buy the $75 mock kit first, then book your portal call, then complete the live-supported mocks."
+      title="Do these 3 steps in order."
+      lead="Start with checkout. The kit gives you a real practice path for drug screen collector training."
       steps={trainingAdSteps}
       actions={
         <>
@@ -419,6 +419,24 @@ function TrainingAdSteps() {
         </>
       }
     />
+  );
+}
+
+function MockKitOutcomeStrip() {
+  return (
+    <section className="mock-kit-outcomes" aria-label="What happens after checkout">
+      <div className="container mock-kit-outcomes-shell reveal is-visible">
+        <div>
+          <span className="eyebrow"><span className="dot" aria-hidden="true" /> After you buy</span>
+          <h2>Your $75 kit becomes the start of your collector training path.</h2>
+        </div>
+        <ul>
+          <li><Check aria-hidden="true" /> You know exactly what to do next</li>
+          <li><Check aria-hidden="true" /> You get portal guidance instead of guessing</li>
+          <li><Check aria-hidden="true" /> You practice with mock materials and live support</li>
+        </ul>
+      </div>
+    </section>
   );
 }
 
@@ -723,7 +741,10 @@ function Header({ mobileOpen, setMobileOpen }) {
                     })}
                   </div>
                   <div className="mega-foot">
-                    <span>Enroll: {trainingPhone}</span>
+                    <span>Start with the $75 mock drug screening kit.</span>
+                    <Link className="btn btn-dark btn-sm" href="/mock-kit">
+                      <ArrowRight aria-hidden="true" /> Mock Kit Page
+                    </Link>
                     <a className="btn btn-dark btn-sm" href={calendlyBookingUrl} onClick={trackSchedule}>
                       <CalendarCheck aria-hidden="true" /> Schedule
                     </a>
@@ -1623,12 +1644,11 @@ function TrainingPage() {
       <FloatingMotifs />
       <div className="container">
         <div className="program-hero reveal is-visible">
-          <span className="eyebrow"><span className="dot" aria-hidden="true" /> Training, mock kits, and live collector support</span>
-          <h1>Drug screen training starts with the $75 mock kit, but 1 Stikk also supports phlebotomy, workforce, and lab business training.</h1>
+          <span className="eyebrow"><span className="dot" aria-hidden="true" /> $75 Mock Drug Screening Kit</span>
+          <h1>Turn a $75 mock drug screening kit into a real collector skill.</h1>
           <p className="hero-lead" style={{ margin: "0 auto 20px", maxWidth: "60ch" }}>
-            If you are here for drug screening, buy the $75 mock kit first, then book your portal call for access,
-            shipped materials, and live monitored mocks. If you need another training track, book a call so the team
-            can place you in the right program.
+            Start with the mock kit, get portal guidance, complete live observed mock collections, and build the
+            confidence to move toward drug screen collector work.
           </p>
           <div className="hero-actions" style={{ justifyContent: "center", marginBottom: "16px", flexWrap: "wrap", gap: "12px" }}>
             <a className="btn btn-primary btn-lg" href={squareTrainingUrl} onClick={trackCheckout}>
@@ -1640,9 +1660,9 @@ function TrainingPage() {
           </div>
           <ul className="training-hero-points" aria-label="Why students choose this mock package">
             <li><Check aria-hidden="true" /> Buy the kit first to start your training file</li>
-            <li><Check aria-hidden="true" /> Book your call to get portal access and next-step guidance</li>
+            <li><Check aria-hidden="true" /> Use the portal call to unlock next-step guidance</li>
             <li><Check aria-hidden="true" /> Mock kit shipped directly to you</li>
-            <li><Check aria-hidden="true" /> Live professional monitoring during the mock exam</li>
+            <li><Check aria-hidden="true" /> Practice collector workflows with live monitoring</li>
           </ul>
           <a className="training-index-phone" style={{ margin: "0 auto" }} href={trainingPhoneHref} aria-label={`Call training team at ${trainingPhone}`}>
             <Phone aria-hidden="true" />
@@ -1654,42 +1674,65 @@ function TrainingPage() {
         </div>
       </div>
       <TrainingAdSteps />
+      <MockKitOutcomeStrip />
       <div className="container">
         <TrainingOfferSpotlight />
       </div>
       <div className="container">
-        <CertificateShowcase />
-      </div>
-      <div className="container training-secondary-programs">
-        <div className="cert-showcase-head training-secondary-programs-head">
-          <span className="eyebrow"><span className="dot" aria-hidden="true" /> More training options</span>
-          <h2>Training is more than kits. Pick the program that matches your next step.</h2>
-          <p>The drug screening mock kit has a checkout-first flow. Phlebotomy, workforce, and lab business support start with a booking call so the team can confirm fit and next steps.</p>
-        </div>
-        <div className="training-grid">
-          {[...trainingPrograms].sort((a, b) => (a.slug === "drug-screening" ? -1 : b.slug === "drug-screening" ? 1 : 0)).map((p) => {
-            const Icon = p.icon;
-            const isMockTraining = p.slug === "drug-screening";
-            return (
-              <Link className={`training-card reveal is-visible${isMockTraining ? " training-card-primary" : " training-card-secondary"}`} href={`/training/${p.slug}`} key={p.slug}>
-                <div className="training-card-media">
-                  <Image src={p.image} alt={p.imageAlt} fill sizes="(max-width: 760px) 100vw, (max-width: 1080px) 45vw, 360px" />
-                </div>
-                <div className="training-card-body">
-                  <div className="training-card-head">
-                    <span className="training-card-icon"><Icon aria-hidden="true" /></span>
-                    <strong>{p.title}</strong>
-                  </div>
-                  <p>{p.summary}</p>
-                  <span className="practice-cta">{isMockTraining ? "Start with the $75 kit" : "Book to learn more"} <ArrowRight aria-hidden="true" /></span>
-                </div>
-              </Link>
-            );
-          })}
-        </div>
+        <TrainingSteps />
       </div>
       <div className="container">
-        <TrainingSteps />
+        <TrainingSearchSection />
+      </div>
+      <div className="container">
+        <TrainingFaq />
+      </div>
+      <TrainingMobileBar />
+    </section>
+  );
+}
+
+function MockKitPage() {
+  return (
+    <section className="section training-page mock-kit-page">
+      <FloatingMotifs />
+      <div className="container">
+        <div className="mock-kit-hero reveal is-visible">
+          <div className="mock-kit-copy">
+            <span className="eyebrow"><span className="dot" aria-hidden="true" /> $75 Mock Drug Screening Kit</span>
+            <h1>Buy the mock kit. Practice the process. Start building a collector career.</h1>
+            <p className="hero-lead">
+              This kit is the first step for drug screen collector training. You get shipped mock materials,
+              portal guidance, live observed mock collections, and a simple path from practice to confidence.
+            </p>
+            <div className="hero-price-band mock-kit-price">
+              <strong>$75</strong>
+              <span>Mock kit, portal guidance, live observed mocks, and certificate-completion support.</span>
+            </div>
+            <div className="hero-actions">
+              <a className="btn btn-primary btn-lg" href={squareTrainingUrl} onClick={trackCheckout}>
+                <CreditCard aria-hidden="true" /> Buy the $75 Mock Kit
+              </a>
+              <a className="btn btn-dark btn-lg" href={calendlyBookingUrl} onClick={trackSchedule}>
+                <CalendarCheck aria-hidden="true" /> Book Portal Call
+              </a>
+            </div>
+          </div>
+          <div className="mock-kit-media">
+            <Image
+              src="/images/training/drug-screen-mock-collections.png"
+              alt="$75 mock drug screening kit and mock collection training from 1 Stikk Mobile"
+              fill
+              sizes="(max-width: 760px) 100vw, 48vw"
+              priority
+            />
+          </div>
+        </div>
+      </div>
+      <TrainingAdSteps />
+      <MockKitOutcomeStrip />
+      <div className="container">
+        <TrainingOfferSpotlight />
       </div>
       <div className="container">
         <TrainingSearchSection />
@@ -2569,6 +2612,7 @@ export default function FirstStikkSite({ slug = [] }) {
   const isNonProfit = slug[0] === "non-profit" && !slug[1];
   const isBusinessSolutions = slug[0] === "business-solutions" && !slug[1];
   const isTrainingIndex = slug[0] === "training" && !slug[1];
+  const isMockKit = slug[0] === "mock-kit" && !slug[1];
   const activeTrainingProgram = slug[0] === "training" && slug[1] ? trainingProgramMap[slug[1]] : null;
   const isTrainingPage = slug[0] === "training";
   const isContact = slug[0] === "contact" && !slug[1];
@@ -2614,6 +2658,8 @@ export default function FirstStikkSite({ slug = [] }) {
           <ServiceDetail service={activeService} />
         ) : activeTrainingProgram ? (
           <TrainingProgramDetail program={activeTrainingProgram} />
+        ) : isMockKit ? (
+          <MockKitPage />
         ) : isTrainingIndex ? (
           <TrainingPage />
         ) : isAbout ? (
@@ -2649,7 +2695,7 @@ export default function FirstStikkSite({ slug = [] }) {
       </main>
       <ImportantNotice />
       <Footer />
-      <FloatingCta isTraining={isTrainingLike && !isTrainingIndex} isHidden={isTrainingIndex} />
+      <FloatingCta isTraining={(isTrainingLike && !isTrainingIndex) || isMockKit} isHidden={isTrainingIndex} />
     </>
   );
 }

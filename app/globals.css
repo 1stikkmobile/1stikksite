@@ -516,6 +516,9 @@ h2 { font-size: clamp(1.9rem, 3.6vw, 3rem); }
   background: linear-gradient(180deg, var(--surface), oklch(98% 0.012 88));
   box-shadow: var(--shadow-sm);
 }
+.conversion-steps-training {
+  padding-bottom: clamp(16px, 3vw, 28px);
+}
 .conversion-steps-training .conversion-steps-shell {
   border-color: oklch(82% 0.13 86 / 0.34);
   background: linear-gradient(180deg, oklch(99% 0.014 88), oklch(96.5% 0.022 88));
@@ -544,12 +547,16 @@ h2 { font-size: clamp(1.9rem, 3.6vw, 3rem); }
   position: relative;
   display: grid;
   gap: 10px;
-  min-height: 210px;
+  min-height: 190px;
   padding: 20px 18px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: oklch(100% 0 0 / 0.82);
   overflow: hidden;
+}
+.conversion-steps-training .conversion-step-card:first-child {
+  border-color: oklch(82% 0.13 86 / 0.55);
+  box-shadow: 0 12px 26px oklch(70% 0.12 80 / 0.18);
 }
 .conversion-step-card::after {
   content: "";
@@ -595,6 +602,47 @@ h2 { font-size: clamp(1.9rem, 3.6vw, 3rem); }
 }
 .js .conversion-step-card:nth-child(2) { animation-delay: 100ms; }
 .js .conversion-step-card:nth-child(3) { animation-delay: 200ms; }
+
+.mock-kit-outcomes {
+  margin-top: calc(clamp(16px, 3vw, 28px) * -1);
+  padding: 0 0 clamp(34px, 5vw, 58px);
+}
+.mock-kit-outcomes-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+  gap: clamp(18px, 4vw, 36px);
+  align-items: center;
+  padding: clamp(18px, 3vw, 28px);
+  border-radius: calc(var(--radius) + 4px);
+  background: var(--graphite);
+  color: var(--white);
+  box-shadow: var(--shadow-md);
+}
+.mock-kit-outcomes h2 {
+  font-size: clamp(1.5rem, 2.2vw, 2.35rem);
+}
+.mock-kit-outcomes ul {
+  display: grid;
+  gap: 12px;
+}
+.mock-kit-outcomes li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: oklch(100% 0 0 / 0.07);
+  color: oklch(100% 0 0 / 0.9);
+  font-weight: 700;
+  line-height: 1.45;
+}
+.mock-kit-outcomes li svg {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  color: var(--gold);
+}
 
 /* ------------------------------------------------------- Homepage ranking */
 
@@ -1714,6 +1762,41 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
   margin-bottom: 22px;
 }
 
+.mock-kit-page {
+  padding-top: clamp(36px, 6vw, 74px);
+}
+.mock-kit-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: clamp(22px, 5vw, 54px);
+  align-items: center;
+  margin-bottom: clamp(32px, 5vw, 56px);
+}
+.mock-kit-copy h1 {
+  max-width: 12ch;
+  margin-bottom: 18px;
+  font-size: clamp(2.8rem, 5vw, 5rem);
+}
+.mock-kit-copy .hero-lead {
+  font-size: clamp(1.05rem, 0.6vw + 0.95rem, 1.25rem);
+}
+.mock-kit-price {
+  max-width: 620px;
+}
+.mock-kit-media {
+  position: relative;
+  min-height: 560px;
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) + 4px);
+  background: linear-gradient(180deg, var(--surface), oklch(97% 0.014 88));
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+.mock-kit-media img {
+  object-fit: contain;
+  padding: 18px;
+}
+
 /* ----------------------------------------- Training program detail page */
 
 .training-detail { padding-top: clamp(40px, 5vw, 64px); }
@@ -2187,6 +2270,8 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
   .training-detail-hero { grid-template-columns: 1fr; }
   .training-offer { grid-template-columns: 1fr; }
+  .mock-kit-hero { grid-template-columns: 1fr; }
+  .mock-kit-media { min-height: 480px; order: -1; }
   .training-detail-media { position: static; }
   .training-detail-info { flex-direction: row; justify-content: space-between; text-align: left; align-items: center; flex-wrap: wrap; gap: 16px 20px; }
   .training-detail-grid { grid-template-columns: 1fr; }
@@ -2214,6 +2299,14 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
   .conversion-steps-shell {
     padding: 16px;
     border-radius: 18px;
+  }
+  .mock-kit-outcomes-shell {
+    grid-template-columns: 1fr;
+    padding: 18px;
+    border-radius: 18px;
+  }
+  .mock-kit-outcomes {
+    padding-bottom: 30px;
   }
   .conversion-steps-head h2 {
     font-size: clamp(1.45rem, 7vw, 2rem);
@@ -2289,6 +2382,17 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
     margin-top: 4px;
   }
   .training-offer { padding: 16px; }
+  .mock-kit-copy h1 {
+    max-width: 13ch;
+    font-size: clamp(2.25rem, 11vw, 3.35rem);
+  }
+  .mock-kit-media {
+    min-height: 0;
+    aspect-ratio: 3 / 4;
+  }
+  .mock-kit-media img {
+    padding: 10px;
+  }
   .training-offer-media { min-height: 0; aspect-ratio: 3 / 4; }
   .training-hero-points { width: 100%; }
   .training-hero-points li {

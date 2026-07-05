@@ -8,6 +8,7 @@ export default async function sitemap() {
     "/about",
     "/services",
     "/training",
+    "/mock-kit",
     "/program",
     "/non-profit",
     "/business-solutions",
@@ -20,7 +21,7 @@ export default async function sitemap() {
       url: `${siteUrl}${path}`,
       lastModified: new Date().toISOString(),
       changeFrequency: path === "/" ? "daily" : "weekly",
-      priority: path === "/" ? 1.0 : path === "/training" ? 0.95 : 0.8
+      priority: path === "/" ? 1.0 : path === "/mock-kit" ? 0.98 : path === "/training" ? 0.95 : 0.8
     })),
     ...services.map((service) => ({
       url: `${siteUrl}/services/${service.slug}`,
