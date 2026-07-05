@@ -139,13 +139,13 @@ export async function generateMetadata({ params }) {
   // Training index
   if (slug[0] === "training" && !slug[1]) {
     return buildPageMetadata({
-      title: "Phlebotomy and Drug Testing Training Programs",
+      title: "Drug Screen Mock Kit Training | 1 Stikk Mobile",
       description:
-        "Beginner-friendly phlebotomy, drug screening, workforce, and lab business consulting programs from 1 Stikk Mobile. Call (318) 512-0170 Ext. 205 to enroll.",
+        "Buy the $75 drug screen mock kit, book your portal call, and complete live-monitored mock collections with 1 Stikk Mobile. Additional training tracks are available by booking first.",
       canonical: `${siteUrl}/training`,
-      openGraphTitle: "Phlebotomy and Drug Testing Training Programs | 1 Stikk Mobile",
+      openGraphTitle: "Drug Screen Mock Kit Training | 1 Stikk Mobile",
       openGraphDescription:
-        "Hands-on healthcare training programs for beginners and professionals. Phlebotomy certification, DOT drug screening, workforce development, and lab business mentorship."
+        "Start with the $75 drug screen mock kit, then book your portal call for live-monitored mock collections, portal guidance, and next-step support from 1 Stikk Mobile."
     });
   }
 

@@ -186,20 +186,20 @@ const trainingFeatureCards = [
   {
     key: "phlebotomy",
     title: "Phlebotomy",
-    subtitle: "Hands-on venipuncture practice with clear tube order, safe technique, and patient-first care.",
-    points: ["Animated blood-flow linework", "Tube rack and labeled draw zones", "Sized to stay fully visible on every screen"]
+    subtitle: "Hands-on blood draw training is available, but this track starts with a booking call instead of the $75 mock kit.",
+    points: ["Book first to review timing and fit", "Hands-on skill-building with live guidance", "Kept visible and easy to scan on every screen"]
   },
   {
     key: "drug-screening",
-    title: "Drug Screening",
-    subtitle: "DOT and non-DOT workflow visuals that highlight sealed cups, chain-of-custody, and compliance steps.",
-    points: ["Animated specimen scan motion", "Collector checklist details", "No certificate image clutter"]
+    title: "Drug Screening Mock Kit",
+    subtitle: "Start here: buy the $75 mock kit first, then book your portal call and complete live-monitored mocks with 1 Stikk support.",
+    points: ["Primary offer on this page", "DOT and non-DOT workflow support", "Only track with the $75 mock kit checkout"]
   },
   {
     key: "medical-assistant",
     title: "Medical Assistant",
-    subtitle: "Supportive clinical foundations for students building confidence in patient intake and specimen readiness.",
-    points: ["Vitals and chart-prep focus", "Built to complement the training lineup", "Clean spacing with no overlap"]
+    subtitle: "Supportive clinical foundations for students building confidence in patient intake and specimen readiness, with a booking-first flow.",
+    points: ["Book first to discuss availability", "Vitals and chart-prep support", "Designed to complement the training lineup"]
   }
 ];
 
@@ -345,41 +345,51 @@ function CertificateShowcase() {
   return (
     <div className="cert-showcase reveal is-visible">
       <div className="cert-showcase-head">
-        <span className="eyebrow"><span className="dot" aria-hidden="true" /> Explore the training tracks</span>
-        <h2>Explore the training options and choose the path that fits you best.</h2>
-        <p>The $75 mock package applies only to Drug Screen Training and Mock Collections.</p>
+        <span className="eyebrow"><span className="dot" aria-hidden="true" /> Start with the right training flow</span>
+        <h2>Start with the $75 Drug Screening Mock Kit. Every other training track starts with a booking call.</h2>
+        <p>The mock kit is the main offer on this page and the only checkout-first option.</p>
       </div>
       <div className="cert-showcase-grid">
-        {trainingFeatureCards.map((card) => (
-          <div className="cert-card training-feature-card" key={card.key}>
-            <div className="cert-frame training-feature-frame">
-              <TrainingFeatureArt type={card.key} title={card.title} />
+        {[...trainingFeatureCards].sort((a, b) => (a.key === "drug-screening" ? -1 : b.key === "drug-screening" ? 1 : 0)).map((card) => {
+          const isDrugScreening = card.key === "drug-screening";
+
+          return (
+            <div className="cert-card training-feature-card" key={card.key}>
+              <div className="cert-frame training-feature-frame">
+                <TrainingFeatureArt type={card.key} title={card.title} />
+              </div>
+              <strong>{card.title}</strong>
+              <p>{card.subtitle}</p>
+              <ul className="training-feature-points">
+                {card.points.map((point) => <li key={point}>{point}</li>)}
+              </ul>
+              <div className="cert-card-actions">
+                {isDrugScreening ? (
+                  <Link
+                    className="btn btn-primary"
+                    href={squareTrainingUrl}
+                    onClick={() => {
+                      if (typeof window !== "undefined" && typeof fbq === "function") {
+                        fbq("track", "InitiateCheckout");
+                      }
+                    }}
+                  >
+                    <CreditCard aria-hidden="true" /> Buy the $75 Mock Kit
+                  </Link>
+                ) : (
+                  <Link className="btn btn-dark" href={calendlyBookingUrl} onClick={trackSchedule}>
+                    <CalendarCheck aria-hidden="true" /> Book First
+                  </Link>
+                )}
+              </div>
             </div>
-            <strong>{card.title}</strong>
-            <p>{card.subtitle}</p>
-            <ul className="training-feature-points">
-              {card.points.map((point) => <li key={point}>{point}</li>)}
-            </ul>
-            <div className="cert-card-actions">
-              <Link
-                className="btn btn-primary"
-                href={squareTrainingUrl}
-                onClick={() => {
-                  if (typeof window !== "undefined" && typeof fbq === "function") {
-                    fbq("track", "InitiateCheckout");
-                  }
-                }}
-              >
-                <CreditCard aria-hidden="true" /> Buy the $75 Kit
-              </Link>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
       <div className="training-offer-notes" style={{ marginTop: "24px" }}>
         <div className="training-offer-note">
           <strong>Want the fastest path in?</strong>
-          <span>Buy the $75 mock kit first, then book your portal call so we can get you into the training flow.</span>
+          <span>Choose Drug Screening, buy the $75 mock kit first, then book your portal call so we can get you into the training flow.</span>
         </div>
       </div>
     </div>
@@ -399,11 +409,11 @@ function TrainingOfferSpotlight() {
         />
       </div>
       <div className="training-offer-copy">
-        <span className="eyebrow"><span className="dot" aria-hidden="true" /> What students get</span>
-        <h2>Drug Screen Training and Mock Collections for $75.</h2>
+        <span className="eyebrow"><span className="dot" aria-hidden="true" /> Main offer</span>
+        <h2>The $75 Drug Screening Mock Kit is the starting point.</h2>
         <p>
-          Everything needed is bundled into one $75 package. Start by buying the kit, then book your call
-          so 1 Stikk can help you access the portal, prepare for the process, and move you into live mock support.
+          Everything needed is bundled into one $75 package. Buy the kit first, then book your portal call
+          so 1 Stikk can unlock your access, prepare you for the process, and move you into live mock support.
         </p>
         <div className="training-offer-badges" aria-label="Key offer highlights">
           <span>Mock kit shipped</span>
@@ -1321,9 +1331,9 @@ function TrainingPage() {
       <div className="container">
         <div className="program-hero reveal is-visible">
           <span className="eyebrow"><span className="dot" aria-hidden="true" /> Drug Screen Training and Mock Collections</span>
-          <h1>Buy the $75 mock kit first, then book your call to unlock portal access and complete your mocks with live 1 Stikk support.</h1>
+          <h1>Start with the $75 Drug Screening Mock Kit, then book your portal call to unlock access and complete your mocks with live 1 Stikk support.</h1>
           <p className="hero-lead" style={{ margin: "0 auto 20px", maxWidth: "60ch" }}>
-            The flow is simple: buy the mock kit, book your call, get portal access, receive your shipped
+            The flow is simple: buy the $75 mock kit, book your call, get portal access, receive your shipped
             materials, and complete your mock exam with live guidance from 1 Stikk.
           </p>
           <div className="hero-actions" style={{ justifyContent: "center", marginBottom: "16px", flexWrap: "wrap", gap: "12px" }}>
@@ -1357,8 +1367,9 @@ function TrainingPage() {
       </div>
       <div className="container">
         <div className="training-grid">
-          {trainingPrograms.map((p) => {
+          {[...trainingPrograms].sort((a, b) => (a.slug === "drug-screening" ? -1 : b.slug === "drug-screening" ? 1 : 0)).map((p) => {
             const Icon = p.icon;
+            const isMockTraining = p.slug === "drug-screening";
             return (
               <Link className="training-card reveal is-visible" href={`/training/${p.slug}`} key={p.slug}>
                 <div className="training-card-media">
@@ -1370,7 +1381,7 @@ function TrainingPage() {
                     <strong>{p.title}</strong>
                   </div>
                   <p>{p.summary}</p>
-                  <span className="practice-cta">View program <ArrowRight aria-hidden="true" /></span>
+                  <span className="practice-cta">{isMockTraining ? "Start with the $75 kit" : "Book to learn more"} <ArrowRight aria-hidden="true" /></span>
                 </div>
               </Link>
             );
@@ -1412,11 +1423,11 @@ function TrainingProgramDetail({ program }) {
             <div className="hero-actions" style={{ flexWrap: "wrap", gap: "12px" }}>
               {isMockTraining ? (
                 <a className="btn btn-primary btn-lg" href={squareTrainingUrl} onClick={trackCheckout}>
-                  <CreditCard aria-hidden="true" /> Pay $75 Mock Kit
+                  <CreditCard aria-hidden="true" /> Buy the $75 Mock Kit
                 </a>
               ) : null}
               <a className="btn btn-dark btn-lg" href={calendlyBookingUrl} onClick={trackSchedule}>
-                <CalendarCheck aria-hidden="true" /> Schedule a Time
+                <CalendarCheck aria-hidden="true" /> {isMockTraining ? "Book Your Portal Call" : "Schedule a Time"}
               </a>
             </div>
           </div>
