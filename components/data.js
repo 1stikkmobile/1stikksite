@@ -19,11 +19,11 @@ import {
     Users
 } from "lucide-react";
 
-// Patients must CALL — no online booking for patient services
+// Patient services: call in or use the Myriad patient booking link.
 // Training: Square ($75 payment) + Calendly (schedule session)
 export const squareTrainingUrl = "https://checkout.square.site/merchant/ML21SF304722B/checkout/W4RL45S2FR2QOSYGF4IJUQGU";
-// myriadUrl is deprecated — use squareTrainingUrl for training payment
-export const myriadUrl = squareTrainingUrl;
+export const patientBookingUrl = "https://myriad.health/book?token=WnjFcnpNSCsatghXix";
+export const myriadUrl = patientBookingUrl;
 export const calendlyBookingUrl = "https://calendly.com/1stikkmobile-meeting/health";
 export const calendlyUrl =
   "https://calendly.com/1stikkmobile-meeting/health?hide_event_type_details=1&hide_gdpr_banner=1&background_color=121212&text_color=ffffff&primary_color=e3b505";
@@ -376,7 +376,7 @@ export const faqs = [
   },
   {
     q: "How do I book a service or appointment?",
-    a: "Click Book a Service or call us at (877) 217-8455. We're here 24/7."
+    a: "Call (877) 217-8455 to speak with the team, or use the patient booking link to request your mobile service. We're here 24/7."
   }
 ];
 

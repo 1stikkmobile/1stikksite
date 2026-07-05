@@ -41,14 +41,14 @@ import {
     calendlyUrl,
     contactEmail,
     corePractices,
+    faqs,
     facebookUrl,
-    homeFaqs,
     labPortalUrl,
     mainPhone,
     mainPhoneDialHref,
-    myriadUrl,
     nav,
     officeHoursText,
+    patientBookingUrl,
     programData,
     serviceMap,
     serviceStates,
@@ -83,6 +83,7 @@ function bookHref(type) {
   if (type === "training") return squareTrainingUrl;
   if (type === "business") return calendlyBookingUrl;
   if (type === "contact") return "/contact";
+  if (type === "patient") return patientBookingUrl;
   return mainPhoneDialHref;
 }
 
@@ -231,6 +232,42 @@ const trainingSearchSignals = [
   }
 ];
 
+const patientBookingSteps = [
+  {
+    Icon: Phone,
+    title: "Call or book online",
+    text: "Tap the phone button to call us, or use the patient booking link if you prefer to request service online."
+  },
+  {
+    Icon: MapPin,
+    title: "Tell us who needs care",
+    text: "Share the patient name, service needed, location, and best time. Family members can book for a parent or grandparent."
+  },
+  {
+    Icon: HeartHandshake,
+    title: "We come to you",
+    text: "A certified mobile professional comes to the home, workplace, or facility and handles the visit with care."
+  }
+];
+
+const trainingAdSteps = [
+  {
+    Icon: CreditCard,
+    title: "Buy the $75 mock kit",
+    text: "Use the checkout button first. This starts the drug screening training process."
+  },
+  {
+    Icon: CalendarCheck,
+    title: "Book your portal call",
+    text: "After checkout, book a call so 1 Stikk can guide your portal access and next steps."
+  },
+  {
+    Icon: BadgeCheck,
+    title: "Practice with live support",
+    text: "Receive your mock kit, complete the required mock collections, and get live guidance."
+  }
+];
+
 const homeComparisonItems = {
   competitors: [
     "DrugTestCollector.com: $200-$400 and no physical mock kit",
@@ -320,6 +357,68 @@ function ProgramAccent({ type }) {
       <path d="M12 49h32l10-20 14 38 14-28 11 10h55" stroke="currentColor" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
       <circle cx="124" cy="49" r="8" fill="currentColor" />
     </svg>
+  );
+}
+
+function ConversionSteps({ variant = "patient", title, lead, steps, actions }) {
+  return (
+    <section className={`conversion-steps conversion-steps-${variant}`} aria-labelledby={`${variant}-steps-title`}>
+      <div className="container conversion-steps-shell reveal is-visible">
+        <div className="conversion-steps-head">
+          <span className="eyebrow"><span className="dot" aria-hidden="true" /> Easy next steps</span>
+          <h2 id={`${variant}-steps-title`}>{title}</h2>
+          {lead ? <p>{lead}</p> : null}
+          {actions ? <div className="conversion-steps-actions">{actions}</div> : null}
+        </div>
+        <div className="conversion-steps-grid">
+          {steps.map((step, index) => {
+            const Icon = step.Icon;
+            return (
+              <article className="conversion-step-card" key={step.title}>
+                <span className="conversion-step-number">{index + 1}</span>
+                <Icon aria-hidden="true" />
+                <strong>{step.title}</strong>
+                <p>{step.text}</p>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PatientBookingSteps({ compact = false }) {
+  return (
+    <ConversionSteps
+      variant="patient"
+      title={compact ? "Book this service in 3 simple steps." : "Need care for yourself, a parent, or a grandparent? Start here."}
+      lead={compact ? "No confusion. Choose a button, tell us what is needed, and we come to you." : "The page is built for quick decisions: call if you want help now, or use the patient booking link to request service online."}
+      steps={patientBookingSteps}
+      actions={
+        <>
+          <a className="btn btn-primary btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> Call to Book</a>
+          <a className="btn btn-dark btn-lg" href={patientBookingUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Book Patient Service</a>
+        </>
+      }
+    />
+  );
+}
+
+function TrainingAdSteps() {
+  return (
+    <ConversionSteps
+      variant="training"
+      title="For drug screen training, do these 3 steps in order."
+      lead="Ads should land here and feel obvious: buy the $75 mock kit first, then book your portal call, then complete the live-supported mocks."
+      steps={trainingAdSteps}
+      actions={
+        <>
+          <a className="btn btn-primary btn-lg" href={squareTrainingUrl} onClick={trackCheckout}><CreditCard aria-hidden="true" /> Buy the $75 Mock Kit</a>
+          <a className="btn btn-dark btn-lg" href={calendlyBookingUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Book Portal Call</a>
+        </>
+      }
+    />
   );
 }
 
@@ -596,9 +695,12 @@ function Header({ mobileOpen, setMobileOpen }) {
                     })}
                   </div>
                   <div className="mega-foot">
-                    <span>Patient service — booked online in minutes.</span>
+                    <span>Patient services: call in or use the booking link.</span>
                     <a className="btn btn-primary btn-sm" href={mainPhoneDialHref}>
                       <Phone aria-hidden="true" /> Call to Book
+                    </a>
+                    <a className="btn btn-dark btn-sm" href={patientBookingUrl} onClick={trackSchedule}>
+                      <CalendarCheck aria-hidden="true" /> Book Online
                     </a>
                   </div>
                 </div>
@@ -687,6 +789,9 @@ function Header({ mobileOpen, setMobileOpen }) {
             <a className="btn btn-primary" href={mainPhoneDialHref} onClick={() => setMobileOpen(false)}>
               <Phone aria-hidden="true" /> Call to Book
             </a>
+            <a className="btn btn-dark" href={patientBookingUrl} onClick={() => setMobileOpen(false)}>
+              <CalendarCheck aria-hidden="true" /> Book Patient Service
+            </a>
           </div>
         </div>
       </div>
@@ -703,41 +808,36 @@ function Hero() {
         <FloatingMotifs />
         <div className="hero-copy reveal is-visible">
           <span className="eyebrow">
-            <span className="dot" aria-hidden="true" /> DOT collector training · physical mock kit shipped
+            <span className="dot" aria-hidden="true" /> We come to you · all 50 states
           </span>
-          <h1>DOT drug screen collector training for $75 with a physical mock kit and live virtual mocks.</h1>
+          <h1>Mobile blood draws, drug testing, and wellness care at your door.</h1>
           <p className="hero-lead">
-            Get started with a training-first offer built to outrank overpriced competitors: portal access,
-            real supplies shipped to you, five live virtual mock collections, and support from a real healthcare provider.
+            Book lab work, wellness visits, drug testing, or health screenings for yourself or a loved one. A caring,
+            certified professional comes right to the home, workplace, or facility.
           </p>
-          <div className="hero-price-band">
-            <strong>$75</strong>
-            <span>Physical mock kit shipped, 5 live virtual mocks, certificate guidance, and DOT-focused collector support.</span>
-          </div>
           <div className="hero-actions">
-            <a className="btn btn-primary btn-lg" href={squareTrainingUrl} onClick={trackCheckout}>
-              <CreditCard aria-hidden="true" />
-              Get Certified for $75
+            <a className="btn btn-primary btn-lg" href={mainPhoneDialHref}>
+              <Phone aria-hidden="true" />
+              Call to Book
             </a>
-            <Link className="btn btn-dark btn-lg" href="/training">See Training Details</Link>
+            <a className="btn btn-dark btn-lg" href={patientBookingUrl} onClick={trackSchedule}>
+              <CalendarCheck aria-hidden="true" />
+              Book Patient Service
+            </a>
           </div>
           <ul className="hero-trust">
-            <li><BadgeCheck aria-hidden="true" /> 49 CFR Part 40 workflow support</li>
-            <li><ShieldCheck aria-hidden="true" /> Physical mock kit shipped to your door</li>
-            <li><Users aria-hidden="true" /> Five live virtual mock collections with feedback</li>
+            <li><Star aria-hidden="true" /> Certified, compassionate professionals</li>
+            <li><MapPin aria-hidden="true" /> We come to you, no driving needed</li>
+            <li><Clock aria-hidden="true" /> Open 24 hours, 7 days a week</li>
           </ul>
         </div>
 
         <div className="hero-visual reveal is-visible">
           <div className="hero-photo hero-photo-main">
-            <Image src="/images/training/drug-screen-mock-collections.png" alt="1 Stikk Mobile DOT collector training mock kit offer" fill sizes="(max-width: 760px) 95vw, (max-width: 1080px) 95vw, 48vw" priority />
+            <Image src="/images/site/mobile-lab.webp" alt="The 1 Stikk Mobile laboratory van set up for sample collection" fill sizes="(max-width: 760px) 95vw, (max-width: 1080px) 95vw, 48vw" priority />
           </div>
           <div className="hero-photo hero-photo-sub">
-            <Image src="/images/training/training-table.jpg" alt="Drug screening kit supplies arranged for collector training practice" fill sizes="(max-width: 900px) 90vw, 28vw" />
-          </div>
-          <div className="hero-badge">
-            <strong>49 CFR Part 40</strong>
-            <span>Training path built around DOT collector readiness.</span>
+            <Image src="/images/site/van-care.webp" alt="A 1 Stikk Mobile clinician greeting a patient at a mobile lab van" fill sizes="(max-width: 900px) 90vw, 28vw" />
           </div>
         </div>
       </div>
@@ -751,10 +851,10 @@ function MissionBand() {
   return (
     <section className="mission-band">
       <div className="container mission-inner reveal">
-        <h2>DOT collector training should not cost $400 to feel real.</h2>
+        <h2>The care they need, right at the door.</h2>
         <p>
-          1 Stikk Mobile leads with a $75 collector-training offer that combines shipped mock materials,
-          live virtual practice, and real healthcare credibility. Patient services still matter, but training is the main growth engine.
+          We send certified professionals directly to your home or your loved one's home for blood tests,
+          wellness checks, drug testing, and health screenings. Simple, dignified, and dependable.
         </p>
       </div>
     </section>
@@ -866,9 +966,9 @@ function CorePractices() {
     <section className="section" id="services">
       <div className="container">
         <div className="section-head reveal">
-          <span className="eyebrow"><span className="dot" aria-hidden="true" /> Secondary healthcare services</span>
-          <h2>Mobile patient and employer services that support the training brand.</h2>
-          <p>These services strengthen 1 Stikk Mobile's credibility as a real healthcare operator while the training funnel stays the main SEO and conversion priority.</p>
+          <span className="eyebrow"><span className="dot" aria-hidden="true" /> Our core practices</span>
+          <h2>The care people ask for most.</h2>
+          <p>Every service is mobile, professional, and built around getting your care done without the trip.</p>
         </div>
         <div className="practice-grid">
           {corePractices.map((p) => {
@@ -885,6 +985,7 @@ function CorePractices() {
         <div className="section-foot reveal">
           <a className="btn btn-dark" href="/services">View all services <ArrowRight aria-hidden="true" /></a>
           <a className="btn btn-primary" href={mainPhoneDialHref}><Phone aria-hidden="true" /> Call to Book</a>
+          <a className="btn btn-dark" href={patientBookingUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Book Patient Service</a>
         </div>
       </div>
     </section>
@@ -1050,16 +1151,16 @@ function Faq() {
     <section className="section faq-section">
       <div className="container faq-shell">
         <div className="faq-intro reveal">
-          <span className="eyebrow"><span className="dot" aria-hidden="true" /> DOT collector training FAQ</span>
-          <h2>Questions that help this page compete for buyer-intent searches.</h2>
+          <span className="eyebrow"><span className="dot" aria-hidden="true" /> Everything you need to know</span>
+          <h2>Frequently asked questions.</h2>
           <p>
-            These answers focus on the terms people search before they enroll: cost, physical mock kits,
-            live virtual mocks, and 49 CFR Part 40 readiness.
+            Answers to the most common questions about our mobile healthcare services, patient booking,
+            training programs, and business solutions.
           </p>
-          <a className="btn btn-primary" href={squareTrainingUrl} onClick={trackCheckout}><CreditCard aria-hidden="true" /> Get Certified for $75</a>
+          <a className="btn btn-primary" href={mainPhoneDialHref}><Phone aria-hidden="true" /> Call to Book</a>
         </div>
         <div className="faq-list reveal">
-          {homeFaqs.map((item, i) => (
+          {faqs.map((item, i) => (
             <FaqItem key={item.q} item={item} isOpen={open === i} onToggle={() => setOpen(open === i ? -1 : i)} />
           ))}
         </div>
@@ -1078,10 +1179,11 @@ function ContactCta() {
         <h2>Anytime, anywhere.</h2>
         <p>
           Whether you need lab work, a wellness visit, or a health screening — our caring team is ready.
-          We come to you. Just call or book online in minutes.
+          We come to you. Call in or use the patient booking link to request your service.
         </p>
         <div className="contact-actions">
           <a className="btn btn-primary btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> Call to Book</a>
+          <a className="btn btn-dark btn-lg" href={patientBookingUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Book Patient Service</a>
         </div>
         <div className="contact-cards">
           <a className="contact-card" href={mainPhoneDialHref}>
@@ -1114,7 +1216,10 @@ function Footer() {
             <span><strong>1 Stikk Mobile</strong><small>We Always Care</small></span>
           </Link>
           <p>Accessible, reliable, and compassionate mobile lab services — headquartered in Monroe, Louisiana and serving patients, employers, and communities nationwide.</p>
-          <a className="btn btn-primary btn-sm" href={mainPhoneDialHref}><Phone aria-hidden="true" /> Call to Book</a>
+          <div className="footer-actions">
+            <a className="btn btn-primary btn-sm" href={mainPhoneDialHref}><Phone aria-hidden="true" /> Call</a>
+            <a className="btn btn-dark btn-sm" href={patientBookingUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Book Online</a>
+          </div>
         </div>
         <div className="footer-col">
           <strong>Services</strong>
@@ -1136,6 +1241,7 @@ function Footer() {
         <div className="footer-col">
           <strong>Get in touch</strong>
           <a href={mainPhoneDialHref}>{mainPhone}</a>
+          <a href={patientBookingUrl}>Patient booking link</a>
           <a href={afterHoursPhoneHref}>After hours {afterHoursPhone}</a>
           <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
           <a href={facebookUrl}>Facebook</a>
@@ -1196,21 +1302,40 @@ function ConversionToast({ isTraining }) {
   );
 }
 
-function FloatingCta({ isTraining }) {
-  if (!isTraining) return null;
+function FloatingCta({ isTraining, isHidden = false }) {
+  if (isHidden) return null;
+
+  const primary = isTraining
+    ? { href: squareTrainingUrl, label: "Buy $75 Kit", Icon: CreditCard, className: "floating-book", onClick: trackCheckout }
+    : { href: mainPhoneDialHref, label: "Call", Icon: Phone, className: "floating-call" };
+
+  const secondary = isTraining
+    ? { href: calendlyBookingUrl, label: "Book Call", Icon: CalendarCheck, className: "floating-call", onClick: trackSchedule }
+    : { href: patientBookingUrl, label: "Book Online", Icon: CalendarCheck, className: "floating-book", onClick: trackSchedule };
+
+  const PrimaryIcon = primary.Icon;
+  const SecondaryIcon = secondary.Icon;
 
   return (
     <>
-      <div className="floating-actions-left" aria-label="Call 1 Stikk Mobile">
-        <a className="floating-action floating-call" href={mainPhoneDialHref}>
-          <Phone aria-hidden="true" />
-          <span>Call to Book</span>
+      <div className="floating-actions-left" aria-label={secondary.label}>
+        <a className={`floating-action ${secondary.className}`} href={secondary.href} onClick={secondary.onClick}>
+          <SecondaryIcon aria-hidden="true" />
+          <span>{secondary.label}</span>
         </a>
       </div>
-      <div className="floating-actions" aria-label="Book your portal call">
-        <a className="floating-action floating-book" href={calendlyBookingUrl} onClick={trackSchedule}>
-          <CalendarCheck aria-hidden="true" />
-          <span>Book a Call</span>
+      <div className="floating-actions" aria-label={primary.label}>
+        <a className={`floating-action ${primary.className}`} href={primary.href} onClick={primary.onClick}>
+          <PrimaryIcon aria-hidden="true" />
+          <span>{primary.label}</span>
+        </a>
+      </div>
+      <div className={`mobile-action-bar ${isTraining ? "mobile-action-bar-training" : "mobile-action-bar-patient"}`} aria-label={isTraining ? "Training quick actions" : "Patient quick actions"}>
+        <a className="btn btn-primary" href={primary.href} onClick={primary.onClick}>
+          <PrimaryIcon aria-hidden="true" /> {primary.label}
+        </a>
+        <a className="btn btn-dark" href={secondary.href} onClick={secondary.onClick}>
+          <SecondaryIcon aria-hidden="true" /> {secondary.label}
         </a>
       </div>
     </>
@@ -1224,12 +1349,12 @@ function ServiceDetail({ service }) {
   const isBehavioral = service.slug === "behavioral-health";
   const primary =
     service.book === "training"
-      ? { href: myriadUrl, label: "Book Training" }
+      ? { href: squareTrainingUrl, label: "Book Training" }
       : service.book === "call"
       ? { href: mainPhoneDialHref, label: "Call to Book" }
       : service.book === "contact"
       ? { href: "/contact", label: "Contact our team" }
-      : { href: mainPhoneDialHref, label: "Call to Book" };
+      : { href: patientBookingUrl, label: "Book Patient Service" };
 
   return (
     <section className="section service-detail">
@@ -1241,7 +1366,12 @@ function ServiceDetail({ service }) {
             <h1>{service.title}</h1>
             <p className="hero-lead">{service.summary}</p>
             <div className="hero-actions">
-              <a className="btn btn-primary btn-lg" href={primary.href} onClick={primary.href === myriadUrl || primary.href === calendlyBookingUrl ? trackSchedule : undefined}>
+              {service.book === "patient" ? (
+                <a className="btn btn-primary btn-lg" href={mainPhoneDialHref}>
+                  <Phone aria-hidden="true" /> Call to Book
+                </a>
+              ) : null}
+              <a className={`${service.book === "patient" ? "btn btn-dark" : "btn btn-primary"} btn-lg`} href={primary.href} onClick={primary.href === squareTrainingUrl ? trackCheckout : primary.href === calendlyBookingUrl || primary.href === patientBookingUrl ? trackSchedule : undefined}>
                 {primary.href === mainPhoneDialHref ? <Phone aria-hidden="true" /> : <CalendarCheck aria-hidden="true" />}
                 {primary.label}
               </a>
@@ -1265,6 +1395,8 @@ function ServiceDetail({ service }) {
             </article>
           </div>
         </div>
+
+        <PatientBookingSteps compact />
 
         <div className="related-head reveal is-visible">
           <h2>Explore other services</h2>
@@ -1491,11 +1623,12 @@ function TrainingPage() {
       <FloatingMotifs />
       <div className="container">
         <div className="program-hero reveal is-visible">
-          <span className="eyebrow"><span className="dot" aria-hidden="true" /> Drug Screen Training and Mock Collections</span>
-          <h1>Start with the $75 Drug Screening Mock Kit, then book your portal call to unlock access and complete your mocks with live 1 Stikk support.</h1>
+          <span className="eyebrow"><span className="dot" aria-hidden="true" /> Training, mock kits, and live collector support</span>
+          <h1>Drug screen training starts with the $75 mock kit, but 1 Stikk also supports phlebotomy, workforce, and lab business training.</h1>
           <p className="hero-lead" style={{ margin: "0 auto 20px", maxWidth: "60ch" }}>
-            The flow is simple: buy the $75 mock kit, book your call, get portal access, receive your shipped
-            materials, and complete your mock exam with live guidance from 1 Stikk.
+            If you are here for drug screening, buy the $75 mock kit first, then book your portal call for access,
+            shipped materials, and live monitored mocks. If you need another training track, book a call so the team
+            can place you in the right program.
           </p>
           <div className="hero-actions" style={{ justifyContent: "center", marginBottom: "16px", flexWrap: "wrap", gap: "12px" }}>
             <a className="btn btn-primary btn-lg" href={squareTrainingUrl} onClick={trackCheckout}>
@@ -1520,6 +1653,7 @@ function TrainingPage() {
           </a>
         </div>
       </div>
+      <TrainingAdSteps />
       <div className="container">
         <TrainingOfferSpotlight />
       </div>
@@ -1529,8 +1663,8 @@ function TrainingPage() {
       <div className="container training-secondary-programs">
         <div className="cert-showcase-head training-secondary-programs-head">
           <span className="eyebrow"><span className="dot" aria-hidden="true" /> More training options</span>
-          <h2>Browse the other booking-first programs after the mock kit offer.</h2>
-          <p>These options stay available, but they are intentionally secondary to the Drug Screening Mock Kit flow.</p>
+          <h2>Training is more than kits. Pick the program that matches your next step.</h2>
+          <p>The drug screening mock kit has a checkout-first flow. Phlebotomy, workforce, and lab business support start with a booking call so the team can confirm fit and next steps.</p>
         </div>
         <div className="training-grid">
           {[...trainingPrograms].sort((a, b) => (a.slug === "drug-screening" ? -1 : b.slug === "drug-screening" ? 1 : 0)).map((p) => {
@@ -1688,6 +1822,8 @@ function TrainingProgramDetail({ program }) {
           </aside>
         </div>
 
+        {isMockTraining ? <TrainingAdSteps /> : null}
+
         {/* What you'll learn + What's included */}
         <div className="training-detail-grid">
           <div className="training-detail-card reveal is-visible">
@@ -1801,9 +1937,11 @@ function AboutPage() {
           </p>
           <div className="hero-actions">
             <a className="btn btn-primary btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> Call to Book</a>
+            <a className="btn btn-dark btn-lg" href={patientBookingUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Book Online</a>
           </div>
         </div>
       </section>
+      <PatientBookingSteps compact />
       <Founder />
       <BbbFeature />
       <ServiceAreas />
@@ -1824,9 +1962,11 @@ function ServicesIndexPage() {
           <p>Blood tests, drug tests, wellness checks, and more — all done at your home or workplace.</p>
           <div className="hero-actions">
             <a className="btn btn-primary btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> Call to Book</a>
+            <a className="btn btn-dark btn-lg" href={patientBookingUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Book Online</a>
           </div>
         </div>
       </section>
+      <PatientBookingSteps compact />
       <section className="section">
         <div className="container">
           <div className="services-index-grid">
@@ -1869,6 +2009,7 @@ function DrugScreeningPage() {
             </p>
             <div className="hero-actions">
               <a className="btn btn-primary btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> Call to Book</a>
+              <a className="btn btn-dark btn-lg" href={patientBookingUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Book Online</a>
             </div>
           </div>
           <div className="ds-hero-media reveal is-visible">
@@ -1884,6 +2025,8 @@ function DrugScreeningPage() {
           </div>
         </div>
       </section>
+
+      <PatientBookingSteps compact />
 
       <section className="ds-section ds-section-light">
         <div className="container ds-split">
@@ -2160,6 +2303,7 @@ function ContactPage() {
             </p>
             <div className="hero-actions" style={{ justifyContent: "center" }}>
               <a className="btn btn-primary btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> Call to Book</a>
+              <a className="btn btn-dark btn-lg" href={patientBookingUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Book Online</a>
             </div>
           </div>
           <div className="contact-cards reveal">
@@ -2187,6 +2331,7 @@ function ContactPage() {
           </div>
         </div>
       </section>
+      <PatientBookingSteps compact />
       <ServiceAreas />
     </>
   );
@@ -2490,13 +2635,12 @@ export default function FirstStikkSite({ slug = [] }) {
         ) : (
           <>
       <Hero />
+      <PatientBookingSteps />
       <MissionBand />
-      <HomeTrainingComparison />
-      <HomeTrainingBundle />
-      <HomeCareerPotential />
-      <ServiceAreas />
       <CorePractices />
+      <Founder />
       <BbbFeature />
+      <ServiceAreas />
       <Testimonials />
       <Faq />
       <ContactCta />
@@ -2505,7 +2649,7 @@ export default function FirstStikkSite({ slug = [] }) {
       </main>
       <ImportantNotice />
       <Footer />
-      <FloatingCta isTraining={isTrainingLike && !isTrainingIndex} />
+      <FloatingCta isTraining={isTrainingLike && !isTrainingIndex} isHidden={isTrainingIndex} />
     </>
   );
 }

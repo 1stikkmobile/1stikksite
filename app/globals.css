@@ -137,8 +137,8 @@ h2 { font-size: clamp(1.9rem, 3.6vw, 3rem); }
 .btn-lg { min-height: 56px; padding: 0 28px; font-size: 1.02rem; }
 .btn-sm { min-height: 42px; padding: 0 16px; font-size: 0.88rem; }
 
-.btn-primary { color: oklch(22% 0.04 80); background: var(--gold); box-shadow: var(--shadow-gold); }
-.btn-primary:hover { background: oklch(85% 0.13 86); }
+.btn-primary { color: oklch(12% 0.018 255); background: var(--gold); box-shadow: var(--shadow-gold); }
+.btn-primary:hover { color: oklch(10% 0.014 255); background: oklch(88% 0.14 86); }
 .btn-dark { color: var(--white); background: var(--graphite); }
 .btn-dark:hover { background: var(--graphite-2); }
 .btn-outline { color: var(--ink); background: transparent; border-color: var(--line-2); }
@@ -498,6 +498,103 @@ h2 { font-size: clamp(1.9rem, 3.6vw, 3rem); }
 .mission-inner { padding: clamp(48px, 6vw, 80px) 0; text-align: center; }
 .mission-inner h2 { max-width: 18ch; margin: 0 auto 18px; }
 .mission-inner p { max-width: 62ch; margin: 0 auto; color: oklch(100% 0 0 / 0.82); font-size: 1.1rem; line-height: 1.7; }
+
+/* ---------------------------------------------------------- Conversion steps */
+
+.conversion-steps {
+  padding: clamp(28px, 5vw, 56px) 0;
+  background: var(--paper);
+}
+.conversion-steps-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: clamp(18px, 4vw, 38px);
+  align-items: center;
+  padding: clamp(18px, 3vw, 28px);
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) + 4px);
+  background: linear-gradient(180deg, var(--surface), oklch(98% 0.012 88));
+  box-shadow: var(--shadow-sm);
+}
+.conversion-steps-training .conversion-steps-shell {
+  border-color: oklch(82% 0.13 86 / 0.34);
+  background: linear-gradient(180deg, oklch(99% 0.014 88), oklch(96.5% 0.022 88));
+}
+.conversion-steps-head h2 {
+  margin-bottom: 12px;
+  font-size: clamp(1.65rem, 2.4vw, 2.55rem);
+}
+.conversion-steps-head p {
+  color: var(--muted);
+  font-size: 1.02rem;
+  line-height: 1.65;
+}
+.conversion-steps-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+.conversion-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+.conversion-step-card {
+  position: relative;
+  display: grid;
+  gap: 10px;
+  min-height: 210px;
+  padding: 20px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: oklch(100% 0 0 / 0.82);
+  overflow: hidden;
+}
+.conversion-step-card::after {
+  content: "";
+  position: absolute;
+  inset: auto 18px 0;
+  height: 3px;
+  border-radius: 999px 999px 0 0;
+  background: var(--gold);
+  transform: scaleX(0.38);
+  transform-origin: left;
+  transition: transform 220ms ease;
+}
+.conversion-step-card:hover::after {
+  transform: scaleX(1);
+}
+.conversion-step-card svg {
+  width: 28px;
+  height: 28px;
+  color: var(--teal-deep);
+}
+.conversion-step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: oklch(12% 0.018 255);
+  font-weight: 900;
+}
+.conversion-step-card strong {
+  font-size: 1.05rem;
+  line-height: 1.25;
+}
+.conversion-step-card p {
+  color: var(--muted);
+  line-height: 1.55;
+  font-size: 0.94rem;
+}
+.js .conversion-step-card {
+  animation: stepEnter 0.55s ease both;
+}
+.js .conversion-step-card:nth-child(2) { animation-delay: 100ms; }
+.js .conversion-step-card:nth-child(3) { animation-delay: 200ms; }
 
 /* ------------------------------------------------------- Homepage ranking */
 
@@ -1004,6 +1101,7 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
 }
 .footer-brand .brand small { color: var(--gold); }
 .footer-brand p { max-width: 34ch; margin: 16px 0 18px; line-height: 1.6; font-size: 0.92rem; }
+.footer-actions { display: flex; flex-wrap: wrap; gap: 10px; }
 .footer-col { display: grid; gap: 10px; align-content: start; }
 .footer-col strong { color: var(--gold); font-size: 0.95rem; margin-bottom: 4px; }
 .footer-col a, .footer-col span { font-size: 0.9rem; line-height: 1.4; width: fit-content; }
@@ -1904,7 +2002,10 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
 }
 
 .floating-call { color: var(--white); background: var(--graphite); }
-.floating-book { color: oklch(22% 0.04 80); background: var(--gold); }
+.floating-book { color: oklch(12% 0.018 255); background: var(--gold); }
+.mobile-action-bar {
+  display: none;
+}
 
 /* --------------------------------------------------------- Conversion Toast */
 
@@ -2074,6 +2175,7 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
   .menu-button { display: inline-flex; }
   .hero-shell, .founder-shell, .bbb-shell, .areas-shell, .faq-shell,
   .service-detail-shell { grid-template-columns: 1fr; }
+  .conversion-steps-shell { grid-template-columns: 1fr; }
   .home-compare-shell, .home-bundle-shell { grid-template-columns: 1fr; }
   .home-career-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .training-page-shell { grid-template-columns: 1fr; }
@@ -2095,6 +2197,7 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
 
 @media (max-width: 760px) {
   .container { width: min(var(--max), calc(100% - 32px)); }
+  body { padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px)); }
   .utility-note { display: none; }
   .utility-inner { justify-content: center; }
   .hero-shell { padding-top: 36px; }
@@ -2107,6 +2210,51 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
   .bbb-photo { min-height: 240px; }
   .areas-map { min-height: 200px; }
   .practice-grid, .training-grid, .training-gallery-grid, .contact-cards, .footer-grid { grid-template-columns: 1fr; }
+  .conversion-steps { padding: 18px 0 28px; }
+  .conversion-steps-shell {
+    padding: 16px;
+    border-radius: 18px;
+  }
+  .conversion-steps-head h2 {
+    font-size: clamp(1.45rem, 7vw, 2rem);
+  }
+  .conversion-steps-head p {
+    font-size: 0.98rem;
+  }
+  .conversion-steps-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .conversion-steps-actions .btn {
+    width: 100%;
+    min-height: 56px;
+  }
+  .conversion-steps-grid {
+    grid-template-columns: 1fr;
+  }
+  .conversion-step-card {
+    min-height: 0;
+    grid-template-columns: 42px 1fr;
+    align-items: start;
+    padding: 16px;
+  }
+  .conversion-step-card svg {
+    grid-column: 1;
+    grid-row: 2 / 4;
+    width: 24px;
+    height: 24px;
+    margin-left: 5px;
+  }
+  .conversion-step-card strong,
+  .conversion-step-card p {
+    grid-column: 2;
+  }
+  .conversion-step-number {
+    grid-column: 1;
+    grid-row: 1;
+    width: 34px;
+    height: 34px;
+  }
   .home-career-grid { grid-template-columns: 1fr; }
   .training-card { grid-template-rows: 220px auto; }
   .training-page { padding-bottom: calc(110px + env(safe-area-inset-bottom, 0px)); }
@@ -2192,6 +2340,35 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
     background: oklch(100% 0 0 / 0.94);
     box-shadow: 0 18px 40px oklch(18% 0.03 235 / 0.14);
     backdrop-filter: blur(12px);
+  }
+  .floating-actions,
+  .floating-actions-left {
+    display: none !important;
+  }
+  .mobile-action-bar {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    z-index: 55;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid oklch(18% 0.03 235 / 0.08);
+    border-radius: 18px;
+    background: oklch(100% 0 0 / 0.96);
+    box-shadow: 0 18px 40px oklch(18% 0.03 235 / 0.16);
+    backdrop-filter: blur(12px);
+  }
+  .mobile-action-bar .btn {
+    min-height: 52px;
+    padding-inline: 10px;
+    font-size: 0.92rem;
+    white-space: nowrap;
+  }
+  .training-page .mobile-action-bar {
+    display: none;
   }
   .training-mobile-bar .btn {
     min-height: 52px;

@@ -16,28 +16,29 @@ const faviconImage = "/favicon.png";
 export const metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "DOT Collector Training $75 | 1 Stikk Mobile Inc.",
+    default: "Mobile Blood Draws & Lab Testing | 1 Stikk Mobile Inc.",
     template: "%s | 1 Stikk Mobile Inc."
   },
   description:
-    "DOT collector training for $75 with a physical mock kit shipped, live virtual mocks, drug screening support, and healthcare-provider credibility from 1 Stikk Mobile.",
+    "Book mobile blood draws, lab testing, drug screening, DNA testing, and wellness visits at home with 1 Stikk Mobile. Call in or schedule patient service online.",
   applicationName: "1 Stikk Mobile Inc.",
   keywords: [
     "1 Stikk Mobile",
+    "mobile blood draw",
+    "mobile lab testing",
     "DOT collector training",
-    "DOT collector certification",
-    "drug testing mock kit",
-    "49 CFR Part 40 training",
+    "at home blood test",
+    "mobile phlebotomy",
     "drug screening services",
-    "urine specimen collector training"
+    "DNA paternity testing"
   ],
   category: "healthcare",
   creator: "1 Stikk Mobile Inc.",
   publisher: "1 Stikk Mobile Inc.",
   openGraph: {
-    title: "DOT Collector Training $75 | 1 Stikk Mobile Inc.",
+    title: "Mobile Blood Draws & Lab Testing | 1 Stikk Mobile Inc.",
     description:
-      "Get DOT collector training for $75 with a physical mock kit shipped, 5 live virtual mocks, and support from a real healthcare provider.",
+      "Mobile blood draws, lab testing, drug screening, DNA testing, wellness visits, and patient services delivered at home or on site.",
     url: siteUrl,
     siteName: "1 Stikk Mobile Inc.",
     images: [
@@ -53,9 +54,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "DOT Collector Training $75 | 1 Stikk Mobile Inc.",
+    title: "Mobile Blood Draws & Lab Testing | 1 Stikk Mobile Inc.",
     description:
-      "Physical mock kit shipped, live virtual mocks, and DOT collector training for $75 from 1 Stikk Mobile.",
+      "Book mobile blood draws, lab testing, wellness visits, and drug screening with 1 Stikk Mobile.",
     images: [logoImage]
   },
   icons: {
@@ -117,7 +118,7 @@ export default function RootLayout({ children }) {
       telephone: "+13185120170",
       email: "collection.lab@1stikkmobile.com",
       description:
-        "DOT collector training, mock drug screening kits, live virtual mock collections, mobile drug screening, and healthcare support from 1 Stikk Mobile.",
+        "Mobile blood draws, lab testing, drug screening, DNA testing, wellness visits, mock drug screening kits, and healthcare training from 1 Stikk Mobile.",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Monroe",

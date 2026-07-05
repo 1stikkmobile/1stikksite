@@ -112,20 +112,22 @@ export async function generateMetadata({ params }) {
 
   if (slug.length === 0) {
     return buildPageMetadata({
-      title: "DOT Collector Training $75 - Physical Mock Kit Shipped",
+      title: "Mobile Blood Draws, Lab Testing & Wellness Visits",
       description:
-        "Get DOT collector training for $75 with a physical mock kit shipped to you, 5 live virtual mocks, and certificate guidance from 1 Stikk Mobile.",
+        "Book mobile blood draws, at-home lab testing, drug screening, DNA testing, and wellness visits with 1 Stikk Mobile. Call in or schedule patient service online.",
       canonical: siteUrl,
       keywords: [
-        "DOT drug screen collector training",
-        "DOT collector certification",
-        "drug testing mock kit",
-        "49 CFR Part 40 training",
-        "urine specimen collector training"
+        "mobile blood draw",
+        "mobile lab testing",
+        "at home blood test",
+        "mobile phlebotomy",
+        "mobile drug testing",
+        "DNA paternity testing",
+        "wellness visits at home"
       ],
-      openGraphTitle: "DOT Collector Training $75 | 1 Stikk Mobile",
+      openGraphTitle: "Mobile Blood Draws & Lab Testing | 1 Stikk Mobile",
       openGraphDescription:
-        "Physical mock kit shipped, 5 live virtual mocks, DOT-focused collector support, and a $75 training path built to beat higher-priced competitors."
+        "Certified mobile healthcare professionals come to your home, workplace, or facility for blood draws, testing, wellness visits, and screening services."
     });
   }
 
