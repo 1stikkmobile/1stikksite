@@ -3199,6 +3199,7 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
   border-bottom: 1px solid var(--line);
 }
 
+.article-inline-cta { margin-top: 34px; }
 .article-body { display: grid; gap: 32px; }
 .article-section h2 {
   font-size: clamp(1.25rem, 1.8vw + 0.4rem, 1.7rem);

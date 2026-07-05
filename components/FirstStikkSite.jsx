@@ -2222,11 +2222,11 @@ function ArticlesPage() {
     <>
       <section className="articles-hero">
         <div className="container articles-hero-inner reveal is-visible">
-          <span className="eyebrow eyebrow-light"><Sparkles aria-hidden="true" /> Health &amp; Wellness Resources</span>
-          <h1>Expert insights for patients, employers &amp; healthcare professionals.</h1>
+          <span className="eyebrow eyebrow-light"><Sparkles aria-hidden="true" /> DOT collector training resources</span>
+          <h1>High-intent guides built to rank for DOT collector training, mock kits, and compliance questions.</h1>
           <p>
-            Guides, compliance resources, and wellness education from the 1 Stikk Mobile team —
-            written by certified professionals with real-world mobile healthcare experience.
+            These articles are written to capture buyer-intent searches around collector certification, 49 CFR Part 40,
+            physical mock kits, live virtual mocks, and the career upside behind 1 Stikk Mobile&apos;s $75 offer.
           </p>
         </div>
       </section>
@@ -2236,7 +2236,8 @@ function ArticlesPage() {
             {articles.map((a) => <ArticleCard key={a.slug} article={a} />)}
           </div>
           <div className="section-foot reveal">
-            <a className="btn btn-primary" href={mainPhoneDialHref}><Phone aria-hidden="true" /> Call to Book</a>
+            <Link className="btn btn-dark" href="/training">View the training offer <ArrowRight aria-hidden="true" /></Link>
+            <a className="btn btn-primary" href={squareTrainingUrl} onClick={trackCheckout}><CreditCard aria-hidden="true" /> Get the $75 Mock Kit</a>
           </div>
         </div>
       </section>
@@ -2301,6 +2302,20 @@ function ArticleDetailPage({ article }) {
               ))}
             </div>
 
+            {relatedTrainingProgram ? (
+              <div className="article-inline-cta article-sidebar-cta">
+                <strong>The next step is the $75 mock-kit training flow.</strong>
+                <p>
+                  Buy the mock kit first, get portal guidance, receive your shipped materials, and complete five live
+                  virtual mock collections with 1 Stikk support.
+                </p>
+                <a className="btn btn-primary" href={squareTrainingUrl} onClick={trackCheckout}>
+                  <CreditCard aria-hidden="true" />
+                  Buy the $75 Mock Kit
+                </a>
+              </div>
+            ) : null}
+
             {article.faqs?.length ? (
               <div className="article-faq-wrapper">
                 <ArticleFaq items={article.faqs} />
@@ -2331,7 +2346,7 @@ function ArticleDetailPage({ article }) {
               {relatedTrainingProgram ? (
                 <Link className="btn btn-primary" href={`/training/${relatedTrainingProgram.slug}`}>
                   <CreditCard aria-hidden="true" />
-                  Get certified for $75
+                  See the $75 training offer
                 </Link>
               ) : (
                 <a className="btn btn-primary" href={mainPhoneDialHref}>

@@ -575,7 +575,199 @@ export const articles = [
     ],
     relatedService: "drug-screening",
     relatedTraining: "drug-screening",
-    related: ["dot-drug-testing-guide", "drug-test-chain-of-custody"]
+    related: ["49-cfr-part-40-training-requirements", "physical-mock-kit-vs-supply-list"]
+  },
+  {
+    slug: "49-cfr-part-40-training-requirements",
+    title: "49 CFR Part 40 Training Requirements Explained",
+    headline: "49 CFR Part 40 Training Requirements Explained for DOT Collectors",
+    description:
+      "A practical guide to 49 CFR Part 40 training requirements, including mock collections, chain of custody, collector errors, and how 1 Stikk Mobile's $75 mock-kit training supports DOT readiness.",
+    category: "Compliance",
+    categorySlug: "compliance",
+    dateISO: "2026-01-11",
+    date: "January 11, 2026",
+    readTime: "8 min read",
+    author: { name: "Tiffany Clinton, CPT, RMA", role: "CEO & Founder, 1 Stikk Mobile" },
+    image: "/images/training/program-dot-compliance.png",
+    imageAlt: "49 CFR Part 40 collector training support from 1 Stikk Mobile",
+    intro:
+      "People search for 49 CFR Part 40 training because they need more than a summary of federal rules. They need to understand what those rules mean for a real collector: how to move through a collection correctly, how to avoid fatal mistakes, and how to build confidence before handling regulated testing in the field. That is where a practical training program matters more than a textbook explanation alone.",
+    sections: [
+      {
+        heading: "What 49 CFR Part 40 Actually Governs",
+        body: "49 CFR Part 40 is the federal rule set that governs workplace drug and alcohol testing for all Department of Transportation agencies. It does not merely suggest best practices. It defines the collection process, the forms that must be used, the role of the collector, and the responsibilities of laboratories, Medical Review Officers, and employers.\n\nFor a collector, Part 40 matters because it is the operating framework behind every DOT urine collection. The collector is not improvising. They are following a defined process where order, documentation, specimen handling, and donor interaction all affect whether a test result stands up under review."
+      },
+      {
+        heading: "The Core Training Areas a Collector Must Understand",
+        body: "A collector needs to understand the flow of a compliant collection from beginning to end: donor identity verification, preparation of the collection site, specimen temperature checks, split specimen handling, and completion of the federal Custody and Control Form. Training also needs to cover what to do when something goes wrong, because unusual scenarios are where weak programs usually show.\n\nThat includes shy bladder procedures, out-of-range temperatures, incomplete forms, observed collections, and the difference between a correctable flaw and a fatal flaw. Good collector training does not stop at definitions. It teaches the judgment required to stay calm and move through the protocol correctly when the situation is less than perfect."
+      },
+      {
+        heading: "Why Mock Collections Matter Under Part 40",
+        body: "Reading Part 40 is useful, but mock collections are where the process starts to become instinctive. A collector needs repetition to build muscle memory around sequence, paperwork, language, and error prevention. Without that repetition, students often know the rule in theory but freeze when they have to perform the workflow live.\n\nThis is why mock collection practice is such an important commercial keyword in the training market. The difference between a course that explains Part 40 and a course that helps a learner execute Part 40 is the difference between passive knowledge and usable job readiness."
+      },
+      {
+        heading: "How 1 Stikk Mobile Supports Part 40 Readiness",
+        body: "1 Stikk Mobile's training flow is designed around turning Part 40 from a rulebook into a practical workflow. The $75 offer starts with a physical mock kit, then moves into portal guidance and five live virtual mock collections so students can practice with a real sequence rather than filling in blanks on their own.\n\nThat structure matters because students are not left to guess whether they are holding the right supplies or following the steps in the correct order. They can ask questions, receive feedback, and correct small paperwork or workflow errors before those habits follow them into employer or clinic work."
+      },
+      {
+        heading: "What Searchers Usually Want When They Look for Part 40 Training",
+        body: "Most people searching for 49 CFR Part 40 training are looking for one of three things: clear DOT collector certification support, a cheaper alternative to expensive providers, or a practical explanation of what the rules mean day to day. The pages that win those searches usually combine compliance language with strong commercial clarity: price, what's included, how mocks work, and how fast a learner can start.\n\nThat is why the $75 message matters. When a student understands that the mock kit, live practice, and Part 40 workflow support are bundled into one lower-cost training path, the offer becomes easier to compare and easier to act on."
+      }
+    ],
+    faqs: [
+      { q: "What is 49 CFR Part 40 training?", a: "It is training built around the federal procedures that govern DOT workplace drug and alcohol testing. For collectors, that means learning the collection workflow, paperwork, specimen handling, and error prevention steps defined under Part 40." },
+      { q: "Do I need mock collections to understand Part 40?", a: "Mock collections are one of the fastest ways to turn the rules into a usable workflow. They help students practice sequence, paperwork, and collector language instead of only reading the regulations." },
+      { q: "Does 1 Stikk Mobile include mock-kit support for Part 40 readiness?", a: "Yes. The $75 training path includes a physical mock kit, portal guidance, and five live virtual mock collections so students can practice with real materials and support." },
+      { q: "Is Part 40 training the same as collector certification?", a: "They are closely related. Part 40 training focuses on the federal procedures a collector must understand, while a collector-certification path packages that knowledge into a structured training and mock-practice process." }
+    ],
+    relatedService: "drug-screening",
+    relatedTraining: "drug-screening",
+    related: ["dot-drug-screen-collector-training-guide", "live-virtual-mocks-vs-pre-recorded-training"]
+  },
+  {
+    slug: "physical-mock-kit-vs-supply-list",
+    title: "Physical Mock Kit vs Supply List: Why Real Kits Matter",
+    headline: "Physical Mock Kit vs Supply List: Why Real Collector Kits Matter",
+    description:
+      "Learn why a physical mock drug screening kit beats a supply list for DOT collector training, how it improves conversion and confidence, and why 1 Stikk Mobile's $75 offer stands out.",
+    category: "Training & Career",
+    categorySlug: "training-career",
+    dateISO: "2026-01-10",
+    date: "January 10, 2026",
+    readTime: "7 min read",
+    author: { name: "Tiffany Clinton, CPT, RMA", role: "CEO & Founder, 1 Stikk Mobile" },
+    image: "/images/training/training-table.jpg",
+    imageAlt: "Physical mock kit materials organized for DOT collector training",
+    intro:
+      "A surprising number of collector-training programs still make students source their own supplies. On paper that sounds simple. In practice it creates friction, confusion, and lost momentum. A physical mock kit solves that problem by turning enrollment into a real start, not just an instruction to go buy materials somewhere else.",
+    sections: [
+      {
+        heading: "Why Supply Lists Slow Students Down",
+        body: "A supply list adds work at the exact moment a student should be building momentum. Instead of moving into training, they are searching for vendors, comparing items, worrying about whether they bought the right materials, and waiting for multiple shipments to arrive. That delay creates drop-off and makes the training feel harder than it needs to be.\n\nIt also weakens confidence. When a student is not sure whether the materials in front of them match the intended workflow, they hesitate. That hesitation carries into mock practice and makes it harder to trust the process."
+      },
+      {
+        heading: "What a Physical Mock Kit Does Better",
+        body: "A physical mock kit compresses the path between purchase and practice. The student buys the program, receives the actual materials, and can begin working through the mock flow with fewer unknowns. That sounds simple because it is. Good conversion strategy often comes down to removing unnecessary friction.\n\nA real kit also makes the training feel more tangible. Instead of consuming abstract information, the learner is handling the materials that support the collection sequence. That is especially helpful for newer students who are trying to connect terminology, paperwork, and physical workflow for the first time."
+      },
+      {
+        heading: "Why Real Kits Convert Better Than Abstract Offers",
+        body: "Commercial-intent searchers are not only looking for training. They are looking for certainty. When a page says the program includes a physical mock kit shipped to the student's door, that offer feels concrete and easy to compare against other providers.\n\nThat clarity improves clicks and conversions because the benefit is immediate and visual. A supply-list offer sounds incomplete. A real mock-kit offer sounds like a solution. That difference matters on high-intent keywords like drug testing mock kit, collector mock kit, and mock collection kit."
+      },
+      {
+        heading: "How the Kit Fits Into 1 Stikk Mobile's $75 Offer",
+        body: "At 1 Stikk Mobile, the physical mock kit is not an upsell. It is part of the $75 training path. The student buys the mock kit first, books the portal call, receives the materials, and completes five live virtual mock collections with support from the training team.\n\nThat sequence is more persuasive because each step logically supports the next one. The offer is not asking students to enroll and then solve the hardest setup problem on their own. It is giving them a more complete starting point at a much lower price than many competing programs."
+      },
+      {
+        heading: "What Searchers Should Look for Before Buying",
+        body: "When comparing collector-training programs, students should look for four things: whether the kit is physical and included, whether mock practice is live or prerecorded, whether the page clearly explains what's inside the training, and whether the price is visible without hidden fees. Those four signals tell you a lot about how serious the training provider is.\n\nIf the offer is vague, the student usually ends up paying twice: once in money and again in time. A clear $75 program with a shipped mock kit and live virtual practice is easier to understand, easier to trust, and easier to act on."
+      }
+    ],
+    faqs: [
+      { q: "Why is a physical mock kit better than a supply list?", a: "A physical kit removes the friction of sourcing materials, guessing what to buy, and delaying practice. It helps students move from purchase to real mock-workflow training faster." },
+      { q: "Does 1 Stikk Mobile ship the mock kit?", a: "Yes. The mock kit is shipped by 1 Stikk Mobile as part of the $75 training path, which helps students start with the right materials." },
+      { q: "Is the physical kit included in the $75 price?", a: "Yes. The offer is built around a $75 mock-kit-first training path rather than a vague course plus extra supply purchases later." },
+      { q: "Can a supply list still work?", a: "It can, but it usually creates more friction and uncertainty. Students often prefer a complete, shipped kit because it makes the training feel more direct and practical." }
+    ],
+    relatedService: "drug-screening",
+    relatedTraining: "drug-screening",
+    related: ["dot-drug-screen-collector-training-guide", "49-cfr-part-40-training-requirements"]
+  },
+  {
+    slug: "live-virtual-mocks-vs-pre-recorded-training",
+    title: "Live Virtual Mocks vs Pre-Recorded Training",
+    headline: "Live Virtual Mocks vs Pre-Recorded Training for DOT Collectors",
+    description:
+      "Compare live virtual mock collections with pre-recorded collector training, and learn why real-time feedback can make a $75 DOT collector program more valuable than a higher-priced video course.",
+    category: "Training & Career",
+    categorySlug: "training-career",
+    dateISO: "2026-01-09",
+    date: "January 9, 2026",
+    readTime: "7 min read",
+    author: { name: "Tiffany Clinton, CPT, RMA", role: "CEO & Founder, 1 Stikk Mobile" },
+    image: "/images/training/training-instructor.jpg",
+    imageAlt: "Live virtual mock collection coaching from 1 Stikk Mobile",
+    intro:
+      "Recorded training can explain a collector workflow, but it cannot tell a student when they are rushing a step, misreading the sequence, or using the wrong language during a mock. That gap matters. For high-intent buyers comparing collector courses, one of the biggest conversion questions is whether the student will receive real-time feedback or simply watch videos and hope they got it right.",
+    sections: [
+      {
+        heading: "What Pre-Recorded Training Does Well",
+        body: "Pre-recorded training is useful for delivering foundational concepts at a student's own pace. It helps explain terminology, broad workflow steps, and regulatory context without requiring everyone to learn at the exact same time.\n\nThat flexibility is valuable, especially for working adults. But the format has a limit: it is one-way instruction. It can show a process, but it cannot evaluate whether the student can perform that process correctly when it is their turn."
+      },
+      {
+        heading: "Where Pre-Recorded Training Falls Short",
+        body: "Collectors do not only need information. They need execution. A recorded module cannot interrupt a student who is skipping a detail, missing a paperwork cue, or drifting away from a compliant sequence. By the time those mistakes show up in real practice, they are harder to correct.\n\nThat is why many students finish video-heavy programs with knowledge but not confidence. They understand the concept, but they have never been watched, corrected, and guided through the mock sequence in real time."
+      },
+      {
+        heading: "Why Live Virtual Mocks Convert Better",
+        body: "Live virtual mocks offer something much closer to coaching. A student can ask questions, receive immediate feedback, and adjust their process on the spot. That reduces anxiety and helps the learner trust that they are actually progressing instead of just accumulating information.\n\nFrom a conversion standpoint, this matters because the buyer is trying to reduce uncertainty. If the page clearly says five live virtual mock collections are included, the offer feels more complete and more practical than a program that stops at prerecorded lessons."
+      },
+      {
+        heading: "How 1 Stikk Mobile Uses Live Practice in the $75 Program",
+        body: "1 Stikk Mobile combines the convenience of portal learning with the accountability of live virtual practice. The student buys the $75 mock kit, gets the materials shipped, and completes five live virtual mock collections with guidance from the training team.\n\nThat mix is strong because it keeps the learning flexible without leaving the student alone during the part that matters most. The result is a training path that feels more supportive and more usable than a passive video course, even at a much lower price point."
+      },
+      {
+        heading: "What Buyers Should Compare Before They Enroll",
+        body: "Anyone comparing collector-training programs should ask a short list of questions. Are the mocks live or recorded? Is there a physical mock kit? Is the price clearly stated? Does the page explain how many mock scenarios are included? Those questions usually reveal whether the provider is offering real practice or simply content access.\n\nWhen the answer includes a shipped kit, five live virtual mock collections, and a clear $75 price, the offer becomes easier to justify and easier to remember. That combination is exactly why this keyword cluster can drive strong click-through and conversion behavior."
+      }
+    ],
+    faqs: [
+      { q: "Are live virtual mocks better than prerecorded training?", a: "They are better for feedback and execution because students can be corrected in real time. Recorded lessons are still useful for concepts, but live practice usually builds confidence faster." },
+      { q: "How many live mocks does 1 Stikk Mobile include?", a: "The training flow includes five live virtual mock collections, which gives students repeated practice with real-time support." },
+      { q: "Can prerecorded training alone get someone ready?", a: "It can help with theory, but many students still need live feedback to feel confident performing the collector workflow correctly." },
+      { q: "Is live support included in the $75 price?", a: "Yes. 1 Stikk Mobile's $75 mock-kit-first training path includes live virtual mock support as part of the offer." }
+    ],
+    relatedService: "drug-screening",
+    relatedTraining: "drug-screening",
+    related: ["physical-mock-kit-vs-supply-list", "dot-drug-screen-collector-training-guide"]
+  },
+  {
+    slug: "drug-test-collector-salary-guide",
+    title: "Drug Test Collector Salary: $75 Investment to $50,000 Career",
+    headline: "Drug Test Collector Salary: How a $75 Training Investment Can Support a Real Career Path",
+    description:
+      "Explore drug test collector salary ranges, where collectors work, what affects pay, and how a $75 mock-kit-first training path can create a practical return on investment.",
+    category: "Training & Career",
+    categorySlug: "training-career",
+    dateISO: "2026-01-08",
+    date: "January 8, 2026",
+    readTime: "8 min read",
+    author: { name: "Tiffany Clinton, CPT, RMA", role: "CEO & Founder, 1 Stikk Mobile" },
+    image: "/images/training/training-guidance.jpg",
+    imageAlt: "Collector training as a pathway into drug testing and mobile healthcare work",
+    intro:
+      "A lot of high-intent searchers are not only trying to understand the training. They are asking whether the skill can actually pay off. That is why salary-focused collector content matters. The commercial logic is simple: if a practical healthcare skill can be started through a $75 training path, the return on investment becomes easier to understand and easier to say yes to.",
+    sections: [
+      {
+        heading: "Where Drug Test Collectors Usually Work",
+        body: "Drug test collectors work in occupational health clinics, employer testing programs, mobile drug-screening businesses, staffing and hiring support operations, urgent-care settings, and compliance-driven testing environments. Some collectors work inside a larger healthcare role, while others use the skill as a specialized service line.\n\nThe work environment affects pay and schedule. A mobile or employer-facing collector may handle time-sensitive jobs, post-accident collections, or higher-volume testing windows. A clinic-based collector may see steadier daily volume. Either way, the core skill is useful because compliant specimen collection supports multiple industries."
+      },
+      {
+        heading: "What Salary Range Searchers Usually Care About",
+        body: "Salary content tends to perform because searchers want a practical number, not a vague promise. Depending on market, setting, schedule, and whether the collector bundles additional healthcare skills, many people frame the role somewhere around the mid-thirty-thousand-dollar range up into the low fifty-thousand-dollar range annually.\n\nThe exact number varies, but the more important conversion point is the ratio between entry cost and skill value. A low-cost training path can make much more sense to a career changer when the potential work is measurable and concrete."
+      },
+      {
+        heading: "Why a $75 Entry Point Changes the ROI Conversation",
+        body: "A training offer at $75 does not ask the student to take a huge financial leap before they know whether the path fits them. That lower threshold is especially important for people re-entering the workforce, adding a credential, or building a mobile healthcare side skill.\n\nThe offer becomes even stronger when the student is not only paying for information. A physical mock kit, live virtual mock collections, and certificate guidance make the training feel more complete. That improves perceived value and gives the learner a better reason to act now instead of waiting."
+      },
+      {
+        heading: "How Collector Skills Can Compound With Other Roles",
+        body: "Drug test collector training can stand on its own, but it also pairs well with other healthcare and workforce skills. Someone with experience in phlebotomy, occupational health, employer screening, clinic support, or mobile healthcare can often use collector training as a complementary credential that expands what they can offer.\n\nThat is one reason the keyword cluster has strong buying intent. Searchers are not always starting from zero. Many are professionals or near-professionals looking for a practical add-on skill that can improve employability, flexibility, or service offerings."
+      },
+      {
+        heading: "What Makes the Best Salary Content Convert",
+        body: "The best salary content does not overpromise. It frames the training as a realistic step toward a usable skill, not a guaranteed outcome. Buyers respond better when the page connects cost, included support, and real workplace applications in a clear way.\n\nThat is the strength of 1 Stikk Mobile's collector-training positioning. The page can honestly say the mock kit is only $75, the practice is live, the supplies are shipped, and the workflow is grounded in real healthcare operations. That is a more believable conversion story than inflated income claims or vague certification hype."
+      }
+    ],
+    faqs: [
+      { q: "How much can a drug test collector make?", a: "Pay varies by market, schedule, setting, and whether the collector combines the skill with broader healthcare work. Many salary discussions place the role from the mid-$30,000 range into the low-$50,000 range annually." },
+      { q: "Why does salary content matter for collector training?", a: "Because buyers want to understand whether the cost of training makes sense relative to the skill's possible value. A $75 entry point makes that return-on-investment conversation easier." },
+      { q: "Is the $75 price only for the mock kit?", a: "The $75 training path is mock-kit-first and includes the shipped physical kit plus the surrounding training flow, including live virtual mocks and guidance from 1 Stikk Mobile." },
+      { q: "Can collector training be combined with other healthcare skills?", a: "Yes. It often pairs well with phlebotomy, occupational-health work, clinic support, and mobile healthcare roles because specimen collection and compliance workflows overlap." }
+    ],
+    relatedService: "drug-screening",
+    relatedTraining: "drug-screening",
+    related: ["dot-drug-screen-collector-training-guide", "live-virtual-mocks-vs-pre-recorded-training"]
   },
   {
     slug: "mobile-blood-draw-at-home",

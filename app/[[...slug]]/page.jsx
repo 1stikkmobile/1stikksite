@@ -293,13 +293,20 @@ export async function generateMetadata({ params }) {
   if (slug[0] === "articles" && !slug[1]) {
     const canonical = `${siteUrl}/articles`;
     return buildPageMetadata({
-      title: "Health and Wellness Articles | Mobile Healthcare Resources",
+      title: "DOT Collector Training Articles | Mock Kit, Part 40, Salary",
       description:
-        "Expert guides on mobile blood draws, DOT drug testing, phlebotomy training, chain of custody, and wellness screenings — written by certified healthcare professionals at 1 Stikk Mobile.",
+        "Read DOT collector training articles on 49 CFR Part 40, physical mock kits, live virtual mocks, collector salary, chain of custody, and 1 Stikk Mobile's $75 offer.",
       canonical,
-      openGraphTitle: "Health and Wellness Articles | 1 Stikk Mobile",
+      keywords: [
+        "DOT collector training articles",
+        "49 CFR Part 40 training guide",
+        "drug testing mock kit articles",
+        "DOT collector salary",
+        "live virtual mock collections"
+      ],
+      openGraphTitle: "DOT Collector Training Articles | 1 Stikk Mobile",
       openGraphDescription:
-        "Patient care guides, employer compliance resources, and training insights from 1 Stikk Mobile."
+        "Training-first articles designed around DOT collector certification, mock kits, Part 40, and the $75 1 Stikk Mobile training offer."
     });
   }
 
