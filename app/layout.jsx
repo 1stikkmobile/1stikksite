@@ -11,6 +11,7 @@ const canvaSans = localFont({
 
 const siteUrl = "https://1stikkmobile.com";
 const logoImage = "/images/logo/logo.jpg";
+const faviconImage = "/favicon.png";
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
@@ -58,9 +59,9 @@ export const metadata = {
     images: [logoImage]
   },
   icons: {
-    icon: [{ url: logoImage, type: "image/jpeg" }],
-    shortcut: logoImage,
-    apple: logoImage
+    icon: [{ url: faviconImage, type: "image/png" }],
+    shortcut: faviconImage,
+    apple: faviconImage
   },
   robots: {
     index: true,
