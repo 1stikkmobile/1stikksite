@@ -20,7 +20,7 @@ export default async function sitemap() {
       url: `${siteUrl}${path}`,
       lastModified: new Date().toISOString(),
       changeFrequency: path === "/" ? "daily" : "weekly",
-      priority: path === "/" ? 1.0 : 0.8
+      priority: path === "/" ? 1.0 : path === "/training" ? 0.95 : 0.8
     })),
     ...services.map((service) => ({
       url: `${siteUrl}/services/${service.slug}`,
@@ -32,7 +32,7 @@ export default async function sitemap() {
       url: `${siteUrl}/training/${program.slug}`,
       lastModified: new Date().toISOString(),
       changeFrequency: "weekly",
-      priority: 0.8
+      priority: program.slug === "drug-screening" ? 0.9 : 0.8
     })),
     ...articles.map((article) => ({
       url: `${siteUrl}/articles/${article.slug}`,

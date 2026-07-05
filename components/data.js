@@ -380,6 +380,52 @@ export const faqs = [
   }
 ];
 
+export const trainingFaqs = [
+  {
+    q: "Do I buy the mock drug screening kit before booking my portal call?",
+    a: "Yes. The mock drug screening kit is the first step. Once you buy the $75 package, you can book your portal call so 1 Stikk can help with access, scheduling, and the next steps for your live mock collections."
+  },
+  {
+    q: "What comes with the mock drug screening kit training package?",
+    a: "The package includes the mock kit materials shipped by 1 Stikk, portal guidance, five live observed mock collections, paperwork help, compliance support, and certificate completion guidance."
+  },
+  {
+    q: "Is this training for DOT and non-DOT drug screening workflows?",
+    a: "Yes. The training covers DOT urine collection procedures, non-DOT drug screening workflows, forms, chain-of-custody steps, and the compliance details collectors need to understand."
+  },
+  {
+    q: "Who should order these mock drug screening kits?",
+    a: "These mock drug screening kits are designed for future collectors, clinic staff, HR teams, employers, healthcare workers, and anyone preparing to practice a cleaner, more confident drug screening workflow."
+  },
+  {
+    q: "How are the mock collections observed?",
+    a: "1 Stikk monitors the mock collections live, virtually. You receive step-by-step guidance during the process so you can complete each mock with real-time support and fewer errors."
+  }
+];
+
+export const homeFaqs = [
+  {
+    q: "How much does DOT collector training cost?",
+    a: "1 Stikk Mobile offers DOT collector training for $75. Many competitors charge $200 to $500 for similar certification pathways, but our package includes the physical mock kit, live virtual mocks, and certificate guidance in one lower-cost offer."
+  },
+  {
+    q: "Is a physical mock kit shipped with the training?",
+    a: "Yes. 1 Stikk ships a real mock drug screening kit to you. That is one of the biggest differences between this program and providers that only send supply lists or recorded lessons."
+  },
+  {
+    q: "Are the mock collections live or pre-recorded?",
+    a: "They are live. Students complete five live virtual mock collections with real-time support from 1 Stikk instead of relying only on prerecorded content."
+  },
+  {
+    q: "Does this training support 49 CFR Part 40 collector requirements?",
+    a: "The training is built around DOT and non-DOT collector workflows, including chain-of-custody habits, paperwork, and mock collection practice that supports 49 CFR Part 40 readiness."
+  },
+  {
+    q: "How quickly can I finish DOT collector training?",
+    a: "Many students can move through the training in about a week depending on scheduling, portal completion, and how quickly they complete the five live observed mock collections."
+  }
+];
+
 export const serviceStates = [
   "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut",
   "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa",
@@ -479,6 +525,58 @@ export const programData = {
 // ------------------------------------------------------------------ Articles
 
 export const articles = [
+  {
+    slug: "dot-drug-screen-collector-training-guide",
+    title: "DOT Drug Screen Collector Training: Complete $75 Guide",
+    headline: "DOT Drug Screen Collector Training: The Complete $75 Guide to Certification",
+    description:
+      "A complete guide to DOT drug screen collector training, 49 CFR Part 40 requirements, physical mock kits, live virtual mocks, and why 1 Stikk Mobile's $75 program stands out.",
+    category: "Training & Career",
+    categorySlug: "training-career",
+    dateISO: "2026-01-12",
+    date: "January 12, 2026",
+    readTime: "9 min read",
+    author: { name: "Tiffany Clinton, CPT, RMA", role: "CEO & Founder, 1 Stikk Mobile" },
+    image: "/images/training/drug-screen-mock-collections.png",
+    imageAlt: "DOT drug screen collector training mock kit and live virtual mock collections from 1 Stikk Mobile",
+    intro:
+      "DOT drug screen collector training is one of the fastest ways to build a practical healthcare skill that employers, clinics, and mobile testing companies actually need. But the training market is crowded with expensive courses, supply lists, and prerecorded lessons that leave students practicing alone. 1 Stikk Mobile takes a different approach: a $75 training path that includes a physical mock kit, live virtual mocks, and real support from a healthcare company that already works in the field.",
+    sections: [
+      {
+        heading: "What Is DOT Drug Screen Collector Training?",
+        body: "DOT drug screen collector training prepares a student to perform urine specimen collections that follow federal rules for safety-sensitive employees. The training covers the flow of a compliant collection, the paperwork required to document it, the common errors that break chain of custody, and the mock scenarios a collector must understand before working with employers or regulated programs.\n\nA strong course does more than explain the rules. It gives the student a repeatable workflow, hands-on mock practice, and coaching that helps them avoid hesitation when they perform a real collection. That is where many low-quality programs fall short: they explain the process without giving the learner a realistic environment to practice it."
+      },
+      {
+        heading: "Why 49 CFR Part 40 Matters",
+        body: "49 CFR Part 40 is the federal rulebook that governs transportation workplace drug and alcohol testing across DOT agencies. It defines how collectors handle chain of custody, specimen integrity, shy bladder situations, documentation, and the procedural steps that make a collection defensible.\n\nStudents searching for 49 CFR Part 40 training are usually looking for clarity on what collectors actually need to know, not legal jargon alone. The best training translates those requirements into plain-language collection habits: what forms to complete, what order the steps happen in, what errors create fatal flaws, and how to stay calm when a mock scenario gets complicated."
+      },
+      {
+        heading: "Physical Mock Kit vs. Supply List",
+        body: "One of the biggest differences between programs is whether a student receives a physical mock kit or just a shopping list. A supply list sounds cheaper until you count the time, the missing pieces, and the fact that students still have to guess whether they bought the right materials.\n\nA physical mock kit removes that friction. 1 Stikk Mobile ships the mock materials directly to the student, which means the training can stay focused on the workflow itself. Instead of piecing together supplies, the learner can practice the actual collector sequence with the materials already in hand."
+      },
+      {
+        heading: "Live Virtual Mocks Beat Pre-Recorded Training",
+        body: "Pre-recorded training can explain concepts, but it cannot correct a student's timing, paperwork habits, or collection flow in real time. Live virtual mocks do. That matters because collectors are judged by how they execute the process, not by whether they watched a video all the way through.\n\n1 Stikk Mobile includes five live virtual mock collections so students can practice with immediate feedback. That structure helps learners catch small mistakes before they become expensive habits, and it gives them more confidence when they move from training into employer, clinic, or contract work."
+      },
+      {
+        heading: "How Much DOT Collector Training Should Cost",
+        body: "Many DOT collector training providers charge between $200 and $500. Some programs add extra fees for kits, mock scenarios, or certification support after the student has already enrolled. That pricing creates a barrier for healthcare workers, job seekers, and career changers who want to add a practical skill without taking on a major upfront cost.\n\n1 Stikk Mobile's $75 training offer is designed to compete on both price and substance. The lower cost matters, but it only works as a real advantage because the program still includes the shipped mock kit, live virtual mocks, certificate guidance, and direct support from a healthcare provider instead of a training-only company."
+      },
+      {
+        heading: "How Fast Can You Finish and Start Using the Skill?",
+        body: "Students can often move through the training in about a week, depending on how quickly they complete the portal material and schedule the live mocks. For motivated learners, that makes DOT collector training one of the more accessible entry points into specimen collection work, employer testing support, and related mobile healthcare opportunities.\n\nThe career value is practical: employers need collectors who understand chain of custody, clinics need trained support, and screening businesses need people who can execute consistent workflows. A short training window combined with a comparatively low $75 investment is why this keyword cluster has such strong commercial intent in search."
+      }
+    ],
+    faqs: [
+      { q: "How much does DOT drug screen collector training cost?", a: "Prices vary widely, but many providers charge $200 to $500. 1 Stikk Mobile offers a $75 option that includes the physical mock kit, live virtual mocks, and certificate guidance." },
+      { q: "Does 1 Stikk ship a real mock kit?", a: "Yes. Students receive a physical mock drug screening kit shipped by 1 Stikk Mobile, which helps them practice the workflow instead of sourcing supplies on their own." },
+      { q: "Are the mock collections live?", a: "Yes. The program includes five live virtual mock collections with real-time support rather than relying only on prerecorded material." },
+      { q: "Is this training focused on 49 CFR Part 40 workflows?", a: "Yes. The training is built around DOT and non-DOT collector workflows, paperwork habits, and the collection steps students need to understand for Part 40 readiness." }
+    ],
+    relatedService: "drug-screening",
+    relatedTraining: "drug-screening",
+    related: ["dot-drug-testing-guide", "drug-test-chain-of-custody"]
+  },
   {
     slug: "mobile-blood-draw-at-home",
     title: "Mobile Blood Draw at Home: What to Expect",

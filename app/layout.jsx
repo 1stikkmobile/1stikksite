@@ -16,28 +16,28 @@ const faviconImage = "/favicon.png";
 export const metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "1 Stikk Mobile Inc. | Mobile Health Access and Training",
+    default: "DOT Collector Training $75 | 1 Stikk Mobile Inc.",
     template: "%s | 1 Stikk Mobile Inc."
   },
   description:
-    "Mobile healthcare access, blood collections, lab testing support, phlebotomy training, drug screening, and workforce readiness for underserved communities.",
+    "DOT collector training for $75 with a physical mock kit shipped, live virtual mocks, drug screening support, and healthcare-provider credibility from 1 Stikk Mobile.",
   applicationName: "1 Stikk Mobile Inc.",
   keywords: [
     "1 Stikk Mobile",
-    "mobile health services",
-    "mobile lab services",
-    "phlebotomy training",
-    "blood collection",
+    "DOT collector training",
+    "DOT collector certification",
+    "drug testing mock kit",
+    "49 CFR Part 40 training",
     "drug screening services",
-    "Monroe Louisiana nonprofit healthcare"
+    "urine specimen collector training"
   ],
   category: "healthcare",
   creator: "1 Stikk Mobile Inc.",
   publisher: "1 Stikk Mobile Inc.",
   openGraph: {
-    title: "1 Stikk Mobile Inc. | We Always Care",
+    title: "DOT Collector Training $75 | 1 Stikk Mobile Inc.",
     description:
-      "Compassionate mobile health services, lab access, training, and community wellness support delivered where care is needed most.",
+      "Get DOT collector training for $75 with a physical mock kit shipped, 5 live virtual mocks, and support from a real healthcare provider.",
     url: siteUrl,
     siteName: "1 Stikk Mobile Inc.",
     images: [
@@ -53,9 +53,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "1 Stikk Mobile Inc. | Mobile Health Access",
+    title: "DOT Collector Training $75 | 1 Stikk Mobile Inc.",
     description:
-      "Book mobile health services, training, lab support, and community wellness help with 1 Stikk Mobile Inc.",
+      "Physical mock kit shipped, live virtual mocks, and DOT collector training for $75 from 1 Stikk Mobile.",
     images: [logoImage]
   },
   icons: {
@@ -117,7 +117,7 @@ export default function RootLayout({ children }) {
       telephone: "+13185120170",
       email: "collection.lab@1stikkmobile.com",
       description:
-        "Community-driven mobile health access, lab collections, phlebotomy training, drug screening, and wellness education.",
+        "DOT collector training, mock drug screening kits, live virtual mock collections, mobile drug screening, and healthcare support from 1 Stikk Mobile.",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Monroe",

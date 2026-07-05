@@ -1,6 +1,6 @@
 import FirstStikkSite from "../../components/FirstStikkSite";
 import { notFound } from "next/navigation";
-import { articleMap, articles, faqs, serviceMap, services, trainingProgramMap, trainingPrograms } from "../../components/data";
+import { articleMap, articles, homeFaqs, serviceMap, services, trainingFaqs, trainingProgramMap, trainingPrograms } from "../../components/data";
 
 const siteUrl = "https://1stikkmobile.com";
 const defaultOgImage = `${siteUrl}/images/logo/logo.jpg`;
@@ -9,6 +9,7 @@ function buildPageMetadata({
   title,
   description,
   canonical,
+  keywords,
   openGraphTitle,
   openGraphDescription,
   image = defaultOgImage,
@@ -17,6 +18,7 @@ function buildPageMetadata({
   return {
     title,
     description,
+    keywords,
     alternates: { canonical },
     openGraph: {
       title: openGraphTitle ?? `${title} | 1 Stikk Mobile`,
@@ -110,13 +112,20 @@ export async function generateMetadata({ params }) {
 
   if (slug.length === 0) {
     return buildPageMetadata({
-      title: "Mobile Blood Draws, Drug Testing & Phlebotomy Training",
+      title: "DOT Collector Training $75 - Physical Mock Kit Shipped",
       description:
-        "Book mobile blood draws, drug screening, wellness visits, and hands-on phlebotomy training with 1 Stikk Mobile. Serving patients, employers, and communities nationwide.",
+        "Get DOT collector training for $75 with a physical mock kit shipped to you, 5 live virtual mocks, and certificate guidance from 1 Stikk Mobile.",
       canonical: siteUrl,
-      openGraphTitle: "1 Stikk Mobile | Mobile Healthcare, Testing and Training",
+      keywords: [
+        "DOT drug screen collector training",
+        "DOT collector certification",
+        "drug testing mock kit",
+        "49 CFR Part 40 training",
+        "urine specimen collector training"
+      ],
+      openGraphTitle: "DOT Collector Training $75 | 1 Stikk Mobile",
       openGraphDescription:
-        "Mobile blood draws, wellness checkups, drug screening, DNA testing, and healthcare training brought directly to homes, employers, and communities."
+        "Physical mock kit shipped, 5 live virtual mocks, DOT-focused collector support, and a $75 training path built to beat higher-priced competitors."
     });
   }
 
@@ -125,11 +134,27 @@ export async function generateMetadata({ params }) {
     const program = trainingProgramMap[slug[1]];
     if (program) {
       const canonical = `${siteUrl}/training/${program.slug}`;
+      const isDrugScreenTraining = program.slug === "drug-screening";
       return buildPageMetadata({
-        title: `${program.title} Training`,
-        description: program.description,
+        title: isDrugScreenTraining
+          ? "Mock Drug Screening Kits and DOT Collector Training"
+          : `${program.title} Training`,
+        description: isDrugScreenTraining
+          ? "Order mock drug screening kits, book your portal call, and complete live observed DOT and non-DOT collector training with 1 Stikk Mobile."
+          : program.description,
         canonical,
-        openGraphTitle: `${program.title} | 1 Stikk Mobile`,
+        keywords: isDrugScreenTraining
+          ? [
+              "mock drug screening kits",
+              "drug screening mock kit",
+              "DOT collector training",
+              "live observed mock collections",
+              "drug screen training kit"
+            ]
+          : undefined,
+        openGraphTitle: isDrugScreenTraining
+          ? "Mock Drug Screening Kits and DOT Collector Training | 1 Stikk Mobile"
+          : `${program.title} | 1 Stikk Mobile`,
         image: `${siteUrl}${program.image}`,
         imageAlt: program.imageAlt
       });
@@ -139,13 +164,20 @@ export async function generateMetadata({ params }) {
   // Training index
   if (slug[0] === "training" && !slug[1]) {
     return buildPageMetadata({
-      title: "Drug Screen Mock Kit Training | 1 Stikk Mobile",
+      title: "Mock Drug Screening Kits | DOT Collector Training",
       description:
-        "Buy the $75 drug screen mock kit, book your portal call, and complete live-monitored mock collections with 1 Stikk Mobile. Additional training tracks are available by booking first.",
+        "Buy mock drug screening kits from 1 Stikk Mobile, book your portal call, and complete live observed DOT and non-DOT collector training with shipped materials and support.",
       canonical: `${siteUrl}/training`,
-      openGraphTitle: "Drug Screen Mock Kit Training | 1 Stikk Mobile",
+      keywords: [
+        "mock drug screening kits",
+        "drug screening mock kits",
+        "DOT mock collections",
+        "drug collector training",
+        "drug screening training kit"
+      ],
+      openGraphTitle: "Mock Drug Screening Kits | 1 Stikk Mobile",
       openGraphDescription:
-        "Start with the $75 drug screen mock kit, then book your portal call for live-monitored mock collections, portal guidance, and next-step support from 1 Stikk Mobile."
+        "Start with the $75 mock drug screening kit, then book your portal call for live observed mock collections, portal guidance, and collector training support."
     });
   }
 
@@ -323,6 +355,8 @@ export default async function Page({ params }) {
   const trainingProgram = slug[0] === "training" && slug[1] ? trainingProgramMap[slug[1]] : null;
   const currentPath = slug.length === 0 ? "/" : `/${slug.join("/")}`;
   const currentUrl = slug.length === 0 ? siteUrl : `${siteUrl}${currentPath}`;
+  const isTrainingIndex = slug[0] === "training" && !slug[1];
+  const isDrugScreenTrainingDetail = slug[0] === "training" && slug[1] === "drug-screening";
   const breadcrumbItems = [
     { name: "Home", item: siteUrl },
     ...(slug[0] === "services" ? [{ name: "Services", item: `${siteUrl}/services` }] : []),
@@ -395,7 +429,7 @@ export default async function Page({ params }) {
       service?.title ||
       trainingProgram?.title ||
       (slug.length === 0
-        ? "Mobile Blood Draws, Drug Testing and Phlebotomy Training"
+        ? "DOT Collector Training for $75 with Physical Mock Kit"
         : breadcrumbItems[breadcrumbItems.length - 1]?.name),
     isPartOf: {
       "@id": `${siteUrl}#website`
@@ -431,15 +465,87 @@ export default async function Page({ params }) {
           name: "1 Stikk Mobile Inc.",
           url: siteUrl
         },
+        url: currentUrl,
+        teaches: trainingProgram.learn,
+        educationalCredentialAwarded: "Certificate of completion"
+      }
+    : null;
+
+  const mockKitProductSchema = (isTrainingIndex || isDrugScreenTrainingDetail)
+    ? {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        name: "1 Stikk Mobile Mock Drug Screening Kit",
+        description:
+          "Mock drug screening kit with portal support, live observed mock collections, and DOT and non-DOT collector training guidance from 1 Stikk Mobile.",
+        image: `${siteUrl}/images/training/drug-screen-mock-collections.png`,
+        brand: {
+          "@type": "Brand",
+          name: "1 Stikk Mobile"
+        },
+        offers: {
+          "@type": "Offer",
+          url: "https://checkout.square.site/merchant/ML21SF304722B/checkout/W4RL45S2FR2QOSYGF4IJUQGU",
+          priceCurrency: "USD",
+          price: "75",
+          availability: "https://schema.org/InStock"
+        }
+      }
+    : null;
+
+  const trainingLandingCourseSchema = (isTrainingIndex || isDrugScreenTrainingDetail)
+    ? {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        name: "Mock Drug Screening Kit Training",
+        description:
+          "Buy the mock drug screening kit, book a portal call, and complete live observed DOT and non-DOT mock collections with 1 Stikk Mobile.",
+        provider: {
+          "@type": "Organization",
+          name: "1 Stikk Mobile Inc.",
+          url: siteUrl
+        },
+        courseMode: "online",
+        educationalCredentialAwarded: "Certificate of completion",
+        teaches: [
+          "DOT urine collection procedures",
+          "Non-DOT drug screening workflows",
+          "Chain-of-custody paperwork",
+          "Live observed mock collection practice"
+        ],
         url: currentUrl
       }
     : null;
 
-  const faqSchema = (article?.faqs?.length || (!slug || slug.length === 0))
+  const trainingHowToSchema = isTrainingIndex
+    ? {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        name: "How to complete 1 Stikk Mobile mock drug screening kit training",
+        description:
+          "Start with the mock drug screening kit purchase, then book your portal call, receive your kit, and complete live observed mock collections.",
+        step: [
+          { "@type": "HowToStep", name: "Buy the $75 mock kit first" },
+          { "@type": "HowToStep", name: "Book your portal call" },
+          { "@type": "HowToStep", name: "Receive your shipped mock kit" },
+          { "@type": "HowToStep", name: "Complete live observed mock collections" }
+        ]
+      }
+    : null;
+
+  const routeFaqItems = article?.faqs?.length
+    ? article.faqs
+    : isTrainingIndex || isDrugScreenTrainingDetail
+      ? trainingFaqs
+      : slug.length === 0
+        ? homeFaqs
+        : null;
+
+  const faqSchema = routeFaqItems?.length
     ? {
         "@context": "https://schema.org",
         "@type": "FAQPage",
-        mainEntity: ((article && article.faqs) || faqs).map((item) => ({
+        mainEntity: routeFaqItems.map((item) => ({
           "@type": "Question",
           name: item.q,
           acceptedAnswer: { "@type": "Answer", text: item.a }
@@ -456,6 +562,15 @@ export default async function Page({ params }) {
       )}
       {trainingSchema && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(trainingSchema) }} />
+      )}
+      {mockKitProductSchema && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(mockKitProductSchema) }} />
+      )}
+      {trainingLandingCourseSchema && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(trainingLandingCourseSchema) }} />
+      )}
+      {trainingHowToSchema && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(trainingHowToSchema) }} />
       )}
       {articleSchema && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />

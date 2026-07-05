@@ -5,6 +5,7 @@ import {
     ArrowRight,
     Award,
     BadgeCheck,
+    Briefcase,
     CalendarCheck,
     Check,
     ChevronDown,
@@ -41,7 +42,7 @@ import {
     contactEmail,
     corePractices,
     facebookUrl,
-    faqs,
+    homeFaqs,
     labPortalUrl,
     mainPhone,
     mainPhoneDialHref,
@@ -56,6 +57,7 @@ import {
     testimonials,
     trainingPhone,
     trainingPhoneHref,
+    trainingFaqs,
     trainingProgramMap,
     trainingPrograms
 } from "./data";
@@ -212,6 +214,58 @@ const trainingOfferItems = [
   "Employee handbook and compliance-focused binder setup guidance",
   "Certificate of completion",
   "1 Stikk Mobile drug screen collector registration onboarding"
+];
+
+const trainingSearchSignals = [
+  {
+    title: "Mock drug screening kits with real workflow support",
+    text: "This is not a generic supply order. 1 Stikk pairs the shipped kit with portal setup, live observation, and paperwork coaching so students can practice the full collector flow."
+  },
+  {
+    title: "Built for DOT and non-DOT collector readiness",
+    text: "Students practice chain-of-custody habits, collector steps, and compliance expectations that employers and screening programs actually care about."
+  },
+  {
+    title: "Mobile-first enrollment for faster conversions",
+    text: "On phone, the page keeps the mock kit as the primary action, reduces competing choices, and keeps help one tap away with a direct training call option."
+  }
+];
+
+const homeComparisonItems = {
+  competitors: [
+    "DrugTestCollector.com: $200-$400 and no physical mock kit",
+    "Lifeloc-style programs: higher pricing and pre-recorded-only learning",
+    "Attorney-led or corporate training brands: expensive and less practical for individual students"
+  ],
+  oneStikk: [
+    "$75 entry point with clear pricing",
+    "Real mock drug screening kit shipped to your door",
+    "Five live virtual mocks with real-time feedback",
+    "Certificate guidance, portal access, and healthcare-provider credibility"
+  ]
+};
+
+const homeIncludedItems = [
+  "Training portal access",
+  "Physical mock kit shipped by 1 Stikk",
+  "Five live virtual mock collections",
+  "Real-time instructor feedback",
+  "Certificate of completion guidance",
+  "Collector network registration support"
+];
+
+const homeProcessSteps = [
+  "Enroll for $75",
+  "Receive portal access and next-step guidance",
+  "Get the physical mock kit shipped to you",
+  "Complete the training flow and live mocks"
+];
+
+const homeCareerStats = [
+  { label: "Training cost", value: "$75", detail: "A low-friction way to add a collector skill." },
+  { label: "Live mocks", value: "5", detail: "Observed practice instead of just watching videos." },
+  { label: "Typical competitor pricing", value: "$200-$500", detail: "The price gap is one of your clearest differentiators." },
+  { label: "Career upside", value: "$35K-$52K", detail: "A practical earning range the strategy file uses to frame ROI." }
 ];
 
 const certificationPrograms = [
@@ -649,32 +703,41 @@ function Hero() {
         <FloatingMotifs />
         <div className="hero-copy reveal is-visible">
           <span className="eyebrow">
-            <span className="dot" aria-hidden="true" /> We come to you · all 50 states
+            <span className="dot" aria-hidden="true" /> DOT collector training · physical mock kit shipped
           </span>
-          <h1>Mobile blood draws, drug testing, and wellness care at your door.</h1>
+          <h1>DOT drug screen collector training for $75 with a physical mock kit and live virtual mocks.</h1>
           <p className="hero-lead">
-            Book lab work, wellness visits, or health screenings for yourself or a loved one — a caring,
-            certified professional comes right to the home. No driving. No waiting rooms. Just dependable care.
+            Get started with a training-first offer built to outrank overpriced competitors: portal access,
+            real supplies shipped to you, five live virtual mock collections, and support from a real healthcare provider.
           </p>
+          <div className="hero-price-band">
+            <strong>$75</strong>
+            <span>Physical mock kit shipped, 5 live virtual mocks, certificate guidance, and DOT-focused collector support.</span>
+          </div>
           <div className="hero-actions">
-            <a className="btn btn-primary btn-lg" href={mainPhoneDialHref}>
-              <Phone aria-hidden="true" />
-              Call to Book
+            <a className="btn btn-primary btn-lg" href={squareTrainingUrl} onClick={trackCheckout}>
+              <CreditCard aria-hidden="true" />
+              Get Certified for $75
             </a>
+            <Link className="btn btn-dark btn-lg" href="/training">See Training Details</Link>
           </div>
           <ul className="hero-trust">
-            <li><Star aria-hidden="true" /> Certified, compassionate professionals</li>
-            <li><MapPin aria-hidden="true" /> We come to you — no driving needed</li>
-            <li><Clock aria-hidden="true" /> Open 24 hours, 7 days a week</li>
+            <li><BadgeCheck aria-hidden="true" /> 49 CFR Part 40 workflow support</li>
+            <li><ShieldCheck aria-hidden="true" /> Physical mock kit shipped to your door</li>
+            <li><Users aria-hidden="true" /> Five live virtual mock collections with feedback</li>
           </ul>
         </div>
 
         <div className="hero-visual reveal is-visible">
           <div className="hero-photo hero-photo-main">
-            <Image src="/images/site/mobile-lab.webp" alt="The 1 Stikk Mobile laboratory van set up for sample collection" fill sizes="(max-width: 760px) 95vw, (max-width: 1080px) 95vw, 48vw" priority />
+            <Image src="/images/training/drug-screen-mock-collections.png" alt="1 Stikk Mobile DOT collector training mock kit offer" fill sizes="(max-width: 760px) 95vw, (max-width: 1080px) 95vw, 48vw" priority />
           </div>
           <div className="hero-photo hero-photo-sub">
-            <Image src="/images/site/van-care.webp" alt="A 1 Stikk Mobile clinician greeting a patient at a mobile lab van" fill sizes="(max-width: 900px) 90vw, 28vw" />
+            <Image src="/images/training/training-table.jpg" alt="Drug screening kit supplies arranged for collector training practice" fill sizes="(max-width: 900px) 90vw, 28vw" />
+          </div>
+          <div className="hero-badge">
+            <strong>49 CFR Part 40</strong>
+            <span>Training path built around DOT collector readiness.</span>
           </div>
         </div>
       </div>
@@ -688,11 +751,109 @@ function MissionBand() {
   return (
     <section className="mission-band">
       <div className="container mission-inner reveal">
-        <h2>The care they need, right at the door.</h2>
+        <h2>DOT collector training should not cost $400 to feel real.</h2>
         <p>
-          We send certified professionals directly to your home or your loved one's — for blood tests,
-          wellness checks, and health screenings. Simple, dignified, and dependable. No trip required.
+          1 Stikk Mobile leads with a $75 collector-training offer that combines shipped mock materials,
+          live virtual practice, and real healthcare credibility. Patient services still matter, but training is the main growth engine.
         </p>
+      </div>
+    </section>
+  );
+}
+
+function HomeTrainingComparison() {
+  return (
+    <section className="section home-ranking-section">
+      <div className="container">
+        <div className="section-head section-head-center reveal">
+          <span className="eyebrow"><span className="dot" aria-hidden="true" /> Why this offer wins</span>
+          <h2>A sharper DOT collector training offer than the overpriced competition.</h2>
+          <p>Searchers comparing programs need the differences fast: price, physical kit, live mocks, and healthcare-provider credibility.</p>
+        </div>
+        <div className="home-compare-shell reveal is-visible">
+          <article className="home-compare-card home-compare-card-negative">
+            <span className="home-compare-label">Typical competitors</span>
+            <h3>Higher prices and less practical support.</h3>
+            <ul className="home-compare-list">
+              {homeComparisonItems.competitors.map((item) => (
+                <li key={item}><X aria-hidden="true" /> {item}</li>
+              ))}
+            </ul>
+          </article>
+          <article className="home-compare-card home-compare-card-positive">
+            <span className="home-compare-label">1 Stikk Mobile</span>
+            <h3>Built to convert students who want a real mock-kit workflow.</h3>
+            <ul className="home-compare-list">
+              {homeComparisonItems.oneStikk.map((item) => (
+                <li key={item}><Check aria-hidden="true" /> {item}</li>
+              ))}
+            </ul>
+            <div className="home-compare-actions">
+              <a className="btn btn-primary" href={squareTrainingUrl} onClick={trackCheckout}><CreditCard aria-hidden="true" /> Save with $75 Training</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function HomeTrainingBundle() {
+  return (
+    <section className="section home-bundle-section">
+      <div className="container home-bundle-shell reveal is-visible">
+        <article className="home-bundle-card">
+          <span className="eyebrow"><span className="dot" aria-hidden="true" /> Everything included</span>
+          <h2>Your $75 DOT collector training bundle covers the full mock-kit path.</h2>
+          <p>
+            No hidden fees, no supply-list scavenger hunt, and no pre-recorded-only experience. The offer is structured
+            so a student can move from purchase to practice with fewer delays and fewer errors.
+          </p>
+          <ul className="home-bundle-list">
+            {homeIncludedItems.map((item) => (
+              <li key={item}><Check aria-hidden="true" /> {item}</li>
+            ))}
+          </ul>
+        </article>
+        <article className="home-bundle-card home-bundle-card-dark">
+          <span className="eyebrow eyebrow-light"><Award aria-hidden="true" /> How it works</span>
+          <h2>Simple enough to start fast on mobile.</h2>
+          <div className="home-step-list">
+            {homeProcessSteps.map((item, index) => (
+              <div className="home-step-card" key={item}>
+                <em>{index + 1}</em>
+                <span>{item}</span>
+              </div>
+            ))}
+          </div>
+          <div className="hero-actions">
+            <Link className="btn btn-outline" href="/training">View full training flow</Link>
+            <a className="btn btn-primary" href={trainingPhoneHref}><Phone aria-hidden="true" /> Call Training</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  );
+}
+
+function HomeCareerPotential() {
+  return (
+    <section className="section home-career-section">
+      <div className="container">
+        <div className="section-head section-head-center reveal">
+          <span className="eyebrow eyebrow-light"><Briefcase aria-hidden="true" /> Career upside</span>
+          <h2>$75 positioned against a practical collector-career return.</h2>
+          <p>The strategy file frames the offer as a low-cost path into a real workforce skill. This section makes that ROI visible and scannable.</p>
+        </div>
+        <div className="home-career-grid reveal is-visible">
+          {homeCareerStats.map((item) => (
+            <article className="home-career-card" key={item.label}>
+              <span>{item.label}</span>
+              <strong>{item.value}</strong>
+              <p>{item.detail}</p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -705,9 +866,9 @@ function CorePractices() {
     <section className="section" id="services">
       <div className="container">
         <div className="section-head reveal">
-          <span className="eyebrow"><span className="dot" aria-hidden="true" /> Our core practices</span>
-          <h2>The care people ask for most.</h2>
-          <p>Every service is mobile, professional, and built around getting your care done without the trip.</p>
+          <span className="eyebrow"><span className="dot" aria-hidden="true" /> Secondary healthcare services</span>
+          <h2>Mobile patient and employer services that support the training brand.</h2>
+          <p>These services strengthen 1 Stikk Mobile's credibility as a real healthcare operator while the training funnel stays the main SEO and conversion priority.</p>
         </div>
         <div className="practice-grid">
           {corePractices.map((p) => {
@@ -889,16 +1050,16 @@ function Faq() {
     <section className="section faq-section">
       <div className="container faq-shell">
         <div className="faq-intro reveal">
-          <span className="eyebrow"><span className="dot" aria-hidden="true" /> Everything you need to know</span>
-          <h2>Frequently asked questions.</h2>
+          <span className="eyebrow"><span className="dot" aria-hidden="true" /> DOT collector training FAQ</span>
+          <h2>Questions that help this page compete for buyer-intent searches.</h2>
           <p>
-            Answers to the most common questions about our mobile healthcare services, training programs,
-            and business solutions.
+            These answers focus on the terms people search before they enroll: cost, physical mock kits,
+            live virtual mocks, and 49 CFR Part 40 readiness.
           </p>
-          <a className="btn btn-primary" href={mainPhoneDialHref}><Phone aria-hidden="true" /> Call to Book</a>
+          <a className="btn btn-primary" href={squareTrainingUrl} onClick={trackCheckout}><CreditCard aria-hidden="true" /> Get Certified for $75</a>
         </div>
         <div className="faq-list reveal">
-          {faqs.map((item, i) => (
+          {homeFaqs.map((item, i) => (
             <FaqItem key={item.q} item={item} isOpen={open === i} onToggle={() => setOpen(open === i ? -1 : i)} />
           ))}
         </div>
@@ -1396,7 +1557,86 @@ function TrainingPage() {
       <div className="container">
         <TrainingSteps />
       </div>
+      <div className="container">
+        <TrainingSearchSection />
+      </div>
+      <div className="container">
+        <TrainingFaq />
+      </div>
+      <TrainingMobileBar />
     </section>
+  );
+}
+
+function TrainingSearchSection() {
+  return (
+    <section className="training-seo-section reveal is-visible" aria-labelledby="training-seo-title">
+      <div className="training-seo-shell">
+        <div className="training-seo-copy">
+          <span className="eyebrow"><span className="dot" aria-hidden="true" /> Mock drug screening kits</span>
+          <h2 id="training-seo-title">Mock drug screening kits that support collector training from first purchase to final observed mock.</h2>
+          <p>
+            People searching for mock drug screening kits usually need more than a box in the mail. They need a clear
+            process, live support, and a training team that helps them practice the same workflow they will use in real
+            DOT and non-DOT collections.
+          </p>
+          <p>
+            1 Stikk Mobile keeps that path simple: buy the kit, book the portal call, receive your package, and complete
+            live monitored mocks with a certified trainer. If you also need full collection support for employers or
+            patients, visit our <Link href="/services/drug-screening">mobile drug screening services</Link> page.
+          </p>
+        </div>
+        <div className="training-seo-cards" aria-label="Why this mock kit flow stands out">
+          {trainingSearchSignals.map((item) => (
+            <article className="training-seo-card" key={item.title}>
+              <strong>{item.title}</strong>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function TrainingFaq() {
+  const [open, setOpen] = useState(0);
+
+  return (
+    <section className="training-faq-section">
+      <div className="training-faq-shell">
+        <div className="faq-intro reveal is-visible">
+          <span className="eyebrow"><span className="dot" aria-hidden="true" /> Mock kit questions</span>
+          <h2>Questions people ask before ordering mock drug screening kits.</h2>
+          <p>
+            These answers support the exact training flow on this page, especially for mobile visitors comparing kits,
+            DOT collector practice, and live monitoring support.
+          </p>
+          <div className="training-faq-actions">
+            <a className="btn btn-primary" href={squareTrainingUrl} onClick={trackCheckout}><CreditCard aria-hidden="true" /> Buy the $75 Mock Kit</a>
+            <a className="btn btn-outline" href={trainingPhoneHref}><Phone aria-hidden="true" /> Call Training</a>
+          </div>
+        </div>
+        <div className="faq-list reveal is-visible">
+          {trainingFaqs.map((item, i) => (
+            <FaqItem key={item.q} item={item} isOpen={open === i} onToggle={() => setOpen(open === i ? -1 : i)} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function TrainingMobileBar() {
+  return (
+    <div className="training-mobile-bar" aria-label="Training quick actions">
+      <a className="btn btn-primary" href={squareTrainingUrl} onClick={trackCheckout}>
+        <CreditCard aria-hidden="true" /> Buy Kit
+      </a>
+      <a className="btn btn-dark" href={trainingPhoneHref}>
+        <Phone aria-hidden="true" /> Call Training
+      </a>
+    </div>
   );
 }
 
@@ -2010,6 +2250,7 @@ function ArticleDetailPage({ article }) {
     .filter(Boolean);
 
   const relatedService = article.relatedService ? serviceMap[article.relatedService] : null;
+  const relatedTrainingProgram = article.relatedTraining ? trainingProgramMap[article.relatedTraining] : null;
 
   return (
     <>
@@ -2079,16 +2320,25 @@ function ArticleDetailPage({ article }) {
 
           <aside className="article-sidebar">
             <div className="article-sidebar-cta">
-              <strong>Ready to book a service?</strong>
+              <strong>{relatedTrainingProgram ? "Ready to start collector training?" : "Ready to book a service?"}</strong>
               <p>
-                {relatedService
+                {relatedTrainingProgram
+                  ? `Start ${relatedTrainingProgram.title.toLowerCase()} with 1 Stikk Mobile's $75 mock-kit-first training flow.`
+                  : relatedService
                   ? `Book a ${relatedService.title} service — we come to you anywhere in the US.`
                   : "Book mobile lab services — we come to you anywhere in the US."}
               </p>
-              <a className="btn btn-primary" href={mainPhoneDialHref}>
-                <Phone aria-hidden="true" />
-                {relatedService ? `Call to book ${relatedService.title}` : "Call to Book"}
-              </a>
+              {relatedTrainingProgram ? (
+                <Link className="btn btn-primary" href={`/training/${relatedTrainingProgram.slug}`}>
+                  <CreditCard aria-hidden="true" />
+                  Get certified for $75
+                </Link>
+              ) : (
+                <a className="btn btn-primary" href={mainPhoneDialHref}>
+                  <Phone aria-hidden="true" />
+                  {relatedService ? `Call to book ${relatedService.title}` : "Call to Book"}
+                </a>
+              )}
             </div>
 
             {relatedArticles.length > 0 && (
@@ -2226,6 +2476,9 @@ export default function FirstStikkSite({ slug = [] }) {
           <>
       <Hero />
       <MissionBand />
+      <HomeTrainingComparison />
+      <HomeTrainingBundle />
+      <HomeCareerPotential />
       <ServiceAreas />
       <CorePractices />
       <BbbFeature />
@@ -2237,7 +2490,7 @@ export default function FirstStikkSite({ slug = [] }) {
       </main>
       <ImportantNotice />
       <Footer />
-      <FloatingCta isTraining={isTrainingLike} />
+      <FloatingCta isTraining={isTrainingLike && !isTrainingIndex} />
     </>
   );
 }

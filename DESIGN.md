@@ -29,3 +29,7 @@ Motion is vital-sign and routing based: ECG strokes, mobile route paths, notific
 ## Mobile Conversion
 
 On phone, the mock kit is the single priority action. Secondary training options are intentionally compressed or deferred so the user does not face multiple equal-weight decisions at once. Training lists should read left-aligned on mobile, duplicate program sections should be reduced, and the floating call/book actions should support the primary kit CTA rather than compete with it.
+
+## Search Intent
+
+The training funnel should explicitly match "mock drug screening kits" intent without reading like keyword stuffing. The page should explain that the kit is shipped by 1 Stikk, tied to portal support, and completed with live observed mock collections, while internal links connect that training path to the broader drug-screening service page.
