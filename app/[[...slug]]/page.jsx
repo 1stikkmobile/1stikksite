@@ -144,7 +144,7 @@ export async function generateMetadata({ params }) {
           ? "Mock Drug Screening Kits and DOT Collector Training"
           : `${program.title} Training`,
         description: isDrugScreenTraining
-          ? "Order mock drug screening kits, book your portal call, and complete live observed DOT and non-DOT collector training with 1 Stikk Mobile."
+          ? "Order mock drug screening kits, book your call, and complete live observed DOT and non-DOT collector training with 1 Stikk Mobile."
           : program.description,
         canonical,
         keywords: isDrugScreenTraining
@@ -170,7 +170,7 @@ export async function generateMetadata({ params }) {
     return buildPageMetadata({
       title: "$75 Mock Drug Screening Kit | Collector Training",
       description:
-        "Turn a $75 mock drug screening kit into a career-ready collector skill. Buy the kit, book your portal call, and complete live observed mock collections with 1 Stikk Mobile.",
+        "Turn a $75 mock drug screening kit into a real drug screener/collector career. Buy the kit, book your call, and complete live observed mock collections with 1 Stikk Mobile.",
       canonical: `${siteUrl}/training`,
       keywords: [
         "$75 mock drug screening kit",
@@ -183,16 +183,16 @@ export async function generateMetadata({ params }) {
       ],
       openGraphTitle: "$75 Mock Drug Screening Kit | 1 Stikk Mobile",
       openGraphDescription:
-        "Start with the $75 mock drug screening kit, then book your portal call for live observed mock collections and collector career support."
+        "Start with the $75 mock drug screening kit, then book your call for live observed mock collections and a drug screener/collector career path."
     });
   }
 
   // Dedicated mock kit landing page
   if (slug[0] === "mock-kit" && !slug[1]) {
     return buildPageMetadata({
-      title: "$75 Mock Drug Screening Kit | Start Collector Training",
+      title: "$75 Mock Drug Screening Kit | Start a Drug Screener Career",
       description:
-        "Buy the $75 mock drug screening kit from 1 Stikk Mobile and start building a drug screen collector skill with shipped materials, portal guidance, and live observed mocks.",
+        "Buy the $75 mock drug screening kit from 1 Stikk Mobile and start building a real drug screener/collector career with shipped materials, call guidance, and live observed mocks.",
       canonical: `${siteUrl}/mock-kit`,
       keywords: [
         "$75 mock drug screening kit",
@@ -205,7 +205,7 @@ export async function generateMetadata({ params }) {
       ],
       openGraphTitle: "$75 Mock Drug Screening Kit | 1 Stikk Mobile",
       openGraphDescription:
-        "A simple first step into drug screen collector training: buy the $75 kit, book the portal call, and complete live observed mocks."
+        "A simple first step into a drug screener/collector career: buy the $75 kit, book your call, and complete live observed mocks."
     });
   }
 
@@ -534,7 +534,7 @@ export default async function Page({ params }) {
         "@type": "Course",
         name: "Mock Drug Screening Kit Training",
         description:
-          "Buy the mock drug screening kit, book a portal call, and complete live observed DOT and non-DOT mock collections with 1 Stikk Mobile.",
+          "Buy the mock drug screening kit, book your call, and complete live observed DOT and non-DOT mock collections with 1 Stikk Mobile.",
         provider: {
           "@type": "Organization",
           name: "1 Stikk Mobile Inc.",
@@ -558,10 +558,10 @@ export default async function Page({ params }) {
         "@type": "HowTo",
         name: "How to complete 1 Stikk Mobile mock drug screening kit training",
         description:
-          "Start with the mock drug screening kit purchase, then book your portal call, receive your kit, and complete live observed mock collections.",
+          "Start with the mock drug screening kit purchase, then book your call, receive your kit, and complete live observed mock collections.",
         step: [
           { "@type": "HowToStep", name: "Buy the $75 mock kit first" },
-          { "@type": "HowToStep", name: "Book your portal call" },
+          { "@type": "HowToStep", name: "Book your call" },
           { "@type": "HowToStep", name: "Receive your shipped mock kit" },
           { "@type": "HowToStep", name: "Complete live observed mock collections" }
         ]

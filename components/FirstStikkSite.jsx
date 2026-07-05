@@ -180,7 +180,7 @@ function FloatingMotifs() {
 
 const trainingSteps = [
   { Icon: CreditCard, title: "Buy the $75 mock kit first", text: "Start by purchasing the mock package so your training process can be opened right away." },
-  { Icon: CalendarCheck, title: "Book your call to unlock the portal", text: "After you buy, schedule your call with 1 Stikk so we can guide you, answer questions, and get your portal access ready." },
+  { Icon: CalendarCheck, title: "Book your call", text: "After you buy, schedule your call with 1 Stikk so we can guide you, answer questions, and get your access ready." },
   { Icon: Users, title: "Receive your mock kit in the mail", text: "Your mock kit is shipped to you with the materials needed to complete your mock collections." },
   { Icon: BadgeCheck, title: "Complete the mock with live monitoring", text: "A 1 Stikk professional monitors your mock exam live, supports you through the process, and helps make sure you can pass with confidence." }
 ];
@@ -195,7 +195,7 @@ const trainingFeatureCards = [
   {
     key: "drug-screening",
     title: "Drug Screening Mock Kit",
-    subtitle: "Start here: buy the $75 mock kit first, then book your portal call and complete live-monitored mocks with 1 Stikk support.",
+    subtitle: "Start here: buy the $75 mock kit first, then book your call and complete live-monitored mocks with 1 Stikk support.",
     points: ["Primary offer on this page", "DOT and non-DOT workflow support", "Only track with the $75 mock kit checkout"]
   },
   {
@@ -258,7 +258,7 @@ const trainingAdSteps = [
   },
   {
     Icon: CalendarCheck,
-    title: "Book the portal call",
+    title: "Book your call",
     text: "After checkout, schedule your call so we can guide your access and next steps."
   },
   {
@@ -410,12 +410,12 @@ function TrainingAdSteps() {
     <ConversionSteps
       variant="training"
       title="Do these 3 steps in order."
-      lead="Start with checkout. The kit gives you a real practice path for drug screen collector training."
+      lead="Start with checkout. The kit gives you a direct path toward a drug screener/collector career."
       steps={trainingAdSteps}
       actions={
         <>
           <a className="btn btn-primary btn-lg" href={squareTrainingUrl} onClick={trackCheckout}><CreditCard aria-hidden="true" /> Buy the $75 Mock Kit</a>
-          <a className="btn btn-dark btn-lg" href={calendlyBookingUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Book Portal Call</a>
+          <a className="btn btn-dark btn-lg" href={calendlyBookingUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Book Your Call</a>
         </>
       }
     />
@@ -428,7 +428,7 @@ function MockKitOutcomeStrip() {
       <div className="container mock-kit-outcomes-shell reveal is-visible">
         <div>
           <span className="eyebrow"><span className="dot" aria-hidden="true" /> After you buy</span>
-          <h2>Your $75 kit becomes the start of your collector training path.</h2>
+          <h2>Your $75 kit becomes the start of a real drug screener/collector career.</h2>
         </div>
         <ul>
           <li><Check aria-hidden="true" /> You know exactly what to do next</li>
@@ -560,7 +560,7 @@ function CertificateShowcase() {
       <div className="training-offer-notes" style={{ marginTop: "24px" }}>
         <div className="training-offer-note">
           <strong>Want the fastest path in?</strong>
-          <span>Choose Drug Screening, buy the $75 mock kit first, then book your portal call so we can get you into the training flow.</span>
+          <span>Choose Drug Screening, buy the $75 mock kit first, then book your call so we can get you into the training flow.</span>
         </div>
       </div>
     </div>
@@ -583,7 +583,7 @@ function TrainingOfferSpotlight() {
         <span className="eyebrow"><span className="dot" aria-hidden="true" /> Main offer</span>
         <h2>The $75 Drug Screening Mock Kit is the starting point.</h2>
         <p>
-          Everything needed is bundled into one $75 package. Buy the kit first, then book your portal call
+          Everything needed is bundled into one $75 package. Buy the kit first, then book your call
           so 1 Stikk can unlock your access, prepare you for the process, and move you into live mock support.
         </p>
         <div className="training-offer-badges" aria-label="Key offer highlights">
@@ -603,7 +603,7 @@ function TrainingOfferSpotlight() {
           </div>
           <div className="training-offer-note">
             <strong>The flow is simple: buy the kit, book the call, access the portal, then complete the mocks.</strong>
-            <span>Once you buy, 1 Stikk helps you schedule your portal call, sends the kit, and supports your mock exam live so you can complete everything confidently.</span>
+            <span>Once you buy, 1 Stikk helps you schedule your call, sends the kit, and supports your mock exam live so you can complete everything confidently.</span>
           </div>
         </div>
       </div>
@@ -1645,22 +1645,22 @@ function TrainingPage() {
       <div className="container">
         <div className="program-hero reveal is-visible">
           <span className="eyebrow"><span className="dot" aria-hidden="true" /> $75 Mock Drug Screening Kit</span>
-          <h1>Turn a $75 mock drug screening kit into a real collector skill.</h1>
+          <h1>Turn a $75 mock drug screening kit into a real drug screener/collector career.</h1>
           <p className="hero-lead" style={{ margin: "0 auto 20px", maxWidth: "60ch" }}>
             Start with the mock kit, get portal guidance, complete live observed mock collections, and build the
-            confidence to move toward drug screen collector work.
+            confidence to move toward drug screener/collector work.
           </p>
           <div className="hero-actions" style={{ justifyContent: "center", marginBottom: "16px", flexWrap: "wrap", gap: "12px" }}>
             <a className="btn btn-primary btn-lg" href={squareTrainingUrl} onClick={trackCheckout}>
               <CreditCard aria-hidden="true" /> Buy the $75 Mock Kit
             </a>
             <a className="btn btn-dark btn-lg training-hero-secondary" href={calendlyBookingUrl} onClick={trackSchedule}>
-              <CalendarCheck aria-hidden="true" /> Book Your Portal Call
+              <CalendarCheck aria-hidden="true" /> Book Your Call
             </a>
           </div>
           <ul className="training-hero-points" aria-label="Why students choose this mock package">
             <li><Check aria-hidden="true" /> Buy the kit first to start your training file</li>
-            <li><Check aria-hidden="true" /> Use the portal call to unlock next-step guidance</li>
+            <li><Check aria-hidden="true" /> Use your call to unlock next-step guidance</li>
             <li><Check aria-hidden="true" /> Mock kit shipped directly to you</li>
             <li><Check aria-hidden="true" /> Practice collector workflows with live monitoring</li>
           </ul>
@@ -1700,10 +1700,10 @@ function MockKitPage() {
         <div className="mock-kit-hero reveal is-visible">
           <div className="mock-kit-copy">
             <span className="eyebrow"><span className="dot" aria-hidden="true" /> $75 Mock Drug Screening Kit</span>
-            <h1>Buy the mock kit. Practice the process. Start building a collector career.</h1>
+            <h1>Buy the mock kit. Practice the process. Start building a drug screener/collector career.</h1>
             <p className="hero-lead">
-              This kit is the first step for drug screen collector training. You get shipped mock materials,
-              portal guidance, live observed mock collections, and a simple path from practice to confidence.
+              This kit is the first step toward a drug screener/collector career. You get shipped mock materials,
+              call guidance, live observed mock collections, and a simple path from practice to confidence.
             </p>
             <div className="hero-price-band mock-kit-price">
               <strong>$75</strong>
@@ -1714,7 +1714,7 @@ function MockKitPage() {
                 <CreditCard aria-hidden="true" /> Buy the $75 Mock Kit
               </a>
               <a className="btn btn-dark btn-lg" href={calendlyBookingUrl} onClick={trackSchedule}>
-                <CalendarCheck aria-hidden="true" /> Book Portal Call
+                <CalendarCheck aria-hidden="true" /> Book Your Call
               </a>
             </div>
           </div>
@@ -1751,16 +1751,16 @@ function TrainingSearchSection() {
       <div className="training-seo-shell">
         <div className="training-seo-copy">
           <span className="eyebrow"><span className="dot" aria-hidden="true" /> Mock drug screening kits</span>
-          <h2 id="training-seo-title">Mock drug screening kits that support collector training from first purchase to final observed mock.</h2>
+          <h2 id="training-seo-title">Mock drug screening kits that help turn training into a drug screener/collector career.</h2>
           <p>
             People searching for mock drug screening kits usually need more than a box in the mail. They need a clear
             process, live support, and a training team that helps them practice the same workflow they will use in real
             DOT and non-DOT collections.
           </p>
           <p>
-            1 Stikk Mobile keeps that path simple: buy the kit, book the portal call, receive your package, and complete
-            live monitored mocks with a certified trainer. If you also need full collection support for employers or
-            patients, visit our <Link href="/services/drug-screening">mobile drug screening services</Link> page.
+            1 Stikk Mobile keeps that path simple: buy the kit, book your call, receive your package, and complete
+            live monitored mocks with a certified trainer. When the mocks are complete, you&apos;re set up for a drug
+            screener/collector career instead of just another course.
           </p>
         </div>
         <div className="training-seo-cards" aria-label="Why this mock kit flow stands out">
@@ -1849,7 +1849,7 @@ function TrainingProgramDetail({ program }) {
                 </a>
               ) : null}
               <a className="btn btn-dark btn-lg" href={calendlyBookingUrl} onClick={trackSchedule}>
-                <CalendarCheck aria-hidden="true" /> {isMockTraining ? "Book Your Portal Call" : "Schedule a Time"}
+                <CalendarCheck aria-hidden="true" /> {isMockTraining ? "Book Your Call" : "Schedule a Time"}
               </a>
             </div>
           </div>
@@ -2152,7 +2152,7 @@ function DrugScreeningPage() {
             </p>
             <ul className="ds-list">
               <li><Check aria-hidden="true" /> Buy the $75 mock kit first</li>
-              <li><Check aria-hidden="true" /> Book your call for portal access and next-step support</li>
+              <li><Check aria-hidden="true" /> Book your call for access and next-step support</li>
               <li><Check aria-hidden="true" /> Actual mock kit shipped to you by 1 Stikk</li>
               <li><Check aria-hidden="true" /> Five mock collections with live virtual observation</li>
               <li><Check aria-hidden="true" /> Employee handbook and binder setup support</li>
@@ -2167,7 +2167,7 @@ function DrugScreeningPage() {
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "12px" }}>
               <a className="btn btn-primary" href={squareTrainingUrl} onClick={trackCheckout}><CreditCard aria-hidden="true" /> Pay $75 — Enroll Now</a>
-              <a className="btn btn-dark" href={calendlyBookingUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Book Your Portal Call</a>
+              <a className="btn btn-dark" href={calendlyBookingUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Book Your Call</a>
             </div>
           </div>
           <div className="ds-split-media reveal">
