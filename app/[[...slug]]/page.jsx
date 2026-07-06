@@ -49,6 +49,7 @@ function isValidRoute(slug = []) {
   if (slug.length === 1) {
     return [
       "about",
+      "about-us",
       "services",
       "training",
       "mock-kit",
@@ -84,6 +85,7 @@ export async function generateStaticParams() {
   return [
     { slug: [] },
     { slug: ["about"] },
+    { slug: ["about-us"] },
     { slug: ["services"] },
     ...serviceSlugs.map((slug) => ({ slug })),
     { slug: ["training"] },
@@ -279,12 +281,20 @@ export async function generateMetadata({ params }) {
   }
 
   // About
-  if (slug[0] === "about") {
+  if (slug[0] === "about" || slug[0] === "about-us") {
     return buildPageMetadata({
-      title: "About Us | Meet Founder Tiffany Clinton",
+      title: "About 1 Stikk Mobile | Mobile Healthcare With Heart",
       description:
-        "Meet Tiffany Clinton, CPT, RMA — CEO and founder of 1 Stikk Mobile Inc. Faith-rooted, community-driven mobile healthcare serving all 50 states.",
-      canonical: `${siteUrl}/about`,
+        "Learn how 1 Stikk Mobile brings mobile healthcare, blood draws, wellness visits, and community-based support directly to people across the United States.",
+      canonical: `${siteUrl}/about-us`,
+      keywords: [
+        "about 1 Stikk Mobile",
+        "mobile healthcare company",
+        "mobile blood draws at home",
+        "at home lab testing",
+        "Tiffany Clinton 1 Stikk Mobile",
+        "mobile healthcare services nationwide"
+      ],
       openGraphTitle: "About 1 Stikk Mobile | Meet Founder Tiffany Clinton",
       openGraphDescription:
         "Faith-rooted, community-driven mobile healthcare. Tiffany Clinton leads a team that delivers care with dignity while training the next generation of mobile healthcare professionals."

@@ -801,7 +801,7 @@ function Header({ mobileOpen, setMobileOpen }) {
           </div>
           <div className="mobile-group">
             <span>Company</span>
-            <Link href="/about" onClick={() => setMobileOpen(false)}>About Us</Link>
+            <Link href="/about-us" onClick={() => setMobileOpen(false)}>About Us</Link>
             <Link href="/non-profit" onClick={() => setMobileOpen(false)}>Non Profit</Link>
             <Link href="/business-solutions" onClick={() => setMobileOpen(false)}>Business Solutions</Link>
             <Link href="/contact" onClick={() => setMobileOpen(false)}>Contact Us</Link>
@@ -1250,7 +1250,7 @@ function Footer() {
         </div>
         <div className="footer-col">
           <strong>Company</strong>
-          <Link href="/about">About / Meet founder</Link>
+          <Link href="/about-us">About / Meet founder</Link>
           <Link href="/program">Programs</Link>
           <Link href="/non-profit">Non Profit</Link>
           <Link href="/business-solutions">Business Solutions</Link>
@@ -1968,23 +1968,121 @@ function TrainingProgramDetail({ program }) {
 /* ------------------------------------------------------------------ About */
 
 function AboutPage() {
+  const aboutPillars = [
+    {
+      icon: HeartHandshake,
+      title: "Care that feels personal",
+      text: "We bring respectful mobile care to homes, schools, workplaces, and community spaces so people can get help without extra stress."
+    },
+    {
+      icon: ShieldCheck,
+      title: "Professional and trusted",
+      text: "Our team focuses on privacy, compliance, and clear communication so patients, families, and partners know exactly what to expect."
+    },
+    {
+      icon: Briefcase,
+      title: "Built to create opportunity",
+      text: "1 Stikk Mobile supports both patient care and workforce pathways that help people move toward stable healthcare careers."
+    }
+  ];
+
+  const aboutHighlights = [
+    "Mobile blood draws, wellness visits, drug screening, and specimen collection support",
+    "Simple scheduling for patients, caregivers, facilities, and community partners",
+    "Nationwide reach with a faith-rooted, people-first care model"
+  ];
+
   return (
     <>
-      <section className="page-hero">
-        <div className="container reveal is-visible">
-          <span className="eyebrow eyebrow-light"><span className="dot" aria-hidden="true" /> About 1 Stikk Mobile</span>
-          <h1>Care that comes to people.<br />Opportunity that follows.</h1>
-          <p className="hero-lead">
-            Faith-rooted, community-driven mobile healthcare — delivering lab services and
-            building careers across all 50 states since day one.
-          </p>
-          <div className="hero-actions">
-            <a className="btn btn-primary btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> Call to Book</a>
-            <a className="btn btn-dark btn-lg" href={patientBookingUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Book Online</a>
+      <section className="about-hero">
+        <div className="container about-hero-shell">
+          <div className="about-hero-copy reveal is-visible">
+            <span className="eyebrow eyebrow-light"><span className="dot" aria-hidden="true" /> About 1 Stikk Mobile</span>
+            <h1>Mobile healthcare built to serve real people in real life.</h1>
+            <p className="hero-lead">
+              1 Stikk Mobile helps patients, families, employers, and communities get professional care
+              without the extra travel, waiting rooms, or confusion. We bring the service to you and keep the process simple.
+            </p>
+            <div className="about-hero-points" role="list" aria-label="About 1 Stikk Mobile highlights">
+              {aboutHighlights.map((item) => (
+                <div className="about-hero-point" key={item} role="listitem">
+                  <Check aria-hidden="true" />
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+            <div className="hero-actions">
+              <a className="btn btn-primary btn-lg" href={mainPhoneDialHref}><Phone aria-hidden="true" /> Call to Book</a>
+              <a className="btn btn-dark btn-lg" href={patientBookingUrl} onClick={trackSchedule}><CalendarCheck aria-hidden="true" /> Book Online</a>
+            </div>
+          </div>
+          <div className="about-hero-media reveal is-visible">
+            <div className="about-hero-frame">
+              <Image
+                src="/images/site/mobile-lab.webp"
+                alt="1 Stikk Mobile laboratory van ready to bring healthcare services directly to patients"
+                fill
+                sizes="(max-width: 760px) 100vw, 46vw"
+                priority
+              />
+            </div>
+            <div className="about-hero-card">
+              <strong>Why people choose 1 Stikk Mobile</strong>
+              <p>Easy booking, respectful care, and mobile service that meets patients where they are.</p>
+            </div>
           </div>
         </div>
       </section>
+
+      <section className="section about-pillars">
+        <div className="container">
+          <div className="section-head reveal">
+            <span className="eyebrow"><span className="dot" aria-hidden="true" /> What makes us different</span>
+            <h2>Clear, helpful care without the runaround.</h2>
+            <p>This page is built to make 1 Stikk Mobile easy to understand fast, especially for families, caregivers, and first-time visitors.</p>
+          </div>
+          <div className="about-pillars-grid">
+            {aboutPillars.map(({ icon: Icon, title, text }) => (
+              <article className="about-pillar-card reveal" key={title}>
+                <span className="practice-icon"><Icon aria-hidden="true" /></span>
+                <strong>{title}</strong>
+                <p>{text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <PatientBookingSteps compact />
+
+      <section className="section about-story-section">
+        <div className="container about-story-shell">
+          <div className="about-story-copy reveal">
+            <span className="eyebrow"><span className="dot" aria-hidden="true" /> Our mission</span>
+            <h2>Bring care closer. Make help easier to reach.</h2>
+            <p>
+              1 Stikk Mobile was built around a simple idea: healthcare should be easier to access. That means
+              fewer barriers for seniors, busy families, recovering patients, employers, and underserved communities.
+            </p>
+            <p>
+              We focus on convenience without losing warmth. Every appointment is meant to feel guided, respectful,
+              and easy to follow from the first call to the final collection.
+            </p>
+          </div>
+          <div className="about-story-panel reveal">
+            <div className="about-story-badge">
+              <MapPin aria-hidden="true" />
+              <span>Serving patients and partners across the United States</span>
+            </div>
+            <ul className="about-story-list">
+              <li><Users aria-hidden="true" /> Support for patients, caregivers, facilities, schools, and employers</li>
+              <li><Star aria-hidden="true" /> A service style centered on dignity, clarity, and follow-through</li>
+              <li><Award aria-hidden="true" /> Leadership that combines healthcare experience with community impact</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       <Founder />
       <BbbFeature />
       <ServiceAreas />
@@ -2605,7 +2703,7 @@ export default function FirstStikkSite({ slug = [] }) {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const isAbout = slug[0] === "about" && !slug[1];
+  const isAbout = (slug[0] === "about" || slug[0] === "about-us") && !slug[1];
   const isServicesIndex = slug[0] === "services" && !slug[1];
   const isDrugScreening = slug[0] === "services" && slug[1] === "drug-screening";
   const activeService = slug[0] === "services" && slug[1] && slug[1] !== "drug-screening" ? serviceMap[slug[1]] : null;
