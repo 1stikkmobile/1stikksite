@@ -75,7 +75,11 @@ function trackSchedule() {
 
 function trackCheckout() {
   if (typeof window !== "undefined" && typeof fbq === "function") {
-    fbq("track", "InitiateCheckout");
+    fbq("track", "InitiateCheckout", {
+      value: 75,
+      currency: "USD",
+      content_name: "Mock Drug Screening Kit"
+    });
   }
 }
 
@@ -539,11 +543,7 @@ function CertificateShowcase() {
                   <Link
                     className="btn btn-primary"
                     href={squareTrainingUrl}
-                    onClick={() => {
-                      if (typeof window !== "undefined" && typeof fbq === "function") {
-                        fbq("track", "InitiateCheckout");
-                      }
-                    }}
+                    onClick={trackCheckout}
                   >
                     <CreditCard aria-hidden="true" /> Buy the $75 Mock Kit
                   </Link>
