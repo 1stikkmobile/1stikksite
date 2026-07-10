@@ -950,13 +950,20 @@ h2 { font-size: clamp(1.9rem, 3.6vw, 3rem); }
 }
 .bbb-photo {
   position: relative;
-  min-height: 360px;
+  aspect-ratio: 4 / 5;
+  min-height: 420px;
   border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid oklch(100% 0 0 / 0.12);
+  background:
+    linear-gradient(145deg, oklch(94% 0.02 84), oklch(86% 0.03 72));
   box-shadow: var(--shadow-md);
 }
-.bbb-photo img { object-fit: cover; }
+.bbb-photo img {
+  object-fit: contain;
+  object-position: center;
+  padding: 22px;
+}
 .bbb-copy h2 { margin-bottom: 16px; }
 .bbb-copy p { max-width: 56ch; margin-bottom: 26px; color: oklch(100% 0 0 / 0.82); font-size: 1.05rem; line-height: 1.72; }
 
@@ -2293,6 +2300,7 @@ a.contact-card:hover { border-color: var(--gold); background: oklch(100% 0 0 / 0
   .hero-badge { display: none; }
   .founder-photo { width: min(100%, 360px); }
   .bbb-photo { min-height: 240px; }
+  .bbb-photo { aspect-ratio: 1 / 1; }
   .areas-map { min-height: 200px; }
   .practice-grid, .training-grid, .training-gallery-grid, .contact-cards, .footer-grid { grid-template-columns: 1fr; }
   .conversion-steps { padding: 18px 0 28px; }
