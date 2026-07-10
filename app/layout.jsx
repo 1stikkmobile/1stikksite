@@ -61,9 +61,15 @@ export const metadata = {
     images: [logoImage]
   },
   icons: {
-    icon: [{ url: faviconImage, type: "image/png" }],
+    icon: [
+      { url: "/favicon.ico", type: "image/x-icon" },
+      { url: faviconImage, type: "image/png" }
+    ],
     shortcut: faviconImage,
-    apple: faviconImage
+    apple: [
+      { url: "/apple-icon.jpg", type: "image/jpeg" },
+      { url: faviconImage, type: "image/png" }
+    ]
   },
   robots: {
     index: true,
