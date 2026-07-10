@@ -11,7 +11,7 @@ const canvaSans = localFont({
 });
 
 const siteUrl = "https://www.1stikkmobile.com";
-const logoImage = `${siteUrl}/opengraph-image`;
+const logoImage = `${siteUrl}/images/logo/logo.jpg`;
 const faviconImage = "/favicon.png";
 
 export const metadata = {
