@@ -1,5 +1,6 @@
 import FirstStikkSite from "../../components/FirstStikkSite";
 import { notFound } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 import { articleMap, articles, homeFaqs, serviceMap, services, trainingFaqs, trainingProgramMap, trainingPrograms } from "../../components/data";
 
 const siteUrl = "https://www.1stikkmobile.com";
@@ -84,7 +85,6 @@ export async function generateStaticParams() {
   const articleSlugs = articles.map((a) => ["articles", a.slug]);
   return [
     { slug: [] },
-    { slug: ["about"] },
     { slug: ["about-us"] },
     { slug: ["services"] },
     ...serviceSlugs.map((slug) => ({ slug })),
@@ -390,6 +390,10 @@ export async function generateMetadata({ params }) {
 export default async function Page({ params }) {
   const resolvedParams = await params;
   const slug = resolvedParams?.slug ?? [];
+
+  if (slug[0] === "about" && !slug[1]) {
+    permanentRedirect("/about-us");
+  }
 
   if (!isValidRoute(slug)) {
     notFound();

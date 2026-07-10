@@ -5,9 +5,11 @@ This file lists the pages that are intended to be indexed on `1stikkmobile.com`.
 ## Core Pages
 
 - `/`
-- `/about`
+- `/about-us`
 - `/services`
 - `/training`
+- `/mock-kit`
+- `/program`
 - `/non-profit`
 - `/business-solutions`
 - `/contact`
@@ -30,6 +32,11 @@ This file lists the pages that are intended to be indexed on `1stikkmobile.com`.
 
 ## Article Pages
 
+- `/articles/dot-drug-screen-collector-training-guide`
+- `/articles/49-cfr-part-40-training-requirements`
+- `/articles/physical-mock-kit-vs-supply-list`
+- `/articles/live-virtual-mocks-vs-pre-recorded-training`
+- `/articles/drug-test-collector-salary-guide`
 - `/articles/mobile-blood-draw-at-home`
 - `/articles/dot-drug-testing-guide`
 - `/articles/phlebotomy-training-career`
@@ -42,6 +49,7 @@ This file lists the pages that are intended to be indexed on `1stikkmobile.com`.
 
 ## Not Intended For Indexing
 
+- `/about` (301 redirect to `/about-us`)
 - `/search`
 - `/admin`
 
