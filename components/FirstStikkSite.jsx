@@ -887,14 +887,14 @@ function HomeTrainingComparison() {
     <section className="section home-ranking-section">
       <div className="container">
         <div className="section-head section-head-center reveal">
-          <span className="eyebrow"><span className="dot" aria-hidden="true" /> Why this offer wins</span>
-          <h2>A sharper DOT collector training offer than the overpriced competition.</h2>
-          <p>Searchers comparing programs need the differences fast: price, physical kit, live mocks, and healthcare-provider credibility.</p>
+          <span className="eyebrow"><span className="dot" aria-hidden="true" /> Training only</span>
+          <h2>DOT collector training stays separate from patient blood-draw services.</h2>
+          <p>Searchers looking for training should land on the training path, while patients looking for blood draws stay on the service path.</p>
         </div>
         <div className="home-compare-shell reveal is-visible">
           <article className="home-compare-card home-compare-card-negative">
-            <span className="home-compare-label">Typical competitors</span>
-            <h3>Higher prices and less practical support.</h3>
+            <span className="home-compare-label">Training search intent</span>
+            <h3>Find the mock-kit flow fast.</h3>
             <ul className="home-compare-list">
               {homeComparisonItems.competitors.map((item) => (
                 <li key={item}><X aria-hidden="true" /> {item}</li>
@@ -903,7 +903,7 @@ function HomeTrainingComparison() {
           </article>
           <article className="home-compare-card home-compare-card-positive">
             <span className="home-compare-label">1 Stikk Mobile</span>
-            <h3>Built to convert students who want a real mock-kit workflow.</h3>
+            <h3>Built for the $75 mock-kit workflow.</h3>
             <ul className="home-compare-list">
               {homeComparisonItems.oneStikk.map((item) => (
                 <li key={item}><Check aria-hidden="true" /> {item}</li>
@@ -928,7 +928,7 @@ function HomeTrainingBundle() {
           <h2>Your $75 DOT collector training bundle covers the full mock-kit path.</h2>
           <p>
             No hidden fees, no supply-list scavenger hunt, and no pre-recorded-only experience. The offer is structured
-            so a student can move from purchase to practice with fewer delays and fewer errors.
+            so a student can move from purchase to practice without mixing in patient blood-draw pages or services.
           </p>
           <ul className="home-bundle-list">
             {homeIncludedItems.map((item) => (
@@ -964,7 +964,7 @@ function HomeCareerPotential() {
         <div className="section-head section-head-center reveal">
           <span className="eyebrow eyebrow-light"><Briefcase aria-hidden="true" /> Career upside</span>
           <h2>$75 positioned against a practical collector-career return.</h2>
-          <p>The strategy file frames the offer as a low-cost path into a real workforce skill. This section makes that ROI visible and scannable.</p>
+          <p>The training page is intentionally separate from patient services so searchers can find the right path faster.</p>
         </div>
         <div className="home-career-grid reveal is-visible">
           {homeCareerStats.map((item) => (
@@ -1020,16 +1020,16 @@ function Founder() {
     <section className="section founder-section" id="founder">
       <div className="container founder-shell">
         <div className="founder-photo reveal">
-          <Image src="/images/site/founder.webp" alt="Tiffany Clinton, CPT, RMA, CEO of 1 Stikk Mobile" fill sizes="(max-width: 900px) 80vw, 30vw" />
-          <span className="founder-name">Tiffany Clinton · CPT, RMA · CEO</span>
+          <Image src="/images/site/IMG_8015.JPG" alt="Tiffany Clinton, CPT, RMA, Founder of 1 Stikk Mobile" fill sizes="(max-width: 900px) 80vw, 30vw" />
+          <span className="founder-name">Tiffany Clinton · CPT, RMA · Founder</span>
         </div>
         <div className="founder-copy reveal">
           <span className="eyebrow"><span className="dot" aria-hidden="true" /> Meet the founder</span>
           <h2>Turning struggle into strategy.</h2>
           <p>
             1 Stikk Mobile was built on a simple belief: healthcare should come to people, and opportunity
-            should follow. Tiffany Clinton leads a team that delivers care with dignity while training the
-            next generation of mobile healthcare professionals.
+            should follow. Tiffany Clinton leads a team that delivers care with dignity while keeping the
+            training path separate from patient blood-draw services.
           </p>
           <blockquote className="founder-quote">
             “Beloved, I pray that you may prosper in all things and be in health, just as your soul prospers.”

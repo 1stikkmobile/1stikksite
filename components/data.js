@@ -292,7 +292,7 @@ export const trainingPrograms = [
     ],
     summary: "One-on-one coaching for nurses, clinicians, and entrepreneurs starting a healthcare business.",
     description:
-      "One-on-one mentorship and business consulting for nurses, clinicians, and entrepreneurs starting or growing a mobile lab or healthcare business. Learn directly from a working mobile lab CEO.",
+      "One-on-one mentorship and business consulting for nurses, clinicians, and entrepreneurs starting or growing a mobile lab or healthcare business. Learn directly from a working mobile lab founder.",
     who: [
       "Nurses and clinicians starting a private practice",
       "Entrepreneurs entering the mobile healthcare space",
@@ -307,7 +307,7 @@ export const trainingPrograms = [
       "Partnership development and contract negotiation"
     ],
     includes: [
-      "1-on-1 mentorship with CEO Tiffany Clinton",
+      "1-on-1 mentorship with Founder Tiffany Clinton",
       "Business plan review and actionable feedback",
       "Resource library and starter templates",
       "Referral network and partnership access",
@@ -536,7 +536,7 @@ export const articles = [
     dateISO: "2026-01-12",
     date: "January 12, 2026",
     readTime: "9 min read",
-    author: { name: "Tiffany Clinton, CPT, RMA", role: "CEO & Founder, 1 Stikk Mobile" },
+    author: { name: "Tiffany Clinton, CPT, RMA", role: "Founder, 1 Stikk Mobile" },
     image: "/images/training/drug-screen-mock-collections.png",
     imageAlt: "DOT drug screen collector training mock kit and live virtual mock collections from 1 Stikk Mobile",
     intro:
@@ -588,7 +588,7 @@ export const articles = [
     dateISO: "2026-01-11",
     date: "January 11, 2026",
     readTime: "8 min read",
-    author: { name: "Tiffany Clinton, CPT, RMA", role: "CEO & Founder, 1 Stikk Mobile" },
+    author: { name: "Tiffany Clinton, CPT, RMA", role: "Founder, 1 Stikk Mobile" },
     image: "/images/training/program-dot-compliance.png",
     imageAlt: "49 CFR Part 40 collector training support from 1 Stikk Mobile",
     intro:
@@ -636,7 +636,7 @@ export const articles = [
     dateISO: "2026-01-10",
     date: "January 10, 2026",
     readTime: "7 min read",
-    author: { name: "Tiffany Clinton, CPT, RMA", role: "CEO & Founder, 1 Stikk Mobile" },
+    author: { name: "Tiffany Clinton, CPT, RMA", role: "Founder, 1 Stikk Mobile" },
     image: "/images/training/training-table.jpg",
     imageAlt: "Physical mock kit materials organized for DOT collector training",
     intro:
@@ -684,7 +684,7 @@ export const articles = [
     dateISO: "2026-01-09",
     date: "January 9, 2026",
     readTime: "7 min read",
-    author: { name: "Tiffany Clinton, CPT, RMA", role: "CEO & Founder, 1 Stikk Mobile" },
+    author: { name: "Tiffany Clinton, CPT, RMA", role: "Founder, 1 Stikk Mobile" },
     image: "/images/training/training-instructor.jpg",
     imageAlt: "Live virtual mock collection coaching from 1 Stikk Mobile",
     intro:
@@ -732,7 +732,7 @@ export const articles = [
     dateISO: "2026-01-08",
     date: "January 8, 2026",
     readTime: "8 min read",
-    author: { name: "Tiffany Clinton, CPT, RMA", role: "CEO & Founder, 1 Stikk Mobile" },
+    author: { name: "Tiffany Clinton, CPT, RMA", role: "Founder, 1 Stikk Mobile" },
     image: "/images/training/training-guidance.jpg",
     imageAlt: "Collector training as a pathway into drug testing and mobile healthcare work",
     intro:
@@ -780,7 +780,7 @@ export const articles = [
     dateISO: "2025-12-15",
     date: "December 15, 2025",
     readTime: "6 min read",
-    author: { name: "Tiffany Clinton, CPT, RMA", role: "CEO & Founder, 1 Stikk Mobile" },
+    author: { name: "Tiffany Clinton, CPT, RMA", role: "Founder, 1 Stikk Mobile" },
     image: "/images/services/blood-draw.jpg",
     imageAlt: "A 1 Stikk Mobile certified phlebotomist arriving at a patient's home for a blood draw",
     intro:
@@ -821,7 +821,7 @@ export const articles = [
     dateISO: "2025-11-20",
     date: "November 20, 2025",
     readTime: "8 min read",
-    author: { name: "Tiffany Clinton, CPT, RMA", role: "CEO & Founder, 1 Stikk Mobile" },
+    author: { name: "Tiffany Clinton, CPT, RMA", role: "Founder, 1 Stikk Mobile" },
     image: "/images/services/drug-test-report.jpg",
     imageAlt: "DOT drug test chain-of-custody form with specimen collection supplies",
     intro:
@@ -862,7 +862,7 @@ export const articles = [
     dateISO: "2025-10-08",
     date: "October 8, 2025",
     readTime: "7 min read",
-    author: { name: "Tiffany Clinton, CPT, RMA", role: "CEO & Founder, 1 Stikk Mobile" },
+    author: { name: "Tiffany Clinton, CPT, RMA", role: "Founder, 1 Stikk Mobile" },
     image: "/images/training/training-instructor.jpg",
     imageAlt: "A student practicing venipuncture technique during hands-on phlebotomy training",
     intro:
@@ -903,7 +903,7 @@ export const articles = [
     dateISO: "2025-09-12",
     date: "September 12, 2025",
     readTime: "7 min read",
-    author: { name: "Tiffany Clinton, CPT, RMA", role: "CEO & Founder, 1 Stikk Mobile" },
+    author: { name: "Tiffany Clinton, CPT, RMA", role: "Founder, 1 Stikk Mobile" },
     image: "/images/services/dna-swab.webp",
     imageAlt: "Drug test specimen collection capsules and chain-of-custody supplies",
     intro:
@@ -944,7 +944,7 @@ export const articles = [
     dateISO: "2025-08-05",
     date: "August 5, 2025",
     readTime: "5 min read",
-    author: { name: "Tiffany Clinton, CPT, RMA", role: "CEO & Founder, 1 Stikk Mobile" },
+    author: { name: "Tiffany Clinton, CPT, RMA", role: "Founder, 1 Stikk Mobile" },
     image: "/images/training/training-table.jpg",
     imageAlt: "The 1 Stikk Mobile laboratory van set up for community wellness screenings",
     intro:
@@ -985,7 +985,7 @@ export const articles = [
     dateISO: "2026-01-12",
     date: "January 12, 2026",
     readTime: "7 min read",
-    author: { name: "Tiffany Clinton, CPT, RMA", role: "CEO & Founder, 1 Stikk Mobile" },
+    author: { name: "Tiffany Clinton, CPT, RMA", role: "Founder, 1 Stikk Mobile" },
     image: "/images/services/dna-forensic.webp",
     imageAlt: "Mobile DNA paternity testing collection kit with cheek swabs and chain-of-custody documentation",
     intro:
@@ -1032,7 +1032,7 @@ export const articles = [
     dateISO: "2026-01-05",
     date: "January 5, 2026",
     readTime: "8 min read",
-    author: { name: "Tiffany Clinton, CPT, RMA", role: "CEO & Founder, 1 Stikk Mobile" },
+    author: { name: "Tiffany Clinton, CPT, RMA", role: "Founder, 1 Stikk Mobile" },
     image: "/images/services/buccal-swab.webp",
     imageAlt: "Mobile drug testing collection supplies set up on-site at an employer workplace",
     intro:
@@ -1079,7 +1079,7 @@ export const articles = [
     dateISO: "2025-12-28",
     date: "December 28, 2025",
     readTime: "9 min read",
-    author: { name: "Tiffany Clinton, CPT, RMA", role: "CEO & Founder, 1 Stikk Mobile" },
+    author: { name: "Tiffany Clinton, CPT, RMA", role: "Founder, 1 Stikk Mobile" },
     image: "/images/site/founder.webp",
     imageAlt: "Mobile phlebotomy business owner preparing a collection bag before a home visit",
     intro:
@@ -1126,7 +1126,7 @@ export const articles = [
     dateISO: "2025-12-20",
     date: "December 20, 2025",
     readTime: "6 min read",
-    author: { name: "Tiffany Clinton, CPT, RMA", role: "CEO & Founder, 1 Stikk Mobile" },
+    author: { name: "Tiffany Clinton, CPT, RMA", role: "Founder, 1 Stikk Mobile" },
     image: "/images/training/training-guidance.jpg",
     imageAlt: "A certified mobile phlebotomist performing a gentle blood draw for a senior patient at home",
     intro:
