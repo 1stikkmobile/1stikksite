@@ -1,6 +1,6 @@
 import { articles, services, trainingPrograms } from "../components/data";
 
-const siteUrl = "https://www.1stikkmobile.com";
+const siteUrl = "https://1stikkmobile.com";
 
 export default async function sitemap() {
   const staticRoutes = [

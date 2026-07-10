@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { permanentRedirect } from "next/navigation";
 import { articleMap, articles, homeFaqs, serviceMap, services, trainingFaqs, trainingProgramMap, trainingPrograms } from "../../components/data";
 
-const siteUrl = "https://www.1stikkmobile.com";
+const siteUrl = "https://1stikkmobile.com";
 const defaultOgImage = `${siteUrl}/images/logo/logo.jpg`;
 
 function buildPageMetadata({

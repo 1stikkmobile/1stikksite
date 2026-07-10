@@ -3,7 +3,7 @@ import LegalPage from "../../components/LegalPage";
 export const metadata = {
   title: "Privacy Policy",
   alternates: {
-    canonical: "https://www.1stikkmobile.com/privacy-policy"
+    canonical: "https://1stikkmobile.com/privacy-policy"
   },
   robots: {
     index: false,

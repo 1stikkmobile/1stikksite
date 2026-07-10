@@ -10,7 +10,7 @@ const canvaSans = localFont({
   weight: "400 700"
 });
 
-const siteUrl = "https://www.1stikkmobile.com";
+const siteUrl = "https://1stikkmobile.com";
 const logoImage = `${siteUrl}/images/logo/logo.jpg`;
 const faviconImage = "/favicon.png";
 
