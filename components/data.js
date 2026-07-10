@@ -405,24 +405,24 @@ export const trainingFaqs = [
 
 export const homeFaqs = [
   {
-    q: "How much does DOT collector training cost?",
-    a: "1 Stikk Mobile offers DOT collector training for $75. Many competitors charge $200 to $500 for similar certification pathways, but our package includes the physical mock kit, live virtual mocks, and certificate guidance in one lower-cost offer."
+    q: "What mobile healthcare services can 1 Stikk Mobile provide at home or on site?",
+    a: "1 Stikk Mobile provides mobile blood draws, routine specimen collections, wellness visits, drug screening, DNA testing, and select community or employer-based health services based on scheduling and service availability."
   },
   {
-    q: "Is a physical mock kit shipped with the training?",
-    a: "Yes. 1 Stikk ships a real mock drug screening kit to you. That is one of the biggest differences between this program and providers that only send supply lists or recorded lessons."
+    q: "Do you come to homes, workplaces, and care facilities?",
+    a: "Yes. 1 Stikk Mobile is built around mobile service delivery, which means appointments can be coordinated for homes, workplaces, community sites, and qualifying care facilities."
   },
   {
-    q: "Are the mock collections live or pre-recorded?",
-    a: "They are live. Students complete five live virtual mock collections with real-time support from 1 Stikk instead of relying only on prerecorded content."
+    q: "How do I book a mobile blood draw or testing visit?",
+    a: "You can call 1 Stikk Mobile directly or use the online booking link to request service. The team confirms the service type, location, and timing before the visit is scheduled."
   },
   {
-    q: "Does this training support 49 CFR Part 40 collector requirements?",
-    a: "The training is built around DOT and non-DOT collector workflows, including chain-of-custody habits, paperwork, and mock collection practice that supports 49 CFR Part 40 readiness."
+    q: "Do you offer mobile drug screening for employers and workforce programs?",
+    a: "Yes. 1 Stikk Mobile offers mobile DOT and non-DOT drug screening support for employers, workforce programs, and other organizations that need on-site testing logistics."
   },
   {
-    q: "How quickly can I finish DOT collector training?",
-    a: "Many students can move through the training in about a week depending on scheduling, portal completion, and how quickly they complete the five live observed mock collections."
+    q: "What areas does 1 Stikk Mobile serve?",
+    a: "1 Stikk Mobile is headquartered in Monroe, Louisiana and coordinates mobile services in qualifying markets nationwide. Availability can vary by service type, staffing, and scheduling."
   }
 ];
 

@@ -474,7 +474,7 @@ export default async function Page({ params }) {
       service?.title ||
       trainingProgram?.title ||
       (slug.length === 0
-        ? "DOT Collector Training for $75 with Physical Mock Kit"
+        ? "Mobile Blood Draws, Lab Testing & Wellness Visits"
         : breadcrumbItems[breadcrumbItems.length - 1]?.name),
     isPartOf: {
       "@id": `${siteUrl}#website`
